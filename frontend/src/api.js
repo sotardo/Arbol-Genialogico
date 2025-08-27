@@ -23,5 +23,14 @@ export const personasApi = {
   borrar: async (id) => {
     const res = await fetch(`${API}/api/personas/${id}`, { method: 'DELETE' });
     return res.json();
-  }
+  },
+  detalle: async (id) => (await fetch(`${API}/api/personas/${id}`)).json(),
+  bulk: async (ids) => {
+    const res = await fetch(`${API}/api/personas/bulk`, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ ids })
+    });
+     return res.json(); // { items: [...] }
+}
 };
