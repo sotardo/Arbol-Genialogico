@@ -1,0 +1,113 @@
+/* Estilos generales */
+.tree-view {
+  width: 100%;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 18px;
+}
+
+/* Nodo de persona */
+.person-node {
+  padding: 4px;
+}
+
+.person-card {
+  width: 232px;
+  height: 88px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.person-card.selected {
+  box-shadow: 0 0 0 2px #3b82f6;
+}
+
+.avatar-container {
+  padding: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.avatar-placeholder {
+  width: 60px;
+  height: 60px;
+}
+
+.person-info {
+  padding: 14px 14px 14px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.years {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Nodo de matrimonio */
+.marriage-node {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.marriage-bar {
+  width: 90px;
+  height: 12px;
+  background-color: #94a3b8;
+  border-radius: 6px;
+}
+
+/* Ajustes de React Flow */
+.react-flow__node-default,
+.react-flow__node-input,
+.react-flow__node-output {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.react-flow__handle {
+  width: 8px;
+  height: 8px;
+}
+
+.react-flow__minimap {
+  bottom: 20px;
+  right: 20px;
+}
+
+.react-flow__controls {
+  bottom: 20px;
+  left: 20px;
+}

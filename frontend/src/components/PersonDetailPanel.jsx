@@ -1,0 +1,483 @@
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { X, User, Plus, TreePine } from 'lucide-react';
+
+// Componente de badge de calidad
+const QualityBadge = ({ level }) => {
+  const config = {
+    Alto: 'bg-green-100 text-green-700 border-green-300',
+    Medio: 'bg-yellow-100 text-yellow-700 border-yellow-300',
+    Bajo: 'bg-red-100 text-red-700 border-red-300'
+  };
+  return (
+    <span className={`px-2 py-1 text-xs font-medium rounded border ${config[level] || config.Medio}`}>
+      {level}
+    </span>
+  );
+};
+
+// Sección colapsable
+const CollapsibleSection = ({ title, count, children, defaultOpen = false }) => {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+  return (
+    <div className="border-b border-gray-200">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full px-4 py-3 flex items-center justify-between hover:bg-gray-50 transition-colors text-left"
+      >
+        <h3 className="text-sm font-semibold text-gray-900">
+          {title} {count !== undefined && `(${count})`}
+        </h3>
+        <span className="text-gray-500 text-lg">{isOpen ? '−' : '+'}</span>
+      </button>
+      {isOpen && <div className="px-4 py-3 bg-gray-50">{children}</div>}
+    </div>
+  );
+};
+
+// Botón para agregar
+const AddButton = ({ onClick, text }) => (
+  <button
+    onClick={onClick}
+    className="flex items-center gap-2 text-sm text-green-600 hover:text-green-800 transition-colors"
+  >
+    <Plus size={16} /> {text}
+  </button>
+);
+
+// Formateo de fecha
+const formatDate = (dateString) => {
+  if (!dateString) return '';
+  try {
+    return new Date(dateString).toLocaleDateString('es-ES', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  } catch {
+    return dateString;
+  }
+};
+
+// Navega al lienzo
+const gotoCanvas = (id) => {
+  if (!id) return;
+  const url = new URL(window.location.origin + '/');
+  url.searchParams.set('root', id);
+  window.location.href = url.toString();
+};
+
+// Cuenta segura
+const safeCount = (v) => (Array.isArray(v) ? v.length : typeof v === 'number' ? v : 0);
+
+export default function PersonDetailPanel({
+  personaId,
+  onClose,
+  isOpen,
+  personasApi,
+  toAPI = (path) => path,
+  onOpenPerfil,
+  onVerArbol
+}) {
+  const [persona, setPersona] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [activeTab, setActiveTab] = useState('persona');
+
+  // Estados para manejar la transición
+  const [shouldRender, setShouldRender] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const panelRef = useRef(null);
+
+  // 👉 CLICK FUERA DEL PANEL → CERRAR
+  const handleClickOutside = useCallback(
+    (event) => {
+      if (!panelRef.current) return;
+      // Si el click NO fue dentro del panel, cerramos
+      if (!panelRef.current.contains(event.target)) {
+        onClose?.();
+      }
+    },
+    [onClose]
+  );
+
+  // Manejar apertura/cierre con animación
+  useEffect(() => {
+    if (isOpen) {
+      setShouldRender(true);
+      // Pequeño delay para que el DOM se actualice antes de animar
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsAnimating(true);
+        });
+      });
+    } else {
+      setIsAnimating(false);
+      // Esperar a que termine la animación antes de desmontar
+      const timer = setTimeout(() => {
+        setShouldRender(false);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
+
+  // Cargar datos de la persona
+  useEffect(() => {
+    if (!personaId || !personasApi) {
+      setPersona(null);
+      return;
+    }
+    const loadPersona = async () => {
+      setLoading(true);
+      try {
+        const data = await personasApi.detalle(personaId);
+        setPersona(data);
+      } catch (err) {
+        console.error('Error cargando persona:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadPersona();
+  }, [personaId, personasApi]);
+
+  // Cerrar con Escape
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') onClose?.();
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isOpen, onClose]);
+
+  // Bloquear scroll del body
+  useEffect(() => {
+    if (shouldRender) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [shouldRender]);
+
+  const handlePersonaTabClick = () => {
+    if (onOpenPerfil && personaId) onOpenPerfil(personaId);
+    else setActiveTab('persona');
+  };
+
+  const handleAgregarDetalle = () => {
+    if (onOpenPerfil && personaId)
+      onOpenPerfil(personaId, { tab: 'detalles', openModal: false });
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.set('perfil', personaId);
+      url.searchParams.set('tab', 'detalles');
+      window.history.replaceState({}, '', url);
+    } catch {}
+    window.dispatchEvent(
+      new CustomEvent('perfil:tab', {
+        detail: { personaId, tab: 'detalles', openModal: false }
+      })
+    );
+    onClose?.();
+  };
+
+  const fuentes = Array.isArray(persona?.fuentes) ? persona.fuentes : [];
+  const recuerdos = Array.isArray(persona?.recuerdos) ? persona.recuerdos : [];
+  const hechos = Array.isArray(persona?.hechos) ? persona.hechos : [];
+
+  if (!shouldRender) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-[250] overflow-hidden"
+      role="dialog"
+      aria-modal="true"
+      onMouseDown={handleClickOutside}
+    >
+      {/* Backdrop */}
+      <div
+        className={`absolute inset-0 bg-gray-900/50 transition-opacity duration-500 ease-in-out ${
+          isAnimating ? 'opacity-100' : 'opacity-0'
+        }`}
+        aria-hidden="true"
+      />
+
+      {/* Panel container */}
+      <div className="fixed inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10 sm:pl-16">
+            {/* Panel */}
+            <div
+              ref={panelRef}
+              className={`pointer-events-auto relative w-screen max-w-md transition-transform duration-500 ease-in-out ${
+                isAnimating ? 'translate-x-0' : 'translate-x-full'
+              }`}
+            >
+              {/* Botón cerrar */}
+              <div
+                className={`absolute top-0 left-0 -ml-8 flex pt-4 pr-2 sm:-ml-10 sm:pr-4 transition-opacity duration-500 ease-in-out ${
+                  isAnimating ? 'opacity-100' : 'opacity-0'
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => onClose?.()}
+                  className="relative rounded-md text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
+                >
+                  <span className="absolute -inset-2.5" />
+                  <span className="sr-only">Cerrar panel</span>
+                  <X className="h-6 w-6" aria-hidden="true" />
+                </button>
+              </div>
+
+              {/* Contenido */}
+              <div className="flex h-full flex-col overflow-y-auto bg-white shadow-xl">
+                {/* Header */}
+                <div className="sticky top-0 bg-white border-b border-gray-200 z-10">
+                  <div className="p-4">
+                    <div className="flex items-start gap-3 mb-3">
+                      {persona?.avatarUrl ? (
+                        <img
+                          src={toAPI(persona.avatarUrl)}
+                          alt=""
+                          className="w-12 h-12 rounded-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+                          <User size={24} className="text-green-600" />
+                        </div>
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <h2 className="text-lg font-semibold text-gray-900 break-words">
+                          {loading ? 'Cargando...' : persona?.nombre || 'Sin nombre'}
+                        </h2>
+                        {persona?.codigo && (
+                          <p className="text-sm text-gray-500">{persona.codigo}</p>
+                        )}
+                      </div>
+                    </div>
+
+                    {persona?.calidad && (
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="text-xs text-gray-600">
+                          Puntuación de calidad:
+                        </span>
+                        <QualityBadge level={persona.calidad} />
+                      </div>
+                    )}
+
+                    <div className="flex gap-4 text-xs text-gray-600">
+                      <button className="text-green-600 hover:underline">
+                        Fuentes ({safeCount(fuentes)})
+                      </button>
+                      <button className="text-green-600 hover:underline">
+                        Recuerdos ({safeCount(recuerdos)})
+                      </button>
+                      <button className="text-green-600 hover:underline">
+                        Colaborar ({safeCount(persona?.colaboradores)})
+                      </button>
+                    </div>
+                  </div>
+
+                  {persona && (
+                    <div className="px-4 pb-4 space-y-2 text-sm">
+                      {persona.nacimiento && (
+                        <div>
+                          <div className="font-semibold text-gray-900">
+                            Nacimiento
+                          </div>
+                          <div className="text-gray-600">
+                            {formatDate(persona.nacimiento)}
+                          </div>
+                        </div>
+                      )}
+                      {persona.fallecimiento && (
+                        <div>
+                          <div className="font-semibold text-gray-900">
+                            Defunción
+                          </div>
+                          <div className="text-gray-600">
+                            {formatDate(persona.fallecimiento)}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+<div className="flex items-center gap-2 border-t border-gray-200 px-4 py-3">
+  <button
+    onClick={handlePersonaTabClick}
+    className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-md border text-sm font-medium bg-white text-gray-700 border-gray-300 hover:bg-green-50 hover:text-green-700 hover:border-green-300 transition-colors cursor-pointer"
+  >
+    <User size={16} /> PERFIL
+  </button>
+  <button
+    onClick={() => {
+      if (onVerArbol && personaId) onVerArbol(personaId);
+      else gotoCanvas(personaId);
+    }}
+    className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-md border text-sm font-medium bg-white text-gray-700 border-gray-300 hover:bg-green-50 hover:text-green-700 hover:border-green-300 transition-colors cursor-pointer"
+  >
+    <TreePine size={16} /> ÁRBOL
+  </button>
+</div>
+                </div>
+
+                {/* Content sections */}
+                <div className="pb-20">
+                  {activeTab === 'persona' && persona && (
+                    <>
+                      <CollapsibleSection
+                        title="Información esencial"
+                        defaultOpen
+                      >
+                        <div className="space-y-3 text-sm">
+                          {persona.nacimiento && (
+                            <div>
+                              <div className="font-semibold text-gray-900">
+                                Nacimiento
+                              </div>
+                              <div className="text-gray-600">
+                                {formatDate(persona.nacimiento)}
+                              </div>
+                            </div>
+                          )}
+                          {persona.bautismo ? (
+                            <div>
+                              <div className="font-semibold text-gray-900">
+                                Bautizo
+                              </div>
+                              <div className="text-gray-600">
+                                {formatDate(persona.bautismo.fecha)}
+                              </div>
+                            </div>
+                          ) : (
+                            <div>
+                              <div className="font-semibold text-gray-900">
+                                Bautizo
+                              </div>
+                              <AddButton
+                                onClick={handleAgregarDetalle}
+                                text="AGREGAR"
+                              />
+                            </div>
+                          )}
+                          {persona.matrimonio ? (
+                            <div>
+                              <div className="font-semibold text-gray-900">
+                                Matrimonio
+                              </div>
+                              <div className="text-gray-600">
+                                {formatDate(persona.matrimonio.fecha)}
+                              </div>
+                            </div>
+                          ) : (
+                            <div>
+                              <div className="font-semibold text-gray-900">
+                                Matrimonio
+                              </div>
+                              <AddButton
+                                onClick={handleAgregarDetalle}
+                                text="AGREGAR"
+                              />
+                            </div>
+                          )}
+                          {persona.entierro ? (
+                            <div>
+                              <div className="font-semibold text-gray-900">
+                                Entierro
+                              </div>
+                              <div className="text-gray-600">
+                                {formatDate(persona.entierro.fecha)}
+                              </div>
+                            </div>
+                          ) : (
+                            <div>
+                              <div className="font-semibold text-gray-900">
+                                Entierro
+                              </div>
+                              <AddButton
+                                onClick={handleAgregarDetalle}
+                                text="AGREGAR"
+                              />
+                            </div>
+                          )}
+                        </div>
+                      </CollapsibleSection>
+
+                      <CollapsibleSection
+                        title="Fuentes"
+                        count={safeCount(fuentes)}
+                      >
+                        {safeCount(fuentes) === 0 ? (
+                          <AddButton
+                            onClick={handleAgregarDetalle}
+                            text="AGREGAR FUENTE"
+                          />
+                        ) : (
+                          <div className="space-y-3">
+                            {fuentes.map((f, i) => (
+                              <div
+                                key={f._id || i}
+                                className="bg-gray-50 rounded-lg p-4 border border-gray-200"
+                              >
+                                <h4 className="font-semibold text-gray-900">
+                                  {f.titulo || f.nombre || 'Sin título'}
+                                </h4>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </CollapsibleSection>
+
+                      <CollapsibleSection
+                        title="Hechos"
+                        count={safeCount(hechos)}
+                      >
+                        {safeCount(hechos) === 0 ? (
+                          <AddButton
+                            onClick={handleAgregarDetalle}
+                            text="AGREGAR HECHO"
+                          />
+                        ) : (
+                          <div className="space-y-2">
+                            {hechos.map((h, i) => (
+                              <div
+                                key={h._id || i}
+                                className="p-2 bg-white rounded border border-gray-200"
+                              >
+                                <div className="font-medium text-sm">
+                                  {h.tipo}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </CollapsibleSection>
+
+                      <CollapsibleSection title="Historia de vida">
+                        {persona.acercaDe ? (
+                          <p className="text-sm text-gray-700">
+                            {persona.acercaDe}
+                          </p>
+                        ) : (
+                          <AddButton
+                            onClick={handleAgregarDetalle}
+                            text="AGREGAR"
+                          />
+                        )}
+                      </CollapsibleSection>
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -1,188 +1,225 @@
-import { useEffect, useState } from 'react';
-import { personasApi } from './api';
-import RelacionesView from './RelacionesView';
+// src/App.jsx
+import { useEffect, useMemo, useState } from 'react';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import FamilyCanvas from './components/FamilyCanvas';
+import { personasApi } from './personasApi';
+import NavBar from './components/NavBar';
+import PerfilPage from './components/PerfilPage';
+import CRUD from './components/Crud';
+
+function readRootFromURL() {
+  try {
+    const url = new URL(window.location.href);
+    const q = url.searchParams.get('root');
+    if (q) return q;
+    if (window.location.hash) {
+      const [k, v] = window.location.hash.replace(/^#/, '').split('=');
+      if (k === 'root' && v) return v;
+    }
+  } catch {}
+  return '';
+}
+
+function RootPicker({ onPick }) {
+  const [val, setVal] = useState('');
+  return (
+    <div style={{
+      height: '100%', display: 'grid', placeItems: 'center', color: '#475569'
+    }}>
+      <div style={{ textAlign: 'center' }}>
+        <h2 style={{ margin: 0, marginBottom: 8 }}>Seleccioná persona raíz</h2>
+        <p style={{ marginTop: 0 }}>Pegá un <code>_id</code> o agrega <code>?root=ID</code> en la URL.</p>
+        <div style={{ display: 'flex', gap: 8, justifyContent: 'center', marginTop: 8 }}>
+          <input
+            value={val}
+            onChange={(e) => setVal(e.target.value)}
+            placeholder="ID de persona (Mongo _id)"
+            style={{
+              width: 360, height: 36, borderRadius: 8, border: '1px solid #cbd5e1',
+              padding: '0 10px', outline: 'none'
+            }}
+          />
+          <button
+            onClick={() => val && onPick(val)}
+            style={{
+              height: 36, borderRadius: 8, border: '1px solid #cbd5e1',
+              padding: '0 14px', background: '#fff', cursor: 'pointer'
+            }}
+          >
+            Usar
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function App() {
-  const [status, setStatus] = useState('Cargando...');
-  const [lista, setLista] = useState([]);
-  const [q, setQ] = useState('');
-  const [form, setForm] = useState({ nombre: '', sexo: 'X', nacimiento: '', fallecimiento: '', notas: '' });
-  const [editId, setEditId] = useState(null);
-
-  // selección para el visor de relaciones
-  const [seleccion, setSeleccion] = useState('');
-
+  const navigate = useNavigate();
+  const location = useLocation();
   const API = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+  const headerH = 56;
+  const canvasHeight = useMemo(() => `calc(100vh - ${headerH}px)`, [headerH]);
 
-  const cargar = async () => {
-    const health = await fetch(`${API}/health`).then(r=>r.json()).catch(()=>({ok:false}));
-    setStatus(health.ok ? 'OK' : 'Error');
-    const data = await personasApi.listar(q);
-    const items = Array.isArray(data) ? data : (data.items || []);
-    setLista(items);
+  // ✅ ID CORRECTO de Julia Graciela
+  const FIXED_ROOT_ID = '68fd3387986ef0aa5542a352';
 
-    // si no hay selección, tomar la primera disponible
-    if (!seleccion && items[0]?._id) setSeleccion(items[0]._id);
-    // si la persona seleccionada ya no está (p.ej. la borraste), resetea
-    if (seleccion && !items.find(x => x._id === seleccion)) {
-      setSeleccion(items[0]?._id || '');
+  const initialRoot = () => {
+    try {
+      const navEntry = performance.getEntriesByType('navigation')?.[0];
+      const isReload =
+        (navEntry && navEntry.type === 'reload') ||
+        (performance.navigation && performance.navigation.type === 1);
+
+      if (isReload) {
+        const url = new URL(window.location.href);
+        url.searchParams.set('root', FIXED_ROOT_ID);
+        window.history.replaceState({}, '', url.toString());
+        return FIXED_ROOT_ID;
+      }
+
+      const fromURL = readRootFromURL();
+      if (fromURL) return fromURL;
+
+      const url = new URL(window.location.href);
+      url.searchParams.set('root', FIXED_ROOT_ID);
+      window.history.replaceState({}, '', url.toString());
+      return FIXED_ROOT_ID;
+    } catch {
+      return FIXED_ROOT_ID;
     }
   };
 
-  useEffect(() => { cargar(); /*eslint-disable-next-line*/ }, []);
+  const [rootId, setRootId] = useState(initialRoot);
+  const [loadingRoot, setLoadingRoot] = useState(false);
+  const [errorRoot, setErrorRoot] = useState(null);
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const payload = {
-      nombre: form.nombre?.trim(),
-      sexo: form.sexo,
-      nacimiento: form.nacimiento || undefined,
-      fallecimiento: form.fallecimiento || undefined,
-      notas: form.notas || undefined
-    };
-    if (!payload.nombre) { alert('El nombre es obligatorio'); return; }
-
-    if (editId) await personasApi.editar(editId, payload);
-    else await personasApi.crear(payload);
-
-    setForm({ nombre: '', sexo: 'X', nacimiento: '', fallecimiento: '', notas: '' });
-    setEditId(null);
-    await cargar();
+  // Determinar vista activa basada en la ruta
+  const getActiveView = () => {
+    if (location.pathname.startsWith('/perfil')) return 'arbol';
+    if (location.pathname === '/personas') return 'personas';
+    return 'arbol';
   };
 
-  const onEdit = (p) => {
-    setEditId(p._id);
-    setForm({
-      nombre: p.nombre || '',
-      sexo: p.sexo || 'X',
-      nacimiento: p.nacimiento ? p.nacimiento.substring(0,10) : '',
-      fallecimiento: p.fallecimiento ? p.fallecimiento.substring(0,10) : '',
-      notas: p.notas || ''
-    });
+  useEffect(() => {
+    let alive = true;
+    (async () => {
+      if (rootId) return;
+      setLoadingRoot(true);
+      setErrorRoot(null);
+      try {
+        const res = await personasApi.listar('', 1, 1, 'nombre', 'asc');
+        const first = res?.items?.[0];
+        if (!alive) return;
+        if (first?._id) {
+          setRootId(first._id);
+          const url = new URL(window.location.href);
+          url.searchParams.set('root', first._id);
+          window.history.replaceState({}, '', url.toString());
+        } else {
+          setErrorRoot('No hay personas en la base. Crea una persona para iniciar el árbol.');
+        }
+      } catch (err) {
+        if (alive) setErrorRoot(err?.message || 'No se pudo obtener la raíz');
+      } finally {
+        if (alive) setLoadingRoot(false);
+      }
+    })();
+    return () => { alive = false; };
+  }, [rootId]);
+
+  const handleOpenPerfil = (id) => {
+    if (!id) return;
+    navigate(`/perfil/${id}`);
   };
 
-  const onDelete = async (id) => {
-    if (!confirm('¿Borrar esta persona?')) return;
-    await personasApi.borrar(id);
-    if (editId === id) setEditId(null);
-    await cargar();
+  const handleNavigate = (view) => {
+    if (view === 'arbol') {
+      navigate('/');
+    } else if (view === 'personas') {
+      navigate('/personas');
+    }
   };
 
-  const onBuscar = async () => { await cargar(); };
+  const handlePersonaClick = (persona) => {
+    if (!persona?._id) return;
+    // Ir al perfil de la persona
+    navigate(`/perfil/${persona._id}`);
+  };
 
   return (
-    <div style={{ fontFamily:'system-ui', padding:24, maxWidth:1100, margin:'0 auto' }}>
-      <h1>Árbol Genealógico (Frontend)</h1>
-      <p>Backend: {status}</p>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <NavBar 
+        activeView={getActiveView()}
+        onNavigate={handleNavigate}
+      />
 
-      {/* --- CRUD --- */}
-      <h2 style={{marginTop:16}}>Personas</h2>
-      <form
-        onSubmit={onSubmit}
-        style={{display:'grid', gridTemplateColumns:'1fr 120px 160px 160px', gap:8, alignItems:'center'}}
-      >
-        <input
-          placeholder="Nombre *"
-          value={form.nombre}
-          onChange={e=>setForm({...form, nombre:e.target.value})}
-          required
-        />
-        <select value={form.sexo} onChange={e=>setForm({...form, sexo:e.target.value})}>
-          <option value="X">Sexo</option><option value="M">M</option><option value="F">F</option>
-        </select>
-        <input type="date" value={form.nacimiento} onChange={e=>setForm({...form, nacimiento:e.target.value})} />
-        <input type="date" value={form.fallecimiento} onChange={e=>setForm({...form, fallecimiento:e.target.value})} />
-        <textarea
-          placeholder="Notas"
-          value={form.notas}
-          onChange={e=>setForm({...form, notas:e.target.value})}
-          style={{gridColumn:'1 / -1'}}
-          rows={2}
-        />
-        <div style={{gridColumn:'1 / -1', display:'flex', gap:8}}>
-          <button type="submit">{editId ? 'Guardar cambios' : 'Crear persona'}</button>
-          {editId && (
-            <button
-              type="button"
-              onClick={()=>{
-                setEditId(null);
-                setForm({ nombre:'', sexo:'X', nacimiento:'', fallecimiento:'', notas:'' });
-              }}
-            >
-              Cancelar
-            </button>
-          )}
-        </div>
-      </form>
+      <main style={{ minHeight: canvasHeight, position: 'relative' }}>
+        <Routes>
+          {/* Ruta del árbol */}
+          <Route
+            path="/"
+            element={
+              <>
+                {loadingRoot && (
+                  <div style={{ height: '100%', display: 'grid', placeItems: 'center', color: '#475569' }}>
+                    <div>
+                      <h2 style={{ margin: 0, marginBottom: 8 }}>Cargando persona raíz…</h2>
+                      <p style={{ marginTop: 0 }}>Buscando la primera persona disponible.</p>
+                    </div>
+                  </div>
+                )}
 
-      <div style={{marginTop:16}}>
-        <input placeholder="Buscar por nombre..." value={q} onChange={e=>setQ(e.target.value)} />
-        <button onClick={onBuscar} style={{marginLeft:8}}>Buscar</button>
-      </div>
+                {!loadingRoot && errorRoot && (
+                  <div style={{ height: '100%', display: 'grid', placeItems: 'center', color: '#475569' }}>
+                    <div style={{ textAlign: 'center' }}>
+                      <h2 style={{ margin: 0, marginBottom: 8 }}>Sin datos</h2>
+                      <p style={{ marginTop: 0, maxWidth: 520 }}>{errorRoot}</p>
+                      <div style={{ marginTop: 16 }}>
+                        <RootPicker onPick={(id) => setRootId(id)} />
+                      </div>
+                    </div>
+                  </div>
+                )}
 
-      <table style={{marginTop:12, width:'100%', borderCollapse:'collapse'}}>
-        <thead>
-          <tr>
-            <th style={{textAlign:'left'}}>Nombre</th>
-            <th>Sexo</th>
-            <th>Nac.</th>
-            <th>Fallec.</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {lista.map(p => (
-            <tr key={p._id} style={{borderTop:'1px solid #ddd'}}>
-              {/* Al clickear el nombre, selecciona para ver relaciones */}
-              <td>
-                <button
-                  onClick={()=>setSeleccion(p._id)}
-                  style={{ all:'unset', cursor:'pointer', color:'#0b5ed7', textDecoration:'underline' }}
-                  title="Ver relaciones"
-                >
-                  {p.nombre}
-                </button>
-              </td>
-              <td style={{textAlign:'center'}}>{p.sexo}</td>
-              <td style={{textAlign:'center'}}>{p.nacimiento?.substring?.(0,10) || ''}</td>
-              <td style={{textAlign:'center'}}>{p.fallecimiento?.substring?.(0,10) || ''}</td>
-              <td style={{textAlign:'right'}}>
-                <button onClick={()=>onEdit(p)} style={{marginRight:8}}>Editar</button>
-                <button onClick={()=>onDelete(p._id)}>Borrar</button>
-              </td>
-            </tr>
-          ))}
-          {lista.length === 0 && (
-            <tr>
-              <td colSpan={5} style={{padding:12, textAlign:'center', opacity:.7}}>Sin resultados</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+                {!loadingRoot && !errorRoot && !rootId && (
+                  <RootPicker onPick={(id) => {
+                    setRootId(id);
+                    const url = new URL(window.location.href);
+                    url.searchParams.set('root', id);
+                    window.history.replaceState({}, '', url.toString());
+                  }} />
+                )}
 
-      {/* --- Visor de relaciones --- */}
-      <div style={{marginTop:28, paddingTop:16, borderTop:'2px solid #eee'}}>
-        <h2>Relaciones</h2>
-
-        {/* Selector de persona para el visor */}
-        <div style={{display:'flex', gap:8, alignItems:'center', margin:'12px 0'}}>
-          <span>Persona:</span>
-          <select value={seleccion} onChange={e=>setSeleccion(e.target.value)}>
-            <option value="" disabled>Elegí una persona…</option>
-            {lista.map(p => <option key={p._id} value={p._id}>{p.nombre}</option>)}
-          </select>
-          <button onClick={()=>cargar()} title="Refrescar lista">Refrescar</button>
-        </div>
-
-        {seleccion ? (
-          <RelacionesView
-            personaId={seleccion}
-            onPick={(id)=>setSeleccion(id)} // navegar entre parientes
+                {!loadingRoot && !errorRoot && rootId && (
+                  <FamilyCanvas
+                    rootId={rootId}
+                    height={canvasHeight}
+                    viewMode="horizontal"
+                    spacing={1}
+                    onPick={(id) => {
+                      setRootId(id);
+                      const url = new URL(window.location.href);
+                      url.searchParams.set('root', id);
+                      window.history.replaceState({}, '', url.toString());
+                    }}
+                    onOpenPerfil={handleOpenPerfil}
+                  />
+                )}
+              </>
+            }
           />
-        ) : (
-          <p style={{opacity:.7}}>Elegí una persona para ver sus relaciones.</p>
-        )}
-      </div>
+
+          {/* Ruta del perfil */}
+          <Route path="/perfil/:id" element={<PerfilPage />} />
+
+          {/* 🆕 Ruta del CRUD de personas */}
+          <Route 
+            path="/personas" 
+            element={<CRUD onPersonaClick={handlePersonaClick} />} 
+          />
+        </Routes>
+      </main>
     </div>
   );
 }
