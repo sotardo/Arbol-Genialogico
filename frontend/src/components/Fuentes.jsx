@@ -1,6 +1,6 @@
 // src/components/Fuentes.jsx
 import { useState, useRef } from 'react';
-import { FileText, X, Upload, Calendar, Trash2, Eye } from 'lucide-react';
+import { FileText, X, Upload, Calendar, Trash2, Eye, Pencil } from 'lucide-react';
 import { toAPI } from '../utils';
 import { alertError, alertSuccess } from '../utils/alerts';
 import * as Alerts from '../utils/alerts';
@@ -135,7 +135,10 @@ const PdfViewerModal = ({ open, onClose, url, title, esImagen }) => {
   );
 };
 
-const FuenteCard = ({ fuente, onDelete, onView }) => {
+// ---------------------------------------------------------------------------
+// FuenteCard
+// ---------------------------------------------------------------------------
+const FuenteCard = ({ fuente, onDelete, onView, onEdit }) => {
   const url = fileSrc(fuente.ruta || fuente.url);
   const esPdf = isPdfFuente(fuente);
   const esImagen = isImageFuente(fuente);
@@ -144,7 +147,7 @@ const FuenteCard = ({ fuente, onDelete, onView }) => {
   return (
     <div className="flex items-start gap-4 p-4 bg-white border border-gray-200 rounded-lg hover:border-gray-300 transition-all">
       <div className="flex-shrink-0 w-12 h-12 rounded-lg overflow-hidden flex items-center justify-center bg-gray-100">
-        {esPdf && !esImagen && <FileText size={28} className="text-blue-600" />}
+        {esPdf && !esImagen && <FileText size={28} className="text-green-600" />}
 
         {esImagen && url && (
           <img
@@ -186,7 +189,7 @@ const FuenteCard = ({ fuente, onDelete, onView }) => {
           )}
 
           {esImagen && tipoImagen && (
-            <span className="px-2 py-0.5 bg-blue-50 text-blue-600 rounded font-medium">
+            <span className="px-2 py-0.5 bg-green-50 text-green-600 rounded font-medium">
               {tipoImagen}
             </span>
           )}
@@ -197,17 +200,27 @@ const FuenteCard = ({ fuente, onDelete, onView }) => {
         {url && (
           <button
             onClick={() => onView?.(fuente)}
-            className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+            className="p-2 text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors"
             title="Ver archivo"
           >
             <Eye size={18} />
           </button>
         )}
 
+        {onEdit && (
+          <button
+            onClick={() => onEdit(fuente)}
+            className="p-2 text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors"
+            title="Editar"
+          >
+            <Pencil size={18} />
+          </button>
+        )}
+
         {onDelete && (
           <button
             onClick={() => onDelete(fuente._id)}
-            className="p-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+            className="p-2 text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors"
             title="Eliminar"
           >
             <Trash2 size={18} />
@@ -218,8 +231,16 @@ const FuenteCard = ({ fuente, onDelete, onView }) => {
   );
 };
 
+// ---------------------------------------------------------------------------
+// Componente principal — Fuentes
+// ---------------------------------------------------------------------------
 export default function Fuentes({ personaId, fuentes = [], onFuenteAdded, personasApi }) {
   const fuentesArr = Array.isArray(fuentes) ? fuentes : (fuentes ? [fuentes] : []);
+
+  // edición usando el mismo modal
+  const [isEditing, setIsEditing] = useState(false);
+  const [editId, setEditId] = useState(null);
+
   const [showModal, setShowModal] = useState(false);
   const [viewer, setViewer] = useState({ open: false, url: '', title: '', esImagen: false });
 
@@ -229,9 +250,11 @@ export default function Fuentes({ personaId, fuentes = [], onFuenteAdded, person
   const [uploadProgress, setUploadProgress] = useState([]);
   const fileInputRef = useRef(null);
 
+  // ---------------------------------------------------------
+  // Selección de archivos
+  // ---------------------------------------------------------
   const handleFileSelect = (e) => {
     const files = Array.from(e.target.files || []);
-
     const allowedMimePrefixes = ['application/pdf', 'image/'];
     const allowedExtensions = ['.pdf', '.jpg', '.jpeg', '.png', '.webp', '.gif'];
 
@@ -259,6 +282,8 @@ export default function Fuentes({ personaId, fuentes = [], onFuenteAdded, person
     setFormData({ titulo: '', descripcion: '', fecha: '' });
     setSelectedFiles([]);
     setUploadProgress([]);
+    setIsEditing(false);
+    setEditId(null);
   };
 
   const handleCancel = () => {
@@ -266,18 +291,69 @@ export default function Fuentes({ personaId, fuentes = [], onFuenteAdded, person
     setShowModal(false);
   };
 
+  // ---------------------------------------------------------------------------
+  // EDITAR — reutilizando el mismo formulario
+  // ---------------------------------------------------------------------------
+const handleEdit = (fuente) => {
+  // marcamos modo edición
+  setIsEditing(true);
+  setEditId(fuente._id);
+
+  setFormData({
+    titulo: fuente.titulo || '',
+    descripcion: fuente.descripcion || '',
+    fecha: fuente.fecha ? String(fuente.fecha).split('T')[0] : '',
+  });
+
+  // no pre-cargamos archivos: si quiere cambiar el archivo, que seleccione uno nuevo
+  setSelectedFiles([]);
+
+  setShowModal(true);
+};
+
+  // ---------------------------------------------------------------------------
+  // SUBMIT — agregar o editar según el modo
+  // ---------------------------------------------------------------------------
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (selectedFiles.length === 0) {
-      alertError('Debes seleccionar al menos un archivo');
-      return;
-    }
-
     setUploading(true);
-    setUploadProgress(new Array(selectedFiles.length).fill(0));
 
     try {
+      // -----------------------------------------------------------
+      // MODO EDITAR
+      // -----------------------------------------------------------
+      if (isEditing && editId) {
+        const payload = {
+          titulo: formData.titulo,
+          descripcion: formData.descripcion,
+          fecha: formData.fecha,
+        };
+
+        // si el usuario seleccionó un nuevo archivo, se envía también
+        if (selectedFiles.length > 0) {
+          payload.file = selectedFiles[0];
+        }
+
+        await personasApi.editarMedia(personaId, editId, payload);
+
+        if (onFuenteAdded) await onFuenteAdded();
+        alertSuccess('Fuente actualizada');
+
+        resetForm();
+        setShowModal(false);
+        return;
+      }
+
+      // -----------------------------------------------------------
+      // MODO AGREGAR — lógica original
+      // -----------------------------------------------------------
+      if (selectedFiles.length === 0) {
+        alertError('Debes seleccionar al menos un archivo');
+        return;
+      }
+
+      setUploadProgress(new Array(selectedFiles.length).fill(0));
+
       for (let i = 0; i < selectedFiles.length; i++) {
         const file = selectedFiles[i];
         const lowerName = file.name.toLowerCase();
@@ -313,12 +389,30 @@ export default function Fuentes({ personaId, fuentes = [], onFuenteAdded, person
       alertSuccess(`${selectedFiles.length} fuente(s) agregada(s) correctamente`);
     } catch (err) {
       console.error(err);
-      alertError('Error al subir las fuentes.');
+      alertError('Error al guardar las fuentes.');
     } finally {
       setUploading(false);
     }
   };
 
+  // ---------------------------------------------------------------------------
+  // Ver archivo
+  // ---------------------------------------------------------------------------
+  const handleView = (fuente) => {
+    const url = fileSrc(fuente.ruta || fuente.url);
+    if (!url) return;
+
+    setViewer({
+      open: true,
+      url,
+      title: fuente.titulo || fuente.nombreArchivo || 'Documento',
+      esImagen: isImageFuente(fuente),
+    });
+  };
+
+  // ---------------------------------------------------------------------------
+  // Eliminar
+  // ---------------------------------------------------------------------------
   const confirmDelete = async () => {
     try {
       if (typeof Alerts.alertConfirm === 'function') {
@@ -353,18 +447,9 @@ export default function Fuentes({ personaId, fuentes = [], onFuenteAdded, person
     }
   };
 
-  const handleView = (fuente) => {
-    const url = fileSrc(fuente.ruta || fuente.url);
-    if (!url) return;
-
-    setViewer({
-      open: true,
-      url,
-      title: fuente.titulo || fuente.nombreArchivo || 'Documento',
-      esImagen: isImageFuente(fuente),
-    });
-  };
-
+  // ---------------------------------------------------------------------------
+  // Render
+  // ---------------------------------------------------------------------------
   return (
     <div className="space-y-4">
       {fuentesArr.length > 0 ? (
@@ -375,6 +460,7 @@ export default function Fuentes({ personaId, fuentes = [], onFuenteAdded, person
               fuente={fuente}
               onDelete={handleDelete}
               onView={handleView}
+              onEdit={handleEdit}
             />
           ))}
         </div>
@@ -386,15 +472,19 @@ export default function Fuentes({ personaId, fuentes = [], onFuenteAdded, person
         </div>
       )}
 
+      {/* BOTÓN AGREGAR */}
       <button
-        onClick={() => setShowModal(true)}
-        className="w-full py-3 border-2 border-dashed border-gray-300 rounded-lg text-blue-600 hover:bg-blue-50 hover:border-blue-400 transition-all font-medium flex items-center justify-center gap-2"
+        onClick={() => {
+          resetForm();
+          setShowModal(true);
+        }}
+        className="w-full py-3 border-2 border-dashed border-gray-300 rounded-lg text-green-600 hover:bg-green-50 hover:border-green-400 transition-all font-medium flex items-center justify-center gap-2"
       >
         <Upload size={20} />
         AGREGAR FUENTE
       </button>
 
-      {/* Modal agregar */}
+      {/* MODAL REUTILIZADO (agregar + editar) */}
       {showModal && (
         <div
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
@@ -405,15 +495,19 @@ export default function Fuentes({ personaId, fuentes = [], onFuenteAdded, person
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="px-6 py-5 border-b border-gray-200 flex items-center justify-between bg-gradient-to-r from-blue-50 to-indigo-50">
+            <div className="px-6 py-5 border-b border-gray-200 flex items-center justify-between bg-gradient-to-r from-green-50 to-indigo-50">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-md">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-indigo-600 flex items-center justify-center shadow-md">
                   <FileText size={20} className="text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900">Agregar fuente</h3>
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    {isEditing ? 'Editar fuente' : 'Agregar fuente'}
+                  </h3>
                   <p className="text-xs text-gray-600 mt-0.5">
-                    Sube documentos históricos, certificados o imágenes
+                    {isEditing
+                      ? 'Modifica la información o reemplaza el archivo de esta fuente'
+                      : 'Sube documentos históricos, certificados o imágenes'}
                   </p>
                 </div>
               </div>
@@ -428,17 +522,19 @@ export default function Fuentes({ personaId, fuentes = [], onFuenteAdded, person
 
             {/* Form */}
             <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-6 space-y-5">
+              {/* Campo título */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Título</label>
                 <input
                   type="text"
                   value={formData.titulo}
                   onChange={(e) => setFormData((p) => ({ ...p, titulo: e.target.value }))}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
                   placeholder="Ej: Certificado de nacimiento"
                 />
               </div>
 
+              {/* Campo descripción */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Descripción (opcional)
@@ -446,12 +542,13 @@ export default function Fuentes({ personaId, fuentes = [], onFuenteAdded, person
                 <textarea
                   value={formData.descripcion}
                   onChange={(e) => setFormData((p) => ({ ...p, descripcion: e.target.value }))}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 resize-none"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 resize-none"
                   rows={3}
                   placeholder="Añade una breve descripción..."
                 />
               </div>
 
+              {/* Campo fecha */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
                   <Calendar size={16} className="text-gray-500" />
@@ -461,21 +558,22 @@ export default function Fuentes({ personaId, fuentes = [], onFuenteAdded, person
                   type="date"
                   value={formData.fecha}
                   onChange={(e) => setFormData((p) => ({ ...p, fecha: e.target.value }))}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
                 />
               </div>
 
+              {/* Archivos (crear o reemplazar) */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
                   <Upload size={16} className="text-gray-500" />
-                  Archivos PDF o imágenes
+                  {isEditing ? 'Reemplazar archivo (opcional)' : 'Archivos PDF o imágenes'}
                 </label>
 
                 <input
                   ref={fileInputRef}
                   type="file"
                   accept=".pdf,application/pdf,image/jpeg,image/jpg,image/png,image/webp,image/gif"
-                  multiple
+                  multiple={!isEditing}
                   onChange={handleFileSelect}
                   className="hidden"
                 />
@@ -483,12 +581,18 @@ export default function Fuentes({ personaId, fuentes = [], onFuenteAdded, person
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
-                  className="w-full py-8 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-400 hover:bg-blue-50 flex flex-col items-center gap-2"
+                  className="w-full py-8 border-2 border-dashed border-gray-300 rounded-lg hover:border-green-400 hover:bg-green-50 flex flex-col items-center gap-2"
                   disabled={uploading}
                 >
                   <Upload size={32} className="text-gray-400" />
-                  <span className="font-medium">Haz clic para seleccionar archivos</span>
-                  <span className="text-sm text-gray-500">Puedes cargar múltiples archivos</span>
+                  <span className="font-medium">
+                    {isEditing
+                      ? 'Haz clic para seleccionar un nuevo archivo (opcional)'
+                      : 'Haz clic para seleccionar archivos'}
+                  </span>
+                  {!isEditing && (
+                    <span className="text-sm text-gray-500">Puedes cargar múltiples archivos</span>
+                  )}
                 </button>
 
                 {selectedFiles.length > 0 && (
@@ -512,8 +616,8 @@ export default function Fuentes({ personaId, fuentes = [], onFuenteAdded, person
                           <div className="w-24">
                             <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
                               <div
-                                className="h-full bg-blue-600 transition-all"
-                                style={{ width: `${uploadProgress[index]}%` }}
+                                className="h-full bg-green-600 transition-all"
+                                style={{ width: `${uploadProgress[index] || 0}%` }}
                               />
                             </div>
                           </div>
@@ -546,14 +650,20 @@ export default function Fuentes({ personaId, fuentes = [], onFuenteAdded, person
 
               <button
                 onClick={handleSubmit}
-                className="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg shadow-sm hover:shadow-md disabled:opacity-70 flex items-center gap-2"
-                disabled={uploading || selectedFiles.length === 0}
+                className={`px-5 py-2.5 rounded-lg shadow-sm hover:shadow-md disabled:opacity-70 flex items-center gap-2 ${
+                  isEditing
+                    ? 'bg-emerald-600 text-white'
+                    : 'bg-gradient-to-r from-green-600 to-indigo-600 text-white'
+                }`}
+                disabled={uploading || (!isEditing && selectedFiles.length === 0)}
               >
                 {uploading ? (
                   <>
                     <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    Subiendo...
+                    {isEditing ? 'Guardando...' : 'Subiendo...'}
                   </>
+                ) : isEditing ? (
+                  <>Guardar cambios</>
                 ) : (
                   <>
                     <Upload size={18} />
@@ -567,6 +677,7 @@ export default function Fuentes({ personaId, fuentes = [], onFuenteAdded, person
         </div>
       )}
 
+      {/* VISOR */}
       <PdfViewerModal
         open={viewer.open}
         url={viewer.url}

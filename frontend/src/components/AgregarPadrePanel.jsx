@@ -1,7 +1,31 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { X, User, Calendar, Church, FileText, Save, Heart, Baby } from 'lucide-react';
 import { personasApi, relacionesApi } from '../personasApi';
 import { useToast } from './ToastProvider';
+import { Calendar as CalendarPicker } from "@/components/ui/calendar";
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
+import { DateFieldWithCalendar } from "@/components/ui/DateFieldWithCalendar"; 
+
+function formatDateToDisplay(dateStr) {
+  if (!dateStr) return "";
+  const date = new Date(`${dateStr}T00:00:00`);
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+}
+
+function parseDateFromDisplay(str) {
+  const parts = str.split("/");
+  if (parts.length !== 3) return null;
+  const day = parseInt(parts[0], 10);
+  const month = parseInt(parts[1], 10) - 1;
+  const year = parseInt(parts[2], 10);
+  if (isNaN(day) || isNaN(month) || isNaN(year)) return null;
+  return new Date(year, month, day);
+}
+
 
 const toInputDate = (d) => {
   if (!d) return '';
@@ -15,6 +39,47 @@ if (Number.isNaN(dt?.getTime?.())) return '';
 
 const fromInputDate = (s) => (s ? new Date(`${s}T00:00:00`) : null);
 
+const pairKey = (aId, bId) => {
+  if (!aId && !bId) return null;
+  if (aId && bId) {
+    const [x, y] = [String(aId), String(bId)].sort();
+    return `pair:${x}:${y}`;
+  }
+  return `single:${String(aId || bId)}`;
+};
+const DateInput = ({ value, onChange, placeholder = "Seleccionar fecha" }) => {
+  const date = value ? new Date(`${value}T00:00:00`) : undefined;
+
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button
+          type="button"
+          variant="outline"
+          className="w-full justify-start text-left font-normal"
+        >
+          <CalendarIcon className="mr-2 h-4 w-4 text-gray-500" />
+          {date ? (
+            toInputDate(date)
+          ) : (
+            <span className="text-gray-500">{placeholder}</span>
+          )}
+        </Button>
+      </PopoverTrigger>
+
+      <PopoverContent className="p-0" align="start">
+        <CalendarPicker
+          mode="single"
+          selected={date}
+          onSelect={(d) => onChange(d ? toInputDate(d) : "")}
+          captionLayout="dropdown"
+          className="rounded-md border shadow-sm"
+        />
+      </PopoverContent>
+    </Popover>
+  );
+};
+
 export default function AgregarPadrePanel({
   open,
   onClose,
@@ -24,6 +89,7 @@ export default function AgregarPadrePanel({
   hijosComunes = [],
   padreId = null,
   onSuccess,
+  onExpandParents, // ✅ NUEVA PROP: callback para expandir la rama
 }) {
   const toast = useToast();
   const [saving, setSaving] = useState(false);
@@ -43,7 +109,10 @@ export default function AgregarPadrePanel({
     matrimonioLugar: '',
   });
   const [errors, setErrors] = useState({});
-
+  const [tempNacimiento, setTempNacimiento] = useState('');
+  const [tempBautismo, setTempBautismo] = useState('');
+const [tempMatrimonio, setTempMatrimonio] = useState('');
+const [tempFallecimiento, setTempFallecimiento] = useState('');
   const isHijo = tipo === 'hijo';
   const isConyuge = tipo === 'conyuge';
   const sexo = (isConyuge || isHijo) ? formData.sexo : (tipo === 'padre' ? 'M' : 'F');
@@ -62,6 +131,8 @@ export default function AgregarPadrePanel({
   const handleClickOutside = useCallback(
     (event) => {
       if (!panelRef.current) return;
+      if (event.target.closest('[data-popover-content]')) return;
+      
       if (!panelRef.current.contains(event.target)) {
         onClose?.();
       }
@@ -210,6 +281,7 @@ export default function AgregarPadrePanel({
         }
         toast.success('Cónyuge agregado/a exitosamente');
       } else {
+        // ✅ AGREGAR PADRE O MADRE
         const personaActual = await personasApi.detalle(targetPersonId);
         const padresActuales = personaActual.padres || [];
         if (padresActuales.length > 0) {
@@ -264,6 +336,23 @@ export default function AgregarPadrePanel({
 
         const nuevaPersona = await personasApi.crear(payload);
         await relacionesApi.vincularPadreHijo(nuevaPersona._id, targetPersonId);
+        
+        // ✅ AUTO-EXPANDIR la rama donde se agregó el padre
+        if (typeof onExpandParents === 'function') {
+          // Obtener el cónyuge del padre recién creado (si existe)
+          let conyugeId = null;
+          if (personaActual.padres && personaActual.padres.length > 0) {
+            // Si ya tiene un padre/madre, buscar el cónyuge
+            const otroPadreId = personaActual.padres.find(id => id !== nuevaPersona._id);
+            if (otroPadreId) {
+              conyugeId = otroPadreId;
+            }
+          }
+          
+          const groupKey = pairKey(nuevaPersona._id, conyugeId);
+          onExpandParents(groupKey);
+        }
+        
         toast.success(`${tipo === 'padre' ? 'Padre' : 'Madre'} agregado/a exitosamente`);
       }
 
@@ -433,19 +522,66 @@ export default function AgregarPadrePanel({
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Fecha de nacimiento
-                          </label>
-                          <input
-                            type="date"
-                            value={formData.nacimiento}
-                            onChange={(e) =>
-                              setFormData({ ...formData, nacimiento: e.target.value })
-                            }
-                            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
-                          />
-                        </div>
+<div>
+  <label className="block text-sm font-medium text-gray-700 mb-2">
+    Fecha de nacimiento
+  </label>
+  <Popover>
+    <div className="relative">
+      <input
+        type="text"
+        value={tempNacimiento || (formData.nacimiento ? formatDateToDisplay(formData.nacimiento) : '')}
+        onChange={(e) => {
+          let val = e.target.value.replace(/[^\d/]/g, '');
+          if (val.length === 2 && !val.includes('/')) val = val + '/';
+          else if (val.length === 5 && val.split('/').length === 2) val = val + '/';
+          
+          if (val.length <= 10) {
+            setTempNacimiento(val);
+            
+            if (val.length === 10) {
+              const parsed = parseDateFromDisplay(val);
+              if (parsed) {
+                setFormData({...formData, nacimiento: toInputDate(parsed)});
+                setTempNacimiento('');
+              }
+            }
+          }
+        }}
+        onBlur={() => {
+          setTempNacimiento('');
+        }}
+        placeholder="DD/MM/AAAA"
+        className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
+        maxLength={10}
+      />
+      <PopoverTrigger asChild>
+        <button
+          type="button"
+          className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 hover:bg-gray-100 rounded transition-colors"
+        >
+          <Calendar className="h-4 w-4 text-gray-500" />
+        </button>
+      </PopoverTrigger>
+    </div>
+    
+    <PopoverContent 
+      className="w-auto p-0 bg-white" 
+      align="start"
+      data-popover-content="true"
+      onMouseDown={(e) => e.stopPropagation()}
+    >
+      <CalendarPicker
+        mode="single"
+        selected={formData.nacimiento ? fromInputDate(formData.nacimiento) : undefined}
+        onSelect={(d) => setFormData({...formData, nacimiento: d ? toInputDate(d) : ''})}
+        fromYear={1900}
+        toYear={2100}
+        showInput={false}
+      />
+    </PopoverContent>
+  </Popover>
+</div>
 
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -468,29 +604,71 @@ export default function AgregarPadrePanel({
 
                     <div className="space-y-4">
                       <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
-                        <Church size={18} className="text-purple-600" />
+                        <Church size={18} className="text-green-600" />
                         <h4 className="text-base font-semibold text-gray-900">
                           Bautismo
                         </h4>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Fecha de bautismo
-                          </label>
-                          <input
-                            type="date"
-                            value={formData.bautismoFecha}
-                            onChange={(e) =>
-                              setFormData({
-                                ...formData,
-                                bautismoFecha: e.target.value,
-                              })
-                            }
-                            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
-                          />
-                        </div>
+<div>
+  <label className="block text-sm font-medium text-gray-700 mb-2">
+    Fecha de bautismo
+  </label>
+  <Popover>
+    <div className="relative">
+      <input
+        type="text"
+        value={tempBautismo || (formData.bautismoFecha ? formatDateToDisplay(formData.bautismoFecha) : '')}
+        onChange={(e) => {
+          let val = e.target.value.replace(/[^\d/]/g, '');
+          if (val.length === 2 && !val.includes('/')) val = val + '/';
+          else if (val.length === 5 && val.split('/').length === 2) val = val + '/';
+          
+          if (val.length <= 10) {
+            setTempBautismo(val);
+            
+            if (val.length === 10) {
+              const parsed = parseDateFromDisplay(val);
+              if (parsed) {
+                setFormData({...formData, bautismoFecha: toInputDate(parsed)});
+                setTempBautismo('');
+              }
+            }
+          }
+        }}
+        onBlur={() => setTempBautismo('')}
+        placeholder="DD/MM/AAAA"
+        className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
+        maxLength={10}
+      />
+      <PopoverTrigger asChild>
+        <button
+          type="button"
+          className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 hover:bg-gray-100 rounded transition-colors"
+        >
+          <Calendar className="h-4 w-4 text-gray-500" />
+        </button>
+      </PopoverTrigger>
+    </div>
+    
+    <PopoverContent 
+      className="w-auto p-0 bg-white" 
+      align="start"
+      data-popover-content="true"
+      onMouseDown={(e) => e.stopPropagation()}
+    >
+      <CalendarPicker
+        mode="single"
+        selected={formData.bautismoFecha ? fromInputDate(formData.bautismoFecha) : undefined}
+        onSelect={(d) => setFormData({...formData, bautismoFecha: d ? toInputDate(d) : ''})}
+        fromYear={1900}
+        toYear={2100}
+        showInput={false}
+      />
+    </PopoverContent>
+  </Popover>
+</div>
 
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -547,29 +725,71 @@ export default function AgregarPadrePanel({
 
                     <div className="space-y-4">
                       <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
-                        <Heart size={18} className="text-pink-600" />
+                        <Heart size={18} className="text-green-600" />
                         <h4 className="text-base font-semibold text-gray-900">
                           Matrimonio
                         </h4>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Fecha de matrimonio
-                          </label>
-                          <input
-                            type="date"
-                            value={formData.matrimonioFecha}
-                            onChange={(e) =>
-                              setFormData({
-                                ...formData,
-                                matrimonioFecha: e.target.value,
-                              })
-                            }
-                            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
-                          />
-                        </div>
+<div>
+  <label className="block text-sm font-medium text-gray-700 mb-2">
+    Fecha de matrimonio
+  </label>
+  <Popover>
+    <div className="relative">
+      <input
+        type="text"
+        value={tempMatrimonio || (formData.matrimonioFecha ? formatDateToDisplay(formData.matrimonioFecha) : '')}
+        onChange={(e) => {
+          let val = e.target.value.replace(/[^\d/]/g, '');
+          if (val.length === 2 && !val.includes('/')) val = val + '/';
+          else if (val.length === 5 && val.split('/').length === 2) val = val + '/';
+          
+          if (val.length <= 10) {
+            setTempMatrimonio(val);
+            
+            if (val.length === 10) {
+              const parsed = parseDateFromDisplay(val);
+              if (parsed) {
+                setFormData({...formData, matrimonioFecha: toInputDate(parsed)});
+                setTempMatrimonio('');
+              }
+            }
+          }
+        }}
+        onBlur={() => setTempMatrimonio('')}
+        placeholder="DD/MM/AAAA"
+        className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
+        maxLength={10}
+      />
+      <PopoverTrigger asChild>
+        <button
+          type="button"
+          className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 hover:bg-gray-100 rounded transition-colors"
+        >
+          <Calendar className="h-4 w-4 text-gray-500" />
+        </button>
+      </PopoverTrigger>
+    </div>
+    
+    <PopoverContent 
+      className="w-auto p-0 bg-white" 
+      align="start"
+      data-popover-content="true"
+      onMouseDown={(e) => e.stopPropagation()}
+    >
+      <CalendarPicker
+        mode="single"
+        selected={formData.matrimonioFecha ? fromInputDate(formData.matrimonioFecha) : undefined}
+        onSelect={(d) => setFormData({...formData, matrimonioFecha: d ? toInputDate(d) : ''})}
+        fromYear={1900}
+        toYear={2100}
+        showInput={false}
+      />
+    </PopoverContent>
+  </Popover>
+</div>
 
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -592,29 +812,71 @@ export default function AgregarPadrePanel({
 
                     <div className="space-y-4">
                       <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
-                        <FileText size={18} className="text-red-600" />
+                        <FileText size={18} className="text-green-600" />
                         <h4 className="text-base font-semibold text-gray-900">
                           Defunción
                         </h4>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Fecha de defunción
-                          </label>
-                          <input
-                            type="date"
-                            value={formData.fallecimiento}
-                            onChange={(e) =>
-                              setFormData({
-                                ...formData,
-                                fallecimiento: e.target.value,
-                              })
-                            }
-                            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
-                          />
-                        </div>
+<div>
+  <label className="block text-sm font-medium text-gray-700 mb-2">
+    Fecha de defunción
+  </label>
+  <Popover>
+    <div className="relative">
+      <input
+        type="text"
+        value={tempFallecimiento || (formData.fallecimiento ? formatDateToDisplay(formData.fallecimiento) : '')}
+        onChange={(e) => {
+          let val = e.target.value.replace(/[^\d/]/g, '');
+          if (val.length === 2 && !val.includes('/')) val = val + '/';
+          else if (val.length === 5 && val.split('/').length === 2) val = val + '/';
+          
+          if (val.length <= 10) {
+            setTempFallecimiento(val);
+            
+            if (val.length === 10) {
+              const parsed = parseDateFromDisplay(val);
+              if (parsed) {
+                setFormData({...formData, fallecimiento: toInputDate(parsed)});
+                setTempFallecimiento('');
+              }
+            }
+          }
+        }}
+        onBlur={() => setTempFallecimiento('')}
+        placeholder="DD/MM/AAAA"
+        className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
+        maxLength={10}
+      />
+      <PopoverTrigger asChild>
+        <button
+          type="button"
+          className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 hover:bg-gray-100 rounded transition-colors"
+        >
+          <Calendar className="h-4 w-4 text-gray-500" />
+        </button>
+      </PopoverTrigger>
+    </div>
+    
+    <PopoverContent 
+      className="w-auto p-0 bg-white" 
+      align="start"
+      data-popover-content="true"
+      onMouseDown={(e) => e.stopPropagation()}
+    >
+      <CalendarPicker
+        mode="single"
+        selected={formData.fallecimiento ? fromInputDate(formData.fallecimiento) : undefined}
+        onSelect={(d) => setFormData({...formData, fallecimiento: d ? toInputDate(d) : ''})}
+        fromYear={1900}
+        toYear={2100}
+        showInput={false}
+      />
+    </PopoverContent>
+  </Popover>
+</div>
 
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">

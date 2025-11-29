@@ -1,5 +1,5 @@
-// src/components/FamilyCanvas.jsx - VERSIÓN COMPLETA CON BOTONES MODERNOS
-import React, { useEffect, useRef, useState } from 'react';
+// src/components/FamilyCanvas.jsx - VERSIÓN CON CARDS VACÍAS EN TODAS LAS GENERACIONES
+import React, { useEffect, useRef, useState, useLayoutEffect } from 'react';
 import { familyLoader } from '../utils/familyLoader';
 import { FamilyLayout } from '../utils/familyLayout';
 import PersonCard from './PersonCard';
@@ -39,7 +39,29 @@ const itemVariants = {
     }
   }
 };
-
+// 🔥 Variante especial para cards vacías - aparecen inmediatamente sin animación
+const emptyCardVariants = {
+  initial: { 
+    opacity: 1,    // Ya visible desde el inicio
+    y: 0,
+    scale: 1
+  },
+  animate: { 
+    opacity: 1, 
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.1  // Transición mínima
+    }
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.95,
+    transition: {
+      duration: 0.2
+    }
+  }
+};
 export default function FamilyCanvas({
   rootId,
   height = '100vh',
@@ -72,9 +94,11 @@ export default function FamilyCanvas({
   const [tx, setTx] = useState(0);
   const [ty, setTy] = useState(0);
   const panState = useRef({ panning: false, startX: 0, startY: 0, startTx: 0, startTy: 0 });
-  const isInitialLoad = useRef(true);
-  const isManualExpansion = useRef(false);
-
+  const hasEverCentered = useRef(false);
+  const lastRootId = useRef(rootId);
+  const viewportStateBeforeExpansion = useRef(null);
+  const worldRef = useRef(null); 
+  
   const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
   const MIN_SCALE = 0.4;
   const MAX_SCALE = 2.5;
@@ -100,6 +124,13 @@ export default function FamilyCanvas({
       window.removeEventListener('wheel', handleWheel);
     };
   }, []);
+
+  useEffect(() => {
+    if (rootId !== lastRootId.current) {
+      hasEverCentered.current = false;
+      lastRootId.current = rootId;
+    }
+  }, [rootId]);
 
   const localPairKey = (aId, bId) => {
     if (!aId && !bId) return null;
@@ -245,6 +276,16 @@ export default function FamilyCanvas({
     });
   };
 
+  // ✅ NUEVA FUNCIÓN: Auto-expandir rama al agregar padres
+  const handleExpandParentGroup = (groupKey) => {
+    if (!groupKey) return;
+    setExpandedUpKeys(prev => {
+      const next = new Set(prev);
+      next.add(groupKey);
+      return next;
+    });
+  };
+
   const handlePadreAgregado = () => {
     setPanelAgregar({ 
       open: false, 
@@ -349,10 +390,19 @@ export default function FamilyCanvas({
     loadFamily();
   }, [rootId, viewMode, spacing, expandedUpKeys, expandedDownKeys]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!layout || !viewportRef.current) return;
-    if (!isInitialLoad.current) return;
-    if (isManualExpansion.current) return;
+    
+    if (viewportStateBeforeExpansion.current) {
+      const { scale: savedScale, tx: savedTx, ty: savedTy } = viewportStateBeforeExpansion.current;
+      setScale(savedScale);
+      setTx(savedTx);
+      setTy(savedTy);
+      viewportStateBeforeExpansion.current = null;
+      return;
+    }
+    
+    if (hasEverCentered.current) return;
 
     const vp = viewportRef.current.getBoundingClientRect();
     const padding = 60;
@@ -392,7 +442,7 @@ export default function FamilyCanvas({
       setTy(ny);
     }
 
-    isInitialLoad.current = false;
+    hasEverCentered.current = true;
   }, [layout]);
 
   const onMouseDown = (e) => {
@@ -531,7 +581,19 @@ export default function FamilyCanvas({
     e.stopPropagation();
     e.preventDefault();
     
-    isManualExpansion.current = true;
+    const worldDiv = viewportRef.current?.querySelector('[style*="transform"]');
+    if (worldDiv) {
+      const currentTransform = worldDiv.style.transform;
+      const match = currentTransform.match(/translate\((-?\d+\.?\d*)px,\s*(-?\d+\.?\d*)px\)\s*scale\((-?\d+\.?\d*)\)/);
+      if (match) {
+        const [, currentTx, currentTy, currentScale] = match;
+        viewportStateBeforeExpansion.current = {
+          scale: parseFloat(currentScale),
+          tx: parseFloat(currentTx),
+          ty: parseFloat(currentTy)
+        };
+      }
+    }
     
     const clickedGeneration = getAbsoluteGenerationFromTipo(nodeTipo);
 
@@ -576,7 +638,19 @@ export default function FamilyCanvas({
     e.stopPropagation();
     e.preventDefault();
     
-    isManualExpansion.current = true;
+    const worldDiv = viewportRef.current?.querySelector('[style*="transform"]');
+    if (worldDiv) {
+      const currentTransform = worldDiv.style.transform;
+      const match = currentTransform.match(/translate\((-?\d+\.?\d*)px,\s*(-?\d+\.?\d*)px\)\s*scale\((-?\d+\.?\d*)\)/);
+      if (match) {
+        const [, currentTx, currentTy, currentScale] = match;
+        viewportStateBeforeExpansion.current = {
+          scale: parseFloat(currentScale),
+          tx: parseFloat(currentTx),
+          ty: parseFloat(currentTy)
+        };
+      }
+    }
     
     const clickedGeneration = getAbsoluteGenerationFromTipo(nodeTipo);
 
@@ -629,7 +703,6 @@ export default function FamilyCanvas({
       onMouseLeave={endPan}
       onWheel={onWheel}
     >
-      {/* CONTROLES MODERNOS */}
       <div style={styles.controls}>
         <button 
           style={styles.ctrlBtn} 
@@ -675,18 +748,6 @@ export default function FamilyCanvas({
           </svg>
         </button>
         
-        <button 
-          style={styles.ctrlBtn} 
-          onClick={resetView} 
-          title="Ajustar a vista"
-          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f3f4f6'}
-          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#fff'}
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-          </svg>
-        </button>
-
         <div style={styles.separator} />
 
         <button 
@@ -820,57 +881,59 @@ export default function FamilyCanvas({
           })}
         </svg>
 
-        <AnimatePresence mode="sync">
-          {layout.nodes.map((node) => {
-            if (node.tipo === 'add-child-card') {
-              return (
-                <motion.div
-                  key={node.id}
-                  variants={itemVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  style={{
-                    position: 'absolute',
-                    left: node.x,
-                    top: node.y,
-                    width: node.width,
-                    height: node.height,
-                    zIndex: 5,
-                  }}
-                >
-                  <AgregarHijoCard
-                    personaId={node.data.personaId}
-                    personaNombre={node.data.personaNombre}
-                    onAgregarHijo={(pId, pNombre) => {
-                      handleAgregarHijo(pId, pNombre, node.data.conyugeId);
-                    }}
-                  />
-                </motion.div>
-              );
-            }
-
-            if (node.tipo?.startsWith('family-group') || node.tipo === 'family-group-root') {
+<AnimatePresence mode="sync">
+          {/* 🔥 FIX: Renderizado explícito separado por tipo de nodo */}
+          
+          {/* 1️⃣ FAMILY GROUPS (incluidas cards vacías) */}
+          {layout.nodes
+            .filter(node => node.tipo?.startsWith('family-group') || node.tipo === 'family-group-root')
+            .map((node) => {
               const group = node.data;
               const groupKey = group?.groupKey || localPairKey(group?.persona?._id, group?.conyuge?._id);
-              const isAncestorCol = /ancestor/.test(node.tipo);
+const isAncestorCol = /ancestor/.test(node.tipo);
               const isDescendantCol = !isAncestorCol && node.tipo !== 'family-group-root';
+              
+              // 🔥 NUEVA LÓGICA: Detectar cards vacías correctamente
+              const isEmptyCard = group?.isEmpty === true || group?.isEmptyCard === true;
+              
+              // 🔥 Para cards vacías, NO verificar padres reales
+              const canHaveParents = !isEmptyCard;
               const hasParents = Boolean(
                 (group?.persona?.padres && group.persona.padres.length) ||
                 (group?.conyuge?.padres && group.conyuge?.padres?.length)
               );
+              
               const hasChildren = Boolean(
                 (group?.hijos && group.hijos.length) ||
                 (group?.persona?.hijos && group.persona.hijos.length) ||
                 (group?.conyuge?.hijos && group.conyuge?.hijos.length)
               );
+              
               const upActive = expandedUpKeys.has(groupKey);
               const downActive = expandedDownKeys.has(groupKey);
 
+              // ✅ Botón de expansión hacia arriba SOLO en columnas de ancestros
+              // Y solo si el layout marca que debe tener el botón (gen 3, 5, 7, etc.)
+              const shouldShowUpButton = isAncestorCol && node.hasExpandButton && !isEmptyCard;
+              // 🔥 FIX: Key más estable
+              const nodeKey = `family-${groupKey}-${node.id}`;
+
+              // 🔥 LOG para debugging
+              if (isEmptyCard) {
+                console.log('🟣 [RENDER EMPTY CARD]:', {
+                  id: node.id,
+                  tipo: node.tipo,
+                  groupKey,
+                  x: node.x,
+                  y: node.y,
+                  targetPerson: group?.targetPersonName
+                });
+              }
+
               return (
                 <motion.div
-                  key={node.id}
-                  variants={itemVariants}
+                  key={nodeKey}
+                  variants={isEmptyCard ? emptyCardVariants : itemVariants}
                   initial="initial"
                   animate="animate"
                   exit="exit"
@@ -887,7 +950,7 @@ export default function FamilyCanvas({
                            node.tipo === 'family-group-greatancestor' ? 8 : 7,
                   }}
                 >
-                  {isAncestorCol && hasParents && node.tipo !== 'family-group-ancestor' && (
+                  {shouldShowUpButton && (
                     <CircleButton
                       side="right"
                       size={32}
@@ -898,7 +961,7 @@ export default function FamilyCanvas({
                     />
                   )}
 
-                  {isDescendantCol && hasChildren && (
+                  {isDescendantCol && hasChildren && !isEmptyCard && (
                     <CircleButton
                       side="left"
                       size={32}
@@ -913,7 +976,7 @@ export default function FamilyCanvas({
                     persona={group.persona}
                     conyuge={group.conyuge}
                     hijos={group.hijos}
-                    isEmpty={group.isEmpty}
+                    isEmpty={isEmptyCard}
                     targetPersonId={group.targetPersonId}
                     onAgregarPadre={(targetId) => {
                       const targetPerson = familyData?.personas?.find(p => p._id === targetId);
@@ -930,44 +993,89 @@ export default function FamilyCanvas({
                   />
                 </motion.div>
               );
-            }
+            })}
 
-            if (node.data && typeof node.data === 'object' && node.data._id) {
-              return (
-                <motion.div
-                  key={node.id}
-                  variants={itemVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  style={{
-                    position: 'absolute',
-                    left: node.x,
-                    top: node.y,
-                    width: node.width,
-                    height: node.height,
-                    zIndex: 6,
-                    backfaceVisibility: 'hidden',
-                    WebkitBackfaceVisibility: 'hidden',
-                    transform: 'translateZ(0)',
-                    WebkitTransform: 'translateZ(0)',
-                    willChange: 'transform',
-                  }}
-                >
-                  <PersonCard
-                    persona={node.data}
-                    isRoot={node.id === rootId}
-                    onClick={() => setSelectedPersonId(node.data._id)}
-                    layout={viewMode}
-                    style={{ width: '100%', height: '100%', boxSizing: 'border-box' }}
-                  />
-                </motion.div>
-              );
-            }
-
-            return (
+          {/* 2️⃣ ADD CHILD CARDS */}
+          {layout.nodes
+            .filter(node => node.tipo === 'add-child-card')
+            .map((node) => (
               <motion.div
-                key={node.id}
+                key={`add-child-${node.id}`}
+                variants={itemVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                style={{
+                  position: 'absolute',
+                  left: node.x,
+                  top: node.y,
+                  width: node.width,
+                  height: node.height,
+                  zIndex: 5,
+                }}
+              >
+                <AgregarHijoCard
+                  personaId={node.data.personaId}
+                  personaNombre={node.data.personaNombre}
+                  onAgregarHijo={(pId, pNombre) => {
+                    handleAgregarHijo(pId, pNombre, node.data.conyugeId);
+                  }}
+                />
+              </motion.div>
+            ))}
+
+          {/* 3️⃣ PERSON CARDS INDIVIDUALES */}
+          {layout.nodes
+            .filter(node => 
+              node.data && 
+              typeof node.data === 'object' && 
+              node.data._id &&
+              !node.tipo?.startsWith('family-group') &&
+              node.tipo !== 'family-group-root' &&
+              node.tipo !== 'add-child-card'
+            )
+            .map((node) => (
+              <motion.div
+                key={`person-${node.id}`}
+                variants={itemVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                style={{
+                  position: 'absolute',
+                  left: node.x,
+                  top: node.y,
+                  width: node.width,
+                  height: node.height,
+                  zIndex: 6,
+                  backfaceVisibility: 'hidden',
+                  WebkitBackfaceVisibility: 'hidden',
+                  transform: 'translateZ(0)',
+                  WebkitTransform: 'translateZ(0)',
+                  willChange: 'transform',
+                }}
+              >
+                <PersonCard
+                  persona={node.data}
+                  isRoot={node.id === rootId}
+                  onClick={() => setSelectedPersonId(node.data._id)}
+                  layout={viewMode}
+                  style={{ width: '100%', height: '100%', boxSizing: 'border-box' }}
+                />
+              </motion.div>
+            ))}
+
+          {/* 4️⃣ NODOS DESCONOCIDOS (DEBUG) */}
+          {layout.nodes
+            .filter(node => 
+              !node.tipo?.startsWith('family-group') &&
+              node.tipo !== 'family-group-root' &&
+              node.tipo !== 'add-child-card' &&
+              !(node.data && typeof node.data === 'object' && node.data._id)
+            )
+            .map((node) => (
+              <motion.div
+                key={`unknown-${node.id}`}
                 variants={itemVariants}
                 initial="initial"
                 animate="animate"
@@ -989,8 +1097,7 @@ export default function FamilyCanvas({
               >
                 TIPO: {node.tipo}<br />ID: {node.id}
               </motion.div>
-            );
-          })}
+            ))}
         </AnimatePresence>
       </div>
 
@@ -1019,6 +1126,7 @@ export default function FamilyCanvas({
         hijosComunes={panelAgregar.hijosComunes} 
         padreId={panelAgregar.padreId} 
         onSuccess={handlePadreAgregado}
+        onExpandParents={handleExpandParentGroup}
       />
     </div>
   );

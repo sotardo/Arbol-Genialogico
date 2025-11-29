@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { alertError, alertSuccess } from '../utils/alerts';
 import {
   User,
@@ -14,6 +14,7 @@ import {
   Baby,
   Sparkles,
   UserPlus,
+  Save,
 } from 'lucide-react';
 import { toAPI } from '../utils';
 import Fuentes from './Fuentes';
@@ -219,6 +220,62 @@ export default function Perfil({
     matrimonioLugar: '',
   });
   const [savingDetalles, setSavingDetalles] = useState(false);
+
+  // Estados para manejar la transición del panel
+  const [shouldRender, setShouldRender] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const panelRef = useRef(null);
+
+  // Click fuera del panel para cerrar
+  const handleClickOutside = useCallback(
+    (event) => {
+      if (!panelRef.current) return;
+      if (!panelRef.current.contains(event.target)) {
+        setEditDetallesOpen(false);
+      }
+    },
+    []
+  );
+
+  // Manejar apertura/cierre con animación
+  useEffect(() => {
+    if (editDetallesOpen) {
+      setShouldRender(true);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsAnimating(true);
+        });
+      });
+    } else {
+      setIsAnimating(false);
+      const timer = setTimeout(() => {
+        setShouldRender(false);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [editDetallesOpen]);
+
+  // Cerrar con Escape
+  useEffect(() => {
+    if (!editDetallesOpen) return;
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') setEditDetallesOpen(false);
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [editDetallesOpen]);
+
+  // Bloquear scroll del body
+  useEffect(() => {
+    if (shouldRender) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [shouldRender]);
 
   const loadPersona = async () => {
     if (!personaId || !personasApi) return;
@@ -499,284 +556,386 @@ export default function Perfil({
         </div>
       )}
 
-      {editDetallesOpen && (
+      {/* Panel deslizante para editar detalles */}
+      {shouldRender && (
         <div
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn"
-          onClick={() => setEditDetallesOpen(false)}
+          className="fixed inset-0 z-[250] overflow-hidden"
+          role="dialog"
+          aria-modal="true"
+          onMouseDown={handleClickOutside}
         >
+          {/* Backdrop */}
           <div
-            className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[92vh] overflow-hidden flex flex-col animate-slideUp"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="px-6 py-5 border-b border-gray-200 flex items-center justify-between bg-gradient-to-r from-emerald-50 via-green-50 to-teal-50">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-md">
-                  <Edit size={20} className="text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900">
-                    Editar información
-                  </h3>
-                  <p className="text-xs text-gray-600 mt-0.5">
-                    Actualiza los datos personales
-                  </p>
-                </div>
-              </div>
-              <button
-                onClick={() => setEditDetallesOpen(false)}
-                className="p-2 hover:bg-white rounded-lg transition-colors"
-                disabled={savingDetalles}
-              >
-                <X size={20} className="text-gray-500" />
-              </button>
-            </div>
+            className={`absolute inset-0 bg-gray-900/50 transition-opacity duration-500 ease-in-out ${
+              isAnimating ? 'opacity-100' : 'opacity-0'
+            }`}
+            aria-hidden="true"
+          />
 
-            <div className="p-6 overflow-y-auto space-y-8">
-              <div className="space-y-4">
-                <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
-                  <User size={18} className="text-emerald-600" />
-                  <h4 className="text-base font-semibold text-gray-900">
-                    Información básica
-                  </h4>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="md:col-span-2">
-                    <ModernInput
-                      label="Nombre completo"
-                      icon={User}
-                      value={det.nombre}
-                      onChange={(e) =>
-                        setDet((s) => ({ ...s, nombre: e.target.value }))
-                      }
-                      placeholder="Nombre completo"
-                    />
-                  </div>
-                  <div>
-                    <ModernSelect
-                      label="Sexo"
-                      icon={Users}
-                      value={det.sexo}
-                      onChange={(e) =>
-                        setDet((s) => ({ ...s, sexo: e.target.value }))
-                      }
+          {/* Panel container */}
+          <div className="fixed inset-0 overflow-hidden">
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10 sm:pl-16">
+                {/* Panel */}
+                <div
+                  ref={panelRef}
+                  className={`pointer-events-auto relative w-screen max-w-2xl transition-transform duration-500 ease-in-out ${
+                    isAnimating ? 'translate-x-0' : 'translate-x-full'
+                  }`}
+                >
+                  {/* Botón cerrar */}
+                  <div
+                    className={`absolute top-0 left-0 -ml-8 flex pt-4 pr-2 sm:-ml-10 sm:pr-4 transition-opacity duration-500 ease-in-out ${
+                      isAnimating ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setEditDetallesOpen(false)}
+                      className="relative rounded-md text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
+                      disabled={savingDetalles}
                     >
-                      <option value="">Seleccionar...</option>
-                      <option value="M">Masculino</option>
-                      <option value="F">Femenino</option>
-                      <option value="X">Otro / No especifica</option>
-                    </ModernSelect>
+                      <span className="absolute -inset-2.5" />
+                      <span className="sr-only">Cerrar panel</span>
+                      <X className="h-6 w-6" aria-hidden="true" />
+                    </button>
+                  </div>
+
+                  {/* Contenido */}
+                  <div className="flex h-full flex-col bg-white shadow-xl">
+                    {/* Header */}
+                    <div className="px-6 py-5 border-b border-gray-200 flex items-center justify-between bg-gradient-to-r from-green-50 via-green-50 to-green-100">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center shadow-md">
+                          <Edit size={20} className="text-white" />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-semibold text-gray-900">
+                            Editar información
+                          </h3>
+                          <p className="text-xs text-gray-600 mt-0.5">
+                            Actualiza los datos personales
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Formulario */}
+                    <div className="flex-1 overflow-y-auto p-6 bg-white">
+                      <form className="space-y-6">
+                        {/* Información básica */}
+                        <div className="space-y-4">
+                          <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
+                            <User size={18} className="text-green-600" />
+                            <h4 className="text-base font-semibold text-gray-900">
+                              Información básica
+                            </h4>
+                          </div>
+
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                              Nombre completo
+                            </label>
+                            <input
+                              value={det.nombre}
+                              onChange={(e) =>
+                                setDet((s) => ({ ...s, nombre: e.target.value }))
+                              }
+                              placeholder="Nombre completo"
+                              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
+                            />
+                          </div>
+
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                              Sexo
+                            </label>
+                            <select
+                              value={det.sexo}
+                              onChange={(e) =>
+                                setDet((s) => ({ ...s, sexo: e.target.value }))
+                              }
+                              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none bg-white"
+                            >
+                              <option value="">Seleccionar...</option>
+                              <option value="M">Masculino</option>
+                              <option value="F">Femenino</option>
+                              <option value="X">Otro / No especifica</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        {/* Nacimiento */}
+                        <div className="space-y-4">
+                          <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
+                            <Baby size={18} className="text-green-600" />
+                            <h4 className="text-base font-semibold text-gray-900">
+                              Nacimiento
+                            </h4>
+                          </div>
+
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Fecha de nacimiento
+                              </label>
+                              <input
+                                type="date"
+                                value={det.nacimiento}
+                                onChange={(e) =>
+                                  setDet((s) => ({ ...s, nacimiento: e.target.value }))
+                                }
+                                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
+                              />
+                            </div>
+
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Lugar de nacimiento
+                              </label>
+                              <input
+                                value={det.lugarNacimiento}
+                                onChange={(e) =>
+                                  setDet((s) => ({
+                                    ...s,
+                                    lugarNacimiento: e.target.value,
+                                  }))
+                                }
+                                placeholder="Ciudad, Provincia, País"
+                                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
+                              />
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Bautismo */}
+                        <div className="space-y-4">
+                          <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
+                            <Church size={18} className="text-purple-600" />
+                            <h4 className="text-base font-semibold text-gray-900">
+                              Bautismo
+                            </h4>
+                          </div>
+
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Fecha de bautismo
+                              </label>
+                              <input
+                                type="date"
+                                value={det.bautismoFecha}
+                                onChange={(e) =>
+                                  setDet((s) => ({
+                                    ...s,
+                                    bautismoFecha: e.target.value,
+                                  }))
+                                }
+                                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
+                              />
+                            </div>
+
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Lugar de bautismo
+                              </label>
+                              <input
+                                value={det.bautismoLugar}
+                                onChange={(e) =>
+                                  setDet((s) => ({
+                                    ...s,
+                                    bautismoLugar: e.target.value,
+                                  }))
+                                }
+                                placeholder="Ciudad, Provincia, País"
+                                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
+                              />
+                            </div>
+
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Parroquia
+                              </label>
+                              <input
+                                value={det.bautismoParroquia}
+                                onChange={(e) =>
+                                  setDet((s) => ({
+                                    ...s,
+                                    bautismoParroquia: e.target.value,
+                                  }))
+                                }
+                                placeholder="Nombre de la parroquia"
+                                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
+                              />
+                            </div>
+
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Notas
+                              </label>
+                              <input
+                                value={det.bautismoNotas}
+                                onChange={(e) =>
+                                  setDet((s) => ({
+                                    ...s,
+                                    bautismoNotas: e.target.value,
+                                  }))
+                                }
+                                placeholder="Información adicional"
+                                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
+                              />
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Matrimonio */}
+                        <div className="space-y-4">
+                          <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
+                            <Heart size={18} className="text-pink-600" />
+                            <h4 className="text-base font-semibold text-gray-900">
+                              Matrimonio
+                            </h4>
+                          </div>
+
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Fecha de matrimonio
+                              </label>
+                              <input
+                                type="date"
+                                value={det.matrimonioFecha}
+                                onChange={(e) =>
+                                  setDet((s) => ({
+                                    ...s,
+                                    matrimonioFecha: e.target.value,
+                                  }))
+                                }
+                                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
+                              />
+                            </div>
+
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Lugar de matrimonio
+                              </label>
+                              <input
+                                value={det.matrimonioLugar}
+                                onChange={(e) =>
+                                  setDet((s) => ({
+                                    ...s,
+                                    matrimonioLugar: e.target.value,
+                                  }))
+                                }
+                                placeholder="Parroquia / ciudad / país"
+                                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
+                              />
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Defunción */}
+                        <div className="space-y-4">
+                          <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
+                            <FileText size={18} className="text-red-600" />
+                            <h4 className="text-base font-semibold text-gray-900">
+                              Defunción
+                            </h4>
+                          </div>
+
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Fecha de defunción
+                              </label>
+                              <input
+                                type="date"
+                                value={det.fallecimiento}
+                                onChange={(e) =>
+                                  setDet((s) => ({
+                                    ...s,
+                                    fallecimiento: e.target.value,
+                                  }))
+                                }
+                                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
+                              />
+                            </div>
+
+                            <div>
+                              <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Lugar de defunción
+                              </label>
+                              <input
+                                value={det.lugarFallecimiento}
+                                onChange={(e) =>
+                                  setDet((s) => ({
+                                    ...s,
+                                    lugarFallecimiento: e.target.value,
+                                  }))
+                                }
+                                placeholder="Ciudad, Provincia, País"
+                                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
+                              />
+                            </div>
+
+                            <div className="md:col-span-2">
+                              <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Causa de defunción
+                              </label>
+                              <input
+                                value={det.causaFallecimiento}
+                                onChange={(e) =>
+                                  setDet((s) => ({
+                                    ...s,
+                                    causaFallecimiento: e.target.value,
+                                  }))
+                                }
+                                placeholder="Opcional"
+                                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+                    {/* Footer */}
+                    <div className="px-6 py-4 border-t border-gray-200 flex justify-between items-center bg-gray-50">
+                      <p className="text-xs text-gray-500 flex items-center gap-1">
+                        <Sparkles size={14} />
+                        Los cambios se guardarán inmediatamente
+                      </p>
+                      <div className="flex gap-3">
+                        <button
+                          type="button"
+                          onClick={() => setEditDetallesOpen(false)}
+                          className="px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-white transition-all font-medium"
+                          disabled={savingDetalles}
+                        >
+                          Cancelar
+                        </button>
+                        <button
+                          onClick={saveDetalles}
+                          className="px-5 py-2.5 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg hover:from-green-700 hover:to-green-800 transition-all font-medium shadow-sm hover:shadow-md disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-2"
+                          disabled={savingDetalles}
+                          type="button"
+                        >
+                          {savingDetalles ? (
+                            <>
+                              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                              Guardando...
+                            </>
+                          ) : (
+                            <>
+                              <Save size={18} />
+                              Guardar cambios
+                            </>
+                          )}
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
-                  <Baby size={18} className="text-green-600" />
-                  <h4 className="text-base font-semibold text-gray-900">
-                    Nacimiento
-                  </h4>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <ModernInput
-                    label="Fecha de nacimiento"
-                    icon={Calendar}
-                    type="date"
-                    value={det.nacimiento}
-                    onChange={(e) =>
-                      setDet((s) => ({ ...s, nacimiento: e.target.value }))
-                    }
-                  />
-                  <ModernInput
-                    label="Lugar de nacimiento"
-                    icon={MapPin}
-                    value={det.lugarNacimiento}
-                    onChange={(e) =>
-                      setDet((s) => ({
-                        ...s,
-                        lugarNacimiento: e.target.value,
-                      }))
-                    }
-                    placeholder="Ciudad, Provincia/Estado, País"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
-                  <Church size={18} className="text-purple-600" />
-                  <h4 className="text-base font-semibold text-gray-900">
-                    Bautismo
-                  </h4>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <ModernInput
-                    label="Fecha de bautismo"
-                    icon={Calendar}
-                    type="date"
-                    value={det.bautismoFecha}
-                    onChange={(e) =>
-                      setDet((s) => ({
-                        ...s,
-                        bautismoFecha: e.target.value,
-                      }))
-                    }
-                  />
-                  <ModernInput
-                    label="Lugar de bautismo"
-                    icon={MapPin}
-                    value={det.bautismoLugar}
-                    onChange={(e) =>
-                      setDet((s) => ({
-                        ...s,
-                        bautismoLugar: e.target.value,
-                      }))
-                    }
-                    placeholder="Ciudad, Provincia/Estado, País"
-                  />
-                  <ModernInput
-                    label="Parroquia"
-                    icon={Church}
-                    value={det.bautismoParroquia}
-                    onChange={(e) =>
-                      setDet((s) => ({
-                        ...s,
-                        bautismoParroquia: e.target.value,
-                      }))
-                    }
-                    placeholder="Nombre de la parroquia"
-                  />
-                  <ModernInput
-                    label="Notas adicionales"
-                    icon={FileText}
-                    value={det.bautismoNotas}
-                    onChange={(e) =>
-                      setDet((s) => ({
-                        ...s,
-                        bautismoNotas: e.target.value,
-                      }))
-                    }
-                    placeholder="Información adicional (opcional)"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
-                  <Heart size={18} className="text-pink-600" />
-                  <h4 className="text-base font-semibold text-gray-900">
-                    Matrimonio
-                  </h4>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <ModernInput
-                    label="Fecha de matrimonio"
-                    icon={Calendar}
-                    type="date"
-                    value={det.matrimonioFecha}
-                    onChange={(e) =>
-                      setDet((s) => ({
-                        ...s,
-                        matrimonioFecha: e.target.value,
-                      }))
-                    }
-                  />
-                  <ModernInput
-                    label="Lugar de matrimonio"
-                    icon={MapPin}
-                    value={det.matrimonioLugar}
-                    onChange={(e) =>
-                      setDet((s) => ({
-                        ...s,
-                        matrimonioLugar: e.target.value,
-                      }))
-                    }
-                    placeholder="Ciudad, Provincia/Estado, País"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
-                  <Heart size={18} className="text-red-600" />
-                  <h4 className="text-base font-semibold text-gray-900">
-                    Defunción
-                  </h4>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <ModernInput
-                    label="Fecha de defunción"
-                    icon={Calendar}
-                    type="date"
-                    value={det.fallecimiento}
-                    onChange={(e) =>
-                      setDet((s) => ({
-                        ...s,
-                        fallecimiento: e.target.value,
-                      }))
-                    }
-                  />
-                  <ModernInput
-                    label="Lugar de defunción"
-                    icon={MapPin}
-                    value={det.lugarFallecimiento}
-                    onChange={(e) =>
-                      setDet((s) => ({
-                        ...s,
-                        lugarFallecimiento: e.target.value,
-                      }))
-                    }
-                    placeholder="Ciudad, Provincia/Estado, País"
-                  />
-                  <div className="md:col-span-2">
-                    <ModernInput
-                      label="Causa de defunción"
-                      icon={FileText}
-                      value={det.causaFallecimiento}
-                      onChange={(e) =>
-                        setDet((s) => ({
-                          ...s,
-                          causaFallecimiento: e.target.value,
-                        }))
-                      }
-                      placeholder="Opcional"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="px-6 py-4 border-t border-gray-200 flex justify-between items-center bg-gray-50">
-              <p className="text-xs text-gray-500 flex items-center gap-1">
-                <Sparkles size={14} />
-                Los cambios se guardarán inmediatamente
-              </p>
-              <div className="flex gap-3">
-                <button
-                  onClick={() => setEditDetallesOpen(false)}
-                  className="px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-white transition-all font-medium"
-                  disabled={savingDetalles}
-                >
-                  Cancelar
-                </button>
-                <button
-                  onClick={saveDetalles}
-                  className="px-5 py-2.5 bg-gradient-to-r from-emerald-600 to-green-600 text-white rounded-lg hover:from-emerald-700 hover:to-green-700 transition-all font-medium shadow-sm hover:shadow-md disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-2"
-                  disabled={savingDetalles}
-                >
-                  {savingDetalles ? (
-                    <>
-                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      Guardando...
-                    </>
-                  ) : (
-                    'Guardar cambios'
-                  )}
-                </button>
               </div>
             </div>
           </div>

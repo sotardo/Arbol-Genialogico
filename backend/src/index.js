@@ -1136,7 +1136,66 @@ app.delete(
     res.json({ ok: true, persona: updated });
   })
 );
+app.put(
+  '/api/personas/:id/media/:mediaId',
+  upload.single('file'),
+  asyncH(async (req, res) => {
+    if (!mongoOk) {
+      return res.status(503).json({ error: 'Requiere MongoDB activo' });
+    }
 
+    const { id, mediaId } = req.params;
+
+    if (!mongoose.isValidObjectId(id) || !mongoose.isValidObjectId(mediaId)) {
+      return res.status(400).json({ error: 'ID inválido' });
+    }
+
+    const persona = await Persona.findById(id);
+    if (!persona) {
+      return res.status(404).json({ error: 'Persona no encontrada' });
+    }
+
+    // 👀 IMPORTANTE: el array se llama "medios", NO "media"
+    const mediaItem = persona.medios?.id?.(mediaId);
+    if (!mediaItem) {
+      return res.status(404).json({ error: 'Media no encontrada' });
+    }
+
+    const { titulo, descripcion, fecha, tipo = '' } = req.body || {};
+
+    if (titulo !== undefined) mediaItem.titulo = titulo;
+    if (descripcion !== undefined) mediaItem.descripcion = descripcion;
+
+    if (typeof fecha !== 'undefined') {
+      mediaItem.fecha = fecha ? new Date(fecha) : undefined;
+    }
+
+    // Si viene archivo nuevo, lo reemplazamos
+    if (req.file) {
+      const ruta = `/uploads/${req.file.filename}`;
+
+      let detected = 'otro';
+      if (req.file.mimetype?.startsWith('image/')) detected = 'imagen';
+      else if (req.file.mimetype === 'application/pdf') detected = 'pdf';
+
+      const finalTipo = tipo || detected;
+
+      mediaItem.ruta = ruta;
+      mediaItem.nombreArchivo = req.file.originalname;
+      mediaItem.tipo = finalTipo;
+    } else if (tipo) {
+      mediaItem.tipo = tipo;
+    }
+
+    await persona.save();
+
+    return res.json({
+      ok: true,
+      media: mediaItem,
+      persona,
+    });
+  })
+);
 // =============================
 // BACKUP / RESTORE
 // =============================
@@ -1297,6 +1356,8 @@ app.post(
     });
   })
 );
+// ⭐ EDITAR MEDIA (metadata + cambiar archivo opcional)
+
 
 app.use((req, res) =>
   res.status(404).json({ error: 'Ruta no encontrada' })

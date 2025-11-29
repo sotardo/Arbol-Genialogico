@@ -235,96 +235,98 @@ export default function PersonDetailPanel({
 
               {/* Contenido */}
               <div className="flex h-full flex-col overflow-y-auto bg-white shadow-xl">
+                {/* Línea verde superior */}
+              <div className="h-1.5 bg-lime-600"></div>
                 {/* Header */}
-                <div className="sticky top-0 bg-white border-b border-gray-200 z-10">
-                  <div className="p-4">
-                    <div className="flex items-start gap-3 mb-3">
-                      {persona?.avatarUrl ? (
-                        <img
-                          src={toAPI(persona.avatarUrl)}
-                          alt=""
-                          className="w-12 h-12 rounded-full object-cover"
-                        />
-                      ) : (
-                        <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
-                          <User size={24} className="text-green-600" />
-                        </div>
-                      )}
-                      <div className="flex-1 min-w-0">
-                        <h2 className="text-lg font-semibold text-gray-900 break-words">
-                          {loading ? 'Cargando...' : persona?.nombre || 'Sin nombre'}
-                        </h2>
-                        {persona?.codigo && (
-                          <p className="text-sm text-gray-500">{persona.codigo}</p>
-                        )}
-                      </div>
-                    </div>
+  <div className="sticky top-0 bg-white border-b border-gray-200 z-10">
+  <div className="p-4">
+    <div className="flex items-start gap-3 mb-3">
+      {persona?.avatarUrl ? (
+        <img
+          src={toAPI(persona.avatarUrl)}
+          alt=""
+          className="w-14 h-14 rounded-full object-cover"
+        />
+      ) : (
+        <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+          <User size={24} className="text-green-600" />
+        </div>
+      )}
+      <div className="flex-1 min-w-0">
+        <h2 className="text-xl font-semibold text-gray-900 break-words">
+          {loading ? 'Cargando...' : persona?.nombre || 'Sin nombre'}
+        </h2>
+        {persona?.codigo && (
+          <p className="text-base text-gray-500">{persona.codigo}</p>
+        )}
+      </div>
+    </div>
 
-                    {persona?.calidad && (
-                      <div className="flex items-center gap-3 mb-3">
-                        <span className="text-xs text-gray-600">
-                          Puntuación de calidad:
-                        </span>
-                        <QualityBadge level={persona.calidad} />
-                      </div>
-                    )}
+    {persona?.calidad && (
+      <div className="flex items-center gap-3 mb-3">
+        <span className="text-sm text-gray-600">
+          Puntuación de calidad:
+        </span>
+        <QualityBadge level={persona.calidad} />
+      </div>
+    )}
 
-                    <div className="flex gap-4 text-xs text-gray-600">
-                      <button className="text-green-600 hover:underline">
-                        Fuentes ({safeCount(fuentes)})
-                      </button>
-                      <button className="text-green-600 hover:underline">
-                        Recuerdos ({safeCount(recuerdos)})
-                      </button>
-                      <button className="text-green-600 hover:underline">
-                        Colaborar ({safeCount(persona?.colaboradores)})
-                      </button>
-                    </div>
-                  </div>
+    <div className="flex gap-4 text-sm text-gray-600">
+      <button className="text-green-600 hover:underline">
+        Fuentes ({safeCount(fuentes)})
+      </button>
+      <button className="text-green-600 hover:underline">
+        Recuerdos ({safeCount(recuerdos)})
+      </button>
+      <button className="text-green-600 hover:underline">
+        Colaborar ({safeCount(persona?.colaboradores)})
+      </button>
+    </div>
+  </div>
 
-                  {persona && (
-                    <div className="px-4 pb-4 space-y-2 text-sm">
-                      {persona.nacimiento && (
-                        <div>
-                          <div className="font-semibold text-gray-900">
-                            Nacimiento
-                          </div>
-                          <div className="text-gray-600">
-                            {formatDate(persona.nacimiento)}
-                          </div>
-                        </div>
-                      )}
-                      {persona.fallecimiento && (
-                        <div>
-                          <div className="font-semibold text-gray-900">
-                            Defunción
-                          </div>
-                          <div className="text-gray-600">
-                            {formatDate(persona.fallecimiento)}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  )}
+  {persona && (
+    <div className="px-4 pb-4 space-y-2 text-base">
+      {persona.nacimiento && (
+        <div>
+          <div className="font-semibold text-gray-900">
+            Nacimiento
+          </div>
+          <div className="text-gray-600">
+            {formatDate(persona.nacimiento)}
+          </div>
+        </div>
+      )}
+      {persona.fallecimiento && (
+        <div>
+          <div className="font-semibold text-gray-900">
+            Defunción
+          </div>
+          <div className="text-gray-600">
+            {formatDate(persona.fallecimiento)}
+          </div>
+        </div>
+      )}
+    </div>
+  )}
 
-<div className="flex items-center gap-2 border-t border-gray-200 px-4 py-3">
-  <button
-    onClick={handlePersonaTabClick}
-    className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-md border text-sm font-medium bg-white text-gray-700 border-gray-300 hover:bg-green-50 hover:text-green-700 hover:border-green-300 transition-colors cursor-pointer"
-  >
-    <User size={16} /> PERFIL
-  </button>
-  <button
-    onClick={() => {
-      if (onVerArbol && personaId) onVerArbol(personaId);
-      else gotoCanvas(personaId);
-    }}
-    className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-md border text-sm font-medium bg-white text-gray-700 border-gray-300 hover:bg-green-50 hover:text-green-700 hover:border-green-300 transition-colors cursor-pointer"
-  >
-    <TreePine size={16} /> ÁRBOL
-  </button>
+  <div className="flex items-center gap-2 border-t border-gray-200 px-4 py-3">
+    <button
+      onClick={handlePersonaTabClick}
+      className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-md border text-base font-medium bg-white text-gray-700 border-gray-300 hover:bg-green-50 hover:text-green-700 hover:border-green-300 transition-colors cursor-pointer"
+    >
+      <User size={16} /> PERFIL
+    </button>
+    <button
+      onClick={() => {
+        if (onVerArbol && personaId) onVerArbol(personaId);
+        else gotoCanvas(personaId);
+      }}
+      className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-md border text-base font-medium bg-white text-gray-700 border-gray-300 hover:bg-green-50 hover:text-green-700 hover:border-green-300 transition-colors cursor-pointer"
+    >
+      <TreePine size={16} /> ÁRBOL
+    </button>
+  </div>
 </div>
-                </div>
 
                 {/* Content sections */}
                 <div className="pb-20">

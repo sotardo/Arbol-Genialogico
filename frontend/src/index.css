@@ -49,6 +49,10 @@
 
 /* Layout raíz */
 html, body, #root { height: 100%; }
+body{
+  margin: 0;
+  overflow: hidden; 
+}
 .fs-app {
 /* Layout raíz */
 
