@@ -9,23 +9,23 @@ export default function NavBar({
   onNavigate,
 }) {
   return (
-    <header className="sticky top-0 z-[100] flex justify-between items-center px-8 py-4 bg-white shadow-md border-b border-gray-200 backdrop-blur-sm">
+    <header className="sticky top-0 z-[100] flex justify-between items-center px-6 py-4 bg-white shadow-sm border-b border-gray-200">
       {/* IZQUIERDA */}
-      <div className="flex items-center gap-10">
+      <div className="flex items-center gap-8">
         {/* Logo + Nombre */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <img
             src={logo}
             alt="Logo"
-            className="w-12 h-12 object-contain select-none"
+            className="w-8 h-8 object-contain select-none"
           />
-          <span className="text-2xl font-bold text-gray-800 tracking-wide">
+          <span className="text-lg font-bold text-gray-800 tracking-wide">
             Familia Fahler
           </span>
         </div>
 
         {/* Navegación */}
-        <nav className="flex gap-8 text-lg font-medium">
+        <nav className="flex gap-6 text-sm font-medium">
           <button
             onClick={() => onNavigate?.("arbol")}
             className={`cursor-pointer transition-colors ${
@@ -50,7 +50,7 @@ export default function NavBar({
       </div>
 
       {/* DERECHA */}
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-4">
         <div className="fs-toolbar" />
         {right}
       </div>

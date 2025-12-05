@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { X, User, Plus, TreePine } from 'lucide-react';
+import { X, User, Plus, TreePine, Eye, Pencil, Trash2, FileText } from 'lucide-react';
 
 // Componente de badge de calidad
 const QualityBadge = ({ level }) => {
@@ -69,6 +69,25 @@ const gotoCanvas = (id) => {
 // Cuenta segura
 const safeCount = (v) => (Array.isArray(v) ? v.length : typeof v === 'number' ? v : 0);
 
+// Helpers para fuentes
+const fileSrc = (u, toAPI) => (u ? (u.startsWith?.('http') ? u : toAPI(u)) : '');
+
+const isPdfFuente = (fuente) => {
+  const t = (fuente?.tipo || '').toLowerCase();
+  const nombre = (fuente?.nombreArchivo || fuente?.titulo || '').toLowerCase();
+  const ruta = (fuente?.ruta || '').toLowerCase();
+  return t === 'pdf' || t === 'application/pdf' || nombre.endsWith('.pdf') || ruta.endsWith('.pdf');
+};
+
+const isImageFuente = (fuente) => {
+  const t = (fuente?.tipo || '').toLowerCase();
+  const nombre = (fuente?.nombreArchivo || fuente?.titulo || '').toLowerCase();
+  const ruta = (fuente?.ruta || fuente?.url || '').toLowerCase();
+  if (t === 'imagen' || t.startsWith('image/')) return true;
+  const endsWithImg = (s) => /\.(jpg|jpeg|png|webp|gif)$/i.test(s);
+  return endsWithImg(nombre) || endsWithImg(ruta);
+};
+
 export default function PersonDetailPanel({
   personaId,
   onClose,
@@ -81,6 +100,7 @@ export default function PersonDetailPanel({
   const [persona, setPersona] = useState(null);
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState('persona');
+  const [viewer, setViewer] = useState({ open: false, url: '', title: '', esImagen: false });
 
   // Estados para manejar la transición
   const [shouldRender, setShouldRender] = useState(false);
@@ -92,7 +112,6 @@ export default function PersonDetailPanel({
   const handleClickOutside = useCallback(
     (event) => {
       if (!panelRef.current) return;
-      // Si el click NO fue dentro del panel, cerramos
       if (!panelRef.current.contains(event.target)) {
         onClose?.();
       }
@@ -104,7 +123,6 @@ export default function PersonDetailPanel({
   useEffect(() => {
     if (isOpen) {
       setShouldRender(true);
-      // Pequeño delay para que el DOM se actualice antes de animar
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           setIsAnimating(true);
@@ -112,7 +130,6 @@ export default function PersonDetailPanel({
       });
     } else {
       setIsAnimating(false);
-      // Esperar a que termine la animación antes de desmontar
       const timer = setTimeout(() => {
         setShouldRender(false);
       }, 300);
@@ -184,10 +201,54 @@ export default function PersonDetailPanel({
     onClose?.();
   };
 
+  // Funciones para manejar fuentes
+  const handleViewFuente = (fuente) => {
+    const url = fileSrc(fuente.ruta || fuente.url, toAPI);
+    if (!url) return;
+    setViewer({
+      open: true,
+      url,
+      title: fuente.titulo || fuente.nombreArchivo || 'Documento',
+      esImagen: isImageFuente(fuente)
+    });
+  };
+
+  const handleEditFuente = (fuente) => {
+    if (onOpenPerfil && personaId) {
+      onOpenPerfil(personaId, { tab: 'fuentes', editFuenteId: fuente._id });
+    }
+    onClose?.();
+  };
+
+  const handleDeleteFuente = async (fuenteId) => {
+    if (!personasApi?.eliminarMedia) return;
+    if (!window.confirm('¿Eliminar esta fuente?')) return;
+    try {
+      await personasApi.eliminarMedia(personaId, fuenteId);
+      const data = await personasApi.detalle(personaId);
+      setPersona(data);
+    } catch (err) {
+      console.error('Error eliminando fuente:', err);
+    }
+  };
+
+  const handleAgregarFuente = () => {
+    if (onOpenPerfil && personaId) {
+      onOpenPerfil(personaId, { tab: 'fuentes' });
+    }
+    onClose?.();
+  };
+
   const fuentes = Array.isArray(persona?.fuentes) ? persona.fuentes : [];
   const recuerdos = Array.isArray(persona?.recuerdos) ? persona.recuerdos : [];
   const hechos = Array.isArray(persona?.hechos) ? persona.hechos : [];
-
+const fotosGaleria = Array.isArray(persona?.galeria)
+  ? persona.galeria
+  : Array.isArray(persona?.fotosGaleria)
+  ? persona.fotosGaleria
+  : Array.isArray(persona?.fotos)
+  ? persona.fotos
+  : [];
   if (!shouldRender) return null;
 
   return (
@@ -236,97 +297,96 @@ export default function PersonDetailPanel({
               {/* Contenido */}
               <div className="flex h-full flex-col overflow-y-auto bg-white shadow-xl">
                 {/* Línea verde superior */}
-              <div className="h-1.5 bg-lime-600"></div>
+                <div className="h-1.5 bg-lime-600" />
+                
                 {/* Header */}
-  <div className="sticky top-0 bg-white border-b border-gray-200 z-10">
-  <div className="p-4">
-    <div className="flex items-start gap-3 mb-3">
-      {persona?.avatarUrl ? (
-        <img
-          src={toAPI(persona.avatarUrl)}
-          alt=""
-          className="w-14 h-14 rounded-full object-cover"
-        />
-      ) : (
-        <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
-          <User size={24} className="text-green-600" />
-        </div>
-      )}
-      <div className="flex-1 min-w-0">
-        <h2 className="text-xl font-semibold text-gray-900 break-words">
-          {loading ? 'Cargando...' : persona?.nombre || 'Sin nombre'}
-        </h2>
-        {persona?.codigo && (
-          <p className="text-base text-gray-500">{persona.codigo}</p>
-        )}
-      </div>
-    </div>
+                <div className="sticky top-0 bg-white border-b border-gray-200 z-10">
+                  <div className="p-4">
+                    <div className="flex items-start gap-3 mb-3">
+                      {persona?.avatarUrl ? (
+                        <img
+                          src={toAPI(persona.avatarUrl)}
+                          alt=""
+                          className="w-14 h-14 rounded-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+                          <User size={24} className="text-green-600" />
+                        </div>
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <h2 className="text-xl font-semibold text-gray-900 break-words">
+                          {loading ? 'Cargando...' : persona?.nombre || 'Sin nombre'}
+                        </h2>
+                        {persona?.codigo && (
+                          <p className="text-base text-gray-500">{persona.codigo}</p>
+                        )}
+                      </div>
+                    </div>
 
-    {persona?.calidad && (
-      <div className="flex items-center gap-3 mb-3">
-        <span className="text-sm text-gray-600">
-          Puntuación de calidad:
-        </span>
-        <QualityBadge level={persona.calidad} />
-      </div>
-    )}
+                    {persona?.calidad && (
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="text-sm text-gray-600">
+                          Puntuación de calidad:
+                        </span>
+                        <QualityBadge level={persona.calidad} />
+                      </div>
+                    )}
 
-    <div className="flex gap-4 text-sm text-gray-600">
-      <button className="text-green-600 hover:underline">
-        Fuentes ({safeCount(fuentes)})
-      </button>
-      <button className="text-green-600 hover:underline">
-        Recuerdos ({safeCount(recuerdos)})
-      </button>
-      <button className="text-green-600 hover:underline">
-        Colaborar ({safeCount(persona?.colaboradores)})
-      </button>
-    </div>
-  </div>
-
-  {persona && (
-    <div className="px-4 pb-4 space-y-2 text-base">
-      {persona.nacimiento && (
-        <div>
-          <div className="font-semibold text-gray-900">
-            Nacimiento
-          </div>
-          <div className="text-gray-600">
-            {formatDate(persona.nacimiento)}
-          </div>
-        </div>
-      )}
-      {persona.fallecimiento && (
-        <div>
-          <div className="font-semibold text-gray-900">
-            Defunción
-          </div>
-          <div className="text-gray-600">
-            {formatDate(persona.fallecimiento)}
-          </div>
-        </div>
-      )}
-    </div>
-  )}
-
-  <div className="flex items-center gap-2 border-t border-gray-200 px-4 py-3">
-    <button
-      onClick={handlePersonaTabClick}
-      className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-md border text-base font-medium bg-white text-gray-700 border-gray-300 hover:bg-green-50 hover:text-green-700 hover:border-green-300 transition-colors cursor-pointer"
-    >
-      <User size={16} /> PERFIL
-    </button>
-    <button
-      onClick={() => {
-        if (onVerArbol && personaId) onVerArbol(personaId);
-        else gotoCanvas(personaId);
-      }}
-      className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-md border text-base font-medium bg-white text-gray-700 border-gray-300 hover:bg-green-50 hover:text-green-700 hover:border-green-300 transition-colors cursor-pointer"
-    >
-      <TreePine size={16} /> ÁRBOL
-    </button>
-  </div>
+<div className="flex gap-4 text-sm text-gray-600">
+  <button className="text-green-600 hover:underline">
+    Fuentes ({safeCount(fuentes)})
+  </button>
+  <button className="text-green-600 hover:underline">
+    Galería ({safeCount(fotosGaleria)})
+  </button>
 </div>
+
+                  </div>
+
+                  {persona && (
+                    <div className="px-4 pb-4 space-y-2 text-base">
+                      {persona.nacimiento && (
+                        <div>
+                          <div className="font-semibold text-gray-900">
+                            Nacimiento
+                          </div>
+                          <div className="text-gray-600">
+                            {formatDate(persona.nacimiento)}
+                          </div>
+                        </div>
+                      )}
+                      {persona.fallecimiento && (
+                        <div>
+                          <div className="font-semibold text-gray-900">
+                            Defunción
+                          </div>
+                          <div className="text-gray-600">
+                            {formatDate(persona.fallecimiento)}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  <div className="flex items-center gap-2 border-t border-gray-200 px-4 py-3">
+                    <button
+                      onClick={handlePersonaTabClick}
+                      className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-md border text-base font-medium bg-white text-gray-700 border-gray-300 hover:bg-green-50 hover:text-green-700 hover:border-green-300 transition-colors cursor-pointer"
+                    >
+                      <User color='green' size={16} /> PERFIL
+                    </button>
+                    <button
+                      onClick={() => {
+                        if (onVerArbol && personaId) onVerArbol(personaId);
+                        else gotoCanvas(personaId);
+                      }}
+                      className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-md border text-base font-medium bg-white text-gray-700 border-gray-300 hover:bg-green-50 hover:text-green-700 hover:border-green-300 transition-colors cursor-pointer"
+                    >
+                      <TreePine color='green' size={16} /> ÁRBOL
+                    </button>
+                  </div>
+                </div>
 
                 {/* Content sections */}
                 <div className="pb-20">
@@ -416,49 +476,85 @@ export default function PersonDetailPanel({
                       >
                         {safeCount(fuentes) === 0 ? (
                           <AddButton
-                            onClick={handleAgregarDetalle}
+                            onClick={handleAgregarFuente}
                             text="AGREGAR FUENTE"
                           />
                         ) : (
                           <div className="space-y-3">
-                            {fuentes.map((f, i) => (
-                              <div
-                                key={f._id || i}
-                                className="bg-gray-50 rounded-lg p-4 border border-gray-200"
-                              >
-                                <h4 className="font-semibold text-gray-900">
-                                  {f.titulo || f.nombre || 'Sin título'}
-                                </h4>
-                              </div>
-                            ))}
+                            {fuentes.map((f, i) => {
+                              const url = fileSrc(f.ruta || f.url, toAPI);
+                              const esPdf = isPdfFuente(f);
+                              const esImagen = isImageFuente(f);
+                              
+                              return (
+                                <div
+                                  key={f._id || i}
+                                  className="bg-white rounded-lg p-3 border border-gray-200 flex items-start gap-3"
+                                >
+                                  {/* Thumbnail */}
+                                  <div className="flex-shrink-0 w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center bg-gray-100">
+                                    {esImagen && url ? (
+                                      <img
+                                        src={url}
+                                        alt={f.titulo}
+                                        className="w-10 h-10 object-cover cursor-pointer hover:opacity-80"
+                                        onClick={() => handleViewFuente(f)}
+                                      />
+                                    ) : (
+                                      <FileText size={20} className={esPdf ? "text-red-500" : "text-gray-400"} />
+                                    )}
+                                  </div>
+                                  
+                                  {/* Info */}
+                                  <div className="flex-1 min-w-0">
+                                    <h4 className="font-semibold text-gray-900 text-sm truncate">
+                                      {f.titulo || f.nombreArchivo || 'Sin título'}
+                                    </h4>
+                                    {f.fecha && (
+                                      <p className="text-xs text-gray-500">{formatDate(f.fecha)}</p>
+                                    )}
+                                  </div>
+                                  
+                                  {/* Acciones */}
+                                  <div className="flex items-center gap-1">
+                                    {url && (
+                                      <button
+                                        onClick={() => handleViewFuente(f)}
+                                        className="p-1.5 text-gray-500 hover:text-green-600 hover:bg-green-50 rounded transition-colors"
+                                        title="Ver"
+                                      >
+                                        <Eye size={16} />
+                                      </button>
+                                    )}
+                                    <button
+                                      onClick={() => handleEditFuente(f)}
+                                      className="p-1.5 text-gray-500 hover:text-green-600 hover:bg-green-50 rounded transition-colors"
+                                      title="Editar"
+                                    >
+                                      <Pencil size={16} />
+                                    </button>
+                                    <button
+                                      onClick={() => handleDeleteFuente(f._id)}
+                                      className="p-1.5 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
+                                      title="Eliminar"
+                                    >
+                                      <Trash2 size={16} />
+                                    </button>
+                                  </div>
+                                </div>
+                              );
+                            })}
+                            
+                            {/* Botón agregar al final */}
+                            <AddButton
+                              onClick={handleAgregarFuente}
+                              text="AGREGAR FUENTE"
+                            />
                           </div>
                         )}
                       </CollapsibleSection>
 
-                      <CollapsibleSection
-                        title="Hechos"
-                        count={safeCount(hechos)}
-                      >
-                        {safeCount(hechos) === 0 ? (
-                          <AddButton
-                            onClick={handleAgregarDetalle}
-                            text="AGREGAR HECHO"
-                          />
-                        ) : (
-                          <div className="space-y-2">
-                            {hechos.map((h, i) => (
-                              <div
-                                key={h._id || i}
-                                className="p-2 bg-white rounded border border-gray-200"
-                              >
-                                <div className="font-medium text-sm">
-                                  {h.tipo}
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </CollapsibleSection>
+
 
                       <CollapsibleSection title="Historia de vida">
                         {persona.acercaDe ? (
@@ -480,6 +576,46 @@ export default function PersonDetailPanel({
           </div>
         </div>
       </div>
+
+      {/* Visor de archivos */}
+      {viewer.open && (
+        <div
+          className="fixed inset-0 z-[300] bg-black/80 backdrop-blur-sm flex items-center justify-center"
+          onClick={() => setViewer({ open: false, url: '', title: '', esImagen: false })}
+        >
+          <div
+            className="bg-white w-full max-w-4xl h-[80vh] rounded-xl shadow-2xl overflow-hidden flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="px-4 py-3 border-b flex items-center justify-between">
+              <h3 className="font-semibold text-gray-900 truncate">{viewer.title}</h3>
+              <div className="flex items-center gap-2">
+                <a
+                  href={viewer.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 text-sm rounded border border-gray-300 hover:bg-gray-50"
+                >
+                  Abrir en pestaña
+                </a>
+                <button
+                  onClick={() => setViewer({ open: false, url: '', title: '', esImagen: false })}
+                  className="p-2 hover:bg-gray-100 rounded"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+            </div>
+            <div className="flex-1 bg-gray-100 overflow-auto flex items-center justify-center">
+              {viewer.esImagen ? (
+                <img src={viewer.url} alt={viewer.title} className="max-w-full max-h-full object-contain" />
+              ) : (
+                <iframe title={viewer.title} src={viewer.url} className="w-full h-full" />
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

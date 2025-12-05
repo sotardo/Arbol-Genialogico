@@ -15,11 +15,15 @@ import {
   Sparkles,
   UserPlus,
   Save,
+  Image,
+  ClipboardList,
+  FileSearch,
+  TreePine,
 } from 'lucide-react';
 import { toAPI } from '../utils';
 import Fuentes from './Fuentes';
 import RelacionesEditor from './RelacionesEditor';
-
+import Galeria from './Galeria';
 const imgSrc = (u) => (u ? (u.startsWith?.('http') ? u : toAPI(u)) : '');
 
 const formatSexo = (sexo) => {
@@ -453,25 +457,16 @@ export default function Perfil({
     }
   };
 
-  const toArray = (v) => (Array.isArray(v) ? v : v ? [v] : []);
+const toArray = (v) => (Array.isArray(v) ? v : v ? [v] : []);
 
-  const fuentesListRaw = [
-    ...toArray(persona?.fuentes),
-    ...toArray(persona?.recuerdos),
-    ...toArray(persona?.media),
-    ...toArray(persona?.archivos),
-  ];
+// Fuentes documentales = fuentes + recuerdos (PDFs, documentos E imágenes históricas)
+const fuentesList = [
+  ...toArray(persona?.fuentes),
+  ...toArray(persona?.recuerdos)
+];
 
-  const fuentesList = [];
-  const seen = new Set();
-  for (const f of fuentesListRaw) {
-    if (!f) continue;
-    const id = f._id || JSON.stringify(f);
-    if (seen.has(id)) continue;
-    seen.add(id);
-    fuentesList.push(f);
-  }
-
+// Galería de fotos = SOLO galeria (fotos personales/familiares)
+const fotosList = toArray(persona?.galeria);
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
@@ -1084,33 +1079,43 @@ export default function Perfil({
                   window.location.href = url.toString();
                 }}
               >
-                <Users size={16} />
+                <TreePine color='green' size={20} />
                 VER ÁRBOL
               </button>
             </div>
           </div>
         </div>
 
-        <div className="flex gap-1 px-6 border-t border-gray-200">
-          <TabButton
-            active={activeTab === 'acerca'}
-            onClick={() => setActiveTab('acerca')}
-          >
-            Acerca de
-          </TabButton>
-          <TabButton
-            active={activeTab === 'detalles'}
-            onClick={() => setActiveTab('detalles')}
-          >
-            Detalles
-          </TabButton>
-          <TabButton
-            active={activeTab === 'fuentes'}
-            onClick={() => setActiveTab('fuentes')}
-          >
-            Fuentes ({fuentesList.length})
-          </TabButton>
-        </div>
+<div className="flex gap-1 px-6 border-t border-gray-200">
+  <TabButton
+    active={activeTab === 'acerca'}
+    onClick={() => setActiveTab('acerca')}
+    icon={User}
+  >
+    Acerca de
+  </TabButton>
+  <TabButton
+    active={activeTab === 'detalles'}
+    onClick={() => setActiveTab('detalles')}
+    icon={ClipboardList}
+  >
+    Detalles
+  </TabButton>
+  <TabButton
+    active={activeTab === 'fuentes'}
+    onClick={() => setActiveTab('fuentes')}
+    icon={FileSearch}
+  >
+    Fuentes ({fuentesList.length})
+  </TabButton>
+  <TabButton
+    active={activeTab === 'galeria'}
+    onClick={() => setActiveTab('galeria')}
+    icon={Image}
+  >
+    Galería ({fotosList.length})
+  </TabButton>
+</div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -1432,7 +1437,19 @@ export default function Perfil({
               />
             </Section>
           )}
-
+          {activeTab === 'galeria' && (
+  <Section
+    title="Galería de fotos"
+    count={fotosList.length}
+  >
+    <Galeria
+      personaId={personaId}
+      fotos={fotosList}
+      onFotoAdded={loadPersona}
+      personasApi={personasApi}
+    />
+  </Section>
+)}
           {activeTab === 'colaborar' && (
             <Section title="Colaborar">
               <div className="text-center py-12">
@@ -1517,28 +1534,7 @@ export default function Perfil({
             </button>
           </Section>
 
-          {persona.historiaDestacada && (
-            <Section title="Historia destacada">
-              <div className="space-y-3">
-                <img
-                  src={
-                    persona.historiaDestacada.imagenUrl ||
-                    persona.historiaDestacada.imagen ||
-                    'https://via.placeholder.com/400x200?text=Historia'
-                  }
-                  alt="Historia destacada"
-                  className="w-full rounded-lg object-cover"
-                />
-                <h3 className="font-semibold text-gray-900">
-                  {persona.historiaDestacada.titulo ||
-                    'Historia destacada'}
-                </h3>
-                <p className="text-sm text-gray-600">
-                  {persona.historiaDestacada.descripcion || '—'}
-                </p>
-              </div>
-            </Section>
-          )}
+
         </div>
       </div>
 

@@ -1,239 +1,418 @@
 // src/components/PersonCard.jsx
 import React from "react";
 
+const API = import.meta.env.VITE_API_URL || "http://localhost:4000";
+
+const imgSrc = (url) => {
+  if (!url) return null;
+  if (url.startsWith("http")) return url;
+  return `${API}${url}`;
+};
+
+const formatYear = (dateStr) => {
+  if (!dateStr) return null;
+  const d = new Date(dateStr);
+  return isNaN(d.getTime()) ? null : d.getFullYear();
+};
+
 export default function PersonCard({
   persona,
-  isRoot = false,
   onClick,
-  layout = "horizontal",
+  isRoot = false,
+  variant = "fs-compact",
   style = {},
-  variant = "default", // <-- NUEVO: "default" | "fs-compact"
 }) {
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+  if (!persona) return null;
 
-  // --- Helpers de color y datos ---
-  const sexColor = persona.sexo === "M"
-    ? "#34A1BC" // azul FamilySearch-like
-    : persona.sexo === "F"
-    ? "#e91e63" // magenta FamilySearch-like
-    : "#9e9e9e";
+  const avatar = imgSrc(persona.avatarUrl);
+  const nombre = persona.nombre || "Sin nombre";
+  const sexo = persona.sexo;
+  const codigo = persona.codigo || "";
 
-  const getYears = () => {
-    const birth = persona.nacimiento ? new Date(persona.nacimiento).getFullYear() : null;
-    const death = persona.fallecimiento ? new Date(persona.fallecimiento).getFullYear() : null;
-    if (birth && death) return `${birth}-${death}`;
-    if (birth) return `${birth}-`;
-    return "";
+  // Años de vida
+  const birthYear = formatYear(persona.nacimiento);
+  const deathYear = formatYear(persona.fallecimiento);
+  const isLiving = persona.vpirivr || persona.vivo;
+
+  let lifespan = "";
+  if (birthYear) {
+    if (deathYear) {
+      lifespan = `${birthYear}–${deathYear}`;
+    } else if (isLiving) {
+      lifespan = `${birthYear}–Viva`;
+    } else {
+      lifespan = `${birthYear}–`;
+    }
+  }
+
+  // Colores según sexo (estilo FamilySearch)
+  const genderColors = {
+    M: {
+      bar: "#3b82f6",
+      barLight: "#60a5fa",
+      bg: "#dbeafe",
+      text: "#1d4ed8",
+      symbol: "♂",
+    },
+    F: {
+      bar: "#ec4899",
+      barLight: "#f472b6",
+      bg: "#fce7f3",
+      text: "#be185d",
+      symbol: "♀",
+    },
+    default: {
+      bar: "#9ca3af",
+      barLight: "#d1d5db",
+      bg: "#f3f4f6",
+      text: "#6b7280",
+      symbol: "?",
+    },
   };
 
-  const living = !persona.fallecimiento && persona.nacimiento ? "Viva" : undefined; // puedes ajustar a "Vivo/Viva"
-  const secondLine = [getYears(), living].filter(Boolean).join(" · ");
+  const colors = genderColors[sexo] || genderColors.default;
 
-  // Avatar (para variant default)
-  const avatarUrl = persona.avatarUrl ? `${API_URL}${persona.avatarUrl}` : null;
-
-  // ---------- VARIANTE FAMILYSEARCH (compacta, sin avatar) ----------
+  // Estilo compacto FamilySearch
   if (variant === "fs-compact") {
     return (
       <div
         onClick={onClick}
         style={{
           display: "flex",
-          alignItems: "center",
-          gap: 10,
-          padding: "8px 10px",
+          alignItems: "stretch",
           background: "#ffffff",
           cursor: onClick ? "pointer" : "default",
-          transition: "background 0.15s ease, box-shadow 0.15s ease",
+          transition: "background 0.15s ease",
+          position: "relative",
+          overflow: "hidden",
           ...style,
-          // Borde fino y banda vertical de color a la izquierda
-          borderLeft: `4px solid ${sexColor}`,
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.background = "#f8fafc";
+          if (onClick) e.currentTarget.style.background = "#fafbfc";
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.background = "#ffffff";
+          if (onClick) e.currentTarget.style.background = "#ffffff";
         }}
       >
-        {/* Textos */}
-        <div style={{ minWidth: 0, flex: 1 }}>
-          <div
-            title={persona.nombre}
-            style={{
-              fontSize: 13,
-              fontWeight: isRoot ? 700 : 600,
-              color: "#0f172a",
-              lineHeight: 1.15,
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              whiteSpace: "nowrap",
-            }}
-          >
-            {persona.nombre}
+        {/* Barra de color lateral */}
+        <div
+          style={{
+            width: 4,
+            background: `linear-gradient(180deg, ${colors.bar} 0%, ${colors.barLight} 100%)`,
+            flexShrink: 0,
+          }}
+        />
+
+        {/* Contenido */}
+        <div
+          style={{
+            flex: 1,
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+            padding: "8px 14px",
+            minWidth: 0,
+          }}
+        >
+          {/* Avatar */}
+          {avatar ? (
+            <img
+              src={avatar}
+              alt={nombre}
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: "50%",
+                objectFit: "cover",
+                flexShrink: 0,
+                border: `2px solid ${colors.bg}`,
+                boxShadow: "0 1px 3px rgba(0,0,0,0.08)",
+              }}
+            />
+          ) : (
+            <div
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: "50%",
+                background: colors.bg,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: 16,
+                fontWeight: 600,
+                color: colors.text,
+                flexShrink: 0,
+                border: `2px solid ${colors.bg}`,
+              }}
+            >
+              {colors.symbol}
+            </div>
+          )}
+
+          {/* Info */}
+          <div style={{ flex: 1, minWidth: 0 }}>
+            {/* Nombre */}
+            <div
+              style={{
+                fontSize: 17,
+                fontWeight: 600,
+                color: "#1f2937",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                lineHeight: 1.3,
+              }}
+            >
+              {nombre}
+            </div>
+
+            {/* Fechas y código */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                marginTop: 3,
+                fontSize: 12,
+                color: "#6b7280",
+              }}
+            >
+              {lifespan && (
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 3,
+                  }}
+                >
+                  <svg
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    style={{ opacity: 0.6 }}
+                  >
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                  </svg>
+                  {lifespan}
+                </span>
+              )}
+              {lifespan && codigo && (
+                <span style={{ color: "#d1d5db" }}>•</span>
+              )}
+              {codigo && (
+                <span
+                  style={{
+                    fontFamily: "ui-monospace, SFMono-Regular, monospace",
+                    fontSize: 10,
+                    color: "#9ca3af",
+                    background: "#f3f4f6",
+                    padding: "1px 5px",
+                    borderRadius: 3,
+                    fontWeight: 500,
+                  }}
+                >
+                  {codigo}
+                </span>
+              )}
+            </div>
           </div>
 
-          <div
-            style={{
-              marginTop: 2,
-              fontSize: 11,
-              color: "#64748b",
-              display: "flex",
-              gap: 6,
-              alignItems: "center",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              whiteSpace: "nowrap",
-            }}
-          >
-            {/* símbolo sexo + años + estado */}
-            <span>{persona.sexo === "M" ? "♂" : persona.sexo === "F" ? "♀" : "⚬"}</span>
-            {secondLine && <span>{secondLine}</span>}
-            {/* Código opcional si lo tuvieras (ej. persona.codigoFS) */}
-            {persona.codigoFS && (
-              <>
-                <span>·</span>
-                <span style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace" }}>
-                  {persona.codigoFS}
-                </span>
-              </>
-            )}
-          </div>
+          {/* Indicador root */}
+          {isRoot && (
+            <div
+              style={{
+                width: 7,
+                height: 7,
+                borderRadius: "50%",
+                background: "#10b981",
+                flexShrink: 0,
+                boxShadow: "0 0 0 2px rgba(16, 185, 129, 0.2)",
+              }}
+            />
+          )}
         </div>
       </div>
     );
   }
 
-  // ---------- VARIANTE ORIGINAL (tu diseño con avatar) ----------
-  // Colores según sexo
-  const getColors = () => {
-    if (persona.sexo === "M") {
-      return { backgroundColor: "#e8f4fd", borderColor: "#2196f3" };
-    } else if (persona.sexo === "F") {
-      return { backgroundColor: "#fce4ec", borderColor: "#e91e63" };
-    } else {
-      return { backgroundColor: "#f5f5f5", borderColor: "#9e9e9e" };
-    }
-  };
-  const colors = getColors();
-  const borderWidth = isRoot ? "3px" : "2px";
-
-  const cardStyle = {
-    border: `${borderWidth} solid ${colors.borderColor}`,
-    backgroundColor: colors.backgroundColor,
-    borderRadius: "8px",
-    padding: layout === "vertical" ? "12px 8px" : "8px",
-    fontSize: "11px",
-    color: "#000000",
-    display: "flex",
-    flexDirection: layout === "vertical" ? "column" : "row",
-    justifyContent: "center",
-    alignItems: "center",
-    boxShadow: isRoot
-      ? "0 4px 12px rgba(0,0,0,0.25)"
-      : "0 2px 8px rgba(0,0,0,0.15)",
-    cursor: onClick ? "pointer" : "default",
-    transition: "transform 0.2s, box-shadow 0.2s",
-    gap: layout === "vertical" ? "8px" : "10px",
-    ...style,
-  };
-
-  const handleMouseEnter = (e) => {
-    if (onClick) {
-      e.currentTarget.style.transform = "scale(1.05)";
-      e.currentTarget.style.boxShadow = "0 6px 16px rgba(0,0,0,0.3)";
-    }
-  };
-  const handleMouseLeave = (e) => {
-    if (onClick) {
-      e.currentTarget.style.transform = "scale(1)";
-      e.currentTarget.style.boxShadow = isRoot
-        ? "0 4px 12px rgba(0,0,0,0.25)"
-        : "0 2px 8px rgba(0,0,0,0.15)";
-    }
-  };
-
+  // Variante por defecto (tarjeta completa)
   return (
     <div
-      style={cardStyle}
       onClick={onClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      style={{
+        display: "flex",
+        alignItems: "stretch",
+        background: "#ffffff",
+        borderRadius: 14,
+        boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+        border: "1px solid #e5e7eb",
+        cursor: onClick ? "pointer" : "default",
+        transition: "all 0.2s ease",
+        overflow: "hidden",
+        ...style,
+      }}
+      onMouseEnter={(e) => {
+        if (onClick) {
+          e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.12)";
+          e.currentTarget.style.borderColor = "#d1d5db";
+        }
+      }}
+      onMouseLeave={(e) => {
+        if (onClick) {
+          e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.08)";
+          e.currentTarget.style.borderColor = "#e5e7eb";
+        }
+      }}
     >
-      {/* Avatar */}
+      {/* Barra de color lateral */}
       <div
         style={{
-          width: layout === "vertical" ? "50px" : "40px",
-          height: layout === "vertical" ? "50px" : "40px",
-          borderRadius: "50%",
-          overflow: "hidden",
-          backgroundColor: "#ddd",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          width: 6,
+          background: `linear-gradient(180deg, ${colors.bar} 0%, ${colors.barLight} 100%)`,
           flexShrink: 0,
         }}
+      />
+
+      {/* Contenido */}
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          alignItems: "center",
+          gap: 16,
+          padding: "14px 18px",
+          minWidth: 0,
+        }}
       >
-        {avatarUrl ? (
+        {/* Avatar */}
+        {avatar ? (
           <img
-            src={avatarUrl}
-            alt={persona.nombre}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            onError={(e) => {
-              e.currentTarget.style.display = "none";
-              e.currentTarget.nextSibling.style.display = "flex";
+            src={avatar}
+            alt={nombre}
+            style={{
+              width: 55,
+              height: 55,
+              borderRadius: "50%",
+              objectFit: "cover",
+              flexShrink: 0,
+              border: `3px solid ${colors.bg}`,
+              boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
             }}
           />
-        ) : null}
-        <div
-          style={{
-            display: avatarUrl ? "none" : "flex",
-            fontSize: layout === "vertical" ? "18px" : "14px",
-            fontWeight: "bold",
-            color: getColors().borderColor,
-          }}
-        >
-          {persona.nombre?.charAt(0) || "?"}
-        </div>
-      </div>
+        ) : (
+          <div
+            style={{
+              width: 52,
+              height: 52,
+              borderRadius: "50%",
+              background: colors.bg,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 20,
+              fontWeight: 600,
+              color: colors.text,
+              flexShrink: 0,
+              border: `3px solid ${colors.bg}`,
+            }}
+          >
+            {colors.symbol}
+          </div>
+        )}
 
-      {/* Información */}
-      <div style={{ flex: 1, textAlign: layout === "vertical" ? "center" : "left", minWidth: 0 }}>
-        <div
-          style={{
-            fontWeight: isRoot ? "bold" : "normal",
-            lineHeight: "1.2",
-            marginBottom: "2px",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: layout === "vertical" ? "normal" : "nowrap",
-          }}
-        >
-          {persona.nombre}
+        {/* Info */}
+        <div style={{ flex: 1, minWidth: 0 }}>
+          {/* Nombre */}
+          <div
+            style={{
+              fontSize: 16,
+              fontWeight: 700,
+              color: "#1f2937",
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              lineHeight: 1.3,
+            }}
+          >
+            {nombre}
+          </div>
+
+          {/* Fechas y código */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+              marginTop: 5,
+              fontSize: 14,
+              color: "#6b7280",
+            }}
+          >
+            {lifespan && (
+              <span
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 5,
+                }}
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  style={{ opacity: 0.7 }}
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+                {lifespan}
+              </span>
+            )}
+            {lifespan && codigo && <span style={{ color: "#d1d5db" }}>•</span>}
+            {codigo && (
+              <span
+                style={{
+                  fontFamily: "ui-monospace, SFMono-Regular, monospace",
+                  fontSize: 12,
+                  color: "#9ca3af",
+                  background: "#f3f4f6",
+                  padding: "3px 8px",
+                  borderRadius: 5,
+                  fontWeight: 500,
+                }}
+              >
+                {codigo}
+              </span>
+            )}
+          </div>
         </div>
-        <div
-          style={{
-            fontSize: "10px",
-            color: "#666",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: layout === "vertical" ? "center" : "flex-start",
-            gap: "4px",
-          }}
-        >
-          <span>{persona.sexo === "M" ? "♂" : persona.sexo === "F" ? "♀" : "⚬"}</span>
-          {getYears() && <span>{getYears()}</span>}
-        </div>
+
+        {/* Indicador root */}
+        {isRoot && (
+          <div
+            style={{
+              width: 10,
+              height: 10,
+              borderRadius: "50%",
+              background: "#10b981",
+              flexShrink: 0,
+              boxShadow: "0 0 0 4px rgba(16, 185, 129, 0.2)",
+            }}
+          />
+        )}
       </div>
     </div>
   );
 }
-
-// Helper público
-export const createCustomCardStyle = (overrides) => ({
-  borderRadius: "8px",
-  padding: "8px",
-  fontSize: "11px",
-  boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-  ...overrides,
-});

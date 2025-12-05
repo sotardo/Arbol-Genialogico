@@ -659,7 +659,15 @@ app.get(
         imagenUrl: ultimaImg.url,
       };
     }
-
+    const galeriaItems = Array.isArray(p.galeria) ? p.galeria : [];
+const galeria = galeriaItems.map((g) => ({
+  _id: String(g._id),
+  titulo: g.titulo || '',
+  descripcion: g.descripcion || '',
+  ruta: g.ruta || '',
+  nombreArchivo: g.nombreArchivo || '',
+  fecha: g.fecha || null,
+}));
     const dto = {
       _id: String(p._id),
       nombre: p.nombre,
@@ -732,8 +740,9 @@ app.get(
       historiaDestacada,
       fuentes,
       recuerdos,
+      galeria,  
     };
-
+    
     res.json(dto);
   })
 );
@@ -1357,7 +1366,135 @@ app.post(
   })
 );
 // ⭐ EDITAR MEDIA (metadata + cambiar archivo opcional)
+// =============================
+// GALERÍA (separado de medios/fuentes)
+// =============================
 
+// Subir foto a galería
+app.post(
+  '/api/personas/:id/galeria',
+  upload.single('file'),
+  asyncH(async (req, res) => {
+    if (!mongoOk) {
+      return res.status(503).json({ error: 'Requiere MongoDB activo' });
+    }
+    const { id } = req.params;
+    if (!mongoose.isValidObjectId(id)) {
+      return res.status(400).json({ error: 'ID inválido' });
+    }
+    if (!req.file) {
+      return res.status(400).json({ error: 'Archivo requerido' });
+    }
+
+    // Solo permitir imágenes
+    if (!req.file.mimetype?.startsWith('image/')) {
+      return res.status(400).json({ error: 'Solo se permiten imágenes en la galería' });
+    }
+
+    const { titulo = '', descripcion = '', fecha = '' } = req.body || {};
+    const ruta = `/uploads/${req.file.filename}`;
+
+    const fotoItem = {
+      titulo,
+      descripcion,
+      ruta,
+      nombreArchivo: req.file.originalname,
+      fecha: fecha ? new Date(fecha) : undefined,
+    };
+
+    const updated = await Persona.findByIdAndUpdate(
+      id,
+      { $push: { galeria: fotoItem } },
+      { new: true }
+    );
+    
+    if (!updated) {
+      return res.status(404).json({ error: 'No encontrada' });
+    }
+    
+    res.json({ ok: true, added: fotoItem, persona: updated });
+  })
+);
+
+// Editar foto de galería
+app.put(
+  '/api/personas/:id/galeria/:galeriaId',
+  upload.single('file'),
+  asyncH(async (req, res) => {
+    if (!mongoOk) {
+      return res.status(503).json({ error: 'Requiere MongoDB activo' });
+    }
+
+    const { id, galeriaId } = req.params;
+
+    if (!mongoose.isValidObjectId(id) || !mongoose.isValidObjectId(galeriaId)) {
+      return res.status(400).json({ error: 'ID inválido' });
+    }
+
+    const persona = await Persona.findById(id);
+    if (!persona) {
+      return res.status(404).json({ error: 'Persona no encontrada' });
+    }
+
+    const fotoItem = persona.galeria?.id?.(galeriaId);
+    if (!fotoItem) {
+      return res.status(404).json({ error: 'Foto no encontrada' });
+    }
+
+    const { titulo, descripcion, fecha } = req.body || {};
+
+    if (titulo !== undefined) fotoItem.titulo = titulo;
+    if (descripcion !== undefined) fotoItem.descripcion = descripcion;
+    if (typeof fecha !== 'undefined') {
+      fotoItem.fecha = fecha ? new Date(fecha) : undefined;
+    }
+
+    // Si viene archivo nuevo, lo reemplazamos
+    if (req.file) {
+      if (!req.file.mimetype?.startsWith('image/')) {
+        return res.status(400).json({ error: 'Solo se permiten imágenes en la galería' });
+      }
+      const ruta = `/uploads/${req.file.filename}`;
+      fotoItem.ruta = ruta;
+      fotoItem.nombreArchivo = req.file.originalname;
+    }
+
+    await persona.save();
+
+    return res.json({
+      ok: true,
+      foto: fotoItem,
+      persona,
+    });
+  })
+);
+
+// Eliminar foto de galería
+app.delete(
+  '/api/personas/:id/galeria/:galeriaId',
+  asyncH(async (req, res) => {
+    if (!mongoOk) {
+      return res.status(503).json({ error: 'Requiere MongoDB activo' });
+    }
+    const { id, galeriaId } = req.params;
+
+    if (!mongoose.isValidObjectId(id) || !mongoose.isValidObjectId(galeriaId)) {
+      return res.status(400).json({ error: 'ID inválido' });
+    }
+
+    const updated = await Persona.findByIdAndUpdate(
+      id,
+      { $pull: { galeria: { _id: galeriaId } } },
+      { new: true }
+    );
+
+    if (!updated) {
+      return res.status(404).json({ error: 'Persona no encontrada' });
+    }
+
+    res.json({ ok: true, persona: updated });
+  })
+);
 
 app.use((req, res) =>
   res.status(404).json({ error: 'Ruta no encontrada' })

@@ -5,7 +5,6 @@ import { useToast } from './ToastProvider';
 import { Calendar as CalendarPicker } from "@/components/ui/calendar";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
-import { DateFieldWithCalendar } from "@/components/ui/DateFieldWithCalendar"; 
 
 function formatDateToDisplay(dateStr) {
   if (!dateStr) return "";
@@ -26,11 +25,10 @@ function parseDateFromDisplay(str) {
   return new Date(year, month, day);
 }
 
-
 const toInputDate = (d) => {
   if (!d) return '';
   const dt = typeof d === 'string' || typeof d === 'number' ? new Date(d) : d;
-if (Number.isNaN(dt?.getTime?.())) return '';
+  if (Number.isNaN(dt?.getTime?.())) return '';
   const y = dt.getFullYear();
   const m = String(dt.getMonth() + 1).padStart(2, '0');
   const day = String(dt.getDate()).padStart(2, '0');
@@ -47,38 +45,6 @@ const pairKey = (aId, bId) => {
   }
   return `single:${String(aId || bId)}`;
 };
-const DateInput = ({ value, onChange, placeholder = "Seleccionar fecha" }) => {
-  const date = value ? new Date(`${value}T00:00:00`) : undefined;
-
-  return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <Button
-          type="button"
-          variant="outline"
-          className="w-full justify-start text-left font-normal"
-        >
-          <CalendarIcon className="mr-2 h-4 w-4 text-gray-500" />
-          {date ? (
-            toInputDate(date)
-          ) : (
-            <span className="text-gray-500">{placeholder}</span>
-          )}
-        </Button>
-      </PopoverTrigger>
-
-      <PopoverContent className="p-0" align="start">
-        <CalendarPicker
-          mode="single"
-          selected={date}
-          onSelect={(d) => onChange(d ? toInputDate(d) : "")}
-          captionLayout="dropdown"
-          className="rounded-md border shadow-sm"
-        />
-      </PopoverContent>
-    </Popover>
-  );
-};
 
 export default function AgregarPadrePanel({
   open,
@@ -89,7 +55,7 @@ export default function AgregarPadrePanel({
   hijosComunes = [],
   padreId = null,
   onSuccess,
-  onExpandParents, // ✅ NUEVA PROP: callback para expandir la rama
+  onExpandParents,
 }) {
   const toast = useToast();
   const [saving, setSaving] = useState(false);
@@ -111,8 +77,9 @@ export default function AgregarPadrePanel({
   const [errors, setErrors] = useState({});
   const [tempNacimiento, setTempNacimiento] = useState('');
   const [tempBautismo, setTempBautismo] = useState('');
-const [tempMatrimonio, setTempMatrimonio] = useState('');
-const [tempFallecimiento, setTempFallecimiento] = useState('');
+  const [tempMatrimonio, setTempMatrimonio] = useState('');
+  const [tempFallecimiento, setTempFallecimiento] = useState('');
+  
   const isHijo = tipo === 'hijo';
   const isConyuge = tipo === 'conyuge';
   const sexo = (isConyuge || isHijo) ? formData.sexo : (tipo === 'padre' ? 'M' : 'F');
@@ -281,7 +248,6 @@ const [tempFallecimiento, setTempFallecimiento] = useState('');
         }
         toast.success('Cónyuge agregado/a exitosamente');
       } else {
-        // ✅ AGREGAR PADRE O MADRE
         const personaActual = await personasApi.detalle(targetPersonId);
         const padresActuales = personaActual.padres || [];
         if (padresActuales.length > 0) {
@@ -337,12 +303,9 @@ const [tempFallecimiento, setTempFallecimiento] = useState('');
         const nuevaPersona = await personasApi.crear(payload);
         await relacionesApi.vincularPadreHijo(nuevaPersona._id, targetPersonId);
         
-        // ✅ AUTO-EXPANDIR la rama donde se agregó el padre
         if (typeof onExpandParents === 'function') {
-          // Obtener el cónyuge del padre recién creado (si existe)
           let conyugeId = null;
           if (personaActual.padres && personaActual.padres.length > 0) {
-            // Si ya tiene un padre/madre, buscar el cónyuge
             const otroPadreId = personaActual.padres.find(id => id !== nuevaPersona._id);
             if (otroPadreId) {
               conyugeId = otroPadreId;
@@ -388,12 +351,12 @@ const [tempFallecimiento, setTempFallecimiento] = useState('');
   if (!shouldRender) return null;
 
   return (
-<div
-  className="fixed inset-0 z-[250] overflow-hidden"
-  role="dialog"
-  aria-modal="true"
-  onMouseDown={handleClickOutside}
->
+    <div
+      className="fixed inset-0 z-[250] overflow-hidden"
+      role="dialog"
+      aria-modal="true"
+      onMouseDown={handleClickOutside}
+    >
       <div
         className={`absolute inset-0 bg-gray-900/50 transition-opacity duration-500 ease-in-out ${
           isAnimating ? 'opacity-100' : 'opacity-0'
@@ -428,6 +391,7 @@ const [tempFallecimiento, setTempFallecimiento] = useState('');
               </div>
 
               <div className="flex h-full flex-col bg-white shadow-xl">
+                {/* Header */}
                 <div className="px-6 py-5 border-b border-gray-200 flex items-center justify-between bg-gradient-to-r from-green-50 via-green-50 to-green-100">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center shadow-md">
@@ -448,8 +412,10 @@ const [tempFallecimiento, setTempFallecimiento] = useState('');
                   </div>
                 </div>
 
+                {/* Form */}
                 <div className="flex-1 overflow-y-auto p-6 bg-white">
                   <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* Información básica */}
                     <div className="space-y-4">
                       <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
                         <User size={18} className="text-green-600" />
@@ -513,6 +479,7 @@ const [tempFallecimiento, setTempFallecimiento] = useState('');
                       </div>
                     </div>
 
+                    {/* Nacimiento */}
                     <div className="space-y-4">
                       <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
                         <Calendar size={18} className="text-green-600" />
@@ -522,66 +489,61 @@ const [tempFallecimiento, setTempFallecimiento] = useState('');
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div>
-  <label className="block text-sm font-medium text-gray-700 mb-2">
-    Fecha de nacimiento
-  </label>
-  <Popover>
-    <div className="relative">
-      <input
-        type="text"
-        value={tempNacimiento || (formData.nacimiento ? formatDateToDisplay(formData.nacimiento) : '')}
-        onChange={(e) => {
-          let val = e.target.value.replace(/[^\d/]/g, '');
-          if (val.length === 2 && !val.includes('/')) val = val + '/';
-          else if (val.length === 5 && val.split('/').length === 2) val = val + '/';
-          
-          if (val.length <= 10) {
-            setTempNacimiento(val);
-            
-            if (val.length === 10) {
-              const parsed = parseDateFromDisplay(val);
-              if (parsed) {
-                setFormData({...formData, nacimiento: toInputDate(parsed)});
-                setTempNacimiento('');
-              }
-            }
-          }
-        }}
-        onBlur={() => {
-          setTempNacimiento('');
-        }}
-        placeholder="DD/MM/AAAA"
-        className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
-        maxLength={10}
-      />
-      <PopoverTrigger asChild>
-        <button
-          type="button"
-          className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 hover:bg-gray-100 rounded transition-colors"
-        >
-          <Calendar className="h-4 w-4 text-gray-500" />
-        </button>
-      </PopoverTrigger>
-    </div>
-    
-    <PopoverContent 
-      className="w-auto p-0 bg-white" 
-      align="start"
-      data-popover-content="true"
-      onMouseDown={(e) => e.stopPropagation()}
-    >
-      <CalendarPicker
-        mode="single"
-        selected={formData.nacimiento ? fromInputDate(formData.nacimiento) : undefined}
-        onSelect={(d) => setFormData({...formData, nacimiento: d ? toInputDate(d) : ''})}
-        fromYear={1900}
-        toYear={2100}
-        showInput={false}
-      />
-    </PopoverContent>
-  </Popover>
-</div>
+                        <div className="relative">
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Fecha de nacimiento
+                          </label>
+                          <Popover>
+                            <div className="relative">
+                              <input
+                                type="text"
+                                value={tempNacimiento || (formData.nacimiento ? formatDateToDisplay(formData.nacimiento) : '')}
+                                onChange={(e) => {
+                                  let val = e.target.value.replace(/[^\d/]/g, '');
+                                  if (val.length === 2 && !val.includes('/')) val = val + '/';
+                                  else if (val.length === 5 && val.split('/').length === 2) val = val + '/';
+                                  
+                                  if (val.length <= 10) {
+                                    setTempNacimiento(val);
+                                    
+                                    if (val.length === 10) {
+                                      const parsed = parseDateFromDisplay(val);
+                                      if (parsed) {
+                                        setFormData({...formData, nacimiento: toInputDate(parsed)});
+                                        setTempNacimiento('');
+                                      }
+                                    }
+                                  }
+                                }}
+                                onBlur={() => setTempNacimiento('')}
+                                placeholder="DD/MM/AAAA"
+                                className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
+                                maxLength={10}
+                              />
+                              <PopoverTrigger asChild>
+                                <button
+                                  type="button"
+                                  className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 hover:bg-gray-100 rounded transition-colors"
+                                >
+                                  <Calendar className="h-4 w-4 text-gray-500" />
+                                </button>
+                              </PopoverTrigger>
+                            </div>
+                            
+                            <PopoverContent 
+                              className="w-auto p-0 bg-white" 
+                              align="start"
+                            >
+                              <CalendarPicker
+                                mode="single"
+                                selected={formData.nacimiento ? fromInputDate(formData.nacimiento) : undefined}
+                                onSelect={(d) => setFormData({...formData, nacimiento: d ? toInputDate(d) : ''})}
+                                fromYear={1900}
+                                toYear={2100}
+                              />
+                            </PopoverContent>
+                          </Popover>
+                        </div>
 
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -602,6 +564,7 @@ const [tempFallecimiento, setTempFallecimiento] = useState('');
                       </div>
                     </div>
 
+                    {/* Bautismo */}
                     <div className="space-y-4">
                       <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
                         <Church size={18} className="text-green-600" />
@@ -611,64 +574,61 @@ const [tempFallecimiento, setTempFallecimiento] = useState('');
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div>
-  <label className="block text-sm font-medium text-gray-700 mb-2">
-    Fecha de bautismo
-  </label>
-  <Popover>
-    <div className="relative">
-      <input
-        type="text"
-        value={tempBautismo || (formData.bautismoFecha ? formatDateToDisplay(formData.bautismoFecha) : '')}
-        onChange={(e) => {
-          let val = e.target.value.replace(/[^\d/]/g, '');
-          if (val.length === 2 && !val.includes('/')) val = val + '/';
-          else if (val.length === 5 && val.split('/').length === 2) val = val + '/';
-          
-          if (val.length <= 10) {
-            setTempBautismo(val);
-            
-            if (val.length === 10) {
-              const parsed = parseDateFromDisplay(val);
-              if (parsed) {
-                setFormData({...formData, bautismoFecha: toInputDate(parsed)});
-                setTempBautismo('');
-              }
-            }
-          }
-        }}
-        onBlur={() => setTempBautismo('')}
-        placeholder="DD/MM/AAAA"
-        className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
-        maxLength={10}
-      />
-      <PopoverTrigger asChild>
-        <button
-          type="button"
-          className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 hover:bg-gray-100 rounded transition-colors"
-        >
-          <Calendar className="h-4 w-4 text-gray-500" />
-        </button>
-      </PopoverTrigger>
-    </div>
-    
-    <PopoverContent 
-      className="w-auto p-0 bg-white" 
-      align="start"
-      data-popover-content="true"
-      onMouseDown={(e) => e.stopPropagation()}
-    >
-      <CalendarPicker
-        mode="single"
-        selected={formData.bautismoFecha ? fromInputDate(formData.bautismoFecha) : undefined}
-        onSelect={(d) => setFormData({...formData, bautismoFecha: d ? toInputDate(d) : ''})}
-        fromYear={1900}
-        toYear={2100}
-        showInput={false}
-      />
-    </PopoverContent>
-  </Popover>
-</div>
+                        <div className="relative">
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Fecha de bautismo
+                          </label>
+                          <Popover>
+                            <div className="relative">
+                              <input
+                                type="text"
+                                value={tempBautismo || (formData.bautismoFecha ? formatDateToDisplay(formData.bautismoFecha) : '')}
+                                onChange={(e) => {
+                                  let val = e.target.value.replace(/[^\d/]/g, '');
+                                  if (val.length === 2 && !val.includes('/')) val = val + '/';
+                                  else if (val.length === 5 && val.split('/').length === 2) val = val + '/';
+                                  
+                                  if (val.length <= 10) {
+                                    setTempBautismo(val);
+                                    
+                                    if (val.length === 10) {
+                                      const parsed = parseDateFromDisplay(val);
+                                      if (parsed) {
+                                        setFormData({...formData, bautismoFecha: toInputDate(parsed)});
+                                        setTempBautismo('');
+                                      }
+                                    }
+                                  }
+                                }}
+                                onBlur={() => setTempBautismo('')}
+                                placeholder="DD/MM/AAAA"
+                                className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
+                                maxLength={10}
+                              />
+                              <PopoverTrigger asChild>
+                                <button
+                                  type="button"
+                                  className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 hover:bg-gray-100 rounded transition-colors"
+                                >
+                                  <Calendar className="h-4 w-4 text-gray-500" />
+                                </button>
+                              </PopoverTrigger>
+                            </div>
+                            
+                            <PopoverContent 
+                              className="w-auto p-0 bg-white" 
+                              align="start"
+                            >
+                              <CalendarPicker
+                                mode="single"
+                                selected={formData.bautismoFecha ? fromInputDate(formData.bautismoFecha) : undefined}
+                                onSelect={(d) => setFormData({...formData, bautismoFecha: d ? toInputDate(d) : ''})}
+                                fromYear={1900}
+                                toYear={2100}
+                              />
+                            </PopoverContent>
+                          </Popover>
+                        </div>
 
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -723,6 +683,7 @@ const [tempFallecimiento, setTempFallecimiento] = useState('');
                       </div>
                     </div>
 
+                    {/* Matrimonio */}
                     <div className="space-y-4">
                       <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
                         <Heart size={18} className="text-green-600" />
@@ -732,64 +693,61 @@ const [tempFallecimiento, setTempFallecimiento] = useState('');
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div>
-  <label className="block text-sm font-medium text-gray-700 mb-2">
-    Fecha de matrimonio
-  </label>
-  <Popover>
-    <div className="relative">
-      <input
-        type="text"
-        value={tempMatrimonio || (formData.matrimonioFecha ? formatDateToDisplay(formData.matrimonioFecha) : '')}
-        onChange={(e) => {
-          let val = e.target.value.replace(/[^\d/]/g, '');
-          if (val.length === 2 && !val.includes('/')) val = val + '/';
-          else if (val.length === 5 && val.split('/').length === 2) val = val + '/';
-          
-          if (val.length <= 10) {
-            setTempMatrimonio(val);
-            
-            if (val.length === 10) {
-              const parsed = parseDateFromDisplay(val);
-              if (parsed) {
-                setFormData({...formData, matrimonioFecha: toInputDate(parsed)});
-                setTempMatrimonio('');
-              }
-            }
-          }
-        }}
-        onBlur={() => setTempMatrimonio('')}
-        placeholder="DD/MM/AAAA"
-        className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
-        maxLength={10}
-      />
-      <PopoverTrigger asChild>
-        <button
-          type="button"
-          className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 hover:bg-gray-100 rounded transition-colors"
-        >
-          <Calendar className="h-4 w-4 text-gray-500" />
-        </button>
-      </PopoverTrigger>
-    </div>
-    
-    <PopoverContent 
-      className="w-auto p-0 bg-white" 
-      align="start"
-      data-popover-content="true"
-      onMouseDown={(e) => e.stopPropagation()}
-    >
-      <CalendarPicker
-        mode="single"
-        selected={formData.matrimonioFecha ? fromInputDate(formData.matrimonioFecha) : undefined}
-        onSelect={(d) => setFormData({...formData, matrimonioFecha: d ? toInputDate(d) : ''})}
-        fromYear={1900}
-        toYear={2100}
-        showInput={false}
-      />
-    </PopoverContent>
-  </Popover>
-</div>
+                        <div className="relative">
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Fecha de matrimonio
+                          </label>
+                          <Popover>
+                            <div className="relative">
+                              <input
+                                type="text"
+                                value={tempMatrimonio || (formData.matrimonioFecha ? formatDateToDisplay(formData.matrimonioFecha) : '')}
+                                onChange={(e) => {
+                                  let val = e.target.value.replace(/[^\d/]/g, '');
+                                  if (val.length === 2 && !val.includes('/')) val = val + '/';
+                                  else if (val.length === 5 && val.split('/').length === 2) val = val + '/';
+                                  
+                                  if (val.length <= 10) {
+                                    setTempMatrimonio(val);
+                                    
+                                    if (val.length === 10) {
+                                      const parsed = parseDateFromDisplay(val);
+                                      if (parsed) {
+                                        setFormData({...formData, matrimonioFecha: toInputDate(parsed)});
+                                        setTempMatrimonio('');
+                                      }
+                                    }
+                                  }
+                                }}
+                                onBlur={() => setTempMatrimonio('')}
+                                placeholder="DD/MM/AAAA"
+                                className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
+                                maxLength={10}
+                              />
+                              <PopoverTrigger asChild>
+                                <button
+                                  type="button"
+                                  className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 hover:bg-gray-100 rounded transition-colors"
+                                >
+                                  <Calendar className="h-4 w-4 text-gray-500" />
+                                </button>
+                              </PopoverTrigger>
+                            </div>
+                            
+                            <PopoverContent 
+                              className="w-auto p-0 bg-white" 
+                              align="start"
+                            >
+                              <CalendarPicker
+                                mode="single"
+                                selected={formData.matrimonioFecha ? fromInputDate(formData.matrimonioFecha) : undefined}
+                                onSelect={(d) => setFormData({...formData, matrimonioFecha: d ? toInputDate(d) : ''})}
+                                fromYear={1900}
+                                toYear={2100}
+                              />
+                            </PopoverContent>
+                          </Popover>
+                        </div>
 
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -810,6 +768,7 @@ const [tempFallecimiento, setTempFallecimiento] = useState('');
                       </div>
                     </div>
 
+                    {/* Defunción */}
                     <div className="space-y-4">
                       <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
                         <FileText size={18} className="text-green-600" />
@@ -819,64 +778,63 @@ const [tempFallecimiento, setTempFallecimiento] = useState('');
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div>
-  <label className="block text-sm font-medium text-gray-700 mb-2">
-    Fecha de defunción
-  </label>
-  <Popover>
-    <div className="relative">
-      <input
-        type="text"
-        value={tempFallecimiento || (formData.fallecimiento ? formatDateToDisplay(formData.fallecimiento) : '')}
-        onChange={(e) => {
-          let val = e.target.value.replace(/[^\d/]/g, '');
-          if (val.length === 2 && !val.includes('/')) val = val + '/';
-          else if (val.length === 5 && val.split('/').length === 2) val = val + '/';
-          
-          if (val.length <= 10) {
-            setTempFallecimiento(val);
-            
-            if (val.length === 10) {
-              const parsed = parseDateFromDisplay(val);
-              if (parsed) {
-                setFormData({...formData, fallecimiento: toInputDate(parsed)});
-                setTempFallecimiento('');
-              }
-            }
-          }
-        }}
-        onBlur={() => setTempFallecimiento('')}
-        placeholder="DD/MM/AAAA"
-        className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
-        maxLength={10}
-      />
-      <PopoverTrigger asChild>
-        <button
-          type="button"
-          className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 hover:bg-gray-100 rounded transition-colors"
-        >
-          <Calendar className="h-4 w-4 text-gray-500" />
-        </button>
-      </PopoverTrigger>
-    </div>
-    
-    <PopoverContent 
-      className="w-auto p-0 bg-white" 
-      align="start"
-      data-popover-content="true"
-      onMouseDown={(e) => e.stopPropagation()}
-    >
-      <CalendarPicker
-        mode="single"
-        selected={formData.fallecimiento ? fromInputDate(formData.fallecimiento) : undefined}
-        onSelect={(d) => setFormData({...formData, fallecimiento: d ? toInputDate(d) : ''})}
-        fromYear={1900}
-        toYear={2100}
-        showInput={false}
-      />
-    </PopoverContent>
-  </Popover>
-</div>
+                        {/* 🔥 Este popover abre hacia ARRIBA con side="top" */}
+                        <div className="relative">
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Fecha de defunción
+                          </label>
+                          <Popover>
+                            <div className="relative">
+                              <input
+                                type="text"
+                                value={tempFallecimiento || (formData.fallecimiento ? formatDateToDisplay(formData.fallecimiento) : '')}
+                                onChange={(e) => {
+                                  let val = e.target.value.replace(/[^\d/]/g, '');
+                                  if (val.length === 2 && !val.includes('/')) val = val + '/';
+                                  else if (val.length === 5 && val.split('/').length === 2) val = val + '/';
+                                  
+                                  if (val.length <= 10) {
+                                    setTempFallecimiento(val);
+                                    
+                                    if (val.length === 10) {
+                                      const parsed = parseDateFromDisplay(val);
+                                      if (parsed) {
+                                        setFormData({...formData, fallecimiento: toInputDate(parsed)});
+                                        setTempFallecimiento('');
+                                      }
+                                    }
+                                  }
+                                }}
+                                onBlur={() => setTempFallecimiento('')}
+                                placeholder="DD/MM/AAAA"
+                                className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
+                                maxLength={10}
+                              />
+                              <PopoverTrigger asChild>
+                                <button
+                                  type="button"
+                                  className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 hover:bg-gray-100 rounded transition-colors"
+                                >
+                                  <Calendar className="h-4 w-4 text-gray-500" />
+                                </button>
+                              </PopoverTrigger>
+                            </div>
+                            
+                            <PopoverContent 
+                              className="w-auto p-0 bg-white" 
+                              align="start"
+                              side="top"
+                            >
+                              <CalendarPicker
+                                mode="single"
+                                selected={formData.fallecimiento ? fromInputDate(formData.fallecimiento) : undefined}
+                                onSelect={(d) => setFormData({...formData, fallecimiento: d ? toInputDate(d) : ''})}
+                                fromYear={1900}
+                                toYear={2100}
+                              />
+                            </PopoverContent>
+                          </Popover>
+                        </div>
 
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -916,6 +874,7 @@ const [tempFallecimiento, setTempFallecimiento] = useState('');
                   </form>
                 </div>
 
+                {/* Footer */}
                 <div className="px-6 py-4 border-t border-gray-200 flex justify-end gap-3 bg-gray-50">
                   <button
                     type="button"

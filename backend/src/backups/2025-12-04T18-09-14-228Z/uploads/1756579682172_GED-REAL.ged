@@ -1,0 +1,4168 @@
+﻿0 HEAD
+1 SOUR RootsMagic
+2 NAME RootsMagic
+2 CORP RootsMagic, Inc.
+3 ADDR PO Box 495
+4 CONT Springville, UT 84663
+4 CONT USA
+3 PHON 1-800-ROOTSMAGIC
+3 WWW www.RootsMagic.com
+1 DEST RootsMagic
+1 DATE 30 AUG 2025
+1 FILE GED-REAL.ged
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+0 @I1@ INDI
+1 NAME Julia Graciela /Mariña Fahler/
+2 GIVN Julia Graciela
+2 SURN Mariña Fahler
+1 SEX F
+1 _UID 55C96DBEE3A74F15BFE7C37509D7CD632521
+1 _FSFTID LZTZ-1ZY
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 28 MAY 1952
+2 PLAC Ciudad de Buenos Aires, Argentina
+1 FAMS @F2@
+1 FAMC @F1@
+0 @I2@ INDI
+1 NAME Esteban Rubén /Salvarezza Mariña/
+2 GIVN Esteban Rubén
+2 SURN Salvarezza Mariña
+1 SEX M
+1 _UID 1A7397069F7547A79CF8A22706210ACF89A2
+1 _FSFTID GWYX-JSJ
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 28 MAR 1980
+2 PLAC Santa Rosa, Capital, La Pampa, Argentina
+1 FAMS @F8@
+1 FAMC @F2@
+0 @I3@ INDI
+1 NAME Paola Romina /Salvarezza Mariña/
+2 GIVN Paola Romina
+2 SURN Salvarezza Mariña
+1 SEX F
+1 _UID 2343B34BE2954E77B6E933A76651D743EAF0
+1 _FSFTID GWYX-7F7
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 21 JUN 1974
+2 PLAC Confluencia, Neuquén, Argentina
+1 FAMS @F5@
+1 FAMC @F2@
+0 @I4@ INDI
+1 NAME Milo Teodoro Gines /Mariña Martinez/
+2 GIVN Milo Teodoro Gines
+2 SURN Mariña Martinez
+1 SEX M
+1 _UID F9F90F27D55849E8822C81EFD8BB9BE5B75B
+1 _FSFTID L8BY-H4F
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 16 OCT 1923
+2 PLAC La Boca, Buenos Aires, Argentina
+1 DEAT
+2 DATE 23 AUG 1997
+2 PLAC San Martín de los Andes, Lácar, Neuquén, Argentina
+1 BURI
+2 DATE 23 AUG 1997
+2 PLAC San Martín de los Andes, Lácar, Neuquén, Argentina
+1 FAMS @F1@
+1 FAMC @F4@
+0 @I5@ INDI
+1 NAME Julia Carmen /Fahler Cosso/
+2 GIVN Julia Carmen
+2 SURN Fahler Cosso
+1 SEX F
+1 _UID EE8AA304D9684ED29BC115EF55B25C3275C2
+1 _FSFTID LFH4-M8J
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 14 AUG 1928
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 13 MAR 2016
+2 PLAC San Martín de los Andes, Lácar, Neuquén, Argentina
+1 BURI
+2 DATE 14 MAR 2016
+2 PLAC San Martín de los Andes, Lácar, Neuquén, Argentina
+1 FAMS @F1@
+1 FAMC @F3@
+0 @I6@ INDI
+1 NAME Rubén Alberto /Salvarezza Degregori/
+2 GIVN Rubén Alberto
+2 SURN Salvarezza Degregori
+1 SEX M
+1 _UID BF37B333CEF14E8BA76AC567122E69E43EC3
+1 _FSFTID LFH4-M6V
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 23 NOV 1938
+2 PLAC Concepción del Uruguay, Uruguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 10 OCT 2019
+2 PLAC Neuquén, Confluencia, Neuquén, Argentina
+1 BURI
+2 DATE 15 OCT 2019
+1 FAMS @F2@
+0 @I7@ INDI
+1 NAME Ianina Gabriela /Salvarezza Mariña/
+2 GIVN Ianina Gabriela
+2 SURN Salvarezza Mariña
+1 SEX F
+1 _UID 41A0D158F6054CA2B90E24D75FFDE5CAC0FB
+1 _FSFTID GWYX-GY1
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 13 JUL 1973
+2 PLAC Confluencia, Neuquén, Argentina
+1 FAMS @F6@
+1 FAMC @F2@
+0 @I8@ INDI
+1 NAME Ioana Emilia /Salvarezza Mariña/
+2 GIVN Ioana Emilia
+2 SURN Salvarezza Mariña
+1 SEX F
+1 _UID 8DE673D3E79F40F5A786AFE901093F1B9D52
+1 _FSFTID GWYX-DKP
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 25 FEB 1981
+2 PLAC Confluencia, Neuquén, Argentina
+1 FAMS @F7@
+1 FAMC @F2@
+0 @I9@ INDI
+1 NAME Nicolás Agustín /Pérez Salvarezza/
+2 GIVN Nicolás Agustín
+2 SURN Pérez Salvarezza
+1 SEX M
+1 _UID 86865800EFA34AB6B9DF656D7C85F265B8B1
+1 _FSFTID G2H1-5DP
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 26 MAR 1998
+2 PLAC Cipolletti, General Roca, Río Negro, Argentina
+1 FAMC @F5@
+0 @I10@ INDI
+1 NAME Marcela Irene /Mariña Fahler/
+2 GIVN Marcela Irene
+2 SURN Mariña Fahler
+1 SEX F
+1 _UID 09E4451338D245A2BA27AEC1EC59C16FFB19
+1 _FSFTID LFH4-M8G
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 19 SEP 1957
+2 PLAC Buenos Aires, Argentina
+1 FAMS @F24@
+1 FAMC @F1@
+0 @I11@ INDI
+1 NAME Andrés Miguel /Benítez Sánchez/
+2 GIVN Andrés Miguel
+2 SURN Benítez Sánchez
+1 SEX M
+1 _UID 17253CA3B4C04C31B1E32D3E154CF2BB1963
+1 _FSFTID G2CM-2SJ
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 8 AUG 1971
+2 PLAC Santa Cruz, Argentina
+1 FAMS @F6@
+0 @I12@ INDI
+1 NAME Mónica /Mariña Fahler/
+2 GIVN Mónica
+2 SURN Mariña Fahler
+1 SEX F
+1 _UID CFA6EA8098D94F49B19A82CCDF9A8530AF5A
+1 _FSFTID LFH4-MDS
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 2 FEB 1951
+2 PLAC Buenos Aires, Argentina
+1 FAMS @F9@
+1 FAMC @F1@
+0 @I13@ INDI
+1 NAME Rocío Valentina /Benítez Salvarezza/
+2 GIVN Rocío Valentina
+2 SURN Benítez Salvarezza
+1 SEX F
+1 _UID 308EE874F8774A2088200EF2A40A79AD6F22
+1 _FSFTID G2CM-32V
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 16 MAY 2007
+2 PLAC Neuquén, Confluencia, Neuquén, Argentina
+1 FAMC @F6@
+0 @I14@ INDI
+1 NAME Jose Vicente Eduardo /Mariña Martinez/
+2 GIVN Jose Vicente Eduardo
+2 SURN Mariña Martinez
+1 SEX M
+1 _UID E2D14ED191BB4E019B263E3B07D9C9B00090
+1 _FSFTID L8BY-636
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 18 JAN 1891
+2 PLAC Bares, Mañón, La Coruña, Galicia, España
+1 DEAT
+2 DATE 24 FEB 1927
+2 PLAC La Boca, Ciudad de Buenos Aires, Argentina
+1 FAMS @F4@
+1 FAMC @F13@
+0 @I15@ INDI
+1 NAME Justo Benigno /Fahler Larrosa/
+2 GIVN Justo Benigno
+2 SURN Fahler Larrosa
+1 SEX M
+1 _UID EA57A1190EE647DFB9777D7D048284EB34E4
+1 _FSFTID LDZJ-HPL
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 13 FEB 1899
+2 PLAC Gualeguaychú, Entre Ríos, Argentina
+1 DEAT
+2 DATE 23 NOV 1962
+2 PLAC Ituzaingó, Morón, Buenos Aires, Argentina
+1 BURI
+2 PLAC Morón, Buenos Aires, Argentina
+1 FAMS @F3@
+1 FAMC @F12@
+0 @I16@ INDI
+1 NAME Ariel Gustavo /Dalino Kuchak/
+2 GIVN Ariel Gustavo
+2 SURN Dalino Kuchak
+1 SEX M
+1 _UID AB0DC6DE2EAE4F6D9844EBDA83519C646915
+1 _FSFTID G2CM-MFG
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 24 FEB 1977
+2 PLAC Caleta Olivia, Deseado, Santa Cruz, Argentina
+1 FAMS @F7@
+0 @I17@ INDI
+1 NAME Juana Delfina /Cosso Percivale/
+2 GIVN Juana Delfina
+2 SURN Cosso Percivale
+1 SEX F
+1 _UID 3E1CBAD829C64DEAA46B707ED9C2D7EF70BC
+1 _FSFTID L8BY-HF5
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1 FEB 1902
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 6 NOV 1994
+2 PLAC Lobos, Buenos Aires, Argentina
+1 FAMS @F3@
+1 FAMC @F10@
+0 @I18@ INDI
+1 NAME Abril Michelle /Dalino Salvarezza/
+2 GIVN Abril Michelle
+2 SURN Dalino Salvarezza
+1 SEX F
+1 _UID 5A3E3F535EDE43A6BF73AC17EE6A48F4D863
+1 _FSFTID G2CM-SWD
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 19 NOV 1998
+2 PLAC Neuquén, Confluencia, Neuquén, Argentina
+1 FAMS @F11@
+1 FAMC @F7@
+0 @I19@ INDI
+1 NAME Lucas Agustín /Dalino Salvarezza/
+2 GIVN Lucas Agustín
+2 SURN Dalino Salvarezza
+1 SEX M
+1 _UID 652925D869C74BCE86790837085DC7529033
+1 _FSFTID G2CM-R3G
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 28 APR 2001
+2 PLAC Neuquén, Confluencia, Neuquén, Argentina
+1 FAMC @F7@
+0 @I20@ INDI
+1 NAME Klavdija /Kuharic/
+2 GIVN Klavdija
+2 SURN Kuharic
+1 SEX F
+1 _UID 0EB39A54848941019257F7A686122BD41B24
+1 _FSFTID G2H1-1B2
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 2 FEB 1982
+2 PLAC Eslovenia
+1 FAMS @F8@
+0 @I21@ INDI
+1 NAME Ania Irina /Salvarezza Kuharic/
+2 GIVN Ania Irina
+2 SURN Salvarezza Kuharic
+1 SEX F
+1 _UID C074F633FBD741D1ADABDC8FB37EF5E30DD6
+1 _FSFTID P3S4-JDK
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 PLAC Eslovenia
+1 FAMC @F8@
+0 @I22@ INDI
+1 NAME María Guadalupe /Benítez Salvarezza/
+2 GIVN María Guadalupe
+2 SURN Benítez Salvarezza
+1 SEX F
+1 _UID B40C7E18BB2B4A6B81094483324C7180B1D0
+1 _FSFTID G2H1-YGZ
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 14 JUL 2009
+2 PLAC Neuquén, Confluencia, Neuquén, Argentina
+1 FAMC @F6@
+0 @I23@ INDI
+1 NAME Esperanza /Martínez Galdo/
+2 GIVN Esperanza
+2 SURN Martínez Galdo
+1 SEX F
+1 _UID C1963FFA5F2E455D8E570320844B0FF79CEC
+1 _FSFTID L6MP-VFV
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 17 MAR 1891
+2 PLAC Espasante, Ortigueira, La Coruña, Galicia, España
+1 DEAT
+2 DATE 2 JUL 1959
+2 PLAC La Boca, Comuna 4, Ciudad de Buenos Aires, Argentina
+1 FAMS @F4@
+1 FAMC @F14@
+0 @I24@ INDI
+1 NAME Norberto Ricardo /Stocchetti Canda/
+2 GIVN Norberto Ricardo
+2 SURN Stocchetti Canda
+1 SEX M
+1 _UID BC16EF5476054CFAAB8EDB820AFC4F3EFFBF
+1 _FSFTID LFH4-MD4
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 16 NOV 1946
+2 PLAC Ciudad de Buenos Aires, Argentina
+1 FAMS @F9@
+0 @I25@ INDI
+1 NAME Juana Idalina /Fahler Cosso/
+2 GIVN Juana Idalina
+2 SURN Fahler Cosso
+1 SEX F
+1 _UID 37E1B1CE11AC4BC4ACE12EA3D51947CEC48A
+1 _FSFTID L8BY-HNG
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 27 JAN 1924
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 11 JUL 1990
+1 BURI
+1 FAMS @F21@
+1 FAMC @F3@
+0 @I26@ INDI
+1 NAME Aníbal Héctor /Fahler Cosso/
+2 GIVN Aníbal Héctor
+2 SURN Fahler Cosso
+1 SEX M
+1 _UID D2E7A344CDD4454D99B6A5F97CD78082159A
+1 _FSFTID LDZF-BX8
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 15 JAN 1925
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F15@
+1 FAMC @F3@
+0 @I27@ INDI
+1 NAME Élida Rosa Delfina /Fahler Cosso/
+2 GIVN Élida Rosa Delfina
+2 SURN Fahler Cosso
+1 SEX F
+1 _UID B31E9319405846F990F2D1620B4FFBF9577C
+1 _FSFTID L8BY-HJF
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 24 JUN 1926
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE ABT 2011
+2 PLAC Ciudad de Buenos Aires, Argentina
+1 FAMS @F20@
+1 FAMC @F3@
+0 @I28@ INDI
+1 NAME Celia Estela /Fahler Cosso/
+2 GIVN Celia Estela
+2 SURN Fahler Cosso
+1 SEX F
+1 _UID 8668310EF3A04515B6453CE85DBE7F8F624D
+1 _FSFTID LFH4-M8D
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 25 JUL 1927
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 26 FEB 2017
+2 PLAC Pinamar, Buenos Aires, Argentina
+1 FAMS @F16@
+1 FAMC @F3@
+0 @I29@ INDI
+1 NAME Justo Alfredo /Fahler Cosso/
+2 GIVN Justo Alfredo
+2 SURN Fahler Cosso
+1 SEX M
+1 _UID 8B87DACCD30A4B19AAF2C3163421DDEC8CC9
+1 _FSFTID LDXV-JP7
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 5 OCT 1929
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 30 JAN 1994
+2 PLAC Buenos Aires, Buenos Aires, Argentina
+1 FAMS @F19@
+1 FAMC @F3@
+0 @I30@ INDI
+1 NAME María Antonia /Fahler Cosso/
+2 GIVN María Antonia
+2 SURN Fahler Cosso
+1 SEX F
+1 _UID 23A4C379CEBE4633BAA3933ECBB1E211A5F5
+1 _FSFTID L8BY-HV3
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 13 MAR 1931
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 22 OCT 1998
+1 BURI
+1 FAMS @F17@
+1 FAMC @F3@
+0 @I31@ INDI
+1 NAME Ana Valentina /Fahler Cosso/
+2 GIVN Ana Valentina
+2 SURN Fahler Cosso
+1 SEX F
+1 _UID 2A84A398FD27415EB95AED2DE38DCB788C4D
+1 _FSFTID L8BY-HVB
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 22 MAY 1932
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 22 OCT 1998
+1 BURI
+1 FAMS @F18@
+1 FAMC @F3@
+0 @I32@ INDI
+1 NAME Juan Orlando /Fahler Cosso/
+2 GIVN Juan Orlando
+2 SURN Fahler Cosso
+1 SEX M
+1 _UID 410E2B7CD52A418BA8E3C95F7DD6C28F184E
+1 _FSFTID L8BY-HDN
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 12 DEC 1934
+2 PLAC Galarza, Entre Ríos, Argentina
+1 DEAT
+2 DATE 22 DEC 1935
+2 PLAC Galarza, Provincia de Entre Rios, Argentina
+1 FAMC @F3@
+0 @I33@ INDI
+1 NAME Franco /Melideo/
+2 GIVN Franco
+2 SURN Melideo
+1 SEX M
+1 _UID F537AD6B613244E8B06525CA214B7BC0AE1E
+1 _FSFTID P3S4-7YQ
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 PLAC Neuquén, Argentina
+1 FAMS @F11@
+0 @I34@ INDI
+1 NAME Ricardo /Fahler Cosso/
+2 GIVN Ricardo
+2 SURN Fahler Cosso
+1 SEX M
+1 _UID 9213EE916CE64A3AAAC9AF4231BE70702DFF
+1 _FSFTID LFH4-M67
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 19 JUN 1936
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 FAMS @F22@
+1 FAMS @F23@
+1 FAMC @F3@
+0 @I35@ INDI
+1 NAME Bizantino /Melideo Dalino/
+2 GIVN Bizantino
+2 SURN Melideo Dalino
+1 SEX M
+1 _UID 780CEE64CD884453B97096C54BFDA980B77D
+1 _FSFTID P3BL-41Z
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 20 JUL 2025
+2 PLAC Neuquén,  Departamento  Confluencia,  Provincia del Neuquén
+1 FAMC @F11@
+0 @I36@ INDI
+1 NAME Valentino Giuliano /Pérez Salvarezza/
+2 GIVN Valentino Giuliano
+2 SURN Pérez Salvarezza
+1 SEX M
+1 _UID 7FD0378996B844C99027AC38E6F08CE64DD7
+1 _FSFTID G2CM-784
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 10 DEC 2009
+2 PLAC Benidorm, Alicante, Comunidad Valenciana, España
+1 FAMC @F5@
+0 @I37@ INDI
+1 NAME Enrique /Pérez Martínez/
+2 GIVN Enrique
+2 SURN Pérez Martínez
+1 SEX M
+1 _UID 3FA1D66657C541ECA9F7ECA54287531CCECB
+1 _FSFTID G2CM-8BH
+1 CHAN
+2 DATE 30 AUG 2025
+1 FAMS @F5@
+0 @I38@ INDI
+1 NAME Juan /Fahler Jenny/
+2 GIVN Juan
+2 SURN Fahler Jenny
+1 SEX M
+1 _UID D9FB5070A5874DF1BB708CA878567700A2A1
+1 _FSFTID L8BY-6Q2
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1877
+2 PLAC Suiza
+1 DEAT
+2 DATE 11 NOV 1955
+2 PLAC Buenos Aires, Argentina
+1 BURI
+2 DATE 12 NOV 1955
+2 PLAC Ciudad de Buenos Aires, Argentina
+1 CHR
+2 PLAC Suiza
+1 FAMS @F12@
+1 FAMC @F34@
+0 @I39@ INDI
+1 NAME Adriana Elvira /Cantoni/
+2 GIVN Adriana Elvira
+2 SURN Cantoni
+1 SEX F
+1 _UID DB7C08882640409FB1CCC65F80CFDB908839
+1 _FSFTID LFH4-MDN
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1926
+1 FAMS @F15@
+0 @I40@ INDI
+1 NAME Jerónimo Daniel /Donnelly/
+2 GIVN Jerónimo Daniel
+2 SURN Donnelly
+1 SEX M
+1 _UID FCFB152F700E45149524B7AD56B0E8D0ED95
+1 _FSFTID L6PP-6BD
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1932
+2 PLAC Ciudad de Buenos Aires, Argentina
+1 DEAT
+2 DATE 17 JUN 2010
+2 PLAC Ciudad de Buenos Aires, Argentina
+1 FAMS @F16@
+0 @I41@ INDI
+1 NAME Maria Antonia /Martinez Castro/
+2 GIVN Maria Antonia
+2 SURN Martinez Castro
+1 SEX F
+1 _UID E87A3A435F174970ABDEAE8CCB3273B2F308
+1 _FSFTID L8BY-HTD
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 24 DEC 1856
+1 DEAT
+2 DATE 27 FEB 1953
+1 FAMS @F13@
+1 FAMC @F29@
+0 @I42@ INDI
+1 NAME Jose /Mariña Juncal/
+2 GIVN Jose
+2 SURN Mariña Juncal
+1 SEX M
+1 _UID 92672E21BD9A42D4B2D31A8B23C1CFB84AA9
+1 _FSFTID L8BY-HGS
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 30 AUG 1863
+2 PLAC Estaca de Bares .españa
+1 DEAT
+2 DATE 5 JAN 1952
+1 FAMS @F13@
+1 FAMC @F25@
+0 @I43@ INDI
+1 NAME José Luis /Areces/
+2 GIVN José Luis
+2 SURN Areces
+1 SEX M
+1 _UID 3F04114F4596418D9938497EF081F11258FD
+1 _FSFTID L8BY-HKG
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 8 AUG 1925
+2 PLAC Olloniego, Oviedo, Asturias, España
+1 DEAT
+2 DATE 7 NOV 1994
+2 PLAC Ciudad de Buenos Aires, Argentina
+1 FAMS @F18@
+0 @I44@ INDI
+1 NAME Jozeph /Huisman Bego/
+2 GIVN Jozeph
+2 SURN Huisman Bego
+1 SEX M
+1 _UID DBED730C458A4D2682CD36BC717397E227C3
+1 _FSFTID LDXJ-1B5
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 3 JUL 1912
+2 PLAC Rotterdam, South Holland, Netherlands
+1 DEAT
+2 DATE 5 MAY 1997
+2 PLAC Buenos Aires, Argentina
+1 FAMS @F17@
+0 @I45@ INDI
+1 NAME Generosa /Galdo/
+2 GIVN Generosa
+2 SURN Galdo
+1 SEX F
+1 _UID FEEB599046AF4A27AD48A9D7CBF3307B164C
+1 _FSFTID L6MP-2P9
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 PLAC Céltigos, Ortigueira, La Coruña, Galicia, España
+1 DEAT
+2 PLAC Argentina
+1 FAMS @F14@
+1 FAMC @F26@
+0 @I46@ INDI
+1 NAME Eva Catalina /Karle Schmidt/
+2 GIVN Eva Catalina
+2 SURN Karle Schmidt
+1 SEX F
+1 _UID C1B3666E4BE04654AACA0AF6A2096FE883D4
+1 _FSFTID L6PP-XDX
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 26 MAY 1928
+1 DEAT
+2 DATE 6 NOV 2005
+2 PLAC Ituzaingó, Ituzaingó, Buenos Aires, Argentina
+1 FAMS @F19@
+0 @I47@ INDI
+1 NAME Juan Ángel /García Fraga/
+2 GIVN Juan Ángel
+2 SURN García Fraga
+1 SEX M
+1 _UID E6264B74A57744099D14B62CEC45E39D78E0
+1 _FSFTID L8BY-64V
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 10 OCT 1918
+1 DEAT
+2 DATE 16 AUG 1996
+1 BURI
+1 FAMS @F20@
+0 @I48@ INDI
+1 NAME Alfredo Giovanni Mario Raffaele /Manara Cerruti/
+2 GIVN Alfredo Giovanni Mario Raffaele
+2 SURN Manara Cerruti
+1 SEX M
+1 _UID 6DEB7AB1C09C484AB7D67311CF38A6A9D8CE
+1 _FSFTID L8BY-64H
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 20 SEP 1910
+2 PLAC Genova, Liguria, Italia
+1 DEAT
+2 DATE 25 AUG 1993
+1 FAMS @F21@
+0 @I49@ INDI
+1 NAME Julia /Semsey/
+2 GIVN Julia
+2 SURN Semsey
+1 SEX F
+1 _UID 709C13A0EA354F5C941816B004379E08DC14
+1 _FSFTID LFH4-M8M
+1 CHAN
+2 DATE 30 AUG 2025
+1 FAMS @F22@
+0 @I50@ INDI
+1 NAME Giovanni Battista /Cosso Balestra/
+2 GIVN Giovanni Battista
+2 SURN Cosso Balestra
+1 SEX M
+1 _UID 1D95E38CAFE6426FA10C573055BE20D2A098
+1 _FSFTID L6PG-M8T
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 3 MAY 1875
+2 PLAC Ronco Scrivia, Genova, Liguria, Italia
+1 CHR
+2 DATE 4 MAY 1875
+2 PLAC San Martino Vescovo, Ronco Scrivia, Genova, Liguria, Italia
+1 DEAT
+2 DATE 26 AUG 1967
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 FAMS @F10@
+1 FAMC @F28@
+0 @I51@ INDI
+1 NAME Orietta /Menutti/
+2 GIVN Orietta
+2 SURN Menutti
+1 SEX F
+1 _UID 8DED10E0EEA94B92A01E4736F54E1152BF2A
+1 _FSFTID LFH4-M6T
+1 CHAN
+2 DATE 30 AUG 2025
+1 FAMS @F23@
+0 @I52@ INDI
+1 NAME Delfina /Percivale Cosso/
+2 GIVN Delfina
+2 SURN Percivale Cosso
+1 SEX F
+1 _UID 7B41384C33AC4136A2490B1E74D53384AAC3
+1 _FSFTID KGNV-S5F
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1875
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 26 JUL 1956
+2 PLAC Lanús, Buenos Aires, Argentina
+1 FAMS @F10@
+1 FAMC @F27@
+0 @I53@ INDI
+1 NAME Jorge Ricardo /Perez Talento/
+2 GIVN Jorge Ricardo
+2 SURN Perez Talento
+1 SEX M
+1 _UID 178FE544EC13407BB21BDE2C0E82CB8944B9
+1 _FSFTID LFH4-M68
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 25 NOV 1950
+2 PLAC Buenos Aires, Argentina
+1 FAMS @F24@
+0 @I54@ INDI
+1 NAME Vicente /Martínez Rodríguez/
+2 GIVN Vicente
+2 SURN Martínez Rodríguez
+1 SEX M
+1 _UID 3BFE553EFCB1496EB8C8BEAC1125DEFE2CF6
+1 _FSFTID L6MP-2KX
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 PLAC Céltigos, Ortigueira, La Coruña, Galicia, España
+1 DEAT
+2 PLAC Galicia, España
+1 FAMS @F14@
+1 FAMC @F30@
+0 @I55@ INDI
+1 NAME Carmen Arsenia /Larrosa/
+2 GIVN Carmen Arsenia
+2 SURN Larrosa
+1 SEX F
+1 _UID C9E25710BD514E9293B91DB1DE4F9D9074DE
+1 _FSFTID L8BY-6CX
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 14 DEC 1879
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 13 FEB 1883
+2 PLAC San Antonio, Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 PLAC Ituzaingó, Morón, Buenos Aires, Argentina
+1 BURI
+1 FAMS @F12@
+1 FAMC @F33@
+0 @I56@ INDI
+1 NAME Rosa /Juncal Fernández/
+2 GIVN Rosa
+2 SURN Juncal Fernández
+1 SEX F
+1 _UID F19D105497854C6893764DC3A98667DA4B1F
+1 _FSFTID LD54-7S5
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 PLAC Bares, La Coruña, Galicia, España
+1 DEAT
+2 PLAC Bares, Mañón, La Coruña, Galicia, España
+1 FAMS @F25@
+0 @I57@ INDI
+1 NAME Francisco /Mariña Martinez/
+2 GIVN Francisco
+2 SURN Mariña Martinez
+1 SEX M
+1 _UID 0579195D9C14493680D5965BDE1434DA697E
+1 _FSFTID L8BY-HPD
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 21 JUN 1889
+1 DEAT
+1 FAMC @F13@
+0 @I58@ INDI
+1 NAME Maria Evangelina /Mariña Juncal/
+2 GIVN Maria Evangelina
+2 SURN Mariña Juncal
+1 SEX F
+1 _UID BBD62CFF6A424663975DFE5EE06849736564
+1 _FSFTID L8BY-HYQ
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 14 JUN 1900
+1 DEAT
+2 DATE 22 AUG 1989
+1 FAMC @F13@
+0 @I59@ INDI
+1 NAME Jose Antonio /Mariña Martinez/
+2 GIVN Jose Antonio
+2 SURN Mariña Martinez
+1 SEX M
+1 _UID CC6B44458E4244ACBFF0136E43BF764D7512
+1 _FSFTID L8BY-6BZ
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+1 DEAT
+1 FAMC @F13@
+0 @I60@ INDI
+1 NAME Vicente /Galdo Díaz/
+2 GIVN Vicente
+2 SURN Galdo Díaz
+1 SEX M
+1 _UID 459BF1F2B55B476B80F11298797D099433C7
+1 _FSFTID PM3M-GJT
+1 CHAN
+2 DATE 30 AUG 2025
+1 DEAT
+1 FAMS @F26@
+0 @I61@ INDI
+1 NAME Josefa /Martínez Simón/
+2 GIVN Josefa
+2 SURN Martínez Simón
+1 SEX F
+1 _UID C81970B0C1944771826F152BFC9BA177EE16
+1 _FSFTID PM3M-19Z
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 PLAC Loiba, Ortigueira, La Coruña, Galicia, España
+1 DEAT
+1 FAMS @F26@
+0 @I62@ INDI
+1 NAME Francisco /Mariña y Vázquez/
+2 GIVN Francisco
+2 SURN Mariña y Vázquez
+1 SEX M
+1 _UID 8E6FFAC7C0934FB69CF0162BA64091E53F1F
+1 _FSFTID LD54-Q1P
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1820
+2 PLAC Bares, La Coruña, Galicia, España
+1 DEAT
+2 PLAC Bares, La Coruña, Galicia, España
+1 FAMS @F25@
+0 @I63@ INDI
+1 NAME Dora /Galdo/
+2 GIVN Dora
+2 SURN Galdo
+1 SEX F
+1 _UID 30ACE57CF1474F1282045575B9AE9C6790F7
+1 _FSFTID GSSB-QHM
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 PLAC Argentina
+1 DEAT
+2 PLAC Argentina
+1 FAMC @F14@
+0 @I64@ INDI
+1 NAME José /Martínez Galdo/
+2 GIVN José
+2 SURN Martínez Galdo
+1 SEX M
+1 _UID 58B6C18E77AE4A71878E40618D786166BF1C
+1 _FSFTID GSSY-B39
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 PLAC Espasante, Ortigueira, La Coruña, Galicia, España
+1 DEAT
+2 PLAC Argentina
+1 FAMC @F14@
+0 @I65@ INDI
+1 NAME Purificación /Martínez Galdo/
+2 GIVN Purificación
+2 SURN Martínez Galdo
+1 SEX F
+1 _UID 940780AC969B499C9A83B27539D4942AECF8
+1 _FSFTID GSSY-BZZ
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1899
+2 PLAC Espasante, Ortigueira, La Coruña, Galicia, España
+1 BURI
+2 DATE 1991
+2 PLAC Cementerio De Boulogne, Ciudad de Buenos Aires, Argentina
+1 DEAT
+2 PLAC Argentina
+1 FAMS @F31@
+1 FAMC @F14@
+0 @I66@ INDI
+1 NAME Rogelia /Martínez Galdo/
+2 GIVN Rogelia
+2 SURN Martínez Galdo
+1 SEX F
+1 _UID 587691EED0284CEEBAF97EB4BA76FDED7E84
+1 _FSFTID GSSB-8L8
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1894
+2 PLAC Espasante, Ortigueira, La Coruña, Galicia, España
+1 BURI
+2 DATE 26 DEC 1931
+2 PLAC Ciudad de Buenos Aires, Argentina
+1 DEAT
+2 PLAC Argentina
+1 FAMS @F32@
+1 FAMC @F14@
+0 @I67@ INDI
+1 NAME Leonor /Martínez Galdo/
+2 GIVN Leonor
+2 SURN Martínez Galdo
+1 SEX F
+1 _UID 237FCB6FB001489C8C35D82C40FE67A78223
+1 _FSFTID GSSY-TDH
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 PLAC Espasante, Ortigueira, La Coruña, Galicia, España
+1 DEAT
+2 PLAC Argentina
+1 FAMC @F14@
+0 @I68@ INDI
+1 NAME Maria Rosa Antonia /Mariña Martinez/
+2 GIVN Maria Rosa Antonia
+2 SURN Mariña Martinez
+1 SEX F
+1 _UID 4D3367B684124B3B9D1552D45071CAF30F49
+1 _FSFTID L8BY-HBD
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 21 MAR 1893
+1 DEAT
+2 DATE 9 MAY 1987
+1 FAMC @F13@
+0 @I69@ INDI
+1 NAME Fidel /Mariña Martinez/
+2 GIVN Fidel
+2 SURN Mariña Martinez
+1 SEX M
+1 _UID DFC2A31EF55C4B79A53E23305BE1A818A970
+1 _FSFTID L8BY-HGP
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE ABT 1894
+1 DEAT
+1 FAMC @F13@
+0 @I70@ INDI
+1 NAME Luis Amadeo /Cosso Percivale/
+2 GIVN Luis Amadeo
+2 SURN Cosso Percivale
+1 SEX M
+1 _UID BCC09FACB6B44CCC83AD73892E4708817326
+1 _FSFTID GGSZ-S9B
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1899
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 7 JUN 1899
+1 FAMC @F10@
+0 @I71@ INDI
+1 NAME Emiliano Basilio /Cosso Percivale/
+2 GIVN Emiliano Basilio
+2 SURN Cosso Percivale
+1 SEX M
+1 _UID F7B99735166D4E778CABF0259350064D4627
+1 _FSFTID G922-31L
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 10 JAN 1906
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMC @F10@
+0 @I72@ INDI
+1 NAME María Luisa Luján /Cosso Percivale/
+2 GIVN María Luisa Luján
+2 SURN Cosso Percivale
+1 SEX F
+1 _UID 4E6EAE3E59D5414AA0BE26255BEA30FF7ECB
+1 _FSFTID L8BY-6Z9
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 13 MAY 1900
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F35@
+1 FAMC @F10@
+0 @I73@ INDI
+1 NAME Juan Santiago /Cosso Percivale/
+2 GIVN Juan Santiago
+2 SURN Cosso Percivale
+1 SEX M
+1 _UID D608D35E82F0420B84775F2D6DDCD4A41697
+1 _FSFTID G922-36F
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 30 DEC 1907
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 18 APR 1908
+2 PLAC Argentina
+1 DEAT
+1 FAMS @F42@
+1 FAMC @F10@
+0 @I74@ INDI
+1 NAME María Delfina /Cosso Percivale/
+2 GIVN María Delfina
+2 SURN Cosso Percivale
+1 SEX F
+1 _UID 9799C29E4FD643E5840CD0B53699B191030D
+1 _FSFTID L6PG-R49
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 18 JUL 1909
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F41@
+1 FAMC @F10@
+0 @I75@ INDI
+1 NAME Emilio Eduardo /Cosso/
+2 GIVN Emilio Eduardo
+2 SURN Cosso
+1 SEX M
+1 _UID 25C2D4CDAC724CE682D48C09ED7B872FE166
+1 _FSFTID GRSD-WQX
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 6 SEP 1916
+1 DEAT
+2 DATE 13 SEP 1916
+1 FAMC @F10@
+0 @I76@ INDI
+1 NAME Isabel Valentina /Cosso Percivale/
+2 GIVN Isabel Valentina
+2 SURN Cosso Percivale
+1 SEX F
+1 _UID 6BF63FECA3134101A277C1F09503F98F6EF5
+1 _FSFTID L8BY-6ZK
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 16 FEB 1913
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 4 OCT 1913
+2 PLAC San Antonio de Padua, Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 2007
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 BURI
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 FAMC @F10@
+0 @I77@ INDI
+1 NAME Humberto Natalio /Cosso Percivale/
+2 GIVN Humberto Natalio
+2 SURN Cosso Percivale
+1 SEX M
+1 _UID 9D243DB5BBC14EFC9CCC3131EB9D8AA0F530
+1 _FSFTID L6PG-R8S
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 4 DEC 1910
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 24 JUN 1911
+2 PLAC San Antonio de Padua, Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 29 NOV 1984
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 FAMS @F36@
+1 FAMC @F10@
+0 @I78@ INDI
+1 NAME Blanca Nieves /Cosso Percivale/
+2 GIVN Blanca Nieves
+2 SURN Cosso Percivale
+1 SEX F
+1 _UID E33268AA34E24EFBBABBB0CA513DF1302481
+1 _FSFTID G922-73Q
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 15 DEC 1914
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 12 MAR 1915
+2 PLAC San Antonio de Padua, Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 1995
+1 FAMS @F37@
+1 FAMC @F10@
+0 @I79@ INDI
+1 NAME Raquela Maria /Cosso Percivale/
+2 GIVN Raquela Maria
+2 SURN Cosso Percivale
+1 SEX F
+1 _UID 5932F505B3024328AED607E88A215C1E3D02
+1 _FSFTID L6PG-5YJ
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 25 MAY 1898
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 3 SEP 1898
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 3 SEP 1971
+2 PLAC La Emilia, San Nicolás, Buenos Aires, Argentina
+1 FAMS @F38@
+1 FAMC @F10@
+0 @I80@ INDI
+1 NAME Maria Delfina /Cosso/
+2 GIVN Maria Delfina
+2 SURN Cosso
+1 SEX F
+1 _UID BE1189C91BD94C8DA17AE75A87D7C5E24FAD
+1 _FSFTID GR3S-K7N
+1 CHAN
+2 DATE 30 AUG 2025
+1 DEAT
+1 FAMC @F10@
+0 @I81@ INDI
+1 NAME Rosa Raquel /Cosso Percivale/
+2 GIVN Rosa Raquel
+2 SURN Cosso Percivale
+1 SEX F
+1 _UID 3E92C04096E84677A282BCA74CE363012502
+1 _FSFTID L6PG-576
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 4 DEC 1895
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 14 MAR 1896
+2 PLAC San Antonio de Padua, Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 14 JUN 1997
+1 FAMS @F39@
+1 FAMC @F10@
+0 @I82@ INDI
+1 NAME Maria Isabel Emilia /Cosso/
+2 GIVN Maria Isabel Emilia
+2 SURN Cosso
+1 SEX F
+1 _UID 4CCF6167B7A5434CA214E0ED6C66D3EFE553
+1 _FSFTID GR9Q-TDM
+1 CHAN
+2 DATE 30 AUG 2025
+1 DEAT
+1 FAMC @F10@
+0 @I83@ INDI
+1 NAME Amadeo Romualdo /Cosso/
+2 GIVN Amadeo Romualdo
+2 SURN Cosso
+1 SEX M
+1 _UID E3F3A6B545F148BAB3A957508A20C6310DB9
+1 _FSFTID GR9G-1DG
+1 CHAN
+2 DATE 30 AUG 2025
+1 DEAT
+1 FAMC @F10@
+0 @I84@ INDI
+1 NAME Amadeo Romualdo /Cosso Percivale/
+2 GIVN Amadeo Romualdo
+2 SURN Cosso Percivale
+1 SEX M
+1 _UID A93DA0DA88BF4072998E7C7C340A96337F57
+1 _FSFTID L6PG-R9V
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 7 FEB 1904
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 15 NOV 1994
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 FAMS @F40@
+1 FAMC @F10@
+0 @I85@ INDI
+1 NAME José Enrique /Cosso Percivale/
+2 GIVN José Enrique
+2 SURN Cosso Percivale
+1 SEX M
+1 _UID 1699813870684D9793DD546F3E460D462E36
+1 _FSFTID L6PG-RP6
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 5 SEP 1916
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMC @F10@
+0 @I86@ INDI
+1 NAME Francisco /Martínez Vazquez/
+2 GIVN Francisco
+2 SURN Martínez Vazquez
+1 SEX M
+1 _UID 87FACEA110B9456F8FE1B0B9EE868271ADEE
+1 _FSFTID L6MP-KYC
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 PLAC Bares, Mañón, La Coruña, Galicia, España
+1 DEAT
+2 PLAC Bares, Mañón, La Coruña, Galicia, España
+1 FAMS @F29@
+0 @I87@ INDI
+1 NAME Rita /Castro Moreda/
+2 GIVN Rita
+2 SURN Castro Moreda
+1 SEX F
+1 _UID 96D259D270E940C29861B77FE794E3BA35CF
+1 _FSFTID L6MP-2QZ
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 10 MAR 1825
+1 DEAT
+1 FAMS @F29@
+0 @I88@ INDI
+1 NAME José Martínez Albaciñeira //
+2 GIVN José Martínez Albaciñeira
+1 SEX M
+1 _UID 01E16FE0965D4770BF052AA637CD8E515273
+1 _FSFTID PM39-Q6K
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 PLAC Céltigos, Ortigueira, La Coruña, Galicia, España
+1 DEAT
+1 FAMS @F30@
+0 @I89@ INDI
+1 NAME Rosa /Rodríguez/
+2 GIVN Rosa
+2 SURN Rodríguez
+1 SEX F
+1 _UID 76868FACBA59433BB2DEAB4337122C8D48EE
+1 _FSFTID PM3M-N99
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 PLAC Céltigos, Ortigueira, La Coruña, Galicia, España
+1 DEAT
+1 FAMS @F30@
+0 @I90@ INDI
+1 NAME Jose /Lorenzo/
+2 GIVN Jose
+2 SURN Lorenzo
+1 SEX M
+1 _UID 5CD86ADAEA2C4657A85BF798076A77FA9FAE
+1 _FSFTID G8Y4-H8W
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 12 APR 1896
+2 PLAC Vivero, Lugo, Galicia, España
+1 DEAT
+2 DATE 19 JUN 1956
+2 PLAC Ciudad de Buenos Aires, Argentina
+1 FAMS @F31@
+0 @I91@ INDI
+1 NAME Manuel /Lorenzo/
+2 GIVN Manuel
+2 SURN Lorenzo
+1 SEX M
+1 _UID 735EF917E23D414C93EF16E4D59525AF470D
+1 _FSFTID PQPK-9V8
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 26 MAR 1890
+2 PLAC España
+1 DEAT
+2 PLAC Ciudad de Buenos Aires, Argentina
+1 FAMS @F32@
+0 @I92@ INDI
+1 NAME Juan José /Fahler Larrosa/
+2 GIVN Juan José
+2 SURN Fahler Larrosa
+1 SEX M
+1 _UID 154A5A76F06F4027B2214C31F50AC3A3AAC3
+1 _FSFTID GX6Y-6RQ
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 25 NOV 1897
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 19 FEB 1898
+2 PLAC Iglesia de San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 23 JUN 1908
+2 PLAC Gualeguaychú, Entre Ríos, Argentina
+1 FAMC @F12@
+0 @I93@ INDI
+1 NAME Miguel /Abrigo/
+2 GIVN Miguel
+2 SURN Abrigo
+1 SEX M
+1 _UID 96DDADB2FE6443F3B4BDE924A89D36F85B00
+1 _FSFTID L6QY-YHR
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 11 DEC 1893
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F35@
+1 FAMS @F66@
+0 @I94@ INDI
+1 NAME Carlo /Berchialla Vero/
+2 GIVN Carlo
+2 SURN Berchialla Vero
+1 SEX M
+1 _UID 63B86FB378DD4BC589E9A1B0C6413DCF781C
+1 _FSFTID GCQS-GZ1
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 15 SEP 1902
+2 PLAC Sinio, Cuneo, Piemonte, Italia
+1 DEAT
+2 DATE 10 JUN 1980
+2 PLAC Zárate, Buenos Aires, Argentina
+1 FAMS @F37@
+0 @I95@ INDI
+1 NAME Luisa Ramona /Bidegain Dalbano/
+2 GIVN Luisa Ramona
+2 SURN Bidegain Dalbano
+1 SEX F
+1 _UID 874591754AF249578CDB44B55D35C0329264
+1 _FSFTID LLCR-NC3
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 21 JUN 1921
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 30 OCT 2005
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 FAMS @F36@
+0 @I96@ INDI
+1 NAME Juan /Corvalán Carcacha/
+2 GIVN Juan
+2 SURN Corvalán Carcacha
+1 SEX M
+1 _UID 7909AE5C5E9A43B3BB3F8303D98DCD4774D4
+1 _FSFTID 9S2Z-YLF
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1835
+2 PLAC Gualeguaychu, Entre Rios, Argentina
+1 DEAT
+1 FAMS @F33@
+0 @I97@ INDI
+1 NAME Giuseppe Nicoló /Percivale Gatto/
+2 GIVN Giuseppe Nicoló
+2 SURN Percivale Gatto
+1 SEX M
+1 _UID 8CDC827E937F4BC28A5389FF952450574CBC
+1 _FSFTID LQT5-625
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 23 NOV 1851
+2 PLAC Isola del Cantone, Genova, Liguria, Italia
+1 CHR
+2 DATE 24 NOV 1851
+2 PLAC Isola del Cantone, Genova, Liguria, Italia
+1 DEAT
+2 DATE 17 APR 1936
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 FAMS @F27@
+0 @I98@ INDI
+1 NAME Rosa Maria /Cosso Cosso/
+2 GIVN Rosa Maria
+2 SURN Cosso Cosso
+1 SEX F
+1 _UID FE287C441CA9410EAB58249D581DF06588B4
+1 _FSFTID LQT5-62T
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 10 AUG 1855
+2 PLAC Ronco Scrivia, Genova, Liguria, Italia
+1 CHR
+2 DATE 10 AUG 1855
+2 PLAC San Martino Vescovo, Ronco, Genova, Liguria, Italia
+1 DEAT
+2 DATE 26 APR 1936
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 FAMS @F27@
+0 @I99@ INDI
+1 NAME Orlando /De Simone/
+2 GIVN Orlando
+2 SURN De Simone
+1 SEX M
+1 _UID EAFE67FA2F504B39B6C41188D472270CD883
+1 _FSFTID LYX1-NH4
+1 CHAN
+2 DATE 30 AUG 2025
+1 DEAT
+1 FAMS @F41@
+0 @I100@ INDI
+1 NAME Angelica /Maldonato/
+2 GIVN Angelica
+2 SURN Maldonato
+1 SEX F
+1 _UID 372A48DFBEC741D1B07D1109F4051986FE96
+1 _FSFTID G8W2-Y9C
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 PLAC Paysandú, Uruguay
+1 DEAT
+1 FAMS @F42@
+0 @I101@ INDI
+1 NAME Eduardo María /Abramor Benitez/
+2 GIVN Eduardo María
+2 SURN Abramor Benitez
+1 SEX M
+1 _UID EFC52F915059430FA5D6F4270E16BBB99D48
+1 _FSFTID L8BY-6R2
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 13 OCT 1890
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 7 JAN 1892
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F38@
+1 FAMS @F51@
+0 @I102@ INDI
+1 NAME Maria Anselma Josefa /Bidegain Dalbano/
+2 GIVN Maria Anselma Josefa
+2 SURN Bidegain Dalbano
+1 SEX F
+1 _UID 2AF3EC72D9694A4C8D1737772BBF3ED5A2AE
+1 _FSFTID G7Z6-L23
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 21 APR 1912
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 12 OCT 1912
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 27 FEB 1996
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 FAMS @F40@
+0 @I103@ INDI
+1 NAME Jacinto /Fahler/
+2 GIVN Jacinto
+2 SURN Fahler
+1 SEX M
+1 _UID AF3026CB4D8A489480A3D587A5E01C56F989
+1 _FSFTID GX66-B1X
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 4 JUN 1894
+2 PLAC Mercedes, Soriano, Uruguay
+1 DEAT
+1 FAMS @F39@
+0 @I104@ INDI
+1 NAME María Valentina /La Rosa Chaves/
+2 GIVN María Valentina
+2 SURN La Rosa Chaves
+1 SEX F
+1 _UID A0749414B1F84A1CBF40A4A54E42F610A97F
+1 _FSFTID LDZJ-4J2
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 14 FEB 1849
+2 PLAC Gualeguaychú, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F33@
+0 @I105@ INDI
+1 NAME Luigi /Cosso Tavella/
+2 GIVN Luigi
+2 SURN Cosso Tavella
+1 SEX M
+1 _UID 70168A0C623645A9BA480E4FD38763EEAC3B
+1 _FSFTID KGLG-KGN
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 7 OCT 1850
+2 PLAC Ronco Scrivia, Genova, Liguria, Italia
+1 CHR
+2 DATE 26 OCT 1850
+2 PLAC Ronco Scrivia, Genova, Liguria, Italia
+1 DEAT
+2 DATE 10 JUN 1933
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 FAMS @F28@
+0 @I106@ INDI
+1 NAME Anna Maria /Jenny/
+2 GIVN Anna Maria
+2 SURN Jenny
+1 SEX F
+1 _UID EF9F3ECCBD044BECB820595C6D9BDE9B9EA1
+1 _FSFTID G5LF-85L
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 22 OCT 1852
+2 PLAC Diegten, Basel-Landschaft, Schweiz
+1 CHR
+2 DATE 22 NOV 1852
+2 PLAC Diegten, Basel-Landschaft, Schweiz
+1 DEAT
+2 DATE 24 NOV 1923
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 FAMS @F34@
+0 @I107@ INDI
+1 NAME Johann /Pfahler Mangold/
+2 GIVN Johann
+2 SURN Pfahler Mangold
+1 SEX M
+1 _UID FF2136C3C60C4389B21FF40CF968CE863D90
+1 _FSFTID GXC9-MKR
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 6 MAR 1843
+2 PLAC Roggliswil, Luzern, Suiza
+1 DEAT
+2 DATE 6 MAR 1911
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 BURI
+2 DATE 7 MAR 1911
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 FAMS @F34@
+1 FAMS @F43@
+0 @I108@ INDI
+1 NAME Maria Rachele /Ballestra Cipollina/
+2 GIVN Maria Rachele
+2 SURN Ballestra Cipollina
+1 SEX F
+1 _UID C81CE92028B54B28859E18F4D77224BF9806
+1 _FSFTID KGLG-KGV
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 10 MAR 1849
+2 PLAC Ronco Scrivia, Genova, Liguria, Italia
+1 DEAT
+2 DATE 3 DEC 1935
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 FAMS @F28@
+0 @I109@ INDI
+1 NAME Cornelia /Corbalán Larrosa/
+2 GIVN Cornelia
+2 SURN Corbalán Larrosa
+1 SEX F
+1 _UID 42A27C54ED3B44338A7BB0497A7A0470B9CA
+1 _FSFTID KGGS-19Z
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 11 SEP 1865
+2 PLAC Gualeguaychu, Entre Rios, Argentina
+1 CHR
+2 DATE 3 JUL 1866
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMC @F33@
+0 @I110@ INDI
+1 NAME Juan Francisco /Corbalan Larrosa/
+2 GIVN Juan Francisco
+2 SURN Corbalan Larrosa
+1 SEX M
+1 _UID 688142D1CB25419BB774B2B5AA9CF72AC18D
+1 _FSFTID 9S2Z-YLS
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 2 APR 1869
+2 PLAC Gualeguaychu, Entre Rios, Argentina
+1 CHR
+2 DATE 12 JUL 1869
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMC @F33@
+0 @I111@ INDI
+1 NAME Pedro Paulino /Corvalan Larrosa/
+2 GIVN Pedro Paulino
+2 SURN Corvalan Larrosa
+1 SEX M
+1 _UID 0AD0328D74CE40A4BCFE73DDC7D8E3A3EE25
+1 _FSFTID 9S2Z-Y2G
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 29 APR 1867
+2 PLAC Gualeguaychu, Entre Rios, Argentina
+1 CHR
+2 DATE 20 AUG 1867
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F44@
+1 FAMC @F33@
+0 @I112@ INDI
+1 NAME Josefa Dorotea /Larrosa/
+2 GIVN Josefa Dorotea
+2 SURN Larrosa
+1 SEX F
+1 _UID ABE8879927D7426F8F4171473AEFBF4D1FC3
+1 _FSFTID L6CN-Q5S
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 12 MAY 1889
+2 PLAC Gualeguaychú, Entre Ríos, Argentina
+1 CHR
+2 DATE 17 AUG 1896
+2 PLAC Gualeguaychú, Entre Ríos, Argentina
+1 DEAT
+1 FAMC @F33@
+0 @I113@ INDI
+1 NAME Valeriano /Corbalán Larrosa/
+2 GIVN Valeriano
+2 SURN Corbalán Larrosa
+1 SEX M
+1 _UID 263E0160BB49479E95F835AEF59F2FC0A10E
+1 _FSFTID L7QK-9QL
+1 CHAN
+2 DATE 30 AUG 2025
+1 CHR
+2 DATE 29 MAY 1871
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMC @F33@
+0 @I114@ INDI
+1 NAME Teodoro /Larrosa/
+2 GIVN Teodoro
+2 SURN Larrosa
+1 SEX M
+1 _UID 4620562833394D6D81302F30875C81B533F3
+1 _FSFTID L79B-CMW
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 29 JAN 1878
+2 PLAC Gualeguaychú, Entre Ríos, Argentina
+1 CHR
+2 DATE 28 MAY 1878
+2 PLAC San José, Gualeguaychú, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F45@
+1 FAMC @F33@
+0 @I115@ INDI
+1 NAME Agustín /Larrosa/
+2 GIVN Agustín
+2 SURN Larrosa
+1 SEX M
+1 _UID 9F3F812738284EC58AF7D7E40DF573FCA67F
+1 _FSFTID L6CN-QDP
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 28 AUG 1884
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 5 JUN 1885
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 8 DEC 1918
+1 FAMS @F46@
+1 FAMC @F33@
+0 @I116@ INDI
+1 NAME Bernardino /Percivale Cosso/
+2 GIVN Bernardino
+2 SURN Percivale Cosso
+1 SEX M
+1 _UID C9146D8DE82247AC8559D70D95CF0EE3EBA5
+1 _FSFTID LQT5-62P
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 20 MAY 1884
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 28 JUN 1884
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMC @F27@
+0 @I117@ INDI
+1 NAME Juan Gualberto /Larrosa/
+2 GIVN Juan Gualberto
+2 SURN Larrosa
+1 SEX M
+1 _UID A32249C7F0024D5B91E28DC231993983B724
+1 _FSFTID P9VZ-2BG
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 12 JUN 1882
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 11 FEB 1883
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 1961
+2 PLAC Morón, Buenos Aires, Argentina
+1 FAMS @F63@
+1 FAMC @F33@
+0 @I118@ INDI
+1 NAME Segundo Alejo /Corbalan/
+2 GIVN Segundo Alejo
+2 SURN Corbalan
+1 SEX M
+1 _UID 96FE3BB6C4D4482BAFA7A8AEA64204254D43
+1 _FSFTID GLC1-KZ7
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 17 JUL 1874
+2 PLAC Gualeguaychú, Entre Ríos, Argentina
+1 CHR
+2 DATE 28 MAR 1875
+2 PLAC San José, Gualeguaychú, Entre Ríos, Argentina
+1 DEAT
+2 DATE 22 FEB 1937
+2 PLAC Larroque, Gualeguaychú, Entre Ríos, Argentina
+1 BURI
+2 DATE 22 FEB 1937
+2 PLAC Larroque, Gualeguaychú, Entre Ríos, Argentina
+1 FAMS @F50@
+1 FAMC @F33@
+0 @I119@ INDI
+1 NAME Celia Evarista /Larrosa/
+2 GIVN Celia Evarista
+2 SURN Larrosa
+1 SEX F
+1 _UID 4931A2F04205489CA0E8DDD2E143890B2620
+1 _FSFTID L6CN-S13
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 14 OCT 1892
+2 PLAC Gualeguaychú, Entre Ríos, Argentina
+1 CHR
+2 DATE 26 FEB 1899
+2 PLAC San José, Gualeguaychú, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F47@
+1 FAMC @F33@
+0 @I120@ INDI
+1 NAME Carlos Alejandro /Percival/
+2 GIVN Carlos Alejandro
+2 SURN Percival
+1 SEX M
+1 _UID 9E6C153F4CD840A7BB78FFF52C17A457CE3B
+1 _FSFTID G7NN-86C
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1890
+2 PLAC Argentina
+1 DEAT
+1 FAMS @F49@
+1 FAMC @F27@
+0 @I121@ INDI
+1 NAME Juan Clodomiro /Percivale Cosso/
+2 GIVN Juan Clodomiro
+2 SURN Percivale Cosso
+1 SEX M
+1 _UID C0311550C04141D383E66E8A67DE10FD1ED0
+1 _FSFTID L8BY-CQT
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 4 NOV 1894
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 25 DEC 1895
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F48@
+1 FAMC @F27@
+0 @I122@ INDI
+1 NAME Sixta Gregoria /Perchivale/
+2 GIVN Sixta Gregoria
+2 SURN Perchivale
+1 SEX F
+1 _UID 52D2C06EE4AE450DBCA7B379D07A6132A277
+1 _FSFTID L6PP-K7N
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 18 DEC 1878
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 5 JAN 1879
+2 PLAC San Antonio, Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 1 MAY 1923
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 FAMS @F60@
+1 FAMS @F61@
+1 FAMC @F27@
+0 @I123@ INDI
+1 NAME Alejandro Baldomero /Percivale Cosso/
+2 GIVN Alejandro Baldomero
+2 SURN Percivale Cosso
+1 SEX M
+1 _UID C5F279AF3A4C4F5B835364B3EF4C62912A6D
+1 _FSFTID L6PP-L6X
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 27 FEB 1891
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 25 APR 1891
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 29 MAR 1973
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 FAMS @F54@
+1 FAMC @F27@
+0 @I124@ INDI
+1 NAME Juan Carlos /Perchivale/
+2 GIVN Juan Carlos
+2 SURN Perchivale
+1 SEX M
+1 _UID 70ED2D4D74EB4482BF6F6667DFAA26C66CF9
+1 _FSFTID GFPN-N42
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1896
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F53@
+1 FAMC @F27@
+0 @I125@ INDI
+1 NAME María Juana /Percivale Cosso/
+2 GIVN María Juana
+2 SURN Percivale Cosso
+1 SEX F
+1 _UID 899BBD1F3EB6472087028656387A96586018
+1 _FSFTID L6PP-2B3
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 9 OCT 1887
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 26 NOV 1887
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 5 MAR 1920
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 FAMS @F51@
+1 FAMC @F27@
+0 @I126@ INDI
+1 NAME Catalina  Dolores /Percivale Cosso/
+2 GIVN Catalina  Dolores
+2 SURN Percivale Cosso
+1 SEX F
+1 _UID 28BC70D39CDF4360AC94B50D53BB1F1E9202
+1 _FSFTID L6PP-KKN
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 8 APR 1886
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 22 MAY 1886
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F52@
+1 FAMC @F27@
+0 @I127@ INDI
+1 NAME Stefano Raffaele Francesco /Percivale Cosso/
+2 GIVN Stefano Raffaele Francesco
+2 SURN Percivale Cosso
+1 SEX M
+1 _UID D56D1D232774452282DE72C065DC585F0E89
+1 _FSFTID G9JQ-G9M
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 10 JUN 1874
+2 PLAC Isola del Cantone, Genova, Liguria, Italia
+1 DEAT
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 FAMS @F59@
+1 FAMC @F27@
+0 @I128@ INDI
+1 NAME Rosa Edelmira /Percivale Cosso/
+2 GIVN Rosa Edelmira
+2 SURN Percivale Cosso
+1 SEX F
+1 _UID 40DBB29B80B14338AB3CE9B7ADB43DA9E299
+1 _FSFTID L6PP-GJR
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 3 APR 1893
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 24 JUN 1893
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 PLAC Entre Ríos, Argentina
+1 FAMS @F57@
+1 FAMC @F27@
+0 @I129@ INDI
+1 NAME Luis Ernesto /Perchivale/
+2 GIVN Luis Ernesto
+2 SURN Perchivale
+1 SEX M
+1 _UID 3F256D5BDEB64AA491B5174DFBFC01A0F09A
+1 _FSFTID L6PP-23C
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 9 JUN 1889
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 30 AUG 1889
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 6 JUL 1963
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 FAMS @F55@
+1 FAMC @F27@
+0 @I130@ INDI
+1 NAME Rosa /Percivale Cosso/
+2 GIVN Rosa
+2 SURN Percivale Cosso
+1 SEX F
+1 _UID 1E7D74CE353442DE88C33C9E2AA3A75A5967
+1 _FSFTID L6PP-PMD
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 13 JAN 1897
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 30 AUG 1897
+2 PLAC San Antonio, Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 7 AUG 1987
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 FAMS @F56@
+1 FAMC @F27@
+0 @I131@ INDI
+1 NAME Antonio Amadeo /Percivale Cosso/
+2 GIVN Antonio Amadeo
+2 SURN Percivale Cosso
+1 SEX M
+1 _UID CCB349B9C71443369B406EB12B4239ED62C6
+1 _FSFTID L6PP-J9Z
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1 OCT 1880
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 7 MAR 1881
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 1967
+1 FAMS @F58@
+1 FAMC @F27@
+0 @I132@ INDI
+1 NAME José Federico /Percivalle/
+2 GIVN José Federico
+2 SURN Percivalle
+1 SEX M
+1 _UID A4C96BAE51D942D3AFA142894C76B7045DF1
+1 _FSFTID L6PP-JHL
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 27 SEP 1882
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 26 DEC 1882
+2 PLAC San Antonio, Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 30 JAN 1949
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 FAMS @F62@
+1 FAMC @F27@
+0 @I133@ INDI
+1 NAME Sophie /Pfahler Jenny/
+2 GIVN Sophie
+2 SURN Pfahler Jenny
+1 SEX F
+1 _UID 1AF2A3A8302249E98F5BF486EFBF21C5D34C
+1 _FSFTID GQ27-12X
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 9 DEC 1874
+2 PLAC Liestal, Basel-Landschaft, Suiza
+1 DEAT
+1 FAMC @F34@
+0 @I134@ INDI
+1 NAME Johannes /Fahler Jenny/
+2 GIVN Johannes
+2 SURN Fahler Jenny
+1 SEX M
+1 _UID 7DC28FFA50C24E93AF16CF1F1DE50B64DF23
+1 _FSFTID GWMD-4FP
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 29 DEC 1875
+2 PLAC Furlen, Basel-Landschaft, Suiza
+1 DEAT
+2 DATE 24 MAY 1876
+2 PLAC Lausen, Basel-Landschaft, Suiza
+1 FAMC @F34@
+0 @I135@ INDI
+1 NAME Lina /Fahler Jenny/
+2 GIVN Lina
+2 SURN Fahler Jenny
+1 SEX F
+1 _UID 74E822366C784B02A04E9A93E21B7E1B9637
+1 _FSFTID L8BY-XSX
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 25 SEP 1879
+2 PLAC Colonia Suiza, Colonia, Uruguay
+1 DEAT
+2 DATE 26 MAY 1924
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 BURI
+2 DATE 27 MAY 1924
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 FAMS @F66@
+1 FAMC @F34@
+0 @I136@ INDI
+1 NAME Elisabeth /Kümmerli Suter/
+2 GIVN Elisabeth
+2 SURN Kümmerli Suter
+1 SEX F
+1 _UID 5011098B94A540789AA0B4C1E8B220FE4D6C
+1 _FSFTID KHYD-89Y
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 25 SEP 1839
+2 PLAC Kölliken, Aargau, Switzerland
+1 DEAT
+2 DATE 8 FEB 1874
+2 PLAC Liestal, Baselland, Switzerland
+1 FAMS @F43@
+0 @I137@ INDI
+1 NAME José /Fahler Jenny/
+2 GIVN José
+2 SURN Fahler Jenny
+1 SEX M
+1 _UID 7818A38821904F0FA28F733D8E2543D475F0
+1 _FSFTID L8BY-61W
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 25 SEP 1881
+2 PLAC Colonia Suiza, Colonia, Uruguay
+1 DEAT
+1 FAMS @F65@
+1 FAMC @F34@
+0 @I138@ INDI
+1 NAME Luis Cantalicio /Fahler Jenny/
+2 GIVN Luis Cantalicio
+2 SURN Fahler Jenny
+1 SEX M
+1 _UID 42A48DC2780E45C1AA196AA1DBC320B30049
+1 _FSFTID L8BY-X9D
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 30 APR 1888
+2 PLAC Colonia, Uruguay
+1 CHR
+2 DATE 25 AUG 1888
+1 DEAT
+2 DATE 14 AUG 1968
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 FAMS @F64@
+1 FAMC @F34@
+0 @I139@ INDI
+1 NAME NN /Cosso Ballestra/
+2 GIVN NN
+2 SURN Cosso Ballestra
+1 SEX M
+1 _UID D415FD63C0A9416081F0FA5575A7D13D3D4A
+1 _FSFTID GZXH-TV8
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 2 FEB 1873
+2 PLAC Ronco Scrivia, Genova, Liguria, Italia
+1 DEAT
+2 DATE 2 FEB 1873
+2 PLAC Ronco Scrivia, Genova, Liguria, Italia
+1 FAMC @F28@
+0 @I140@ INDI
+1 NAME Ramón Alberto /Fahler Jenny/
+2 GIVN Ramón Alberto
+2 SURN Fahler Jenny
+1 SEX M
+1 _UID 199C0DB2C2F94F47A2C010AF9D891CC3EBF9
+1 _FSFTID L8BY-XM8
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 31 AUG 1885
+2 PLAC Villa del Rosario, Colonia, Uruguay
+1 DEAT
+2 DATE 12 JUL 1970
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 BURI
+2 DATE 12 JUL 1970
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 FAMS @F68@
+1 FAMC @F34@
+0 @I141@ INDI
+1 NAME Rosa Crispina /Fahler Jenny/
+2 GIVN Rosa Crispina
+2 SURN Fahler Jenny
+1 SEX F
+1 _UID 71365CFC1CC74302B008F7F189DE7C5600DE
+1 _FSFTID L8BY-X3Q
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 25 OCT 1889
+2 PLAC Bizcocho, Soriano, Uruguay
+1 DEAT
+2 DATE NOV 1955
+2 PLAC Argentina
+1 BURI
+1 FAMS @F67@
+1 FAMC @F34@
+0 @I142@ INDI
+1 NAME Francesco /Cosso Balestra/
+2 GIVN Francesco
+2 SURN Cosso Balestra
+1 SEX M
+1 _UID 6D2A7155B304429C8E5D5EB61A71FCA51D7A
+1 _FSFTID LX9Y-3NQ
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 25 OCT 1878
+2 PLAC Isola del Cantone, Genova, Liguria, Italia
+1 DEAT
+2 DATE 13 APR 1880
+2 PLAC Ronco Scrivia, Genova, Liguria, Italia
+1 FAMC @F28@
+0 @I143@ INDI
+1 NAME Emilio /Cosso Balestra/
+2 GIVN Emilio
+2 SURN Cosso Balestra
+1 SEX M
+1 _UID B84B0FDE47A74AF9BE3E12F0356524664392
+1 _FSFTID LX9Y-S86
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 25 OCT 1878
+2 PLAC Isola del Cantone, Genova, Liguria, Italia
+1 DEAT
+2 DATE 14 APR 1880
+2 PLAC Ronco Scrivia, Genova, Liguria, Italia
+1 FAMC @F28@
+0 @I144@ INDI
+1 NAME Bartolomeo /Cosso Balestra/
+2 GIVN Bartolomeo
+2 SURN Cosso Balestra
+1 SEX M
+1 _UID AE3B5B2BF6C04A19879E3D475CB789CF9CDC
+1 _FSFTID LX9Y-Q2J
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 25 OCT 1878
+2 PLAC Isola del Cantone, Genova, Liguria, Italia
+1 DEAT
+2 DATE 20 MAR 1879
+2 PLAC Ronco Scrivia, Genova, Itália
+1 FAMC @F28@
+0 @I145@ INDI
+1 NAME Luisa Felisa /Cosso Balestra/
+2 GIVN Luisa Felisa
+2 SURN Cosso Balestra
+1 SEX F
+1 _UID E305E0D3EF8A47F9B2AB2C99C198DB22CC01
+1 _FSFTID L6PG-WT2
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 21 JUL 1889
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 30 AUG 1889
+2 PLAC San Antonio de Padua, Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMC @F28@
+0 @I146@ INDI
+1 NAME Teresa Juana /Cosso Balestra/
+2 GIVN Teresa Juana
+2 SURN Cosso Balestra
+1 SEX F
+1 _UID 85696FA2EFE54E0AAD9E7AE5878C1A24265B
+1 _FSFTID G64P-1M6
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 11 MAR 1895
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 26 MAY 1900
+1 FAMC @F28@
+0 @I147@ INDI
+1 NAME José Francisco /Cosso Balestra/
+2 GIVN José Francisco
+2 SURN Cosso Balestra
+1 SEX M
+1 _UID 5275568B2584492A862F253385CD14588FCB
+1 _FSFTID L7HV-LVV
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 4 MAR 1886
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 19 JUN 1886
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 31 MAR 1926
+2 PLAC Ciudad de Buenos Aires, Argentina
+1 FAMS @F69@
+1 FAMC @F28@
+0 @I148@ INDI
+1 NAME Rosa Catalina /Cosso Balestra/
+2 GIVN Rosa Catalina
+2 SURN Cosso Balestra
+1 SEX F
+1 _UID DC0001E24FB94815AF2F12F7D74DDDE5F15E
+1 _FSFTID KGLG-KGX
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 16 APR 1884
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 28 JUN 1884
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 21 OCT 1946
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 FAMS @F77@
+1 FAMC @F28@
+0 @I149@ INDI
+1 NAME Pura Rafaela /Cosso Balestra/
+2 GIVN Pura Rafaela
+2 SURN Cosso Balestra
+1 SEX F
+1 _UID 8E1DAE27254D4C76A5F2BA993E914705B998
+1 _FSFTID KGTT-KD8
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 28 JUL 1892
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 30 AUG 1892
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F70@
+1 FAMC @F28@
+0 @I150@ INDI
+1 NAME Pietro Basilio /Cosso Balestra/
+2 GIVN Pietro Basilio
+2 SURN Cosso Balestra
+1 SEX M
+1 _UID 9716707FAA0042318297B1953745E3950CD8
+1 _FSFTID LX9Y-766
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 3 MAY 1875
+2 PLAC Ronco Scrivia, Genova, Liguria, Italia
+1 DEAT
+2 DATE 17 FEB 1950
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 FAMS @F74@
+1 FAMS @F75@
+1 FAMC @F28@
+0 @I151@ INDI
+1 NAME Domingo /Fahler Jenny/
+2 GIVN Domingo
+2 SURN Fahler Jenny
+1 SEX M
+1 _UID FF19A3FEDBDC412CB82CAC2B1EC3131BA7DA
+1 _FSFTID L8BY-61T
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 26 AUG 1883
+2 PLAC Rosario, Colonia, Uruguay
+1 CHR
+2 DATE 17 NOV 1883
+1 DEAT
+2 DATE 2 JUL 1935
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 BURI
+1 FAMS @F71@
+1 FAMS @F72@
+1 FAMC @F34@
+0 @I152@ INDI
+1 NAME María Catalina /Cosso Balestra/
+2 GIVN María Catalina
+2 SURN Cosso Balestra
+1 SEX F
+1 _UID FAC2289A582C4C4FB81D0A9926EAB88D6ADA
+1 _FSFTID L686-W6H
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 29 APR 1882
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 2 JUL 1882
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 29 FEB 1968
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 FAMS @F73@
+1 FAMC @F28@
+0 @I153@ INDI
+1 NAME Catalina Teresa /Cosso Balestra/
+2 GIVN Catalina Teresa
+2 SURN Cosso Balestra
+1 SEX F
+1 _UID 5257CC21102B4AA5A872FDCCEFC4AAD6D6D2
+1 _FSFTID L686-BT4
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 29 DEC 1887
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 11 FEB 1888
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos,Argentina
+1 DEAT
+1 FAMS @F76@
+1 FAMC @F28@
+0 @I154@ INDI
+1 NAME Saturnina /Garcia/
+2 GIVN Saturnina
+2 SURN Garcia
+1 SEX F
+1 _UID 95627BACB4814EA4BB9B571E771A9C306D96
+1 _FSFTID GP9D-CBC
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1873
+1 DEAT
+1 FAMS @F44@
+0 @I155@ INDI
+1 NAME Raimunda /Iglesias/
+2 GIVN Raimunda
+2 SURN Iglesias
+1 SEX F
+1 _UID E37421593DC2488794F9694C3446FD479F54
+1 _FSFTID GRSY-ZHK
+1 CHAN
+2 DATE 30 AUG 2025
+1 DEAT
+1 FAMS @F45@
+0 @I156@ INDI
+1 NAME Demetria /Morales/
+2 GIVN Demetria
+2 SURN Morales
+1 SEX F
+1 _UID 0B3A881AB14944CA97752A6E65FA4E86C6BA
+1 _FSFTID G7NN-F77
+1 CHAN
+2 DATE 30 AUG 2025
+1 DEAT
+1 FAMS @F49@
+0 @I157@ INDI
+1 NAME Maria Dolores /Otero/
+2 GIVN Maria Dolores
+2 SURN Otero
+1 SEX F
+1 _UID 5ECB9B1DFEE54AA884632448AF2FB5E480EF
+1 _FSFTID GS53-W8W
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 7 SEP 1893
+2 PLAC Gualeguaychú, Entre Ríos, Argentina
+1 CHR
+2 DATE 4 MAR 1894
+2 PLAC San José, Gualeguaychú, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F46@
+0 @I158@ INDI
+1 NAME Valentina /Chanquet/
+2 GIVN Valentina
+2 SURN Chanquet
+1 SEX F
+1 _UID 53B730F28B694ED18F535425ABD2FAF405B7
+1 _FSFTID GFPN-D1D
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 16 DEC 1908
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 21 JUL 1974
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 FAMS @F48@
+1 FAMS @F53@
+0 @I159@ INDI
+1 NAME Evaristo Estanislao /Alem/
+2 GIVN Evaristo Estanislao
+2 SURN Alem
+1 SEX M
+1 _UID 33D4A7E8816041789B660812F8B6913BC5FF
+1 _FSFTID GC4P-1DX
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1888
+2 PLAC Gualeguaychú, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F47@
+0 @I160@ INDI
+1 NAME Felipe Tomás /Scandella Acosta/
+2 GIVN Felipe Tomás
+2 SURN Scandella Acosta
+1 SEX M
+1 _UID 31C263F026AF4655ABE2CB47D3914B686CB6
+1 _FSFTID GPYL-34R
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1 MAY 1879
+2 PLAC Nueva Palmira, Colonia, Uruguay
+1 CHR
+2 DATE 4 MAY 1880
+2 PLAC Nuestra Señora de Los Remedios, Nueva Palmira, Colonia, Uruguay
+1 DEAT
+1 FAMS @F61@
+0 @I161@ INDI
+1 NAME Eugenia Luisa /Humore/
+2 GIVN Eugenia Luisa
+2 SURN Humore
+1 SEX F
+1 _UID C3A8D70088394CBEADA02203BC5F0E16BE25
+1 _FSFTID GRMJ-W3V
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1890
+1 CHR
+2 DATE 7 MAY 1892
+2 PLAC , Rosario Tala, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F54@
+0 @I162@ INDI
+1 NAME Francesco Salvatore /Gangale/
+2 GIVN Francesco Salvatore
+2 SURN Gangale
+1 SEX M
+1 _UID 708966D796B44BFAB34D24E0CD4EFCDCBCDF
+1 _FSFTID GZDN-2C8
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 15 DEC 1897
+2 PLAC Umbriatico, Crotone, Calabria, Italia
+1 DEAT
+1 FAMS @F56@
+0 @I163@ INDI
+1 NAME Maria Juana /De Paoli/
+2 GIVN Maria Juana
+2 SURN De Paoli
+1 SEX F
+1 _UID F2F547B538E4481E97D999A372A37A670750
+1 _FSFTID KGRN-NTR
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 22 NOV 1885
+2 PLAC Pehuajo Sud, Gualeguaychú, Entre Ríos, Argentina
+1 CHR
+2 DATE 29 APR 1886
+2 PLAC San José, Gualeguaychú, Entre Ríos, Argentina
+1 DEAT
+2 DATE 1 APR 1948
+2 PLAC Larroque, Gualeguaychú, Entre Ríos, Argentina
+1 BURI
+2 DATE 1 APR 1948
+1 FAMS @F50@
+0 @I164@ INDI
+1 NAME Genaro Antonio Francisco /Casella/
+2 GIVN Genaro Antonio Francisco
+2 SURN Casella
+1 SEX M
+1 _UID E6512482AE2A41FC8F420B08DCE10DF898E2
+1 _FSFTID L7QL-KTN
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 10 JUL 1888
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 21 APR 1889
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 PLAC Entre Ríos, Argentina
+1 FAMS @F57@
+0 @I165@ INDI
+1 NAME Ireneo Teodosio /Perez/
+2 GIVN Ireneo Teodosio
+2 SURN Perez
+1 SEX M
+1 _UID C7E58C2955B14434931F532B9F8BF0C6EFA8
+1 _FSFTID LQYZ-ZK8
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1879
+1 CHR
+2 DATE 2 JUN 1879
+2 PLAC San Antonio, Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE ABT 1918
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 FAMS @F60@
+0 @I166@ INDI
+1 NAME María Emma /Casella/
+2 GIVN María Emma
+2 SURN Casella
+1 SEX F
+1 _UID 21B745569F8A4C2FA206E6C3EEF73679FCDD
+1 _FSFTID GNG5-WGC
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1889
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 10 JAN 1957
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 FAMS @F55@
+0 @I167@ INDI
+1 NAME Serapio Euclides /Abramor Benitez/
+2 GIVN Serapio Euclides
+2 SURN Abramor Benitez
+1 SEX M
+1 _UID E6A39718345E4A4289AFF5200AE91FD88D7F
+1 _FSFTID LQ1Z-J7P
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 29 FEB 1888
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 30 MAR 1889
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F52@
+0 @I168@ INDI
+1 NAME Maria Baldomera /Caprile/
+2 GIVN Maria Baldomera
+2 SURN Caprile
+1 SEX F
+1 _UID 09176E99F9FA4A42ABB2088563DED227CA42
+1 _FSFTID KGG9-1GX
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 28 FEB 1885
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 20 JUN 1885
+2 PLAC San Antonio de Padua, Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F59@
+0 @I169@ INDI
+1 NAME Maria Rosa /Apesteguía/
+2 GIVN Maria Rosa
+2 SURN Apesteguía
+1 SEX F
+1 _UID EA79E107A6A24482A5D5900AA9CEF3AA8183
+1 _FSFTID KGF4-C4S
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE APR 1881
+1 CHR
+2 DATE 8 NOV 1881
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F58@
+0 @I170@ INDI
+1 NAME Cenobia /Troncoso Martinez/
+2 GIVN Cenobia
+2 SURN Troncoso Martinez
+1 SEX F
+1 _UID E7E41ABD72B143A899E131FADB6AB5CC1B21
+1 _FSFTID KGRN-HKS
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 29 OCT 1889
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 2 FEB 1892
+2 PLAC San Antonio, Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 7 JUL 1976
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 FAMS @F62@
+0 @I171@ INDI
+1 NAME Serapia Amelia /De Paoli/
+2 GIVN Serapia Amelia
+2 SURN De Paoli
+1 SEX F
+1 _UID 8E022927BC2A45A29B4B952F91A944875CD5
+1 _FSFTID P9VZ-GMD
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 12 SEP 1900
+2 PLAC Gualeguaychú, Entre Ríos, Argentina
+1 CHR
+2 DATE 25 NOV 1900
+2 PLAC Catedral de San José, Gualeguaychú, Gualeguaychú, Entre Ríos, Argentina
+1 DEAT
+2 DATE 1963
+2 PLAC Morón, Buenos Aires, Argentina
+1 FAMS @F63@
+0 @I172@ INDI
+1 NAME Amalia /Lafolie/
+2 GIVN Amalia
+2 SURN Lafolie
+1 SEX F
+1 _UID 03A0F441138442E99937E7AD7501C7CE09D1
+1 _FSFTID L8BY-CFW
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 13 APR 1901
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 20 JUN 1901
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F64@
+0 @I173@ INDI
+1 NAME Rosa /Dal Bó Armelín/
+2 GIVN Rosa
+2 SURN Dal Bó Armelín
+1 SEX F
+1 _UID 9DA3C3B022234C12882EA1DB17FB8CB1D74F
+1 _FSFTID L8BY-CXR
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 21 OCT 1892
+2 PLAC Gualeguaychú, Entre Ríos, Argentina
+1 CHR
+2 DATE 12 FEB 1893
+2 PLAC San Antonio, Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 10 OCT 1935
+2 PLAC Argentina
+1 FAMS @F68@
+0 @I174@ INDI
+1 NAME Candido /Acosta/
+2 GIVN Candido
+2 SURN Acosta
+1 SEX M
+1 _UID A99CA5BD71454705ACDE43103564D8F2E97F
+1 _FSFTID GRS1-QLT
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1887
+2 PLAC Paysandú, Paysandú, Uruguay
+1 DEAT
+1 FAMS @F67@
+0 @I175@ INDI
+1 NAME Zulema /Correa/
+2 GIVN Zulema
+2 SURN Correa
+1 SEX F
+1 _UID D4B0A1E947644ED7A5742C990E5EE724330B
+1 _FSFTID G5B8-FJP
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1889
+1 DEAT
+1 FAMS @F72@
+0 @I176@ INDI
+1 NAME Andrea /Quintana/
+2 GIVN Andrea
+2 SURN Quintana
+1 SEX F
+1 _UID 1B68948FDEAB4048AC65DF3AC95F3AED300D
+1 _FSFTID GM7L-S3T
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1890
+2 PLAC Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F65@
+0 @I177@ INDI
+1 NAME Luisa Adriana Maria /Cicerone/
+2 GIVN Luisa Adriana Maria
+2 SURN Cicerone
+1 SEX F
+1 _UID 643CB948DBCD4837B4BCC6E95FD1CF4A3028
+1 _FSFTID KGT5-QS1
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1891
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 16 APR 1892
+2 PLAC San Antonio de Padua, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F69@
+0 @I178@ INDI
+1 NAME José Francisco Carlos /Falcon/
+2 GIVN José Francisco Carlos
+2 SURN Falcon
+1 SEX M
+1 _UID BAA0EAA224C84C36B7D96ADBF5EA10294171
+1 _FSFTID GMBM-KFZ
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1892
+1 CHR
+2 DATE 16 DEC 1893
+2 PLAC San Antonio de Padua, Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F70@
+0 @I179@ INDI
+1 NAME Rosa /Tassistro Piacentini/
+2 GIVN Rosa
+2 SURN Tassistro Piacentini
+1 SEX F
+1 _UID 44353D3A6DC54B848219C831C43205F979D5
+1 _FSFTID G77Z-F3Q
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 16 APR 1877
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 2 JUN 1877
+2 PLAC San Antonio de Padua, Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+1 FAMS @F75@
+0 @I180@ INDI
+1 NAME Ermelina /Tassistro Piacentini/
+2 GIVN Ermelina
+2 SURN Tassistro Piacentini
+1 SEX F
+1 _UID 427626895AC84CD8B47478C73AB41AD5F1FF
+1 _FSFTID GQN7-83V
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 5 JAN 1887
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 30 OCT 1887
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 31 JUL 1978
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 FAMS @F74@
+0 @I181@ INDI
+1 NAME Manuel /Cristaldo/
+2 GIVN Manuel
+2 SURN Cristaldo
+1 SEX M
+1 _UID D567531AE689438D9CD1EE25A76744712B21
+1 _FSFTID L4RD-ZDB
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 1 DEC 1879
+2 PLAC Tala, Entre Ríos, Argentina
+1 CHR
+2 DATE 5 FEB 1880
+2 PLAC San José, Gualeguaychú, Gualeguaychú, Entre Ríos, Argentina
+1 DEAT
+2 DATE 23 MAR 1921
+1 FAMS @F76@
+0 @I182@ INDI
+1 NAME Emilio Nicolas Julian /Cosso Percivale/
+2 GIVN Emilio Nicolas Julian
+2 SURN Cosso Percivale
+1 SEX M
+1 _UID 7D6F017CFE384D619C1ECAC1000F8D427022
+1 _FSFTID L68F-FM8
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 28 MAY 1877
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 14 SEP 1877
+2 PLAC San Antonio de Padua, Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 23 SEP 1967
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+1 FAMS @F73@
+0 @I183@ INDI
+1 NAME Saverio /Cosso Tavella/
+2 GIVN Saverio
+2 SURN Cosso Tavella
+1 SEX M
+1 _UID 82FA36D9FDE04537AE88FC6D49BC77FFFE52
+1 _FSFTID GRSW-NX2
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 21 AUG 1875
+2 PLAC Ronco Scrivia, Genova, Italia
+1 DEAT
+1 FAMS @F77@
+0 @I184@ INDI
+1 NAME Maria Zulema /Correa/
+2 GIVN Maria Zulema
+2 SURN Correa
+1 SEX F
+1 _UID 0A892B422E87423E92247B5C442C9F522370
+1 _FSFTID L8BY-CD5
+1 CHAN
+2 DATE 30 AUG 2025
+1 BIRT
+2 DATE 4 JAN 1889
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 CHR
+2 DATE 24 MAR 1889
+2 PLAC Gualeguay, Entre Ríos, Argentina
+1 DEAT
+2 DATE 9 SEP 1937
+2 PLAC Gualeguay
+1 FAMS @F71@
+0 @F1@ FAM
+1 HUSB @I4@
+1 WIFE @I5@
+1 CHIL @I1@
+1 CHIL @I12@
+1 CHIL @I10@
+1 MARR
+2 DATE 19 NOV 1949
+2 PLAC Buenos Aires, Argentina
+0 @F2@ FAM
+1 HUSB @I6@
+1 WIFE @I1@
+1 CHIL @I7@
+1 CHIL @I3@
+1 CHIL @I2@
+1 CHIL @I8@
+1 MARR
+2 DATE 30 JUN 1972
+2 PLAC San Judas Tadeo, Ituzaingó, Morón, Buenos Aires, Argentina
+0 @F3@ FAM
+1 HUSB @I15@
+1 WIFE @I17@
+1 CHIL @I5@
+1 CHIL @I25@
+1 CHIL @I26@
+1 CHIL @I27@
+1 CHIL @I28@
+1 CHIL @I29@
+1 CHIL @I30@
+1 CHIL @I31@
+1 CHIL @I32@
+1 CHIL @I34@
+1 MARR
+2 DATE 26 APR 1923
+2 PLAC Gualeguay, Entre Ríos, Argentina
+0 @F4@ FAM
+1 HUSB @I14@
+1 WIFE @I23@
+1 CHIL @I4@
+1 MARR
+2 DATE 2 DEC 1922
+2 PLAC La Boca, Comuna 4, Ciudad de Buenos Aires, Argentina
+0 @F5@ FAM
+1 HUSB @I37@
+1 WIFE @I3@
+1 CHIL @I9@
+1 CHIL @I36@
+0 @F6@ FAM
+1 HUSB @I11@
+1 WIFE @I7@
+1 CHIL @I13@
+1 CHIL @I22@
+0 @F7@ FAM
+1 HUSB @I16@
+1 WIFE @I8@
+1 CHIL @I18@
+1 CHIL @I19@
+0 @F8@ FAM
+1 HUSB @I2@
+1 WIFE @I20@
+1 CHIL @I21@
+0 @F9@ FAM
+1 HUSB @I24@
+1 WIFE @I12@
+1 MARR
+2 DATE 20 MAY 1971
+2 PLAC Ituzaingó, Buenos Aires, Argentina
+0 @F10@ FAM
+1 HUSB @I50@
+1 WIFE @I52@
+1 CHIL @I17@
+1 CHIL @I81@
+1 CHIL @I79@
+1 CHIL @I70@
+1 CHIL @I72@
+1 CHIL @I84@
+1 CHIL @I71@
+1 CHIL @I73@
+1 CHIL @I74@
+1 CHIL @I77@
+1 CHIL @I76@
+1 CHIL @I78@
+1 CHIL @I85@
+1 CHIL @I75@
+1 CHIL @I83@
+1 CHIL @I80@
+1 CHIL @I82@
+1 MARR
+2 DATE 6 OCT 1894
+2 PLAC Gualeguay, Entre Ríos, Argentina
+0 @F11@ FAM
+1 HUSB @I33@
+1 WIFE @I18@
+1 CHIL @I35@
+0 @F12@ FAM
+1 HUSB @I38@
+1 WIFE @I55@
+1 CHIL @I15@
+1 CHIL @I92@
+1 MARR
+2 DATE 13 JAN 1897
+2 PLAC Gualeguaychú, Gualeguaychú, Entre Ríos, Argentina
+0 @F13@ FAM
+1 HUSB @I42@
+1 WIFE @I41@
+1 CHIL @I14@
+1 CHIL @I57@
+1 CHIL @I68@
+1 CHIL @I69@
+1 CHIL @I58@
+1 CHIL @I59@
+1 MARR
+2 DATE 20 DEC 1888
+2 PLAC Mañón, La Coruña, Galicia, España
+0 @F14@ FAM
+1 HUSB @I54@
+1 WIFE @I45@
+1 CHIL @I23@
+1 CHIL @I66@
+1 CHIL @I65@
+1 CHIL @I63@
+1 CHIL @I64@
+1 CHIL @I67@
+0 @F15@ FAM
+1 HUSB @I26@
+1 WIFE @I39@
+0 @F16@ FAM
+1 HUSB @I40@
+1 WIFE @I28@
+0 @F17@ FAM
+1 HUSB @I44@
+1 WIFE @I30@
+0 @F18@ FAM
+1 HUSB @I43@
+1 WIFE @I31@
+1 MARR
+2 DATE 6 JUL 1956
+2 PLAC Ciudad de Buenos Aires, Argentina
+0 @F19@ FAM
+1 HUSB @I29@
+1 WIFE @I46@
+0 @F20@ FAM
+1 HUSB @I47@
+1 WIFE @I27@
+0 @F21@ FAM
+1 HUSB @I48@
+1 WIFE @I25@
+1 MARR
+2 DATE 7 JUL 1953
+2 PLAC Buenos Aires, Argentina
+0 @F22@ FAM
+1 HUSB @I34@
+1 WIFE @I49@
+0 @F23@ FAM
+1 HUSB @I34@
+1 WIFE @I51@
+0 @F24@ FAM
+1 HUSB @I53@
+1 WIFE @I10@
+0 @F25@ FAM
+1 HUSB @I62@
+1 WIFE @I56@
+1 CHIL @I42@
+0 @F26@ FAM
+1 HUSB @I60@
+1 WIFE @I61@
+1 CHIL @I45@
+0 @F27@ FAM
+1 HUSB @I97@
+1 WIFE @I98@
+1 CHIL @I52@
+1 CHIL @I127@
+1 CHIL @I122@
+1 CHIL @I131@
+1 CHIL @I132@
+1 CHIL @I116@
+1 CHIL @I126@
+1 CHIL @I125@
+1 CHIL @I129@
+1 CHIL @I120@
+1 CHIL @I123@
+1 CHIL @I128@
+1 CHIL @I121@
+1 CHIL @I124@
+1 CHIL @I130@
+1 MARR
+2 DATE 24 APR 1874
+2 PLAC Ronco Scrivia, Genova, Liguria, Italia
+0 @F28@ FAM
+1 HUSB @I105@
+1 WIFE @I108@
+1 CHIL @I50@
+1 CHIL @I139@
+1 CHIL @I150@
+1 CHIL @I144@
+1 CHIL @I142@
+1 CHIL @I143@
+1 CHIL @I152@
+1 CHIL @I148@
+1 CHIL @I147@
+1 CHIL @I153@
+1 CHIL @I145@
+1 CHIL @I149@
+1 CHIL @I146@
+1 MARR
+2 DATE 29 NOV 1872
+2 PLAC Ronco Scrivia, Genova, Itália
+0 @F29@ FAM
+1 HUSB @I86@
+1 WIFE @I87@
+1 CHIL @I41@
+0 @F30@ FAM
+1 HUSB @I88@
+1 WIFE @I89@
+1 CHIL @I54@
+0 @F31@ FAM
+1 HUSB @I90@
+1 WIFE @I65@
+0 @F32@ FAM
+1 HUSB @I91@
+1 WIFE @I66@
+1 MARR
+2 DATE 5 MAY 1913
+2 PLAC Ciudad de Buenos Aires, Argentina
+0 @F33@ FAM
+1 HUSB @I96@
+1 WIFE @I104@
+1 CHIL @I55@
+1 CHIL @I109@
+1 CHIL @I111@
+1 CHIL @I110@
+1 CHIL @I113@
+1 CHIL @I118@
+1 CHIL @I114@
+1 CHIL @I117@
+1 CHIL @I115@
+1 CHIL @I112@
+1 CHIL @I119@
+1 MARR
+2 DATE 26 NOV 1864
+2 PLAC Gualeguaychú, Entre Ríos, Argentina
+0 @F34@ FAM
+1 HUSB @I107@
+1 WIFE @I106@
+1 CHIL @I38@
+1 CHIL @I133@
+1 CHIL @I134@
+1 CHIL @I135@
+1 CHIL @I137@
+1 CHIL @I151@
+1 CHIL @I140@
+1 CHIL @I138@
+1 CHIL @I141@
+1 MARR
+2 DATE 6 OCT 1874
+2 PLAC Liestal, Basel-Landschaft, Switzerland
+0 @F35@ FAM
+1 HUSB @I93@
+1 WIFE @I72@
+1 MARR
+2 DATE 31 DEC 1924
+0 @F36@ FAM
+1 HUSB @I77@
+1 WIFE @I95@
+0 @F37@ FAM
+1 HUSB @I94@
+1 WIFE @I78@
+0 @F38@ FAM
+1 HUSB @I101@
+1 WIFE @I79@
+1 MARR
+2 DATE 7 OCT 1920
+2 PLAC Gualeguay, Entre Ríos, Argentina
+0 @F39@ FAM
+1 HUSB @I103@
+1 WIFE @I81@
+1 MARR
+2 DATE 21 JUN 1920
+0 @F40@ FAM
+1 HUSB @I84@
+1 WIFE @I102@
+0 @F41@ FAM
+1 HUSB @I99@
+1 WIFE @I74@
+0 @F42@ FAM
+1 HUSB @I73@
+1 WIFE @I100@
+1 MARR
+2 DATE 8 AUG 1935
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+0 @F43@ FAM
+1 HUSB @I107@
+1 WIFE @I136@
+0 @F44@ FAM
+1 HUSB @I111@
+1 WIFE @I154@
+0 @F45@ FAM
+1 HUSB @I114@
+1 WIFE @I155@
+1 MARR
+2 DATE 11 AUG 1909
+0 @F46@ FAM
+1 HUSB @I115@
+1 WIFE @I157@
+1 MARR
+2 DATE 5 AUG 1916
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+0 @F47@ FAM
+1 HUSB @I159@
+1 WIFE @I119@
+1 MARR
+2 DATE 6 MAY 1911
+2 PLAC Argentina
+0 @F48@ FAM
+1 HUSB @I121@
+1 WIFE @I158@
+0 @F49@ FAM
+1 HUSB @I120@
+1 WIFE @I156@
+0 @F50@ FAM
+1 HUSB @I118@
+1 WIFE @I163@
+1 MARR
+2 DATE 12 OCT 1908
+2 PLAC Urdinarrain, Gualeguaychú, Entre Ríos, Argentina
+0 @F51@ FAM
+1 HUSB @I101@
+1 WIFE @I125@
+1 MARR
+2 DATE 8 JAN 1910
+2 PLAC Gualeguay, Entre Ríos, Argentina
+0 @F52@ FAM
+1 HUSB @I167@
+1 WIFE @I126@
+1 MARR
+2 DATE 6 APR 1907
+2 PLAC San Antonio de Padua, Gualeguay, Gualeguay, Entre Ríos, Argentina
+0 @F53@ FAM
+1 HUSB @I124@
+1 WIFE @I158@
+1 MARR
+2 DATE 3 MAR 1928
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+0 @F54@ FAM
+1 HUSB @I123@
+1 WIFE @I161@
+1 MARR
+2 DATE 20 SEP 1911
+2 PLAC San Antonio de Padua, Gualeguay, Gualeguay, Entre Ríos, Argentina
+0 @F55@ FAM
+1 HUSB @I129@
+1 WIFE @I166@
+1 MARR
+2 DATE 28 JUN 1913
+2 PLAC San Antonio de Padua, Gualeguay, Gualeguay, Entre Ríos, Argentina
+0 @F56@ FAM
+1 HUSB @I162@
+1 WIFE @I130@
+1 MARR
+2 DATE 12 JUN 1920
+2 PLAC Argentina
+0 @F57@ FAM
+1 HUSB @I164@
+1 WIFE @I128@
+1 MARR
+2 DATE 25 MAR 1911
+2 PLAC San Antonio de Padua, Gualeguay, Gualeguay, Entre Ríos, Argentina
+0 @F58@ FAM
+1 HUSB @I131@
+1 WIFE @I169@
+1 MARR
+2 DATE 27 JUN 1903
+2 PLAC Argentina
+0 @F59@ FAM
+1 HUSB @I127@
+1 WIFE @I168@
+1 MARR
+2 DATE 17 DEC 1904
+2 PLAC San Antonio de Padua, Gualeguay, Gualeguay, Entre Ríos, Argentina
+0 @F60@ FAM
+1 HUSB @I165@
+1 WIFE @I122@
+1 MARR
+2 DATE 1 AUG 1904
+0 @F61@ FAM
+1 HUSB @I160@
+1 WIFE @I122@
+1 MARR
+2 DATE 30 JUN 1921
+2 PLAC San Antonio, Gualeguay, Gualeguay, Entre Ríos, Argentina
+0 @F62@ FAM
+1 HUSB @I132@
+1 WIFE @I170@
+1 MARR
+2 DATE 18 MAR 1914
+2 PLAC San Antonio de Padua, Gualeguay, Gualeguay, Entre Ríos, Argentina
+0 @F63@ FAM
+1 HUSB @I117@
+1 WIFE @I171@
+1 MARR
+2 DATE 2 APR 1921
+2 PLAC San Antonio, Gualeguay, Gualeguay, Entre Ríos, Argentina
+0 @F64@ FAM
+1 HUSB @I138@
+1 WIFE @I172@
+1 MARR
+2 DATE 19 APR 1923
+2 PLAC Gualeguay, Entre Ríos, Argentina
+0 @F65@ FAM
+1 HUSB @I137@
+1 WIFE @I176@
+0 @F66@ FAM
+1 HUSB @I93@
+1 WIFE @I135@
+1 MARR
+2 DATE 16 AUG 1915
+2 PLAC Gualeguay, Entre Ríos, Argentina
+0 @F67@ FAM
+1 HUSB @I174@
+1 WIFE @I141@
+1 MARR
+2 DATE 21 SEP 1912
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+0 @F68@ FAM
+1 HUSB @I140@
+1 WIFE @I173@
+1 MARR
+2 DATE 7 DEC 1918
+2 PLAC San Antonio, Gualeguay, Gualeguay, Entre Ríos, Argentina
+0 @F69@ FAM
+1 HUSB @I147@
+1 WIFE @I177@
+1 MARR
+2 DATE 30 MAY 1914
+2 PLAC Argentina
+0 @F70@ FAM
+1 HUSB @I178@
+1 WIFE @I149@
+1 MARR
+2 DATE 25 JUN 1910
+2 PLAC San Antonio de Padua, Gualeguay, Gualeguay, Entre Ríos, Argentina
+0 @F71@ FAM
+1 HUSB @I151@
+1 WIFE @I184@
+1 MARR
+2 DATE 24 SEP 1904
+2 PLAC Gualeguay, Entre Ríos, Argentina
+0 @F72@ FAM
+1 HUSB @I151@
+1 WIFE @I175@
+0 @F73@ FAM
+1 HUSB @I182@
+1 WIFE @I152@
+1 MARR
+2 DATE 10 JUL 1897
+2 PLAC San Antonio de Padua, Gualeguay, Gualeguay, Entre Ríos, Argentina
+0 @F74@ FAM
+1 HUSB @I150@
+1 WIFE @I180@
+1 MARR
+2 DATE 11 MAY 1904
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+0 @F75@ FAM
+1 HUSB @I150@
+1 WIFE @I179@
+1 MARR
+2 DATE 9 NOV 1895
+2 PLAC Gualeguay, Gualeguay, Entre Ríos, Argentina
+0 @F76@ FAM
+1 HUSB @I181@
+1 WIFE @I153@
+1 MARR
+2 DATE 6 FEB 1904
+2 PLAC San Antonio de Padua, Gualeguay, Gualeguay, Entre Ríos, Argentina
+0 @F77@ FAM
+1 HUSB @I183@
+1 WIFE @I148@
+1 MARR
+2 DATE 14 APR 1900
+2 PLAC Argentina
+0 _EVDEF BIRT
+1 TYPE P
+1 TITL Birth
+1 ABBR Birth
+1 SENT [person] was born< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the birth of [person]< [Date]>< [PlaceDetails]>< [
+3 CONC Place]>.
+1 ROLE Doctor
+2 SENT [ThisPerson] delivered [person]< [Date]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF DEAT
+1 TYPE P
+1 TITL Death
+1 ABBR Death
+1 SENT [person] died< [Desc]>< [Date]>< [person:Age]>< [PlaceDetails]>< [Place
+2 CONC ]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the death of [person]< [Date]>< [PlaceDetails]>< [
+3 CONC Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF CHR
+1 TYPE P
+1 TITL Christen
+1 ABBR Chr
+1 SENT [person] was christened< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the christening of [person]< [Date]>< [PlaceDeta
+3 CONC ils]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF BURI
+1 TYPE P
+1 TITL Burial
+1 ABBR Burial
+1 SENT [person] was buried< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the burial of [person]< [Date]>< [PlaceDetails]>
+3 CONC < [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF CREM
+1 TYPE P
+1 TITL Cremation
+1 ABBR Cremation
+1 SENT [person] was cremated< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the cremation of [person]< [Date]>< [PlaceDetail
+3 CONC s]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF ADOP
+1 TYPE P
+1 TITL Adoption
+1 ABBR Adoption
+1 SENT [person] was adopted< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the adoption of [person]< [Date]>< [PlaceDetails
+3 CONC ]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF BAPM
+1 TYPE P
+1 TITL Baptism
+1 ABBR Baptism
+1 SENT [person] was baptized< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the baptism of [person]< [Date]>< [PlaceDetails]
+3 CONC >< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF BARM
+1 TYPE P
+1 TITL Bar Mitzvah
+1 ABBR Bar Mitzvah
+1 SENT [person] celebrated his bar mitzvah< [Date]>< [PlaceDetails]>< [Place]>
+2 CONC .
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the bar mitzvah of [person]< [Date]>< [PlaceDeta
+3 CONC ils]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF BASM
+1 TYPE P
+1 TITL Bas Mitzvah
+1 ABBR Bas Mitzvah
+1 SENT [person] celebrated her bas mitzvah< [Date]>< [PlaceDetails]>< [Place]>
+2 CONC .
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the bas mitzvah of [person]< [Date]>< [PlaceDeta
+3 CONC ils]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF BLES
+1 TYPE P
+1 TITL Blessing
+1 ABBR Blessing
+1 SENT [person] was blessed< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the blessing of [person]< [Date]>< [PlaceDetails
+3 CONC ]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF CHRA
+1 TYPE P
+1 TITL Christen (adult)
+1 ABBR Chr (adult)
+1 SENT [person] was christened< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the christening of [person]< [Date]>< [PlaceDeta
+3 CONC ils]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF CONF
+1 TYPE P
+1 TITL Confirmation
+1 ABBR Confirmation
+1 SENT [person] was confirmed< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the confirmation of [person]< [Date]>< [PlaceDet
+3 CONC ails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF FCOM
+1 TYPE P
+1 TITL First communion
+1 ABBR First comm
+1 SENT [person] received first communion< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the first communion of [person]< [Date]>< [Place
+3 CONC Details]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF ORDN
+1 TYPE P
+1 TITL Ordination
+1 ABBR Ordination
+1 SENT [person] was ordained< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the ordination of [person]< [Date]>< [PlaceDetai
+3 CONC ls]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF NATU
+1 TYPE P
+1 TITL Naturalization
+1 ABBR Naturalization
+1 SENT [person] was naturalized< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the naturalization of [person]< [Date]>< [PlaceD
+3 CONC etails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF EMIG
+1 TYPE P
+1 TITL Emigration
+1 ABBR Emigration
+1 SENT [person] emigrated< [Date]>< from [Place:plain]>< [PlaceDetails]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the emigration of [person]< [Date]>< [PlaceDetai
+3 CONC ls]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF IMMI
+1 TYPE P
+1 TITL Immigration
+1 ABBR Immigration
+1 SENT [person] immigrated< [Date]>< to [Place:plain]>< [PlaceDetails]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the immigration of [person]< [Date]>< [PlaceDeta
+3 CONC ils]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF CENS
+1 TYPE P
+1 TITL Census
+1 ABBR Census
+1 SENT [person] appeared in the census< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] appeared in the household of [person] in the census< [Date
+3 CONC ]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF PROB
+1 TYPE P
+1 TITL Probate
+1 ABBR Probate
+1 SENT [person] had [person:hisher] estate probated< [Date]>< [PlaceDetails]>< [
+2 CONC Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the probate of [person]< [Date]>< [PlaceDetails]
+3 CONC >< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF WILL
+1 TYPE P
+1 TITL Will
+1 ABBR Will
+1 SENT [person] signed a will< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the will of [person]< [Date]>< [PlaceDetails]>< [
+3 CONC Place]>.
+1 ROLE Heir
+2 SENT [ThisPerson] was named an heir in the will of [person]< [Date]>< [Place
+3 CONC Details]>< [Place]>.
+1 ROLE Executor
+2 SENT [ThisPerson] was named an executor for the will of [person]< [Date]>< [
+3 CONC PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF GRAD
+1 TYPE P
+1 TITL Graduation
+1 ABBR Graduation
+1 SENT [person] graduated< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the graduation of [person]< [Date]>< [PlaceDetai
+3 CONC ls]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF RETI
+1 TYPE P
+1 TITL Retirement
+1 ABBR Retirement
+1 SENT [person] retired< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the retirement of [person]< [Date]>< [PlaceDetai
+3 CONC ls]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF DSCR
+1 TYPE P
+1 TITL Description
+1 ABBR Description
+1 SENT [person] was described as [Desc]< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the appearance of [person] as [Desc]< [Date]>< [
+3 CONC PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF EDUC
+1 TYPE P
+1 TITL Education
+1 ABBR Education
+1 SENT [person] was educated < [Desc]>< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the education of [person]< [Date]>< [PlaceDetail
+3 CONC s]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF NATI
+1 TYPE P
+1 TITL Nationality
+1 ABBR Nationality
+1 SENT [person] was [Desc]< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the nationality of [person] as [Desc]< [Date]>< [
+3 CONC PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF OCCU
+1 TYPE P
+1 TITL Occupation
+1 ABBR Occupation
+1 SENT [date] [person] was [Desc:A]< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the occupation of [person]< [Date]> as [Desc:A]< [
+3 CONC PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF PROP
+1 TYPE P
+1 TITL Property
+1 ABBR Property
+1 SENT [person] owned [Desc]< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the property of [person] as [Desc:A]< [Date]>< [
+3 CONC PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF RELI
+1 TYPE P
+1 TITL Religion
+1 ABBR Religion
+1 SENT [person] was [Desc]< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the religion of [person] as [Desc:A]< [Date]>< [
+3 CONC PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF RESI
+1 TYPE P
+1 TITL Residence
+1 ABBR Residence
+1 SENT [person] lived< [Desc]>< [PlaceDetails]>< [Place]>< [Date]>.
+1 ROLE Witness
+2 SENT [ThisPerson] lived in the residence of [person] < [PlaceDetails]>< [Pla
+3 CONC ce]>< [Date]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF SSN
+1 TYPE P
+1 TITL Soc Sec No
+1 ABBR SSN
+1 SENT [person] had Social Security Number [Desc].
+1 PLAC N
+1 DATE N
+1 DESC Y
+0 _EVDEF BAPL
+1 TYPE P
+1 TITL LDS Baptism
+1 ABBR LDS Bapt
+1 SENT [person] was baptized into the LDS Church< [Date]>< [PlaceDetails]>< [P
+2 CONC lace]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the baptism of [person] into the LDS Church< [Da
+3 CONC te]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF ENDL
+1 TYPE P
+1 TITL LDS Endowment
+1 ABBR LDS Endow
+1 SENT [person] was endowed< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the endowment of [person]< [Date]>< [PlaceDetail
+3 CONC s]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF SLGC
+1 TYPE P
+1 TITL LDS Seal to parents
+1 ABBR LDS SealPar
+1 SENT [person] was sealed to [person:hisher] parents< [Date]>< [PlaceDetails]
+2 CONC >< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the sealed to parents of [person]< [Date]>< [Pla
+3 CONC ceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF AFN
+1 TYPE P
+1 TITL Ancestral File Number
+1 ABBR AFN
+1 SENT [person] has Ancestral File Number [Desc].
+1 PLAC N
+1 DATE N
+1 DESC Y
+0 _EVDEF REFN
+1 TYPE P
+1 TITL Reference No
+1 ABBR Ref #
+1 SENT [person] has reference number [Desc].
+1 PLAC N
+1 DATE N
+1 DESC Y
+0 _EVDEF CAST
+1 TYPE P
+1 TITL Caste
+1 ABBR Caste
+1 SENT [person] was associated with [Desc]< [Date]>< [PlaceDetails]>< [Place]>
+2 CONC .
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the associated with [Desc] of [person]< [Date]>< [
+3 CONC PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF TITL
+1 TYPE P
+1 TITL Title (Nobility)
+1 ABBR Title
+1 SENT [person] held the title of [Desc]< [Date]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF CONL
+1 TYPE P
+1 TITL LDS Confirmation
+1 ABBR LDS Conf
+1 SENT [person] was confirmed a member of the LDS Church< [Date]>< [PlaceDetai
+2 CONC ls]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the confirmation of [person] as a member of the L
+3 CONC DS Church< [Date]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF WAC
+1 TYPE P
+1 TITL LDS Initiatory
+1 ABBR LDS Init
+1 SENT [person] received LDS initiatory< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the LDS initiatory of [person]< [Date]>< [PlaceD
+3 CONC etails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF MARR
+1 TYPE F
+1 TITL Marriage
+1 ABBR Marriage
+1 SENT [couple] <#Couple#was|were> married< [Date]>< [PlaceDetails]>< [Place]>
+2 CONC .
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the marriage of [couple]< [Date]>< [PlaceDetails
+3 CONC ]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF ANUL
+1 TYPE F
+1 TITL Annulment
+1 ABBR Annulment
+1 SENT [couple] had their marriage annulled< [Date]>< [PlaceDetails]>< [Place]
+2 CONC >.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the annulment of the marriage of [couple]< [Date
+3 CONC ]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF DIV
+1 TYPE F
+1 TITL Divorce
+1 ABBR Divorce
+1 SENT [couple] <#Couple#was|were> divorced< [Date]>< [PlaceDetails]>< [Place]
+2 CONC >.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the divorce of [couple]< [Date]>< [PlaceDetails]
+3 CONC >< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF DIVF
+1 TYPE F
+1 TITL Divorce filed
+1 ABBR Div. filed
+1 SENT [couple] filed for divorce< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the divorce filing of [couple]< [Date]>< [PlaceD
+3 CONC etails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF ENGA
+1 TYPE F
+1 TITL Engagement
+1 ABBR Engagement
+1 SENT [couple] <#Couple#was|were> engaged< [Date]>< [PlaceDetails]>< [Place]>
+2 CONC .
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the engagement of [couple]< [Date]>< [PlaceDetai
+3 CONC ls]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF MARB
+1 TYPE F
+1 TITL Marriage Bann
+1 ABBR Marr Bann
+1 SENT [couple] had marriage banns published< [Date]>< [PlaceDetails]>< [Place
+2 CONC ]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the publishing of the marriage banns of [couple]
+3 CONC <[Date]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF MARC
+1 TYPE F
+1 TITL Marriage Contract
+1 ABBR Marr Contract
+1 SENT [couple] signed a marriage contract< [Date]>< [PlaceDetails]>< [Place]>
+2 CONC .
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the marriage contract of [couple]< [Date]>< [Pla
+3 CONC ceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF MARL
+1 TYPE F
+1 TITL Marriage License
+1 ABBR Marr Lic
+1 SENT [couple] obtained a marriage license< [Date]>< [PlaceDetails]>< [Place]
+2 CONC >.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the obtaining of the marriage license by [couple
+3 CONC ]< [Date]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF MARS
+1 TYPE F
+1 TITL Marriage Settlement
+1 ABBR Marr Settlement
+1 SENT [couple] obtained a marriage settlement< [Date]>< [PlaceDetails]>< [Pla
+2 CONC ce]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the marriage settlement of [couple]< [Date]>< [P
+3 CONC laceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF SLGS
+1 TYPE F
+1 TITL LDS Seal to spouse
+1 ABBR LDS SealSp
+1 SENT [couple] were sealed together< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the sealing of [couple]< [Date]>< [PlaceDetails]
+3 CONC >< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF RESI
+1 TYPE F
+1 TITL Residence (family)
+1 ABBR Residence (fam)
+1 SENT [couple] lived < [Desc]>< [PlaceDetails]>< [Place]>< [Date]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF CENS
+1 TYPE F
+1 TITL Census (family)
+1 ABBR Census (fam)
+1 SENT [couple] appeared in the census< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] appeared in the census in the household of [couple]< [Date
+3 CONC ]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF Degree
+1 TYPE P
+1 TITL Degree
+1 ABBR Degree
+1 SENT [person] received a< [desc]> degree< [Date]>< [PlaceDetails]>< [Place]>
+2 CONC .
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the degree of [person]< [Date]>< [PlaceDetails]>
+3 CONC < [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF Military
+1 TYPE P
+1 TITL Military
+1 ABBR Military
+1 SENT [person] served in the military< [Desc]>< [Date]>< [PlaceDetails]>< [Pl
+2 CONC ace]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the military service of [person]< [Date]>< [Plac
+3 CONC eDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF Mission
+1 TYPE P
+1 TITL Mission
+1 ABBR Mission
+1 SENT [person] served a mission< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the mission of [person]< [Date]>< [PlaceDetails]
+3 CONC >< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF Stillborn
+1 TYPE P
+1 TITL Stillborn
+1 ABBR Stillborn
+1 SENT [person] was stillborn< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the stillbirth of [person]< [Date]>< [PlaceDetai
+3 CONC ls]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF Illness
+1 TYPE P
+1 TITL Illness
+1 ABBR Illness
+1 SENT [person] was ill< with [Desc]>< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the illness of [person] with [Desc]< [Date]>< [P
+3 CONC laceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF Living
+1 TYPE P
+1 TITL Living
+1 ABBR Living
+1 SENT [person] was living< [Date]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF Elected
+1 TYPE P
+1 TITL Election
+1 ABBR Elected
+1 SENT [person] was elected< as [Desc]>< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the election of [person] as [Desc]< [Date]>< [Pl
+3 CONC aceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF Excomm
+1 TYPE P
+1 TITL Excommunication
+1 ABBR Excomm
+1 SENT [person] was excommunicated< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the excommunication of [person]< [Date]>< [Place
+3 CONC Details]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF Namesake
+1 TYPE P
+1 TITL Namesake
+1 ABBR Namesake
+1 SENT [person] was named after [Desc]< [Date]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF Separation
+1 TYPE F
+1 TITL Separation
+1 ABBR Separation
+1 SENT [couple] were separated< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the separation of [couple]< [Date]>< [PlaceDetai
+3 CONC ls]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF Alt. Name
+1 TYPE P
+1 TITL Alternate name
+1 ABBR Alt. Name
+1 SENT [person] was also known as [Desc]< [Date]>.
+1 PLAC N
+1 DATE Y
+1 DESC N
+0 _EVDEF _DNA
+1 TYPE P
+1 TITL DNA test
+1 ABBR DNA
+1 SENT [person] had a DNA test performed< [Date]>.
+1 PLAC N
+1 DATE Y
+1 DESC N
+0 _EVDEF Association
+1 TYPE P
+1 TITL Association
+1 ABBR Association
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF Misc
+1 TYPE P
+1 TITL Miscellaneous
+1 ABBR Misc
+1 SENT [person]< [Desc]>< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [person]< [Desc]>< [Date]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 TRLR

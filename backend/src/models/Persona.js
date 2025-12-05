@@ -49,8 +49,14 @@ const PersonaSchema = new mongoose.Schema({
     ruta: { type: String },
     nombreArchivo: { type: String },
     descripcion: { type: String, trim: true }
-  }]
-  
+  }],
+  galeria: [{
+  titulo: String,
+  descripcion: String,
+  ruta: String,
+  nombreArchivo: String,
+  fecha: Date
+}]
 }, { timestamps: true });
 
 PersonaSchema.index({ nombre: 'text', notas: 'text', acercaDe: 'text' });

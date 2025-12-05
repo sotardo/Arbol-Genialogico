@@ -100,8 +100,9 @@ export default function FamilyCanvas({
   const worldRef = useRef(null); 
   
   const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
-  const MIN_SCALE = 0.4;
-  const MAX_SCALE = 2.5;
+const MIN_SCALE = 0.4;
+const MAX_SCALE = 2.5;
+const INITIAL_ZOOM = 1.8;
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -371,7 +372,7 @@ export default function FamilyCanvas({
               expandedUpKeys,
               expandedDownKeys,
               grid: {
-                columnGap: 100,
+                columnGap: 150,
                 rowStep: 200
               }
             }
@@ -416,7 +417,7 @@ export default function FamilyCanvas({
         1
       );
       
-      const s = clamp(fitScale * 1.2, MIN_SCALE, MAX_SCALE);
+      const s = clamp(fitScale * INITIAL_ZOOM, MIN_SCALE, MAX_SCALE);
 
       const worldCx = rootNode.x + rootNode.width / 2;
       const worldCy = rootNode.y + rootNode.height / 2;
@@ -432,8 +433,7 @@ export default function FamilyCanvas({
         vp.height / (layout.bounds.height + padding),
         1
       );
-      const s = clamp(fitScale * 1.2, MIN_SCALE, MAX_SCALE);
-
+const s = clamp(fitScale * INITIAL_ZOOM, MIN_SCALE, MAX_SCALE);
       const nx = (vp.width - s * layout.bounds.width) / 2;
       const ny = (vp.height - s * layout.bounds.height) / 2;
 
@@ -544,43 +544,8 @@ export default function FamilyCanvas({
     setSelectedPersonId(null);
   };
 
-  if (loading) {
-    return (
-      <div style={styles.full(height)}>
-        <div className="flex flex-col items-center gap-4 text-gray-700">
-          <Button disabled size="sm" className="flex items-center gap-2">
-            <Spinner className="h-4 w-4" />
-            Cargando..
-          </Button>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div style={{ ...styles.full(height), flexDirection: 'column', color: '#d32f2f' }}>
-        <div style={{ fontWeight: 'bold', marginBottom: 8 }}>Error en FamilyCanvas</div>
-        <div style={{ marginBottom: 8 }}>{error}</div>
-        <button onClick={() => window.location.reload()} style={styles.buttonDanger}>Recargar página</button>
-      </div>
-    );
-  }
-
-  if (!familyData?.rootPerson) {
-    return (<div style={styles.full(height)}><div>{rootId ? 'No se encontró la persona' : 'Selecciona una persona'}</div></div>);
-  }
-
-  if (!layout?.nodes) {
-    return (<div style={styles.full(height)}><div>Calculando layout…</div></div>);
-  }
-
-  const ROW_H = 64;
-
-  const onToggleUp = (e, groupKey, active, nodeTipo) => {
-    e.stopPropagation();
-    e.preventDefault();
-    
+  // Guardar estado del viewport antes de expansión
+  const saveViewportState = () => {
     const worldDiv = viewportRef.current?.querySelector('[style*="transform"]');
     if (worldDiv) {
       const currentTransform = worldDiv.style.transform;
@@ -594,6 +559,13 @@ export default function FamilyCanvas({
         };
       }
     }
+  };
+
+  const onToggleUp = (e, groupKey, active, nodeTipo) => {
+    e.stopPropagation();
+    e.preventDefault();
+    
+    saveViewportState();
     
     const clickedGeneration = getAbsoluteGenerationFromTipo(nodeTipo);
 
@@ -638,19 +610,7 @@ export default function FamilyCanvas({
     e.stopPropagation();
     e.preventDefault();
     
-    const worldDiv = viewportRef.current?.querySelector('[style*="transform"]');
-    if (worldDiv) {
-      const currentTransform = worldDiv.style.transform;
-      const match = currentTransform.match(/translate\((-?\d+\.?\d*)px,\s*(-?\d+\.?\d*)px\)\s*scale\((-?\d+\.?\d*)\)/);
-      if (match) {
-        const [, currentTx, currentTy, currentScale] = match;
-        viewportStateBeforeExpansion.current = {
-          scale: parseFloat(currentScale),
-          tx: parseFloat(currentTx),
-          ty: parseFloat(currentTy)
-        };
-      }
-    }
+    saveViewportState();
     
     const clickedGeneration = getAbsoluteGenerationFromTipo(nodeTipo);
 
@@ -690,6 +650,37 @@ export default function FamilyCanvas({
       });
     }
   };
+
+  if (loading) {
+    return (
+      <div style={styles.full(height)}>
+        <div className="flex flex-col items-center gap-4 text-gray-700">
+          <Button disabled size="sm" className="flex items-center gap-2">
+            <Spinner className="h-4 w-4" />
+            Cargando..
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div style={{ ...styles.full(height), flexDirection: 'column', color: '#d32f2f' }}>
+        <div style={{ fontWeight: 'bold', marginBottom: 8 }}>Error en FamilyCanvas</div>
+        <div style={{ marginBottom: 8 }}>{error}</div>
+        <button onClick={() => window.location.reload()} style={styles.buttonDanger}>Recargar página</button>
+      </div>
+    );
+  }
+
+  if (!familyData?.rootPerson) {
+    return (<div style={styles.full(height)}><div>{rootId ? 'No se encontró la persona' : 'Selecciona una persona'}</div></div>);
+  }
+
+  if (!layout?.nodes) {
+    return (<div style={styles.full(height)}><div>Calculando layout…</div></div>);
+  }
 
   const viewBox = `0 0 ${layout.bounds.width} ${layout.bounds.height}`;
 
@@ -890,18 +881,11 @@ export default function FamilyCanvas({
             .map((node) => {
               const group = node.data;
               const groupKey = group?.groupKey || localPairKey(group?.persona?._id, group?.conyuge?._id);
-const isAncestorCol = /ancestor/.test(node.tipo);
+              const isAncestorCol = /ancestor/.test(node.tipo);
               const isDescendantCol = !isAncestorCol && node.tipo !== 'family-group-root';
               
-              // 🔥 NUEVA LÓGICA: Detectar cards vacías correctamente
+              // 🔥 Detectar cards vacías
               const isEmptyCard = group?.isEmpty === true || group?.isEmptyCard === true;
-              
-              // 🔥 Para cards vacías, NO verificar padres reales
-              const canHaveParents = !isEmptyCard;
-              const hasParents = Boolean(
-                (group?.persona?.padres && group.persona.padres.length) ||
-                (group?.conyuge?.padres && group.conyuge?.padres?.length)
-              );
               
               const hasChildren = Boolean(
                 (group?.hijos && group.hijos.length) ||
@@ -912,23 +896,30 @@ const isAncestorCol = /ancestor/.test(node.tipo);
               const upActive = expandedUpKeys.has(groupKey);
               const downActive = expandedDownKeys.has(groupKey);
 
-              // ✅ Botón de expansión hacia arriba SOLO en columnas de ancestros
-              // Y solo si el layout marca que debe tener el botón (gen 3, 5, 7, etc.)
+              // Botón de expansión hacia arriba SOLO en columnas de ancestros
               const shouldShowUpButton = isAncestorCol && node.hasExpandButton && !isEmptyCard;
-              // 🔥 FIX: Key más estable
+              const shouldShowDownButton = isDescendantCol && hasChildren && !isEmptyCard;
+              
               const nodeKey = `family-${groupKey}-${node.id}`;
 
-              // 🔥 LOG para debugging
-              if (isEmptyCard) {
-                console.log('🟣 [RENDER EMPTY CARD]:', {
-                  id: node.id,
-                  tipo: node.tipo,
-                  groupKey,
-                  x: node.x,
-                  y: node.y,
-                  targetPerson: group?.targetPersonName
-                });
-              }
+              // 🔥 Crear los CircleButtons para pasar como props
+              const rightControlBtn = shouldShowUpButton ? (
+                <CircleButton
+                  side="right"
+                  title={upActive ? 'Contraer rama (−)' : 'Expandir 2 generaciones (+)'}
+                  active={upActive}
+                  onClick={(e) => onToggleUp(e, groupKey, upActive, node.tipo)}
+                />
+              ) : null;
+
+              const leftControlBtn = shouldShowDownButton ? (
+                <CircleButton
+                  side="left"
+                  title={downActive ? 'Contraer descendencia (−)' : 'Expandir descendencia (+)'}
+                  active={downActive}
+                  onClick={(e) => onToggleDown(e, groupKey, downActive, node.tipo)}
+                />
+              ) : null;
 
               return (
                 <motion.div
@@ -950,34 +941,16 @@ const isAncestorCol = /ancestor/.test(node.tipo);
                            node.tipo === 'family-group-greatancestor' ? 8 : 7,
                   }}
                 >
-                  {shouldShowUpButton && (
-                    <CircleButton
-                      side="right"
-                      size={32}
-                      title={upActive ? 'Contraer rama (−)' : 'Expandir 2 generaciones (+)'}
-                      active={upActive}
-                      onClick={(e) => onToggleUp(e, groupKey, upActive, node.tipo)}
-                      style={{ top: ROW_H - 16, transform: 'none' }}
-                    />
-                  )}
-
-                  {isDescendantCol && hasChildren && !isEmptyCard && (
-                    <CircleButton
-                      side="left"
-                      size={32}
-                      title={downActive ? 'Contraer descendencia (−)' : 'Expandir descendencia (+)'}
-                      active={downActive}
-                      onClick={(e) => onToggleDown(e, groupKey, downActive, node.tipo)}
-                      style={{ top: ROW_H - 16, transform: 'none' }}
-                    />
-                  )}
-
                   <FamilyCard
                     persona={group.persona}
                     conyuge={group.conyuge}
                     hijos={group.hijos}
                     isEmpty={isEmptyCard}
                     targetPersonId={group.targetPersonId}
+                    // ✅ Pasar botones como props para posicionamiento correcto
+                    leftControl={leftControlBtn}
+                    rightControl={rightControlBtn}
+                    controlSize={32}
                     onAgregarPadre={(targetId) => {
                       const targetPerson = familyData?.personas?.find(p => p._id === targetId);
                       handleAgregarPadre(targetId, targetPerson?.nombre || 'Persona');

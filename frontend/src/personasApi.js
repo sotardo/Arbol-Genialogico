@@ -142,7 +142,65 @@ editarMedia: async (idPersona, idMedia, data) => {
       }
       return res.json();
     },
+    // === 🟦 GALERÍA (separada de medios/fuentes) ===
 
+// Subir foto a galería
+subirFotoGaleria: async (id, file, metadata = {}) => {
+  const fd = new FormData();
+  fd.append('file', file);
+  if (metadata.titulo) fd.append('titulo', metadata.titulo);
+  if (metadata.descripcion) fd.append('descripcion', metadata.descripcion);
+  if (metadata.fecha) fd.append('fecha', metadata.fecha);
+
+  const res = await fetch(`${API}/api/personas/${id}/galeria`, {
+    method: 'POST',
+    body: fd,
+  });
+
+  if (!res.ok) {
+    const txt = await res.text();
+    throw new Error(`Error subiendo foto a galería: ${txt}`);
+  }
+
+  return res.json();
+},
+
+// Editar foto de galería
+editarFotoGaleria: async (idPersona, idFoto, data) => {
+  const fd = new FormData();
+  
+  if (data.titulo !== undefined) fd.append('titulo', data.titulo);
+  if (data.descripcion !== undefined) fd.append('descripcion', data.descripcion);
+  if (data.fecha !== undefined) fd.append('fecha', data.fecha);
+  
+  if (data.file) {
+    fd.append('file', data.file);
+  }
+
+  const res = await fetch(`${API}/api/personas/${idPersona}/galeria/${idFoto}`, {
+    method: 'PUT',
+    body: fd,
+  });
+
+  if (!res.ok) {
+    const txt = await res.text();
+    throw new Error(`Error editando foto de galería: ${txt}`);
+  }
+
+  return res.json();
+},
+
+// Eliminar foto de galería
+eliminarFotoGaleria: async (id, galeriaId) => {
+  const res = await fetch(`${API}/api/personas/${id}/galeria/${galeriaId}`, {
+    method: 'DELETE',
+  });
+  if (!res.ok) {
+    const txt = await res.text();
+    throw new Error(`Error eliminando foto de galería: ${txt}`);
+  }
+  return res.json();
+},
     // ✅ NUEVO: Marcar cónyuge preferido
     marcarConyugePreferido: async (personaId, conyugeId) => {
       const res = await fetch(`${API}/api/personas/${personaId}/conyuge-preferido`, {
