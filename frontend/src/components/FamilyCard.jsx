@@ -1,10 +1,9 @@
 // src/components/FamilyCard.jsx
 import React, { useMemo, useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import { CirclePlus } from "lucide-react";
 import PersonCard from "./PersonCard";
 
-// Estilo FamilySearch
-const shadow = "0 2px 8px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06)";
 const API = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 
 const imgSrc = (url) => {
@@ -38,12 +37,12 @@ export default function FamilyCard({
   const footerRef = useRef(null);
   const [dropdownPos, setDropdownPos] = useState(null);
 
-  // Dimensiones estilo FamilySearch (más anchas, altura compacta)
+  // Dimensiones
   const CARD_W = 300;
   const ROW_H = 64;
   const FOOTER_H = 40;
   const CARD_H = ROW_H * 2 + FOOTER_H + 8;
-  const BORDER_RADIUS = 12;
+  const BORDER_RADIUS = 10;
 
   const ctrlTop = ROW_H - controlSize / 2;
   const ctrlOffset = Math.round(controlSize * 0.56);
@@ -57,7 +56,7 @@ export default function FamilyCard({
     if (showHijosList && footerRef.current) {
       const rect = footerRef.current.getBoundingClientRect();
       setDropdownPos({
-        top: rect.bottom + 6,
+        top: rect.bottom + 4,
         left: rect.left - 8,
         width: rect.width + 16,
       });
@@ -70,16 +69,14 @@ export default function FamilyCard({
       <div
         style={{
           width: CARD_W,
-          height: CARD_H,
+          height: ROW_H * 2,
           boxSizing: "border-box",
-          background: "#fafbfc",
+          background: "#ffffff",
           borderRadius: BORDER_RADIUS,
-          boxShadow: shadow,
-          border: "2px dashed #d1d5db",
+          border: "1px solid #e5e7eb",
           overflow: "hidden",
           display: "flex",
           flexDirection: "column",
-          position: "relative"
         }}
       >
         {/* Botón AGREGAR PADRE */}
@@ -93,32 +90,31 @@ export default function FamilyCard({
             height: ROW_H,
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
-            gap: 8,
+            justifyContent: "flex-start",
+            gap: 12,
             borderBottom: "1px solid #e5e7eb",
             background: "#ffffff",
             cursor: "pointer",
             border: "none",
-            fontSize: 13,
+            fontSize: 14,
             fontWeight: 600,
-            color: "#2563eb",
-            transition: "all 0.2s ease",
-            width: "100%"
+            color: "#0891b2",
+            transition: "background 0.15s ease",
+            width: "100%",
+            padding: 0,
           }}
-          onMouseEnter={(e) => e.currentTarget.style.background = "#eff6ff"}
+          onMouseEnter={(e) => e.currentTarget.style.background = "#ecfeff"}
           onMouseLeave={(e) => e.currentTarget.style.background = "#ffffff"}
         >
-          <span style={{ 
-            fontSize: 16, 
-            width: 24, 
-            height: 24, 
-            borderRadius: "50%", 
-            background: "#dbeafe",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
-          }}>+</span>
-          Agregar padre
+          <div style={{
+            width: 4,
+            height: "100%",
+            background: "#0891b2",
+            borderTopLeftRadius: BORDER_RADIUS,
+            flexShrink: 0
+          }} />
+          <CirclePlus size={22} strokeWidth={1.5} />
+          AGREGAR PADRE
         </button>
 
         {/* Botón AGREGAR MADRE */}
@@ -132,49 +128,31 @@ export default function FamilyCard({
             height: ROW_H,
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
-            gap: 8,
-            borderBottom: "1px solid #e5e7eb",
+            justifyContent: "flex-start",
+            gap: 12,
             background: "#ffffff",
             cursor: "pointer",
             border: "none",
-            fontSize: 13,
+            fontSize: 14,
             fontWeight: 600,
             color: "#db2777",
-            transition: "all 0.2s ease",
-            width: "100%"
+            transition: "background 0.15s ease",
+            width: "100%",
+            padding: 0,
           }}
           onMouseEnter={(e) => e.currentTarget.style.background = "#fdf2f8"}
           onMouseLeave={(e) => e.currentTarget.style.background = "#ffffff"}
         >
-          <span style={{ 
-            fontSize: 16, 
-            width: 24, 
-            height: 24, 
-            borderRadius: "50%", 
-            background: "#fce7f3",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
-          }}>+</span>
-          Agregar madre
+          <div style={{
+            width: 4,
+            height: "100%",
+            background: "#db2777",
+            borderBottomLeftRadius: BORDER_RADIUS,
+            flexShrink: 0
+          }} />
+          <CirclePlus size={22} strokeWidth={1.5} />
+          AGREGAR MADRE
         </button>
-
-        {/* Footer vacío */}
-        <div
-          style={{
-            padding: "10px 14px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            background: "#f8fafc",
-            color: "#9ca3af",
-            fontSize: 12,
-            fontWeight: 500
-          }}
-        >
-          Sin padres registrados
-        </div>
       </div>
     );
   }
@@ -188,7 +166,6 @@ export default function FamilyCard({
           boxSizing: "border-box",
           background: "#ffffff",
           borderRadius: BORDER_RADIUS,
-          boxShadow: shadow,
           border: "1px solid #e5e7eb",
           overflow: "visible",
           display: "flex",
@@ -285,32 +262,30 @@ export default function FamilyCard({
               height: ROW_H,
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
-              gap: 8,
+              justifyContent: "flex-start",
+              gap: 12,
               borderBottom: "1px solid #f1f5f9",
               background: "#ffffff",
               cursor: "pointer",
               border: "none",
-              fontSize: 13,
+              fontSize: 14,
               fontWeight: 600,
               color: "#db2777",
-              transition: "all 0.2s ease",
-              width: "100%"
+              transition: "background 0.15s ease",
+              width: "100%",
+              padding: 0
             }}
             onMouseEnter={(e) => e.currentTarget.style.background = "#fdf2f8"}
             onMouseLeave={(e) => e.currentTarget.style.background = "#ffffff"}
           >
-            <span style={{ 
-              fontSize: 16, 
-              width: 24, 
-              height: 24, 
-              borderRadius: "50%", 
-              background: "#fce7f3",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center"
-            }}>+</span>
-            Agregar cónyuge
+            <div style={{
+              width: 4,
+              height: "100%",
+              background: "#db2777",
+              flexShrink: 0
+            }} />
+            <CirclePlus size={22} strokeWidth={1.5} />
+            AGREGAR CÓNYUGE
           </button>
         )}
 
@@ -321,11 +296,9 @@ export default function FamilyCard({
             padding: "8px 12px",
             display: "flex",
             alignItems: "center",
-            justifyContent: "stretch",
             background: "#ffffff",
             borderBottomLeftRadius: BORDER_RADIUS,
             borderBottomRightRadius: BORDER_RADIUS,
-            position: "relative"
           }}
         >
           <button
@@ -334,9 +307,9 @@ export default function FamilyCard({
             style={{
               width: "100%",
               height: 32,
-              borderRadius: 8,
-              border: "1px solid #e2e8f0",
-              background: hijos?.length ? "#f8fafc" : "#fafafa",
+              borderRadius: 6,
+              border: "1px solid #e5e7eb",
+              background: hijos?.length ? "#fafafa" : "#fafafa",
               color: hijos?.length ? "#374151" : "#9ca3af",
               padding: "0 12px",
               outline: "none",
@@ -345,19 +318,17 @@ export default function FamilyCard({
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              fontWeight: 600,
-              transition: "all 0.2s ease"
+              fontWeight: 500,
+              transition: "all 0.15s ease"
             }}
             onMouseEnter={(e) => {
               if (hijos?.length) {
-                e.currentTarget.style.background = "#f1f5f9";
-                e.currentTarget.style.borderColor = "#cbd5e1";
+                e.currentTarget.style.background = "#f5f5f5";
               }
             }}
             onMouseLeave={(e) => {
               if (hijos?.length) {
-                e.currentTarget.style.background = "#f8fafc";
-                e.currentTarget.style.borderColor = "#e2e8f0";
+                e.currentTarget.style.background = "#fafafa";
               }
             }}
           >
@@ -367,18 +338,17 @@ export default function FamilyCard({
                 transform: showHijosList ? 'rotate(180deg)' : 'rotate(0deg)',
                 transition: 'transform 0.2s ease'
               }}>
-                <path d="M2.5 4.5L6 8L9.5 4.5" stroke="#6b7280" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M2.5 4.5L6 8L9.5 4.5" stroke="#9ca3af" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             )}
           </button>
         </div>
       </div>
 
-      {/* Dropdown GLOBAL usando portal */}
+      {/* Dropdown usando portal */}
       {showHijosList && hijos?.length > 0 && dropdownPos &&
         createPortal(
           <>
-            {/* Overlay pantalla completa */}
             <div
               style={{
                 position: "fixed",
@@ -388,7 +358,6 @@ export default function FamilyCard({
               onClick={() => setShowHijosList(false)}
             />
             
-            {/* Caja del dropdown */}
             <div
               style={{
                 position: "fixed",
@@ -397,9 +366,9 @@ export default function FamilyCard({
                 width: dropdownPos.width,
                 background: "#ffffff",
                 border: "1px solid #e5e7eb",
-                borderRadius: 12,
-                boxShadow: "0 8px 24px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08)",
-                maxHeight: 260,
+                borderRadius: 10,
+                boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                maxHeight: 240,
                 overflowY: "auto",
                 zIndex: 9999
               }}
@@ -409,11 +378,11 @@ export default function FamilyCard({
                 style={{
                   padding: "10px 14px",
                   borderBottom: "1px solid #f1f5f9",
-                  background: "#f8fafc",
-                  borderTopLeftRadius: 12,
-                  borderTopRightRadius: 12,
+                  background: "#fafafa",
+                  borderTopLeftRadius: 10,
+                  borderTopRightRadius: 10,
                   fontSize: 12,
-                  fontWeight: 700,
+                  fontWeight: 600,
                   color: "#374151",
                   display: "flex",
                   alignItems: "center",
@@ -430,21 +399,14 @@ export default function FamilyCard({
                     background: "none",
                     border: "none",
                     cursor: "pointer",
-                    fontSize: 16,
+                    fontSize: 14,
                     color: "#9ca3af",
                     padding: "2px 6px",
-                    borderRadius: 6,
+                    borderRadius: 4,
                     lineHeight: 1,
-                    transition: "all 0.15s ease"
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "#f1f5f9";
-                    e.currentTarget.style.color = "#6b7280";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "none";
-                    e.currentTarget.style.color = "#9ca3af";
-                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = "#6b7280"}
+                  onMouseLeave={(e) => e.currentTarget.style.color = "#9ca3af"}
                 >
                   ✕
                 </button>
@@ -466,6 +428,10 @@ export default function FamilyCard({
                 const codigoInfo = hijo.codigo || '';
                 const isLast = index === hijos.length - 1;
 
+                // Color según sexo
+                const sexoColor = hijo.sexo === 'M' ? '#0891b2' : hijo.sexo === 'F' ? '#db2777' : '#6b7280';
+                const sexoBg = hijo.sexo === 'M' ? '#cffafe' : hijo.sexo === 'F' ? '#fce7f3' : '#f3f4f6';
+
                 return (
                   <div
                     key={hijo._id}
@@ -483,10 +449,10 @@ export default function FamilyCard({
                       borderBottom: isLast ? "none" : "1px solid #f3f4f6",
                       transition: "background 0.15s ease",
                       background: "#ffffff",
-                      borderBottomLeftRadius: isLast ? 12 : 0,
-                      borderBottomRightRadius: isLast ? 12 : 0
+                      borderBottomLeftRadius: isLast ? 10 : 0,
+                      borderBottomRightRadius: isLast ? 10 : 0
                     }}
-                    onMouseEnter={(e) => e.currentTarget.style.background = "#f8fafc"}
+                    onMouseEnter={(e) => e.currentTarget.style.background = "#fafafa"}
                     onMouseLeave={(e) => e.currentTarget.style.background = "#ffffff"}
                   >
                     {/* Avatar */}
@@ -500,7 +466,6 @@ export default function FamilyCard({
                           borderRadius: "50%",
                           objectFit: "cover",
                           flexShrink: 0,
-                          border: "2px solid #f1f5f9"
                         }}
                       />
                     ) : (
@@ -509,15 +474,14 @@ export default function FamilyCard({
                           width: 32,
                           height: 32,
                           borderRadius: "50%",
-                          background: hijo.sexo === 'M' ? '#dbeafe' : hijo.sexo === 'F' ? '#fce7f3' : '#f3f4f6',
+                          background: sexoBg,
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
                           fontSize: 13,
                           fontWeight: 600,
-                          color: hijo.sexo === 'M' ? '#2563eb' : hijo.sexo === 'F' ? '#db2777' : '#6b7280',
+                          color: sexoColor,
                           flexShrink: 0,
-                          border: "2px solid #f1f5f9"
                         }}
                       >
                         {hijo.sexo === 'M' ? '♂' : hijo.sexo === 'F' ? '♀' : '?'}
@@ -550,29 +514,15 @@ export default function FamilyCard({
                             gap: 6
                           }}
                         >
-                          {vidalInfo && (
-                            <span style={{ 
-                              display: "flex", 
-                              alignItems: "center", 
-                              gap: 4 
-                            }}>
-                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                                <line x1="16" y1="2" x2="16" y2="6"/>
-                                <line x1="8" y1="2" x2="8" y2="6"/>
-                                <line x1="3" y1="10" x2="21" y2="10"/>
-                              </svg>
-                              {vidalInfo}
-                            </span>
-                          )}
+                          {vidalInfo && <span>{vidalInfo}</span>}
                           {vidalInfo && codigoInfo && <span style={{ color: "#d1d5db" }}>•</span>}
-                          {codigoInfo && <span style={{ fontFamily: "monospace", fontSize: 11 }}>{codigoInfo}</span>}
+                          {codigoInfo && <span style={{ fontFamily: "monospace", fontSize: 10 }}>{codigoInfo}</span>}
                         </div>
                       )}
                     </div>
 
                     {/* Chevron */}
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="9 18 15 12 9 6"/>
                     </svg>
                   </div>

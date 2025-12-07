@@ -221,125 +221,121 @@ export class FamilyLayout {
     return Array.from(map.values());
   }
 
-posicionarColumnaEnT(groups, x, anchorY, tipo) {
-  if (!groups || groups.length === 0) return;
-  const shift = this.columnShift[tipo] || 0;
-  const CARD_W = 240;
-  const CARD_H = 180;
+  posicionarColumnaEnT(groups, x, anchorY, tipo) {
+    if (!groups || groups.length === 0) return;
+    const shift = this.columnShift[tipo] || 0;
+    const CARD_W = 240;
+    const CARD_H = 180;
 
-  // ✅ Determinar si esta generación debe tener botón de expansión
-  const genIndex = generationIndexFromTipo(tipo);
-  const realGen = genIndex + 1;
-  const shouldShowExpandButton = realGen >= 3 && realGen <= 11 && realGen % 2 === 1;
+    const genIndex = generationIndexFromTipo(tipo);
+    const realGen = genIndex + 1;
+    const shouldShowExpandButton = realGen >= 3 && realGen <= 11 && realGen % 2 === 1;
 
-  // ✅ NUEVO: reordenar SOLO si hay cards vacías para que queden ABAJO
-  const hasEmpty = groups.some(g => g?.isEmpty || g?.isEmptyCard);
-  const orderedGroups = hasEmpty
-    ? [...groups].sort((a, b) => {
-        const aEmpty = a?.isEmpty || a?.isEmptyCard;
-        const bEmpty = b?.isEmpty || b?.isEmptyCard;
-        if (aEmpty === bEmpty) return 0;
-        // los no vacíos primero (arriba), los vacíos después (abajo)
-        return aEmpty ? 1 : -1;
-      })
-    : groups;
+    const hasEmpty = groups.some(g => g?.isEmpty || g?.isEmptyCard);
+    const orderedGroups = hasEmpty
+      ? [...groups].sort((a, b) => {
+          const aEmpty = a?.isEmpty || a?.isEmptyCard;
+          const bEmpty = b?.isEmpty || b?.isEmptyCard;
+          if (aEmpty === bEmpty) return 0;
+          return aEmpty ? 1 : -1;
+        })
+      : groups;
 
-  if (orderedGroups.length === 1) {
-    const g = orderedGroups[0];
-    const nodeX = x + shift;
-    const nodeY = anchorY - CARD_H / 2;
-    
-    this.nodes.push({ 
-      id: g.id, 
-      x: nodeX, 
-      y: nodeY, 
-      width: CARD_W, 
-      height: CARD_H, 
-      data: g, 
-      tipo,
-      hasExpandButton: shouldShowExpandButton
+    if (orderedGroups.length === 1) {
+      const g = orderedGroups[0];
+      const nodeX = x + shift;
+      const nodeY = anchorY - CARD_H / 2;
+      
+      this.nodes.push({ 
+        id: g.id, 
+        x: nodeX, 
+        y: nodeY, 
+        width: CARD_W, 
+        height: CARD_H, 
+        data: g, 
+        tipo,
+        hasExpandButton: shouldShowExpandButton
+      });
+      this.trackCoordinate(nodeX, nodeY);
+      this.trackCoordinate(nodeX + CARD_W, nodeY + CARD_H);
+      return;
+    }
+
+    const n = orderedGroups.length;
+    const totalHeight = (n - 1) * this.rowStep;
+    const startY = anchorY - totalHeight / 2 - CARD_H / 2;
+
+    orderedGroups.forEach((g, i) => {
+      const nodeX = x + shift;
+      const nodeY = startY + i * this.rowStep;
+      
+      this.nodes.push({ 
+        id: g.id, 
+        x: nodeX, 
+        y: nodeY, 
+        width: CARD_W, 
+        height: CARD_H, 
+        data: g, 
+        tipo,
+        hasExpandButton: shouldShowExpandButton
+      });
+      this.trackCoordinate(nodeX, nodeY);
+      this.trackCoordinate(nodeX + CARD_W, nodeY + CARD_H);
     });
-    this.trackCoordinate(nodeX, nodeY);
-    this.trackCoordinate(nodeX + CARD_W, nodeY + CARD_H);
-    return;
   }
 
-  const n = orderedGroups.length;
-  const totalHeight = (n - 1) * this.rowStep;
-  const startY = anchorY - totalHeight / 2 - CARD_H / 2;
+  posicionarColumnaFamilyGroups(groups, x, centerY, tipo, anchorY = null) {
+    if (!groups || groups.length === 0) return;
+    const CARD_W = 240;
+    const CARD_H = 180;
+    const shift = this.columnShift[tipo] || 0;
+    const colCenterY = typeof anchorY === 'number' ? anchorY : centerY;
 
-  orderedGroups.forEach((g, i) => {
-    const nodeX = x + shift;
-    const nodeY = startY + i * this.rowStep;
-    
-    this.nodes.push({ 
-      id: g.id, 
-      x: nodeX, 
-      y: nodeY, 
-      width: CARD_W, 
-      height: CARD_H, 
-      data: g, 
-      tipo,
-      hasExpandButton: shouldShowExpandButton
+    const genIndex = generationIndexFromTipo(tipo);
+    const realGen = genIndex + 1;
+    const shouldShowExpandButton = realGen >= 3 && realGen <= 11 && realGen % 2 === 1;
+
+    const n = groups.length;
+    if (n === 1) {
+      const g = groups[0];
+      const nodeX = x + shift;
+      const nodeY = colCenterY - CARD_H / 2;
+      
+      this.nodes.push({ 
+        id: g.id, 
+        x: nodeX, 
+        y: nodeY, 
+        width: CARD_W, 
+        height: CARD_H, 
+        data: g, 
+        tipo,
+        hasExpandButton: shouldShowExpandButton
+      });
+      this.trackCoordinate(nodeX, nodeY);
+      this.trackCoordinate(nodeX + CARD_W, nodeY + CARD_H);
+      return;
+    }
+
+    const startY = colCenterY - ((n - 1) / 2) * this.rowStep - (CARD_H / 2);
+
+    groups.forEach((g, i) => {
+      const nodeX = x + shift;
+      const nodeY = startY + i * this.rowStep;
+      
+      this.nodes.push({ 
+        id: g.id, 
+        x: nodeX, 
+        y: nodeY, 
+        width: CARD_W, 
+        height: CARD_H, 
+        data: g, 
+        tipo,
+        hasExpandButton: shouldShowExpandButton
+      });
+      this.trackCoordinate(nodeX, nodeY);
+      this.trackCoordinate(nodeX + CARD_W, nodeY + CARD_H);
     });
-    this.trackCoordinate(nodeX, nodeY);
-    this.trackCoordinate(nodeX + CARD_W, nodeY + CARD_H);
-  });
-}
-
-posicionarColumnaFamilyGroups(groups, x, centerY, tipo, anchorY = null) {
-  if (!groups || groups.length === 0) return;
-  const CARD_W = 240;
-  const CARD_H = 180;
-  const shift = this.columnShift[tipo] || 0;
-  const colCenterY = typeof anchorY === 'number' ? anchorY : centerY;
-
-  // ✅ Determinar si esta generación debe tener botón (normalmente false para root)
-  const genIndex = generationIndexFromTipo(tipo);
-  const realGen = genIndex + 1;
-  const shouldShowExpandButton = realGen >= 3 && realGen <= 11 && realGen % 2 === 1;
-
-  const n = groups.length;
-  if (n === 1) {
-    const g = groups[0];
-    const nodeX = x + shift;
-    const nodeY = colCenterY - CARD_H / 2;
-    
-    this.nodes.push({ 
-      id: g.id, 
-      x: nodeX, 
-      y: nodeY, 
-      width: CARD_W, 
-      height: CARD_H, 
-      data: g, 
-      tipo,
-      hasExpandButton: shouldShowExpandButton  // ✅ Agregar flag
-    });
-    this.trackCoordinate(nodeX, nodeY);
-    this.trackCoordinate(nodeX + CARD_W, nodeY + CARD_H);
-    return;
   }
-
-  const startY = colCenterY - ((n - 1) / 2) * this.rowStep - (CARD_H / 2);
-
-  groups.forEach((g, i) => {
-    const nodeX = x + shift;
-    const nodeY = startY + i * this.rowStep;
-    
-    this.nodes.push({ 
-      id: g.id, 
-      x: nodeX, 
-      y: nodeY, 
-      width: CARD_W, 
-      height: CARD_H, 
-      data: g, 
-      tipo,
-      hasExpandButton: shouldShowExpandButton  // ✅ Agregar flag
-    });
-    this.trackCoordinate(nodeX, nodeY);
-    this.trackCoordinate(nodeX + CARD_W, nodeY + CARD_H);
-  });
-}
 
   groupFromKey(key) {
     const parsed = parsePairKey(key);
@@ -618,38 +614,34 @@ posicionarColumnaFamilyGroups(groups, x, centerY, tipo, anchorY = null) {
     }
   }
 
-buildEmptyParentEdges(fromNode, targetGroups, byGroupKey) {
-  if (!fromNode || !targetGroups?.length) return;
-  const fromGroup = fromNode.data;
-  if (!fromGroup) return;
+  buildEmptyParentEdges(fromNode, targetGroups, byGroupKey) {
+    if (!fromNode || !targetGroups?.length) return;
+    const fromGroup = fromNode.data;
+    if (!fromGroup) return;
 
-  const fromPersonIds = new Set();
-  if (fromGroup.persona?._id) fromPersonIds.add(String(fromGroup.persona._id));
-  if (fromGroup.conyuge?._id) fromPersonIds.add(String(fromGroup.conyuge._id));
+    const fromPersonIds = new Set();
+    if (fromGroup.persona?._id) fromPersonIds.add(String(fromGroup.persona._id));
+    if (fromGroup.conyuge?._id) fromPersonIds.add(String(fromGroup.conyuge._id));
 
-  // ✅ Procesar cada persona por separado para obtener conexiones individuales
-  const peopleInGroup = [fromGroup.persona, fromGroup.conyuge].filter(Boolean);
-  
-  for (const person of peopleInGroup) {
-    if (!person?._id) continue;
+    const peopleInGroup = [fromGroup.persona, fromGroup.conyuge].filter(Boolean);
+    
+    for (const person of peopleInGroup) {
+      if (!person?._id) continue;
 
-    // Buscar la empty card correspondiente a esta persona
-    const relatedEmptyCard = targetGroups.find(tg => {
-      if (!tg.isEmpty && !tg.isEmptyCard) return false;
-      return String(tg.targetPersonId) === String(person._id);
-    });
+      const relatedEmptyCard = targetGroups.find(tg => {
+        if (!tg.isEmpty && !tg.isEmptyCard) return false;
+        return String(tg.targetPersonId) === String(person._id);
+      });
 
-    if (!relatedEmptyCard) continue;
+      if (!relatedEmptyCard) continue;
 
-    const targetNode = byGroupKey.get(relatedEmptyCard.groupKey);
-    if (!targetNode) continue;
+      const targetNode = byGroupKey.get(relatedEmptyCard.groupKey);
+      if (!targetNode) continue;
 
-    // ✅ Usar el mismo método que para conexiones normales
-    this.addPersonToParentsEdge(fromNode, person._id, targetNode);
+      this.addPersonToParentsEdge(fromNode, person._id, targetNode);
+    }
   }
-}
 
-  // ✅ Generar empty cards para grupos sin padres
   generateEmptyCardsFor(groups) {
     const emptyCards = [];
     const processedIds = new Set();
@@ -900,23 +892,6 @@ buildEmptyParentEdges(fromNode, targetGroups, byGroupKey) {
     return [...normalGroups, ...emptyCards];
   }
 
-  groupFromKey(key) {
-    const parsed = parsePairKey(key);
-    if (parsed.type === 'none') return null;
-    let persona = null, conyuge = null;
-    if (parsed.type === 'single') {
-      persona = this.personas.get(asId(parsed.id)) || null;
-    } else {
-      persona = this.personas.get(asId(parsed.aId)) || null;
-      conyuge = this.personas.get(asId(parsed.bId)) || null;
-    }
-    if (!persona && !conyuge) return null;
-    const childIds = new Set([...(persona?.hijos || []), ...(conyuge?.hijos || [])]);
-    const hijos = Array.from(childIds).map((id) => this.personas.get(asId(id))).filter(Boolean);
-    const gKey = pairKey(persona?._id, conyuge?._id);
-    return { id: `anc-group-${gKey}`, persona, conyuge, hijos, esDescendencia: false, groupKey: gKey };
-  }
-
   calculateHorizontalTreeLayout() {
     const descendantData = this.generateAllDescendantColumns();
     const rootGroup = descendantData.rootGroup;
@@ -924,7 +899,6 @@ buildEmptyParentEdges(fromNode, targetGroups, byGroupKey) {
     const ancestorCol1 = this.generateAncestorGroups();
     const ancestorCol2 = this.generateGrandAncestorGroups(ancestorCol1);
 
-    // ✅ SISTEMA SIMPLE DE EXPANSIÓN: 2 COLUMNAS POR CADA KEY EXPANDIDA
     const extraAncestorCols = [];
     const processedKeys = new Set();
 
@@ -959,33 +933,13 @@ buildEmptyParentEdges(fromNode, targetGroups, byGroupKey) {
       }
     });
 
-    const heights = [];
-    const hCol = (n) => Math.max(this.rowStep, Math.max(1, n) * this.rowStep);
-    
-    descendantData.columns.forEach(col => {
-      heights.push(hCol(col.groups.length || 1));
-    });
-    
-    heights.push(hCol(1));
-    
-    heights.push(hCol(ancestorCol1.length || 1));
-    heights.push(hCol(ancestorCol2.length || 1));
-    for (const col of extraAncestorCols) heights.push(hCol(col.groups.length || 1));
-    
-    const alturaMaxima = Math.max(...heights, 500);
-    const centerY = alturaMaxima / 2;
     const colW = 240 + this.columnGap;
-    
-    const leftCols = descendantData.columns.length;
-    const rightCols =
-      (ancestorCol1.length > 0 ? 1 : 0) +
-      (ancestorCol2.length > 0 ? 1 : 0) +
-      extraAncestorCols.filter(c => c.groups.length > 0).length;
-    
-    let anchoTotal = (leftCols + 1 + rightCols) * colW;
-    const totalCanvasWidth = Math.max(anchoTotal + 100, 1200);
-    const startX = (totalCanvasWidth - anchoTotal) / 2;
-    const rootX = startX + leftCols * colW;
+
+    // ✅ FIX: Posición FIJA del root - nunca cambia independientemente de expansiones
+    const FIXED_ROOT_X = 4500;
+    const FIXED_CENTER_Y = 1500;
+    const rootX = FIXED_ROOT_X;
+    const centerY = FIXED_CENTER_Y;
 
     const getByGroupKey = () => {
       const m = new Map();
@@ -1192,7 +1146,6 @@ buildEmptyParentEdges(fromNode, targetGroups, byGroupKey) {
       }
     }
 
-    // ✅ CONEXIONES PARA RAMAS EXPANDIDAS
     for (let idx = 0; idx < extraAncestorCols.length; idx++) {
       const colData = extraAncestorCols[idx];
       const col = colData.groups;

@@ -45,25 +45,22 @@ export default function PersonCard({
     }
   }
 
-  // Colores según sexo (estilo FamilySearch)
+  // Colores según sexo (cyan para hombre, rosa para mujer)
   const genderColors = {
     M: {
-      bar: "#3b82f6",
-      barLight: "#60a5fa",
-      bg: "#dbeafe",
-      text: "#1d4ed8",
+      bar: "#0891b2",
+      bg: "#cffafe",
+      text: "#0e7490",
       symbol: "♂",
     },
     F: {
-      bar: "#ec4899",
-      barLight: "#f472b6",
+      bar: "#db2777",
       bg: "#fce7f3",
       text: "#be185d",
       symbol: "♀",
     },
     default: {
       bar: "#9ca3af",
-      barLight: "#d1d5db",
       bg: "#f3f4f6",
       text: "#6b7280",
       symbol: "?",
@@ -98,7 +95,7 @@ export default function PersonCard({
         <div
           style={{
             width: 4,
-            background: `linear-gradient(180deg, ${colors.bar} 0%, ${colors.barLight} 100%)`,
+            background: colors.bar,
             flexShrink: 0,
           }}
         />
@@ -126,7 +123,6 @@ export default function PersonCard({
                 objectFit: "cover",
                 flexShrink: 0,
                 border: `2px solid ${colors.bg}`,
-                boxShadow: "0 1px 3px rgba(0,0,0,0.08)",
               }}
             />
           ) : (
@@ -143,7 +139,6 @@ export default function PersonCard({
                 fontWeight: 600,
                 color: colors.text,
                 flexShrink: 0,
-                border: `2px solid ${colors.bg}`,
               }}
             >
               {colors.symbol}
@@ -155,7 +150,7 @@ export default function PersonCard({
             {/* Nombre */}
             <div
               style={{
-                fontSize: 17,
+                fontSize: 15,
                 fontWeight: 600,
                 color: "#1f2937",
                 whiteSpace: "nowrap",
@@ -173,33 +168,13 @@ export default function PersonCard({
                 display: "flex",
                 alignItems: "center",
                 gap: 6,
-                marginTop: 3,
+                marginTop: 2,
                 fontSize: 12,
                 color: "#6b7280",
               }}
             >
               {lifespan && (
-                <span
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 3,
-                  }}
-                >
-                  <svg
-                    width="11"
-                    height="11"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    style={{ opacity: 0.6 }}
-                  >
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                    <line x1="16" y1="2" x2="16" y2="6" />
-                    <line x1="8" y1="2" x2="8" y2="6" />
-                    <line x1="3" y1="10" x2="21" y2="10" />
-                  </svg>
+                <span style={{ display: "flex", alignItems: "center", gap: 3 }}>
                   {lifespan}
                 </span>
               )}
@@ -212,10 +187,6 @@ export default function PersonCard({
                     fontFamily: "ui-monospace, SFMono-Regular, monospace",
                     fontSize: 10,
                     color: "#9ca3af",
-                    background: "#f3f4f6",
-                    padding: "1px 5px",
-                    borderRadius: 3,
-                    fontWeight: 500,
                   }}
                 >
                   {codigo}
@@ -228,12 +199,11 @@ export default function PersonCard({
           {isRoot && (
             <div
               style={{
-                width: 7,
-                height: 7,
+                width: 6,
+                height: 6,
                 borderRadius: "50%",
                 background: "#10b981",
                 flexShrink: 0,
-                boxShadow: "0 0 0 2px rgba(16, 185, 129, 0.2)",
               }}
             />
           )}
@@ -250,23 +220,20 @@ export default function PersonCard({
         display: "flex",
         alignItems: "stretch",
         background: "#ffffff",
-        borderRadius: 14,
-        boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+        borderRadius: 12,
         border: "1px solid #e5e7eb",
         cursor: onClick ? "pointer" : "default",
-        transition: "all 0.2s ease",
+        transition: "all 0.15s ease",
         overflow: "hidden",
         ...style,
       }}
       onMouseEnter={(e) => {
         if (onClick) {
-          e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.12)";
           e.currentTarget.style.borderColor = "#d1d5db";
         }
       }}
       onMouseLeave={(e) => {
         if (onClick) {
-          e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.08)";
           e.currentTarget.style.borderColor = "#e5e7eb";
         }
       }}
@@ -274,8 +241,8 @@ export default function PersonCard({
       {/* Barra de color lateral */}
       <div
         style={{
-          width: 6,
-          background: `linear-gradient(180deg, ${colors.bar} 0%, ${colors.barLight} 100%)`,
+          width: 5,
+          background: colors.bar,
           flexShrink: 0,
         }}
       />
@@ -286,8 +253,8 @@ export default function PersonCard({
           flex: 1,
           display: "flex",
           alignItems: "center",
-          gap: 16,
-          padding: "14px 18px",
+          gap: 14,
+          padding: "12px 16px",
           minWidth: 0,
         }}
       >
@@ -297,30 +264,28 @@ export default function PersonCard({
             src={avatar}
             alt={nombre}
             style={{
-              width: 55,
-              height: 55,
+              width: 48,
+              height: 48,
               borderRadius: "50%",
               objectFit: "cover",
               flexShrink: 0,
-              border: `3px solid ${colors.bg}`,
-              boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
+              border: `2px solid ${colors.bg}`,
             }}
           />
         ) : (
           <div
             style={{
-              width: 52,
-              height: 52,
+              width: 48,
+              height: 48,
               borderRadius: "50%",
               background: colors.bg,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: 600,
               color: colors.text,
               flexShrink: 0,
-              border: `3px solid ${colors.bg}`,
             }}
           >
             {colors.symbol}
@@ -332,8 +297,8 @@ export default function PersonCard({
           {/* Nombre */}
           <div
             style={{
-              fontSize: 16,
-              fontWeight: 700,
+              fontSize: 15,
+              fontWeight: 600,
               color: "#1f2937",
               whiteSpace: "nowrap",
               overflow: "hidden",
@@ -349,48 +314,20 @@ export default function PersonCard({
             style={{
               display: "flex",
               alignItems: "center",
-              gap: 10,
-              marginTop: 5,
-              fontSize: 14,
+              gap: 8,
+              marginTop: 3,
+              fontSize: 13,
               color: "#6b7280",
             }}
           >
-            {lifespan && (
-              <span
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 5,
-                }}
-              >
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  style={{ opacity: 0.7 }}
-                >
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                  <line x1="16" y1="2" x2="16" y2="6" />
-                  <line x1="8" y1="2" x2="8" y2="6" />
-                  <line x1="3" y1="10" x2="21" y2="10" />
-                </svg>
-                {lifespan}
-              </span>
-            )}
+            {lifespan && <span>{lifespan}</span>}
             {lifespan && codigo && <span style={{ color: "#d1d5db" }}>•</span>}
             {codigo && (
               <span
                 style={{
                   fontFamily: "ui-monospace, SFMono-Regular, monospace",
-                  fontSize: 12,
+                  fontSize: 11,
                   color: "#9ca3af",
-                  background: "#f3f4f6",
-                  padding: "3px 8px",
-                  borderRadius: 5,
-                  fontWeight: 500,
                 }}
               >
                 {codigo}
@@ -403,12 +340,11 @@ export default function PersonCard({
         {isRoot && (
           <div
             style={{
-              width: 10,
-              height: 10,
+              width: 8,
+              height: 8,
               borderRadius: "50%",
               background: "#10b981",
               flexShrink: 0,
-              boxShadow: "0 0 0 4px rgba(16, 185, 129, 0.2)",
             }}
           />
         )}
