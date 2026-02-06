@@ -1,0 +1,80 @@
+/* anti-pixel.css - Estilos para evitar pixelado al hacer zoom */
+
+/* ✅ Reglas globales de suavizado de fuentes */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ✅ Canvas del árbol genealógico - GPU acceleration */
+.family-canvas-world {
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+/* ✅ Cards individuales - forzar capa GPU separada */
+.family-card,
+.person-card {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ✅ Imágenes dentro del canvas - alta calidad */
+.family-canvas-world img {
+  image-rendering: auto;
+  image-rendering: -webkit-optimize-contrast;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* ✅ Texto dentro del canvas - optimizado */
+.family-canvas-world span,
+.family-canvas-world div,
+.family-canvas-world p {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ✅ SVG connections - líneas nítidas */
+.family-canvas-world svg {
+  shape-rendering: geometricPrecision;
+}
+
+.family-canvas-world svg path,
+.family-canvas-world svg line {
+  shape-rendering: geometricPrecision;
+  vector-effect: non-scaling-stroke;
+}
+
+/* ✅ Botones dentro del canvas */
+.family-canvas-world button {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* ✅ Fix específico para Chrome - prevenir blur en elementos transformados */
+@supports (-webkit-appearance: none) {
+  .family-canvas-world * {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* ✅ Framer Motion containers */
+.family-canvas-world [style*="transform"] {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}

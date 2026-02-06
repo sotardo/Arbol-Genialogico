@@ -1,0 +1,52 @@
+{
+  "tabs": {
+    "info": "אודות",
+    "details": "פרטים",
+    "relations": "קשרים",
+    "timeline": "ציר זמן"
+  },
+  "fields": {
+    "name": "שם מלא",
+    "sex": "מין",
+    "male": "זכר",
+    "female": "נקבה",
+    "unknown": "אחר / לא צוין",
+    "birth": "לידה",
+    "birthPlace": "מקום לידה",
+    "death": "פטירה",
+    "deathPlace": "מקום פטירה",
+    "occupation": "עיסוק",
+    "notes": "הערות"
+  },
+  "relations": {
+    "parents": "הורים",
+    "father": "אב",
+    "mother": "אם",
+    "children": "ילדים",
+    "siblings": "אחים",
+    "spouse": "בן/בת זוג",
+    "spouses": "בני זוג אחרים"
+  },
+  "sources": {
+    "title": "מקורות",
+    "add": "הוסף מקור",
+    "noSources": "אין מקורות",
+    "openInTab": "פתח בכרטיסייה חדשה"
+  },
+  "gallery": {
+    "title": "גלריה",
+    "add": "הוסף תמונה",
+    "noPhotos": "אין תמונות"
+  },
+  "actions": {
+    "viewTree": "צפה בעץ",
+    "editRelations": "ערוך קשרים"
+  },
+  "quality": {
+    "title": "ציון איכות",
+    "excellent": "מצוין",
+    "good": "טוב",
+    "fair": "סביר",
+    "poor": "חלש"
+  }
+}

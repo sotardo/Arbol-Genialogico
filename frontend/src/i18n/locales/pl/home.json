@@ -1,0 +1,22 @@
+{
+  "welcome": "Witaj",
+  "subtitle": "Odkryj historię swojej rodziny",
+  "currentRoot": {
+    "title": "Aktualny korzeń",
+    "noSelection": "Nie wybrano osoby",
+    "useSearch": "Użyj wyszukiwania, aby wybrać",
+    "viewTree": "Zobacz drzewo",
+    "viewPersons": "Zobacz osoby"
+  },
+  "changeRoot": {
+    "title": "Zmień korzeń",
+    "subtitle": "Wybierz osobę jako korzeń drzewa",
+    "searchPlaceholder": "Szukaj po nazwisku...",
+    "searching": "Szukanie...",
+    "noResults": "Brak wyników"
+  },
+  "tip": {
+    "title": "Wskazówka",
+    "content": "Wybierz osobę jako korzeń drzewa, aby zobaczyć jej relacje rodzinne"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Banco de dados",
+  "add": "Adicionar pessoa",
+  "searchPlaceholder": "Buscar por nome...",
+  "empty": {
+    "noPersons": "Nenhuma pessoa cadastrada",
+    "noResults": "Nenhum resultado encontrado"
+  },
+  "table": {
+    "name": "Nome",
+    "birth": "Nascimento",
+    "death": "Falecimento",
+    "actions": "Ações"
+  }
+}

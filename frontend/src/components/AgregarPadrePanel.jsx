@@ -5,6 +5,7 @@ import { useToast } from './ToastProvider';
 import { Calendar as CalendarPicker } from "@/components/ui/calendar";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 function formatDateToDisplay(dateStr) {
   if (!dateStr) return "";
@@ -58,6 +59,8 @@ export default function AgregarPadrePanel({
   onExpandParents,
 }) {
   const toast = useToast();
+  const { t } = useTranslation("tree");
+
   const [saving, setSaving] = useState(false);
   const [formData, setFormData] = useState({
     nombre: '',
@@ -79,17 +82,20 @@ export default function AgregarPadrePanel({
   const [tempBautismo, setTempBautismo] = useState('');
   const [tempMatrimonio, setTempMatrimonio] = useState('');
   const [tempFallecimiento, setTempFallecimiento] = useState('');
-  
+
   const isHijo = tipo === 'hijo';
   const isConyuge = tipo === 'conyuge';
   const sexo = (isConyuge || isHijo) ? formData.sexo : (tipo === 'padre' ? 'M' : 'F');
-  const titulo = isHijo
-    ? 'Agregar Hijo'
+
+  const tituloKey = isHijo
+    ? "addPanel.titles.child"
     : isConyuge
-      ? 'Agregar Cónyuge'
-      : tipo === 'padre'
-        ? 'Agregar Padre'
-        : 'Agregar Madre';
+      ? "addPanel.titles.spouse"
+      : tipo === "padre"
+        ? "addPanel.titles.father"
+        : "addPanel.titles.mother";
+
+  const titulo = t(tituloKey);
 
   const [shouldRender, setShouldRender] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -99,7 +105,7 @@ export default function AgregarPadrePanel({
     (event) => {
       if (!panelRef.current) return;
       if (event.target.closest('[data-popover-content]')) return;
-      
+
       if (!panelRef.current.contains(event.target)) {
         onClose?.();
       }
@@ -147,10 +153,10 @@ export default function AgregarPadrePanel({
   const validate = () => {
     const newErrors = {};
     if (!formData.nombre.trim()) {
-      newErrors.nombre = 'El nombre es obligatorio';
+      newErrors.nombre = t("addPanel.errors.nameRequired");
     }
     if ((isConyuge || isHijo) && !formData.sexo) {
-      newErrors.sexo = 'El sexo es obligatorio';
+      newErrors.sexo = t("addPanel.errors.sexRequired");
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -200,7 +206,7 @@ export default function AgregarPadrePanel({
         if (padreId) {
           await relacionesApi.vincularPadreHijo(padreId, nuevoHijo._id);
         }
-        toast.success('Hijo/a agregado/a exitosamente');
+        toast.success(t("addPanel.toasts.childAdded"));
       } else if (isConyuge) {
         const payload = {
           nombre: formData.nombre.trim(),
@@ -246,7 +252,7 @@ export default function AgregarPadrePanel({
             }
           }
         }
-        toast.success('Cónyuge agregado/a exitosamente');
+        toast.success(t("addPanel.toasts.spouseAdded"));
       } else {
         const personaActual = await personasApi.detalle(targetPersonId);
         const padresActuales = personaActual.padres || [];
@@ -257,12 +263,18 @@ export default function AgregarPadrePanel({
           const yaExisteMadre = padres.some((p) => p.sexo === 'F');
 
           if (sexo === 'M' && yaExistePadre) {
-            toast.warning('Ya existe un padre', 'Esta persona ya tiene un padre asignado');
+            toast.warning(
+              t("addPanel.toasts.fatherExistsTitle"),
+              t("addPanel.toasts.fatherExistsDesc")
+            );
             setSaving(false);
             return;
           }
           if (sexo === 'F' && yaExisteMadre) {
-            toast.warning('Ya existe una madre', 'Esta persona ya tiene una madre asignada');
+            toast.warning(
+              t("addPanel.toasts.motherExistsTitle"),
+              t("addPanel.toasts.motherExistsDesc")
+            );
             setSaving(false);
             return;
           }
@@ -302,7 +314,7 @@ export default function AgregarPadrePanel({
 
         const nuevaPersona = await personasApi.crear(payload);
         await relacionesApi.vincularPadreHijo(nuevaPersona._id, targetPersonId);
-        
+
         if (typeof onExpandParents === 'function') {
           let conyugeId = null;
           if (personaActual.padres && personaActual.padres.length > 0) {
@@ -311,12 +323,12 @@ export default function AgregarPadrePanel({
               conyugeId = otroPadreId;
             }
           }
-          
+
           const groupKey = pairKey(nuevaPersona._id, conyugeId);
           onExpandParents(groupKey);
         }
-        
-        toast.success(`${tipo === 'padre' ? 'Padre' : 'Madre'} agregado/a exitosamente`);
+
+        toast.success(t("addPanel.toasts.parentAdded", { parent: tipo === 'padre' ? t("addPanel.titles.father") : t("addPanel.titles.mother") }));
       }
 
       setFormData({
@@ -342,7 +354,7 @@ export default function AgregarPadrePanel({
       }
     } catch (error) {
       console.error('Error agregando:', error);
-      toast.error('Error al guardar', String(error?.message || error));
+      toast.error(t("addPanel.toasts.saveErrorTitle"), String(error?.message || error));
     } finally {
       setSaving(false);
     }
@@ -385,7 +397,7 @@ export default function AgregarPadrePanel({
                   disabled={saving}
                 >
                   <span className="absolute -inset-2.5" />
-                  <span className="sr-only">Cerrar panel</span>
+                  <span className="sr-only">{t("addPanel.actions.closePanel")}</span>
                   <X className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
@@ -406,7 +418,7 @@ export default function AgregarPadrePanel({
                     <div>
                       <h3 className="text-xl font-semibold text-gray-900">{titulo}</h3>
                       <p className="text-xs text-gray-600 mt-0.5">
-                        Para: <span className="font-semibold">{targetPersonName}</span>
+                        {t("addPanel.for")}: <span className="font-semibold">{targetPersonName}</span>
                       </p>
                     </div>
                   </div>
@@ -420,20 +432,20 @@ export default function AgregarPadrePanel({
                       <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
                         <User size={18} className="text-green-600" />
                         <h4 className="text-base font-semibold text-gray-900">
-                          Información básica
+                          {t("addPanel.sections.basicInfo")}
                         </h4>
                       </div>
 
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Nombre completo *
+                          {t("addPanel.fields.fullName")} *
                         </label>
                         <input
                           value={formData.nombre}
                           onChange={(e) =>
                             setFormData({ ...formData, nombre: e.target.value })
                           }
-                          placeholder="Nombre completo"
+                          placeholder={t("addPanel.placeholders.fullName")}
                           className={`w-full px-4 py-2.5 border ${
                             errors.nombre ? 'border-red-300' : 'border-gray-300'
                           } rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none`}
@@ -446,7 +458,7 @@ export default function AgregarPadrePanel({
 
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Sexo {(isConyuge || isHijo) && '*'}
+                          {t("addPanel.fields.sex")} {(isConyuge || isHijo) && '*'}
                         </label>
                         {isConyuge || isHijo ? (
                           <>
@@ -460,10 +472,10 @@ export default function AgregarPadrePanel({
                               } rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none bg-white`}
                               required
                             >
-                              <option value="">Seleccionar...</option>
-                              <option value="M">Masculino</option>
-                              <option value="F">Femenino</option>
-                              <option value="X">Otro / No especifica</option>
+                              <option value="">{t("addPanel.placeholders.select")}</option>
+                              <option value="M">{t("addPanel.sex.male")}</option>
+                              <option value="F">{t("addPanel.sex.female")}</option>
+                              <option value="X">{t("addPanel.sex.other")}</option>
                             </select>
                             {errors.sexo && (
                               <p className="mt-1 text-sm text-red-600">{errors.sexo}</p>
@@ -471,7 +483,7 @@ export default function AgregarPadrePanel({
                           </>
                         ) : (
                           <input
-                            value={sexo === 'M' ? 'Masculino' : 'Femenino'}
+                            value={sexo === 'M' ? t("addPanel.sex.male") : t("addPanel.sex.female")}
                             disabled
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-lg bg-gray-50 text-gray-600"
                           />
@@ -484,14 +496,14 @@ export default function AgregarPadrePanel({
                       <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
                         <Calendar size={18} className="text-green-600" />
                         <h4 className="text-base font-semibold text-gray-900">
-                          Nacimiento
+                          {t("addPanel.sections.birth")}
                         </h4>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="relative">
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Fecha de nacimiento
+                            {t("addPanel.fields.birthDate")}
                           </label>
                           <Popover>
                             <div className="relative">
@@ -502,21 +514,21 @@ export default function AgregarPadrePanel({
                                   let val = e.target.value.replace(/[^\d/]/g, '');
                                   if (val.length === 2 && !val.includes('/')) val = val + '/';
                                   else if (val.length === 5 && val.split('/').length === 2) val = val + '/';
-                                  
+
                                   if (val.length <= 10) {
                                     setTempNacimiento(val);
-                                    
+
                                     if (val.length === 10) {
                                       const parsed = parseDateFromDisplay(val);
                                       if (parsed) {
-                                        setFormData({...formData, nacimiento: toInputDate(parsed)});
+                                        setFormData({ ...formData, nacimiento: toInputDate(parsed) });
                                         setTempNacimiento('');
                                       }
                                     }
                                   }
                                 }}
                                 onBlur={() => setTempNacimiento('')}
-                                placeholder="DD/MM/AAAA"
+                                placeholder={t("addPanel.placeholders.ddmmyyyy")}
                                 className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                                 maxLength={10}
                               />
@@ -529,15 +541,15 @@ export default function AgregarPadrePanel({
                                 </button>
                               </PopoverTrigger>
                             </div>
-                            
-                            <PopoverContent 
-                              className="w-auto p-0 bg-white" 
+
+                            <PopoverContent
+                              className="w-auto p-0 bg-white"
                               align="start"
                             >
                               <CalendarPicker
                                 mode="single"
                                 selected={formData.nacimiento ? fromInputDate(formData.nacimiento) : undefined}
-                                onSelect={(d) => setFormData({...formData, nacimiento: d ? toInputDate(d) : ''})}
+                                onSelect={(d) => setFormData({ ...formData, nacimiento: d ? toInputDate(d) : '' })}
                                 fromYear={1900}
                                 toYear={2100}
                               />
@@ -547,7 +559,7 @@ export default function AgregarPadrePanel({
 
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Lugar de nacimiento
+                            {t("addPanel.fields.birthPlace")}
                           </label>
                           <input
                             value={formData.lugarNacimiento}
@@ -557,7 +569,7 @@ export default function AgregarPadrePanel({
                                 lugarNacimiento: e.target.value,
                               })
                             }
-                            placeholder="Ciudad, Provincia, País"
+                            placeholder={t("addPanel.placeholders.cityProvinceCountry")}
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                           />
                         </div>
@@ -569,14 +581,14 @@ export default function AgregarPadrePanel({
                       <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
                         <Church size={18} className="text-green-600" />
                         <h4 className="text-base font-semibold text-gray-900">
-                          Bautismo
+                          {t("addPanel.sections.baptism")}
                         </h4>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="relative">
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Fecha de bautismo
+                            {t("addPanel.fields.baptismDate")}
                           </label>
                           <Popover>
                             <div className="relative">
@@ -587,21 +599,21 @@ export default function AgregarPadrePanel({
                                   let val = e.target.value.replace(/[^\d/]/g, '');
                                   if (val.length === 2 && !val.includes('/')) val = val + '/';
                                   else if (val.length === 5 && val.split('/').length === 2) val = val + '/';
-                                  
+
                                   if (val.length <= 10) {
                                     setTempBautismo(val);
-                                    
+
                                     if (val.length === 10) {
                                       const parsed = parseDateFromDisplay(val);
                                       if (parsed) {
-                                        setFormData({...formData, bautismoFecha: toInputDate(parsed)});
+                                        setFormData({ ...formData, bautismoFecha: toInputDate(parsed) });
                                         setTempBautismo('');
                                       }
                                     }
                                   }
                                 }}
                                 onBlur={() => setTempBautismo('')}
-                                placeholder="DD/MM/AAAA"
+                                placeholder={t("addPanel.placeholders.ddmmyyyy")}
                                 className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                                 maxLength={10}
                               />
@@ -614,15 +626,15 @@ export default function AgregarPadrePanel({
                                 </button>
                               </PopoverTrigger>
                             </div>
-                            
-                            <PopoverContent 
-                              className="w-auto p-0 bg-white" 
+
+                            <PopoverContent
+                              className="w-auto p-0 bg-white"
                               align="start"
                             >
                               <CalendarPicker
                                 mode="single"
                                 selected={formData.bautismoFecha ? fromInputDate(formData.bautismoFecha) : undefined}
-                                onSelect={(d) => setFormData({...formData, bautismoFecha: d ? toInputDate(d) : ''})}
+                                onSelect={(d) => setFormData({ ...formData, bautismoFecha: d ? toInputDate(d) : '' })}
                                 fromYear={1900}
                                 toYear={2100}
                               />
@@ -632,7 +644,7 @@ export default function AgregarPadrePanel({
 
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Lugar de bautismo
+                            {t("addPanel.fields.baptismPlace")}
                           </label>
                           <input
                             value={formData.bautismoLugar}
@@ -642,14 +654,14 @@ export default function AgregarPadrePanel({
                                 bautismoLugar: e.target.value,
                               })
                             }
-                            placeholder="Ciudad, Provincia, País"
+                            placeholder={t("addPanel.placeholders.cityProvinceCountry")}
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                           />
                         </div>
 
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Parroquia
+                            {t("addPanel.fields.parish")}
                           </label>
                           <input
                             value={formData.bautismoParroquia}
@@ -659,14 +671,14 @@ export default function AgregarPadrePanel({
                                 bautismoParroquia: e.target.value,
                               })
                             }
-                            placeholder="Nombre de la parroquia"
+                            placeholder={t("addPanel.placeholders.parishName")}
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                           />
                         </div>
 
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Notas
+                            {t("addPanel.fields.notes")}
                           </label>
                           <input
                             value={formData.bautismoNotas}
@@ -676,7 +688,7 @@ export default function AgregarPadrePanel({
                                 bautismoNotas: e.target.value,
                               })
                             }
-                            placeholder="Información adicional"
+                            placeholder={t("addPanel.placeholders.additionalInfo")}
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                           />
                         </div>
@@ -688,14 +700,14 @@ export default function AgregarPadrePanel({
                       <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
                         <Heart size={18} className="text-green-600" />
                         <h4 className="text-base font-semibold text-gray-900">
-                          Matrimonio
+                          {t("addPanel.sections.marriage")}
                         </h4>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="relative">
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Fecha de matrimonio
+                            {t("addPanel.fields.marriageDate")}
                           </label>
                           <Popover>
                             <div className="relative">
@@ -706,21 +718,21 @@ export default function AgregarPadrePanel({
                                   let val = e.target.value.replace(/[^\d/]/g, '');
                                   if (val.length === 2 && !val.includes('/')) val = val + '/';
                                   else if (val.length === 5 && val.split('/').length === 2) val = val + '/';
-                                  
+
                                   if (val.length <= 10) {
                                     setTempMatrimonio(val);
-                                    
+
                                     if (val.length === 10) {
                                       const parsed = parseDateFromDisplay(val);
                                       if (parsed) {
-                                        setFormData({...formData, matrimonioFecha: toInputDate(parsed)});
+                                        setFormData({ ...formData, matrimonioFecha: toInputDate(parsed) });
                                         setTempMatrimonio('');
                                       }
                                     }
                                   }
                                 }}
                                 onBlur={() => setTempMatrimonio('')}
-                                placeholder="DD/MM/AAAA"
+                                placeholder={t("addPanel.placeholders.ddmmyyyy")}
                                 className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                                 maxLength={10}
                               />
@@ -733,15 +745,15 @@ export default function AgregarPadrePanel({
                                 </button>
                               </PopoverTrigger>
                             </div>
-                            
-                            <PopoverContent 
-                              className="w-auto p-0 bg-white" 
+
+                            <PopoverContent
+                              className="w-auto p-0 bg-white"
                               align="start"
                             >
                               <CalendarPicker
                                 mode="single"
                                 selected={formData.matrimonioFecha ? fromInputDate(formData.matrimonioFecha) : undefined}
-                                onSelect={(d) => setFormData({...formData, matrimonioFecha: d ? toInputDate(d) : ''})}
+                                onSelect={(d) => setFormData({ ...formData, matrimonioFecha: d ? toInputDate(d) : '' })}
                                 fromYear={1900}
                                 toYear={2100}
                               />
@@ -751,7 +763,7 @@ export default function AgregarPadrePanel({
 
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Lugar de matrimonio
+                            {t("addPanel.fields.marriagePlace")}
                           </label>
                           <input
                             value={formData.matrimonioLugar}
@@ -761,7 +773,7 @@ export default function AgregarPadrePanel({
                                 matrimonioLugar: e.target.value,
                               })
                             }
-                            placeholder="Parroquia / ciudad / país"
+                            placeholder={t("addPanel.placeholders.parishCityCountry")}
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                           />
                         </div>
@@ -773,15 +785,14 @@ export default function AgregarPadrePanel({
                       <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
                         <FileText size={18} className="text-green-600" />
                         <h4 className="text-base font-semibold text-gray-900">
-                          Defunción
+                          {t("addPanel.sections.death")}
                         </h4>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {/* 🔥 Este popover abre hacia ARRIBA con side="top" */}
                         <div className="relative">
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Fecha de defunción
+                            {t("addPanel.fields.deathDate")}
                           </label>
                           <Popover>
                             <div className="relative">
@@ -792,21 +803,21 @@ export default function AgregarPadrePanel({
                                   let val = e.target.value.replace(/[^\d/]/g, '');
                                   if (val.length === 2 && !val.includes('/')) val = val + '/';
                                   else if (val.length === 5 && val.split('/').length === 2) val = val + '/';
-                                  
+
                                   if (val.length <= 10) {
                                     setTempFallecimiento(val);
-                                    
+
                                     if (val.length === 10) {
                                       const parsed = parseDateFromDisplay(val);
                                       if (parsed) {
-                                        setFormData({...formData, fallecimiento: toInputDate(parsed)});
+                                        setFormData({ ...formData, fallecimiento: toInputDate(parsed) });
                                         setTempFallecimiento('');
                                       }
                                     }
                                   }
                                 }}
                                 onBlur={() => setTempFallecimiento('')}
-                                placeholder="DD/MM/AAAA"
+                                placeholder={t("addPanel.placeholders.ddmmyyyy")}
                                 className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                                 maxLength={10}
                               />
@@ -819,16 +830,16 @@ export default function AgregarPadrePanel({
                                 </button>
                               </PopoverTrigger>
                             </div>
-                            
-                            <PopoverContent 
-                              className="w-auto p-0 bg-white" 
+
+                            <PopoverContent
+                              className="w-auto p-0 bg-white"
                               align="start"
                               side="top"
                             >
                               <CalendarPicker
                                 mode="single"
                                 selected={formData.fallecimiento ? fromInputDate(formData.fallecimiento) : undefined}
-                                onSelect={(d) => setFormData({...formData, fallecimiento: d ? toInputDate(d) : ''})}
+                                onSelect={(d) => setFormData({ ...formData, fallecimiento: d ? toInputDate(d) : '' })}
                                 fromYear={1900}
                                 toYear={2100}
                               />
@@ -838,7 +849,7 @@ export default function AgregarPadrePanel({
 
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Lugar de defunción
+                            {t("addPanel.fields.deathPlace")}
                           </label>
                           <input
                             value={formData.lugarFallecimiento}
@@ -848,14 +859,14 @@ export default function AgregarPadrePanel({
                                 lugarFallecimiento: e.target.value,
                               })
                             }
-                            placeholder="Ciudad, Provincia, País"
+                            placeholder={t("addPanel.placeholders.cityProvinceCountry")}
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                           />
                         </div>
 
                         <div className="md:col-span-2">
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Causa de defunción
+                            {t("addPanel.fields.deathCause")}
                           </label>
                           <input
                             value={formData.causaFallecimiento}
@@ -865,7 +876,7 @@ export default function AgregarPadrePanel({
                                 causaFallecimiento: e.target.value,
                               })
                             }
-                            placeholder="Opcional"
+                            placeholder={t("addPanel.placeholders.optional")}
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                           />
                         </div>
@@ -882,7 +893,7 @@ export default function AgregarPadrePanel({
                     className="px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-white transition-all font-medium"
                     disabled={saving}
                   >
-                    Cancelar
+                    {t("addPanel.actions.cancel")}
                   </button>
                   <button
                     onClick={handleSubmit}
@@ -893,12 +904,12 @@ export default function AgregarPadrePanel({
                     {saving ? (
                       <>
                         <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        Guardando...
+                        {t("addPanel.actions.saving")}
                       </>
                     ) : (
                       <>
                         <Save size={18} />
-                        Guardar y vincular
+                        {t("addPanel.actions.saveAndLink")}
                       </>
                     )}
                   </button>

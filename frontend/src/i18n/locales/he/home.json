@@ -1,0 +1,22 @@
+{
+  "welcome": "ברוך הבא",
+  "subtitle": "גלה את ההיסטוריה המשפחתית שלך",
+  "currentRoot": {
+    "title": "שורש נוכחי",
+    "noSelection": "לא נבחר אדם",
+    "useSearch": "השתמש בחיפוש כדי לבחור",
+    "viewTree": "צפה בעץ",
+    "viewPersons": "צפה באנשים"
+  },
+  "changeRoot": {
+    "title": "שנה שורש",
+    "subtitle": "בחר אדם כשורש העץ",
+    "searchPlaceholder": "חפש לפי שם...",
+    "searching": "מחפש...",
+    "noResults": "לא נמצאו תוצאות"
+  },
+  "tip": {
+    "title": "טיפ",
+    "content": "בחר אדם כשורש העץ כדי לצפות בקשרים המשפחתיים שלו"
+  }
+}

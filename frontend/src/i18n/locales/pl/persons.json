@@ -1,0 +1,15 @@
+{
+  "title": "Baza danych",
+  "add": "Dodaj osobę",
+  "searchPlaceholder": "Szukaj po imieniu...",
+  "empty": {
+    "noPersons": "Brak zarejestrowanych osób",
+    "noResults": "Nie znaleziono wyników"
+  },
+  "table": {
+    "name": "Imię",
+    "birth": "Urodzenie",
+    "death": "Śmierć",
+    "actions": "Akcje"
+  }
+}

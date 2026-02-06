@@ -1,0 +1,54 @@
+{
+  "controls": {
+    "zoomIn": "Aumentar zoom",
+    "zoomOut": "Diminuir zoom",
+    "centerRoot": "Centralizar raiz",
+    "zoomTip": "Use a roda do mouse para zoom"
+  },
+  "card": {
+    "children": "Filhos",
+    "child_one": "1 filho",
+    "child_other": "{{count}} filhos",
+    "addFather": "Adicionar pai",
+    "addMother": "Adicionar mãe",
+    "addSpouse": "Adicionar cônjuge",
+    "addChild": "Adicionar filho",
+    "selectSpouse": "Selecionar cônjuge",
+    "withSpouse": "com {{name}}",
+    "expand": "Expandir",
+    "collapse": "Recolher"
+  },
+  "panel": {
+    "profile": "Perfil",
+    "tree": "Árvore",
+    "sources": "Fontes",
+    "gallery": "Galeria",
+    "qualityScore": "Pontuação de qualidade",
+    "birth": "Nascimento",
+    "death": "Falecimento",
+    "baptism": "Batismo",
+    "marriage": "Casamento",
+    "burial": "Sepultamento",
+    "lifeStory": "História de vida",
+    "essentialInfo": "Informações essenciais",
+    "closePanel": "Fechar painel"
+  },
+  "empty": {
+    "title": "Nenhuma árvore genealógica",
+    "subtitle": "Selecione uma pessoa para começar"
+  },
+  "loading": {
+    "title": "Carregando árvore genealógica...",
+    "subtitle": "Por favor aguarde"
+  },
+  "error": {
+    "title": "Erro",
+    "subtitle": "Não foi possível carregar a árvore"
+  },
+  "addParent": {
+    "title": "Adicionar pai/mãe",
+    "searchPlaceholder": "Buscar pessoa...",
+    "createNew": "Criar novo",
+    "noResults": "Nenhum resultado encontrado"
+  }
+}

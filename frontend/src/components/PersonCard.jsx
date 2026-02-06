@@ -1,4 +1,4 @@
-// src/components/PersonCard.jsx
+// src/components/PersonCard.jsx - SIMPLIFICADO (CSS zoom en FamilyCanvas maneja el renderizado)
 import React from "react";
 
 const API = import.meta.env.VITE_API_URL || "http://localhost:4000";
@@ -29,7 +29,6 @@ export default function PersonCard({
   const sexo = persona.sexo;
   const codigo = persona.codigo || "";
 
-  // Años de vida
   const birthYear = formatYear(persona.nacimiento);
   const deathYear = formatYear(persona.fallecimiento);
   const isLiving = persona.vpirivr || persona.vivo;
@@ -45,7 +44,6 @@ export default function PersonCard({
     }
   }
 
-  // Colores según sexo (cyan para hombre, rosa para mujer)
   const genderColors = {
     M: {
       bar: "#0891b2",
@@ -69,7 +67,6 @@ export default function PersonCard({
 
   const colors = genderColors[sexo] || genderColors.default;
 
-  // Estilo compacto FamilySearch
   if (variant === "fs-compact") {
     return (
       <div
@@ -82,6 +79,7 @@ export default function PersonCard({
           transition: "background 0.15s ease",
           position: "relative",
           overflow: "hidden",
+          
           ...style,
         }}
         onMouseEnter={(e) => {
@@ -91,7 +89,6 @@ export default function PersonCard({
           if (onClick) e.currentTarget.style.background = "#ffffff";
         }}
       >
-        {/* Barra de color lateral */}
         <div
           style={{
             width: 4,
@@ -100,7 +97,6 @@ export default function PersonCard({
           }}
         />
 
-        {/* Contenido */}
         <div
           style={{
             flex: 1,
@@ -111,7 +107,6 @@ export default function PersonCard({
             minWidth: 0,
           }}
         >
-          {/* Avatar */}
           {avatar ? (
             <img
               src={avatar}
@@ -123,6 +118,7 @@ export default function PersonCard({
                 objectFit: "cover",
                 flexShrink: 0,
                 border: `2px solid ${colors.bg}`,
+                
               }}
             />
           ) : (
@@ -139,15 +135,14 @@ export default function PersonCard({
                 fontWeight: 600,
                 color: colors.text,
                 flexShrink: 0,
+                
               }}
             >
               {colors.symbol}
             </div>
           )}
 
-          {/* Info */}
           <div style={{ flex: 1, minWidth: 0 }}>
-            {/* Nombre */}
             <div
               style={{
                 fontSize: 15,
@@ -162,7 +157,6 @@ export default function PersonCard({
               {nombre}
             </div>
 
-            {/* Fechas y código */}
             <div
               style={{
                 display: "flex",
@@ -195,7 +189,6 @@ export default function PersonCard({
             </div>
           </div>
 
-          {/* Indicador root */}
           {isRoot && (
             <div
               style={{
@@ -212,7 +205,6 @@ export default function PersonCard({
     );
   }
 
-  // Variante por defecto (tarjeta completa)
   return (
     <div
       onClick={onClick}
@@ -225,6 +217,7 @@ export default function PersonCard({
         cursor: onClick ? "pointer" : "default",
         transition: "all 0.15s ease",
         overflow: "hidden",
+        
         ...style,
       }}
       onMouseEnter={(e) => {
@@ -238,7 +231,6 @@ export default function PersonCard({
         }
       }}
     >
-      {/* Barra de color lateral */}
       <div
         style={{
           width: 5,
@@ -247,7 +239,6 @@ export default function PersonCard({
         }}
       />
 
-      {/* Contenido */}
       <div
         style={{
           flex: 1,
@@ -258,7 +249,6 @@ export default function PersonCard({
           minWidth: 0,
         }}
       >
-        {/* Avatar */}
         {avatar ? (
           <img
             src={avatar}
@@ -270,6 +260,7 @@ export default function PersonCard({
               objectFit: "cover",
               flexShrink: 0,
               border: `2px solid ${colors.bg}`,
+              
             }}
           />
         ) : (
@@ -286,15 +277,14 @@ export default function PersonCard({
               fontWeight: 600,
               color: colors.text,
               flexShrink: 0,
+              
             }}
           >
             {colors.symbol}
           </div>
         )}
 
-        {/* Info */}
         <div style={{ flex: 1, minWidth: 0 }}>
-          {/* Nombre */}
           <div
             style={{
               fontSize: 15,
@@ -309,7 +299,6 @@ export default function PersonCard({
             {nombre}
           </div>
 
-          {/* Fechas y código */}
           <div
             style={{
               display: "flex",
@@ -336,7 +325,6 @@ export default function PersonCard({
           </div>
         </div>
 
-        {/* Indicador root */}
         {isRoot && (
           <div
             style={{

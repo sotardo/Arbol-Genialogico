@@ -5,17 +5,16 @@ import { personasApi, relacionesApi } from '../personasApi';
 import PersonPicker from './PersonPicker';
 import { useToast } from './ToastProvider';
 import ConfirmDialog from './ConfirmDialog';
+import { useTranslation } from 'react-i18next';
 
 const API = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 
-// 🔧 Helper para normalizar URLs de imágenes
 const imgSrc = (url) => {
   if (!url) return null;
   if (url.startsWith('http')) return url;
   return `${API}${url}`;
 };
 
-// 🔧 Helper para extraer IDs (normalizar datos)
 const extractIds = (arr) => {
   if (!Array.isArray(arr)) return [];
   return arr.map(item => {
@@ -25,7 +24,6 @@ const extractIds = (arr) => {
   }).filter(Boolean);
 };
 
-// 🔧 Acepta array "conyuges" y/o singular "conyuge"
 const extractConyugesIds = (p) => {
   if (!p) return [];
   const out = [];
@@ -37,22 +35,19 @@ const extractConyugesIds = (p) => {
   return out;
 };
 
-// ✅ NUEVO: Extraer otros cónyuges
 const extractOtrosConyugesIds = (p) => {
   if (!p) return [];
   if (Array.isArray(p.otrosConyuges)) return extractIds(p.otrosConyuges);
   return [];
 };
 
-// 🪵 Logger agrupado
 const logRel = {
   start(label, extra) { try { console.group(label); if (extra) console.log('ctx:', extra); } catch {} },
   end() { try { console.groupEnd(); } catch {} },
   line(...args) { try { console.log(...args); } catch {} },
 };
 
-// Card de persona con animaciones suaves
-const PersonaCard = ({ persona, relation, onRemove, disabled }) => {
+const PersonaCard = ({ persona, relation, onRemove, disabled, t }) => {
   const [isHovered, setIsHovered] = useState(false);
   const avatar = imgSrc(persona.avatarUrl);
 
@@ -74,7 +69,6 @@ const PersonaCard = ({ persona, relation, onRemove, disabled }) => {
         boxShadow: isHovered ? '0 4px 12px rgba(0,0,0,0.08)' : '0 1px 3px rgba(0,0,0,0.05)',
       }}
     >
-      {/* Avatar */}
       <div style={{
         position: 'relative',
         flexShrink: 0,
@@ -110,7 +104,6 @@ const PersonaCard = ({ persona, relation, onRemove, disabled }) => {
         )}
       </div>
 
-      {/* Info */}
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{
           fontWeight: 600,
@@ -133,7 +126,6 @@ const PersonaCard = ({ persona, relation, onRemove, disabled }) => {
         )}
       </div>
 
-      {/* Botón eliminar */}
       <button
         onClick={onRemove}
         disabled={disabled}
@@ -150,7 +142,7 @@ const PersonaCard = ({ persona, relation, onRemove, disabled }) => {
           alignItems: 'center',
           justifyContent: 'center',
         }}
-        title="Quitar relación"
+        title={t('common:buttons.delete')}
       >
         <Trash2 size={18} />
       </button>
@@ -158,8 +150,7 @@ const PersonaCard = ({ persona, relation, onRemove, disabled }) => {
   );
 };
 
-// Sección con animación de acordeón suave
-const Section = ({ title, icon: Icon, children, count, onAdd, addLabel, disabled, color = '#3b82f6' }) => {
+const Section = ({ title, icon: Icon, children, count, onAdd, addLabel, disabled, color = '#3b82f6', t }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
@@ -172,7 +163,6 @@ const Section = ({ title, icon: Icon, children, count, onAdd, addLabel, disabled
       boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
       transition: 'box-shadow 0.3s ease',
     }}>
-      {/* Header */}
       <div
         onClick={() => setIsOpen(!isOpen)}
         style={{
@@ -213,7 +203,7 @@ const Section = ({ title, icon: Icon, children, count, onAdd, addLabel, disabled
                 color: '#6b7280',
                 marginTop: '2px',
               }}>
-                {count} {count === 1 ? 'persona' : 'personas'}
+                {count}
               </span>
             )}
           </div>
@@ -245,7 +235,7 @@ const Section = ({ title, icon: Icon, children, count, onAdd, addLabel, disabled
               }}
             >
               <UserPlus size={16} />
-              {addLabel || 'Agregar'}
+              {addLabel || t('common:buttons.add')}
             </button>
           )}
           <div style={{
@@ -259,7 +249,6 @@ const Section = ({ title, icon: Icon, children, count, onAdd, addLabel, disabled
         </div>
       </div>
 
-      {/* Content con animación */}
       <div style={{
         maxHeight: isOpen ? '2000px' : '0',
         overflow: 'hidden',
@@ -274,6 +263,7 @@ const Section = ({ title, icon: Icon, children, count, onAdd, addLabel, disabled
 };
 
 export default function RelacionesEditor({ personaId, onChanged }) {
+  const { t } = useTranslation('profile');
   const toast = useToast();
   const [persona, setPersona] = useState(null);
   const [relIds, setRelIds] = useState({ padres: [], hijos: [], conyuges: [], otrosConyuges: [] });
@@ -284,8 +274,8 @@ export default function RelacionesEditor({ personaId, onChanged }) {
 
   const askConfirm = (opts) => setConfirm({
     open: true,
-    title: opts.title || "Confirmar",
-    message: opts.message || "¿Desea continuar?",
+    title: opts.title || t('common:messages.confirmDelete'),
+    message: opts.message || '',
     onConfirm: () => { setConfirm((c) => ({ ...c, open: false })); opts.onConfirm?.(); },
     tone: opts.tone || "danger"
   });
@@ -314,7 +304,7 @@ export default function RelacionesEditor({ personaId, onChanged }) {
       setRelIds({ padres, hijos, conyuges, otrosConyuges });
     } catch (error) {
       console.error('❌ Error cargando persona:', error);
-      toast.error("No se pudo cargar la persona", String(error?.message || error));
+      toast.error(t('common:messages.error'), String(error?.message || error));
     } finally {
       logRel.end();
     }
@@ -322,7 +312,6 @@ export default function RelacionesEditor({ personaId, onChanged }) {
 
   useEffect(() => { 
     cargar(); 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [personaId]);
 
   useEffect(() => {
@@ -350,29 +339,27 @@ export default function RelacionesEditor({ personaId, onChanged }) {
         logRel.line('✅ cache construido (keys):', Object.keys(map));
       } catch (error) {
         console.error('❌ Error cargando relaciones (bulk):', error);
-        toast.error("No se pudo cargar relaciones relacionadas", String(error?.message || error));
+        toast.error(t('common:messages.error'), String(error?.message || error));
       } finally {
         logRel.end();
       }
     };
     loadBulk();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [relIds]);
 
   const personaOf = (id) => cache[id] || { _id: id, nombre: id };
   const excludeAll = () => Array.from(new Set([personaId, ...relIds.padres, ...relIds.hijos, ...relIds.conyuges, ...relIds.otrosConyuges]));
 
-  // Actions
   const addPadre = async (target) => {
     setLoading(true);
     try {
       await relacionesApi.vincularPadreHijo(target._id, personaId);
       await cargar(); 
       onChanged?.();
-      toast.success("Padre/Madre vinculado/a");
+      toast.success(t('common:messages.saved'));
     } catch (error) {
       console.error('Error agregando padre:', error);
-      toast.error("Error al agregar padre/madre", String(error?.message || error));
+      toast.error(t('common:messages.error'), String(error?.message || error));
     } finally { 
       setLoading(false); 
       setMostrarPicker(null); 
@@ -385,10 +372,10 @@ export default function RelacionesEditor({ personaId, onChanged }) {
       await relacionesApi.vincularPadreHijo(personaId, target._id);
       await cargar(); 
       onChanged?.();
-      toast.success("Hijo/Hija vinculado/a");
+      toast.success(t('common:messages.saved'));
     } catch (error) {
       console.error('Error agregando hijo:', error);
-      toast.error("Error al agregar hijo/hija", String(error?.message || error));
+      toast.error(t('common:messages.error'), String(error?.message || error));
     } finally { 
       setLoading(false); 
       setMostrarPicker(null); 
@@ -401,44 +388,42 @@ export default function RelacionesEditor({ personaId, onChanged }) {
       await relacionesApi.vincularConyuges(personaId, target._id);
       await cargar(); 
       onChanged?.();
-      toast.success("Cónyuge vinculado/a");
+      toast.success(t('common:messages.saved'));
     } catch (error) {
       console.error('Error agregando cónyuge:', error);
-      toast.error("Error al agregar cónyuge", String(error?.message || error));
+      toast.error(t('common:messages.error'), String(error?.message || error));
     } finally { 
       setLoading(false); 
       setMostrarPicker(null); 
     }
   };
 
-  // ✅ NUEVO: Agregar otro cónyuge
   const addOtroConyuge = async (target) => {
     setLoading(true);
     try {
       await relacionesApi.vincularOtroConyuge(personaId, target._id);
       await cargar(); 
       onChanged?.();
-      toast.success("Otro cónyuge vinculado/a");
+      toast.success(t('common:messages.saved'));
     } catch (error) {
       console.error('Error agregando otro cónyuge:', error);
-      toast.error("Error al agregar otro cónyuge", String(error?.message || error));
+      toast.error(t('common:messages.error'), String(error?.message || error));
     } finally { 
       setLoading(false); 
       setMostrarPicker(null); 
     }
   };
 
-  // ✅ NUEVO: Marcar otro cónyuge como preferido
   const marcarPreferido = async (conyugeId) => {
     setLoading(true);
     try {
       await personasApi.marcarConyugePreferido(personaId, conyugeId);
       await cargar();
       onChanged?.();
-      toast.success("Cónyuge marcado como preferido");
+      toast.success(t('common:messages.saved'));
     } catch (error) {
       console.error('Error marcando preferido:', error);
-      toast.error("Error al marcar como preferido", String(error?.message || error));
+      toast.error(t('common:messages.error'), String(error?.message || error));
     } finally {
       setLoading(false);
     }
@@ -446,18 +431,18 @@ export default function RelacionesEditor({ personaId, onChanged }) {
 
   const removePadre = (id) => {
     askConfirm({
-      title: "Quitar relación",
-      message: "¿Quitar relación padre-hijo?",
+      title: t('common:buttons.delete'),
+      message: t('common:messages.confirmDelete'),
       onConfirm: async () => {
         setLoading(true);
         try {
           await relacionesApi.desvincularPadreHijo(id, personaId);
           await cargar(); 
           onChanged?.();
-          toast.success("Relación padre-hijo removida");
+          toast.success(t('common:messages.saved'));
         } catch (error) {
           console.error('Error quitando padre:', error);
-          toast.error("Error al quitar padre/madre", String(error?.message || error));
+          toast.error(t('common:messages.error'), String(error?.message || error));
         } finally {
           setLoading(false);
         }
@@ -467,18 +452,18 @@ export default function RelacionesEditor({ personaId, onChanged }) {
 
   const removeHijo = (id) => {
     askConfirm({
-      title: "Quitar relación",
-      message: "¿Quitar relación padre-hijo?",
+      title: t('common:buttons.delete'),
+      message: t('common:messages.confirmDelete'),
       onConfirm: async () => {
         setLoading(true);
         try {
           await relacionesApi.desvincularPadreHijo(personaId, id);
           await cargar(); 
           onChanged?.();
-          toast.success("Relación padre-hijo removida");
+          toast.success(t('common:messages.saved'));
         } catch (error) {
           console.error('Error quitando hijo:', error);
-          toast.error("Error al quitar hijo/hija", String(error?.message || error));
+          toast.error(t('common:messages.error'), String(error?.message || error));
         } finally {
           setLoading(false);
         }
@@ -488,18 +473,18 @@ export default function RelacionesEditor({ personaId, onChanged }) {
 
   const removeConyuge = (id) => {
     askConfirm({
-      title: "Quitar relación",
-      message: "¿Quitar relación de cónyuges?",
+      title: t('common:buttons.delete'),
+      message: t('common:messages.confirmDelete'),
       onConfirm: async () => {
         setLoading(true);
         try {
           await relacionesApi.desvincularConyuges(personaId, id);
           await cargar(); 
           onChanged?.();
-          toast.success("Relación de cónyuges removida");
+          toast.success(t('common:messages.saved'));
         } catch (error) {
           console.error('Error quitando cónyuge:', error);
-          toast.error("Error al quitar cónyuge", String(error?.message || error));
+          toast.error(t('common:messages.error'), String(error?.message || error));
         } finally {
           setLoading(false);
         }
@@ -507,21 +492,20 @@ export default function RelacionesEditor({ personaId, onChanged }) {
     });
   };
 
-  // ✅ NUEVO: Remover otro cónyuge
   const removeOtroConyuge = (id) => {
     askConfirm({
-      title: "Quitar relación",
-      message: "¿Quitar otro cónyuge?",
+      title: t('common:buttons.delete'),
+      message: t('common:messages.confirmDelete'),
       onConfirm: async () => {
         setLoading(true);
         try {
           await relacionesApi.desvincularOtroConyuge(personaId, id);
           await cargar(); 
           onChanged?.();
-          toast.success("Otro cónyuge removido");
+          toast.success(t('common:messages.saved'));
         } catch (error) {
           console.error('Error quitando otro cónyuge:', error);
-          toast.error("Error al quitar otro cónyuge", String(error?.message || error));
+          toast.error(t('common:messages.error'), String(error?.message || error));
         } finally {
           setLoading(false);
         }
@@ -551,7 +535,7 @@ export default function RelacionesEditor({ personaId, onChanged }) {
             borderRadius: '50%',
             animation: 'spin 0.8s linear infinite',
           }} />
-          <div style={{ color: '#6b7280', fontSize: '14px' }}>Cargando relaciones...</div>
+          <div style={{ color: '#6b7280', fontSize: '14px' }}>{t('common:buttons.loading')}</div>
         </div>
       </div>
     );
@@ -607,14 +591,13 @@ export default function RelacionesEditor({ personaId, onChanged }) {
               color: '#fff',
               textShadow: '0 2px 4px rgba(0,0,0,0.1)',
             }}>
-              Relaciones familiares
+              {t('relations.parents')}
             </h2>
             <p style={{
               margin: '4px 0 0 0',
               fontSize: '15px',
               color: 'rgba(255,255,255,0.9)',
             }}>
-              Administrá las relaciones de{' '}
               <span style={{ fontWeight: 600 }}>{persona.nombre}</span>
             </p>
           </div>
@@ -623,13 +606,14 @@ export default function RelacionesEditor({ personaId, onChanged }) {
 
       {/* Secciones */}
       <Section
-        title="Padres"
+        title={t('relations.parents')}
         icon={Users}
         count={relIds.padres.length}
         onAdd={() => setMostrarPicker('padre')}
-        addLabel="Agregar"
+        addLabel={t('common:buttons.add')}
         disabled={loading}
         color="#8b5cf6"
+        t={t}
       >
         {relIds.padres.length > 0 ? (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -637,29 +621,31 @@ export default function RelacionesEditor({ personaId, onChanged }) {
               <PersonaCard
                 key={`padre-${id}`}
                 persona={personaOf(id)}
-                relation="Padre/Madre"
+                relation={t('relations.father')}
                 onRemove={() => removePadre(id)}
                 disabled={loading}
+                t={t}
               />
             ))}
           </div>
         ) : (
           <EmptyState
             icon={Users}
-            title="No hay padres registrados"
-            subtitle="Hacé clic en Agregar para vincular"
+            title={t('common:messages.noResults')}
+            subtitle={t('common:buttons.add')}
           />
         )}
       </Section>
 
       <Section
-        title="Hijos"
+        title={t('relations.children')}
         icon={Baby}
         count={relIds.hijos.length}
         onAdd={() => setMostrarPicker('hijo')}
-        addLabel="Agregar"
+        addLabel={t('common:buttons.add')}
         disabled={loading}
         color="#10b981"
+        t={t}
       >
         {relIds.hijos.length > 0 ? (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -667,29 +653,31 @@ export default function RelacionesEditor({ personaId, onChanged }) {
               <PersonaCard
                 key={`hijo-${id}`}
                 persona={personaOf(id)}
-                relation="Hijo/Hija"
+                relation={t('relations.children')}
                 onRemove={() => removeHijo(id)}
                 disabled={loading}
+                t={t}
               />
             ))}
           </div>
         ) : (
           <EmptyState
             icon={Baby}
-            title="No hay hijos registrados"
-            subtitle="Hacé clic en Agregar para vincular"
+            title={t('common:messages.noResults')}
+            subtitle={t('common:buttons.add')}
           />
         )}
       </Section>
 
       <Section
-        title="Cónyuges"
+        title={t('relations.spouse')}
         icon={Heart}
         count={relIds.conyuges.length}
         onAdd={() => setMostrarPicker('conyuge')}
-        addLabel="Agregar"
+        addLabel={t('common:buttons.add')}
         disabled={loading}
         color="#ec4899"
+        t={t}
       >
         {relIds.conyuges.length > 0 ? (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -697,62 +685,62 @@ export default function RelacionesEditor({ personaId, onChanged }) {
               <PersonaCard
                 key={`cony-${id}`}
                 persona={personaOf(id)}
-                relation="Cónyuge"
+                relation={t('relations.spouse')}
                 onRemove={() => removeConyuge(id)}
                 disabled={loading}
+                t={t}
               />
             ))}
           </div>
         ) : (
           <EmptyState
             icon={Heart}
-            title="No hay cónyuges registrados"
-            subtitle="Hacé clic en Agregar para vincular"
+            title={t('common:messages.noResults')}
+            subtitle={t('common:buttons.add')}
           />
         )}
       </Section>
 
-
-
-{/* ✅ SECCIÓN: Otros Cónyuges (SIN estrellas) */}
-<Section
-  title="Otros Cónyuges"
-  icon={Heart}
-  count={relIds.otrosConyuges.length}
-  onAdd={() => setMostrarPicker('otro-conyuge')}
-  addLabel="Agregar"
-  disabled={loading}
-  color="#f59e0b"
->
-  {relIds.otrosConyuges.length > 0 ? (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-      {relIds.otrosConyuges.map(id => (
-        <PersonaCard
-          key={`otro-cony-${id}`}
-          persona={personaOf(id)}
-          relation="Otro Cónyuge"
-          onRemove={() => removeOtroConyuge(id)}
-          disabled={loading}
-        />
-      ))}
-    </div>
-  ) : (
-    <EmptyState
-      icon={Heart}
-      title="No hay otros cónyuges registrados"
-      subtitle="Hacé clic en Agregar para vincular"
-    />
-  )}
-</Section>
+      <Section
+        title={t('relations.spouses')}
+        icon={Heart}
+        count={relIds.otrosConyuges.length}
+        onAdd={() => setMostrarPicker('otro-conyuge')}
+        addLabel={t('common:buttons.add')}
+        disabled={loading}
+        color="#f59e0b"
+        t={t}
+      >
+        {relIds.otrosConyuges.length > 0 ? (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {relIds.otrosConyuges.map(id => (
+              <PersonaCard
+                key={`otro-cony-${id}`}
+                persona={personaOf(id)}
+                relation={t('relations.spouse')}
+                onRemove={() => removeOtroConyuge(id)}
+                disabled={loading}
+                t={t}
+              />
+            ))}
+          </div>
+        ) : (
+          <EmptyState
+            icon={Heart}
+            title={t('common:messages.noResults')}
+            subtitle={t('common:buttons.add')}
+          />
+        )}
+      </Section>
 
       {/* Modal PersonPicker */}
       {mostrarPicker && (
         <PersonPicker
           title={
-            mostrarPicker === 'padre' ? 'Elegir padre/madre' :
-            mostrarPicker === 'hijo' ? 'Elegir hijo/hija' :
-            mostrarPicker === 'conyuge' ? 'Elegir cónyuge' :
-            'Elegir otro cónyuge'
+            mostrarPicker === 'padre' ? `${t('common:buttons.search')} ${t('relations.parents')}` :
+            mostrarPicker === 'hijo' ? `${t('common:buttons.search')} ${t('relations.children')}` :
+            mostrarPicker === 'conyuge' ? `${t('common:buttons.search')} ${t('relations.spouse')}` :
+            `${t('common:buttons.search')} ${t('relations.spouses')}`
           }
           excludeIds={excludeAll()}
           onCancel={() => setMostrarPicker(null)}
@@ -773,11 +761,10 @@ export default function RelacionesEditor({ personaId, onChanged }) {
         onConfirm={confirm.onConfirm}
         onCancel={closeConfirm}
         tone={confirm.tone}
-        confirmText="Sí, quitar"
-        cancelText="Cancelar"
+        confirmText={t('common:buttons.confirm')}
+        cancelText={t('common:buttons.cancel')}
       />
 
-      {/* Estilos de animación */}
       <style>{`
         @keyframes spin { to { transform: rotate(360deg); } }
         .persona-card:hover { border-color: #cbd5e1; }

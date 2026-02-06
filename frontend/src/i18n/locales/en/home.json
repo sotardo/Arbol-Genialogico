@@ -1,0 +1,23 @@
+{
+  "title": "Home",
+  "welcome": "Welcome to Fahler Family",
+  "subtitle": "Select a root person to start exploring the family tree",
+  "currentRoot": {
+    "title": "Current Root Person",
+    "noSelection": "No root person selected",
+    "useSearch": "Use the search to select a person",
+    "viewTree": "View Tree",
+    "viewPersons": "View Persons"
+  },
+  "changeRoot": {
+    "title": "Change Root Person",
+    "subtitle": "Search and select another person to set as the tree root",
+    "searchPlaceholder": "Search person by name...",
+    "searching": "Searching...",
+    "noResults": "No persons found"
+  },
+  "tip": {
+    "title": "Tip",
+    "content": "The root person is the starting point of the family tree. You can change it anytime."
+  }
+}

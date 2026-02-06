@@ -1,0 +1,33 @@
+{
+  "appName": "Família Fahler",
+  "nav": {
+    "home": "Início",
+    "tree": "Árvore",
+    "persons": "Pessoas"
+  },
+  "buttons": {
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "add": "Adicionar",
+    "search": "Buscar",
+    "close": "Fechar",
+    "confirm": "Confirmar",
+    "back": "Voltar",
+    "view": "Ver",
+    "loading": "Carregando..."
+  },
+  "messages": {
+    "confirmDelete": "Tem certeza que deseja excluir?",
+    "saved": "Salvo com sucesso",
+    "error": "Ocorreu um erro",
+    "noResults": "Nenhum resultado encontrado"
+  },
+  "dates": {
+    "birthAbbr": "n.",
+    "deathAbbr": "f.",
+    "birth": "Nascimento",
+    "death": "Falecimento"
+  }
+}

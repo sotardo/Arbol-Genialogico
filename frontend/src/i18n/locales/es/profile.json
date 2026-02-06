@@ -1,0 +1,60 @@
+{
+  "title": "Perfil",
+  "tabs": {
+    "info": "Información",
+    "sources": "Fuentes",
+    "gallery": "Galería",
+    "details": "Detalles"
+  },
+  "fields": {
+    "name": "Nombre",
+    "code": "Código",
+    "sex": "Sexo",
+    "male": "Masculino",
+    "female": "Femenino",
+    "birth": "Nacimiento",
+    "death": "Defunción",
+    "birthPlace": "Lugar de nacimiento",
+    "deathPlace": "Lugar de defunción",
+    "occupation": "Ocupación",
+    "about": "Acerca de",
+    "unknown": "Desconocido"
+  },
+  "relations": {
+    "parents": "Padres",
+    "father": "Padre",
+    "mother": "Madre",
+    "spouses": "Cónyuges",
+    "spouse": "Cónyuge",
+    "children": "Hijos",
+    "siblings": "Hermanos"
+  },
+  "sources": {
+    "title": "Fuentes",
+    "add": "Agregar fuente",
+    "noSources": "No hay fuentes registradas",
+    "view": "Ver",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "openInTab": "Abrir en pestaña",
+    "confirmDelete": "¿Eliminar esta fuente?"
+  },
+  "gallery": {
+    "title": "Galería",
+    "add": "Agregar foto",
+    "noPhotos": "No hay fotos en la galería",
+    "setAsAvatar": "Establecer como avatar"
+  },
+  "actions": {
+    "edit": "Editar perfil",
+    "delete": "Eliminar persona",
+    "viewTree": "Ver en el árbol",
+    "confirmDelete": "¿Seguro que querés eliminar a {{name}}? Esta acción no se puede deshacer."
+  },
+  "quality": {
+    "high": "Alta",
+    "medium": "Media",
+    "low": "Baja",
+    "score": "Puntuación de calidad"
+  }
+}

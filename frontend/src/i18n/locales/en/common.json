@@ -1,0 +1,33 @@
+{
+  "appName": "Fahler Family",
+  "nav": {
+    "home": "Home",
+    "tree": "Tree",
+    "persons": "Persons"
+  },
+  "buttons": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "close": "Close",
+    "confirm": "Confirm",
+    "back": "Back",
+    "view": "View",
+    "loading": "Loading..."
+  },
+  "messages": {
+    "confirmDelete": "Are you sure you want to delete?",
+    "saved": "Saved successfully",
+    "error": "An error occurred",
+    "noResults": "No results found"
+  },
+  "dates": {
+    "birth": "Born",
+    "death": "Died",
+    "birthFull": "Birth",
+    "deathFull": "Death"
+  }
+}

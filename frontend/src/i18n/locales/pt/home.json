@@ -1,0 +1,22 @@
+{
+  "welcome": "Bem-vindo",
+  "subtitle": "Descubra a história da sua família",
+  "currentRoot": {
+    "title": "Raiz atual",
+    "noSelection": "Nenhuma pessoa selecionada",
+    "useSearch": "Use a busca para selecionar",
+    "viewTree": "Ver árvore",
+    "viewPersons": "Ver pessoas"
+  },
+  "changeRoot": {
+    "title": "Mudar raiz",
+    "subtitle": "Selecione uma pessoa como raiz da árvore",
+    "searchPlaceholder": "Buscar por nome...",
+    "searching": "Buscando...",
+    "noResults": "Nenhum resultado encontrado"
+  },
+  "tip": {
+    "title": "Dica",
+    "content": "Selecione uma pessoa como raiz da árvore para ver seus relacionamentos familiares"
+  }
+}

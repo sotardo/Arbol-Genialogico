@@ -1,0 +1,15 @@
+{
+  "title": "מאגר נתונים",
+  "add": "הוסף אדם",
+  "searchPlaceholder": "חיפוש לפי שם...",
+  "empty": {
+    "noPersons": "אין אנשים רשומים",
+    "noResults": "לא נמצאו תוצאות"
+  },
+  "table": {
+    "name": "שם",
+    "birth": "לידה",
+    "death": "פטירה",
+    "actions": "פעולות"
+  }
+}

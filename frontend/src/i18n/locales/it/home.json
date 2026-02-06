@@ -1,0 +1,22 @@
+{
+  "welcome": "Benvenuto",
+  "subtitle": "Scopri la storia della tua famiglia",
+  "currentRoot": {
+    "title": "Radice attuale",
+    "noSelection": "Nessuna persona selezionata",
+    "useSearch": "Usa la ricerca per selezionare",
+    "viewTree": "Visualizza albero",
+    "viewPersons": "Visualizza persone"
+  },
+  "changeRoot": {
+    "title": "Cambia radice",
+    "subtitle": "Seleziona una persona come radice dell'albero",
+    "searchPlaceholder": "Cerca per nome...",
+    "searching": "Cercando...",
+    "noResults": "Nessun risultato trovato"
+  },
+  "tip": {
+    "title": "Suggerimento",
+    "content": "Seleziona una persona come radice dell'albero per visualizzare le sue relazioni familiari"
+  }
+}

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { X, User, Plus, TreePine, Eye, Pencil, Trash2, FileText } from 'lucide-react';
-
+import { useTranslation } from "react-i18next";
 // Componente de badge de calidad
 const QualityBadge = ({ level }) => {
   const config = {
@@ -58,10 +58,10 @@ const formatDate = (dateString) => {
   }
 };
 
-// Navega al lienzo
+// Navega al árbol con la persona como raíz
 const gotoCanvas = (id) => {
   if (!id) return;
-  const url = new URL(window.location.origin + '/');
+  const url = new URL(window.location.origin + '/arbol');
   url.searchParams.set('root', id);
   window.location.href = url.toString();
 };
@@ -107,7 +107,7 @@ export default function PersonDetailPanel({
   const [isAnimating, setIsAnimating] = useState(false);
 
   const panelRef = useRef(null);
-
+const { t } = useTranslation('tree');
   // 👉 CLICK FUERA DEL PANEL → CERRAR
   const handleClickOutside = useCallback(
     (event) => {
@@ -242,13 +242,14 @@ export default function PersonDetailPanel({
   const fuentes = Array.isArray(persona?.fuentes) ? persona.fuentes : [];
   const recuerdos = Array.isArray(persona?.recuerdos) ? persona.recuerdos : [];
   const hechos = Array.isArray(persona?.hechos) ? persona.hechos : [];
-const fotosGaleria = Array.isArray(persona?.galeria)
-  ? persona.galeria
-  : Array.isArray(persona?.fotosGaleria)
-  ? persona.fotosGaleria
-  : Array.isArray(persona?.fotos)
-  ? persona.fotos
-  : [];
+  const fotosGaleria = Array.isArray(persona?.galeria)
+    ? persona.galeria
+    : Array.isArray(persona?.fotosGaleria)
+    ? persona.fotosGaleria
+    : Array.isArray(persona?.fotos)
+    ? persona.fotos
+    : [];
+    
   if (!shouldRender) return null;
 
   return (
@@ -316,7 +317,7 @@ const fotosGaleria = Array.isArray(persona?.galeria)
                       )}
                       <div className="flex-1 min-w-0">
                         <h2 className="text-xl font-semibold text-gray-900 break-words">
-                          {loading ? 'Cargando...' : persona?.nombre || 'Sin nombre'}
+                          {loading ? t('common:buttons.loading') : persona?.nombre || t('common:messages.noResults')}
                         </h2>
                         {persona?.codigo && (
                           <p className="text-base text-gray-500">{persona.codigo}</p>
@@ -326,21 +327,21 @@ const fotosGaleria = Array.isArray(persona?.galeria)
 
                     {persona?.calidad && (
                       <div className="flex items-center gap-3 mb-3">
-                        <span className="text-sm text-gray-600">
-                          Puntuación de calidad:
-                        </span>
+<span className="text-sm text-gray-600">
+  {t('panel.qualityScore')}:
+</span>
                         <QualityBadge level={persona.calidad} />
                       </div>
                     )}
 
-<div className="flex gap-4 text-sm text-gray-600">
-  <button className="text-green-600 hover:underline">
-    Fuentes ({safeCount(fuentes)})
-  </button>
-  <button className="text-green-600 hover:underline">
-    Galería ({safeCount(fotosGaleria)})
-  </button>
-</div>
+                    <div className="flex gap-4 text-sm text-gray-600">
+                      <button className="text-green-600 hover:underline">
+                        {t('panel.sources')} ({safeCount(fuentes)})
+                      </button>
+                      <button className="text-green-600 hover:underline">
+                        {t('panel.gallery')} ({safeCount(fotosGaleria)})
+                      </button>
+                    </div>
 
                   </div>
 
@@ -348,9 +349,9 @@ const fotosGaleria = Array.isArray(persona?.galeria)
                     <div className="px-4 pb-4 space-y-2 text-base">
                       {persona.nacimiento && (
                         <div>
-                          <div className="font-semibold text-gray-900">
-                            Nacimiento
-                          </div>
+<div className="font-semibold text-gray-900">
+  {t('panel.birth')}
+</div>
                           <div className="text-gray-600">
                             {formatDate(persona.nacimiento)}
                           </div>
@@ -358,9 +359,9 @@ const fotosGaleria = Array.isArray(persona?.galeria)
                       )}
                       {persona.fallecimiento && (
                         <div>
-                          <div className="font-semibold text-gray-900">
-                            Defunción
-                          </div>
+<div className="font-semibold text-gray-900">
+  {t('panel.death')}
+</div>
                           <div className="text-gray-600">
                             {formatDate(persona.fallecimiento)}
                           </div>
@@ -374,7 +375,7 @@ const fotosGaleria = Array.isArray(persona?.galeria)
                       onClick={handlePersonaTabClick}
                       className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-md border text-base font-medium bg-white text-gray-700 border-gray-300 hover:bg-green-50 hover:text-green-700 hover:border-green-300 transition-colors cursor-pointer"
                     >
-                      <User color='green' size={16} /> PERFIL
+                     <User color='green' size={16} /> {t('panel.profile')}
                     </button>
                     <button
                       onClick={() => {
@@ -383,7 +384,7 @@ const fotosGaleria = Array.isArray(persona?.galeria)
                       }}
                       className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-md border text-base font-medium bg-white text-gray-700 border-gray-300 hover:bg-green-50 hover:text-green-700 hover:border-green-300 transition-colors cursor-pointer"
                     >
-                      <TreePine color='green' size={16} /> ÁRBOL
+                      <TreePine color='green' size={16} /> {t('panel.tree')}
                     </button>
                   </div>
                 </div>
@@ -393,14 +394,14 @@ const fotosGaleria = Array.isArray(persona?.galeria)
                   {activeTab === 'persona' && persona && (
                     <>
                       <CollapsibleSection
-                        title="Información esencial"
+                        title={t('panel.essentialInfo')}
                         defaultOpen
                       >
                         <div className="space-y-3 text-sm">
                           {persona.nacimiento && (
                             <div>
                               <div className="font-semibold text-gray-900">
-                                Nacimiento
+                                {t('panel.birth')}
                               </div>
                               <div className="text-gray-600">
                                 {formatDate(persona.nacimiento)}
@@ -410,7 +411,7 @@ const fotosGaleria = Array.isArray(persona?.galeria)
                           {persona.bautismo ? (
                             <div>
                               <div className="font-semibold text-gray-900">
-                                Bautizo
+                                {t('panel.baptism')}
                               </div>
                               <div className="text-gray-600">
                                 {formatDate(persona.bautismo.fecha)}
@@ -419,18 +420,18 @@ const fotosGaleria = Array.isArray(persona?.galeria)
                           ) : (
                             <div>
                               <div className="font-semibold text-gray-900">
-                                Bautizo
+                                {t('panel.baptism')}
                               </div>
                               <AddButton
                                 onClick={handleAgregarDetalle}
-                                text="AGREGAR"
+                               text={t('common:buttons.add')}
                               />
                             </div>
                           )}
                           {persona.matrimonio ? (
                             <div>
                               <div className="font-semibold text-gray-900">
-                                Matrimonio
+                                {t('panel.marriage')}
                               </div>
                               <div className="text-gray-600">
                                 {formatDate(persona.matrimonio.fecha)}
@@ -439,18 +440,18 @@ const fotosGaleria = Array.isArray(persona?.galeria)
                           ) : (
                             <div>
                               <div className="font-semibold text-gray-900">
-                                Matrimonio
+                                {t('panel.marriage')}
                               </div>
                               <AddButton
                                 onClick={handleAgregarDetalle}
-                                text="AGREGAR"
+                                text={t('common:buttons.add')}
                               />
                             </div>
                           )}
                           {persona.entierro ? (
                             <div>
                               <div className="font-semibold text-gray-900">
-                                Entierro
+                                {t('panel.burial')}
                               </div>
                               <div className="text-gray-600">
                                 {formatDate(persona.entierro.fecha)}
@@ -459,7 +460,7 @@ const fotosGaleria = Array.isArray(persona?.galeria)
                           ) : (
                             <div>
                               <div className="font-semibold text-gray-900">
-                                Entierro
+                                {t('panel.burial')}
                               </div>
                               <AddButton
                                 onClick={handleAgregarDetalle}
@@ -471,13 +472,13 @@ const fotosGaleria = Array.isArray(persona?.galeria)
                       </CollapsibleSection>
 
                       <CollapsibleSection
-                        title="Fuentes"
+                        title={t('panel.sources')}
                         count={safeCount(fuentes)}
                       >
                         {safeCount(fuentes) === 0 ? (
                           <AddButton
                             onClick={handleAgregarFuente}
-                            text="AGREGAR FUENTE"
+                            text={t('profile:sources.add')}
                           />
                         ) : (
                           <div className="space-y-3">
@@ -548,15 +549,13 @@ const fotosGaleria = Array.isArray(persona?.galeria)
                             {/* Botón agregar al final */}
                             <AddButton
                               onClick={handleAgregarFuente}
-                              text="AGREGAR FUENTE"
+                              text={t('profile:sources.add')}
                             />
                           </div>
                         )}
                       </CollapsibleSection>
 
-
-
-                      <CollapsibleSection title="Historia de vida">
+                      <CollapsibleSection title={t('panel.lifeStory')}>
                         {persona.acercaDe ? (
                           <p className="text-sm text-gray-700">
                             {persona.acercaDe}
@@ -564,7 +563,7 @@ const fotosGaleria = Array.isArray(persona?.galeria)
                         ) : (
                           <AddButton
                             onClick={handleAgregarDetalle}
-                            text="AGREGAR"
+                            text={t('common:buttons.add')}
                           />
                         )}
                       </CollapsibleSection>

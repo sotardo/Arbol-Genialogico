@@ -1,0 +1,54 @@
+{
+  "controls": {
+    "zoomIn": "הגדל",
+    "zoomOut": "הקטן",
+    "centerRoot": "מרכז שורש",
+    "zoomTip": "השתמש בגלגל העכבר כדי לשנות את מרחק התצוגה"
+  },
+  "card": {
+    "children": "ילדים",
+    "child_one": "ילד אחד",
+    "child_other": "{{count}} ילדים",
+    "addFather": "הוסף אב",
+    "addMother": "הוסף אם",
+    "addSpouse": "הוסף בן/בת זוג",
+    "addChild": "הוסף ילד",
+    "selectSpouse": "בחר בן/בת זוג",
+    "withSpouse": "עם {{name}}",
+    "expand": "הרחב",
+    "collapse": "כווץ"
+  },
+  "panel": {
+    "profile": "פרופיל",
+    "tree": "עץ",
+    "sources": "מקורות",
+    "gallery": "גלריה",
+    "qualityScore": "ציון איכות",
+    "birth": "לידה",
+    "death": "פטירה",
+    "baptism": "טבילה",
+    "marriage": "נישואין",
+    "burial": "קבורה",
+    "lifeStory": "סיפור חיים",
+    "essentialInfo": "מידע חיוני",
+    "closePanel": "סגור פאנל"
+  },
+  "empty": {
+    "title": "אין עץ משפחה",
+    "subtitle": "בחר אדם כדי להתחיל"
+  },
+  "loading": {
+    "title": "טוען עץ משפחה...",
+    "subtitle": "אנא המתן"
+  },
+  "error": {
+    "title": "שגיאה",
+    "subtitle": "לא ניתן לטעון את העץ"
+  },
+  "addParent": {
+    "title": "הוסף הורה",
+    "searchPlaceholder": "חפש אדם...",
+    "createNew": "צור חדש",
+    "noResults": "לא נמצאו תוצאות"
+  }
+}

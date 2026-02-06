@@ -1,63 +1,67 @@
 import React from "react";
 import { CirclePlus } from "lucide-react";
-
-const shadow = "0 2px 8px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06)";
+import { useTranslation } from "react-i18next";
 
 export default function AgregarHijoCard({ onAgregarHijo, personaId, personaNombre }) {
+  const { t } = useTranslation("tree");
+
   const CARD_W = 300;
-  const ROW_H = 50;
-  const FOOTER_H = 0;
-  const CARD_H = ROW_H * 2 + FOOTER_H;
-  const BORDER_RADIUS = 12;
+  const ROW_H = 64;
+  const BORDER_RADIUS = 10;
 
   return (
     <div
       style={{
         width: CARD_W,
-        height: CARD_H,
+        height: ROW_H,
         boxSizing: "border-box",
-        background: "#f8fafc",
+        background: "#ffffff",
         borderRadius: BORDER_RADIUS,
-        boxShadow: shadow,
+        border: "1px solid #e5e7eb",
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
       }}
     >
       <button
         onClick={(e) => {
           e.stopPropagation();
           e.preventDefault();
-          if (typeof onAgregarHijo === 'function') {
+          if (typeof onAgregarHijo === "function") {
             onAgregarHijo(personaId, personaNombre);
           }
         }}
         style={{
+          height: ROW_H,
           display: "flex",
           alignItems: "center",
-          justifyContent: "center",
-          gap: 8,
-          background: "transparent",
+          justifyContent: "flex-start",
+          gap: 12,
+          background: "#ffffff",
           cursor: "pointer",
           border: "none",
-          fontSize: 20,
+          fontSize: 14,
           fontWeight: 600,
           color: "#10b981",
-          padding: "12px 20px",
-          borderRadius: 8,
-          transition: "all 0.2s ease"
+          transition: "background 0.15s ease",
+          width: "100%",
+          padding: 0,
         }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.background = "#ecfdf5";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.background = "transparent";
-        }}
+        onMouseEnter={(e) => (e.currentTarget.style.background = "#ecfdf5")}
+        onMouseLeave={(e) => (e.currentTarget.style.background = "#ffffff")}
       >
-        <CirclePlus size={28} strokeWidth={1.5} />
-        AGREGAR HIJO
+        <div
+          style={{
+            width: 4,
+            height: "100%",
+            background: "#10b981",
+            borderTopLeftRadius: BORDER_RADIUS,
+            borderBottomLeftRadius: BORDER_RADIUS,
+            flexShrink: 0,
+          }}
+        />
+        <CirclePlus size={22} strokeWidth={1.5} />
+        {t("card.addChild")}
       </button>
     </div>
   );

@@ -1,0 +1,23 @@
+{
+  "title": "Inicio",
+  "welcome": "Bienvenido a Familia Fahler",
+  "subtitle": "Selecciona una persona raíz para comenzar a explorar el árbol genealógico",
+  "currentRoot": {
+    "title": "Persona Raíz Actual",
+    "noSelection": "No hay persona raíz seleccionada",
+    "useSearch": "Usa el buscador para seleccionar una persona",
+    "viewTree": "Ver Árbol",
+    "viewPersons": "Ver Personas"
+  },
+  "changeRoot": {
+    "title": "Cambiar Persona Raíz",
+    "subtitle": "Busca y selecciona otra persona para establecerla como raíz del árbol",
+    "searchPlaceholder": "Buscar persona por nombre...",
+    "searching": "Buscando...",
+    "noResults": "No se encontraron personas"
+  },
+  "tip": {
+    "title": "Tip",
+    "content": "La persona raíz es el punto de partida del árbol genealógico. Puedes cambiarla en cualquier momento."
+  }
+}

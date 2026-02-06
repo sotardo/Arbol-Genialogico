@@ -22,6 +22,7 @@ import {
 import { personasApi } from '../personasApi';
 import { useToast } from './ToastProvider';
 import ConfirmDialog from './ConfirmDialog';
+import { useTranslation } from 'react-i18next';
 
 const API = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 
@@ -29,15 +30,6 @@ const imgSrc = (url) => {
   if (!url) return null;
   if (url.startsWith('http')) return url;
   return `${API}${url}`;
-};
-
-const formatSexo = (sexo) => {
-  const map = {
-    M: 'Masculino',
-    F: 'Femenino',
-    X: 'Otro / No especifica',
-  };
-  return map[sexo] || '—';
 };
 
 const toInputDate = (d) => {
@@ -66,8 +58,17 @@ const formatDate = (dateString) => {
   }
 };
 
-const PersonaRow = ({ persona, onEdit, onDelete, onView }) => {
+const PersonaRow = ({ persona, onEdit, onDelete, onView, t }) => {
   const avatar = imgSrc(persona.avatarUrl);
+
+  const formatSexo = (sexo) => {
+    const map = {
+      M: t('profile:fields.male'),
+      F: t('profile:fields.female'),
+      X: t('profile:fields.unknown'),
+    };
+    return map[sexo] || '—';
+  };
 
   return (
     <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
@@ -108,14 +109,14 @@ const PersonaRow = ({ persona, onEdit, onDelete, onView }) => {
           <button
             onClick={() => onEdit(persona)}
             className="p-2 text-green-600 hover:bg-green-50 rounded-lg transition-colors cursor-pointer"
-            title="Editar"
+            title={t('common:buttons.edit')}
           >
             <Edit2 size={18} />
           </button>
           <button
             onClick={() => onDelete(persona)}
             className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors cursor-pointer"
-            title="Eliminar"
+            title={t('common:buttons.delete')}
           >
             <Trash2 size={18} />
           </button>
@@ -126,7 +127,7 @@ const PersonaRow = ({ persona, onEdit, onDelete, onView }) => {
 };
 
 // ========= MODAL DESLIZANTE (UNIFICADO) =========
-const PersonaModal = ({ persona, open, onClose, onSave }) => {
+const PersonaModal = ({ persona, open, onClose, onSave, t }) => {
   const toast = useToast();
   const [formData, setFormData] = useState({
     nombre: '',
@@ -147,12 +148,10 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
   const [errors, setErrors] = useState({});
   const [saving, setSaving] = useState(false);
 
-  // Estados para manejar la transición
   const [shouldRender, setShouldRender] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const panelRef = useRef(null);
 
-  // Click fuera del panel para cerrar
   const handleClickOutside = useCallback(
     (event) => {
       if (!panelRef.current) return;
@@ -163,7 +162,6 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
     [onClose]
   );
 
-  // Manejar apertura/cierre con animación
   useEffect(() => {
     if (open) {
       setShouldRender(true);
@@ -181,7 +179,6 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
     }
   }, [open]);
 
-  // Cargar datos de la persona si estamos editando
   useEffect(() => {
     if (persona) {
       setFormData({
@@ -218,7 +215,6 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
     }
   }, [persona]);
 
-  // Cerrar con Escape
   useEffect(() => {
     if (!open) return;
     const handleEscape = (e) => {
@@ -228,7 +224,6 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
     return () => document.removeEventListener('keydown', handleEscape);
   }, [open, onClose]);
 
-  // Bloquear scroll del body
   useEffect(() => {
     if (shouldRender) {
       document.body.style.overflow = 'hidden';
@@ -243,7 +238,7 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
   const validate = () => {
     const newErrors = {};
     if (!formData.nombre.trim()) {
-      newErrors.nombre = 'El nombre es obligatorio';
+      newErrors.nombre = t('common:messages.error');
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -283,7 +278,6 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
         },
       };
 
-      // Limpieza bautismo vacío
       if (
         !payload.bautismo.fecha &&
         !payload.bautismo.lugar &&
@@ -293,22 +287,16 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
         payload.bautismo = undefined;
       }
 
-      // Limpieza matrimonio vacío
       if (!payload.matrimonio.fecha && !payload.matrimonio.lugar) {
         payload.matrimonio = undefined;
       }
 
       await onSave(payload);
-      toast.success(
-        persona ? 'Cambios guardados' : 'Persona creada'
-      );
+      toast.success(t('common:messages.saved'));
       onClose();
     } catch (error) {
       console.error('Error guardando persona:', error);
-      toast.error(
-        'Error al guardar la persona',
-        String(error?.message || error)
-      );
+      toast.error(t('common:messages.error'), String(error?.message || error));
     } finally {
       setSaving(false);
     }
@@ -323,7 +311,6 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
       aria-modal="true"
       onMouseDown={handleClickOutside}
     >
-      {/* Backdrop */}
       <div
         className={`absolute inset-0 bg-gray-900/50 transition-opacity duration-500 ease-in-out ${
           isAnimating ? 'opacity-100' : 'opacity-0'
@@ -331,18 +318,15 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
         aria-hidden="true"
       />
 
-      {/* Panel container */}
       <div className="fixed inset-0 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10 sm:pl-16">
-            {/* Panel */}
             <div
               ref={panelRef}
               className={`pointer-events-auto relative w-screen max-w-2xl transition-transform duration-500 ease-in-out ${
                 isAnimating ? 'translate-x-0' : 'translate-x-full'
               }`}
             >
-              {/* Botón cerrar */}
               <div
                 className={`absolute top-0 left-0 -ml-8 flex pt-4 pr-2 sm:-ml-10 sm:pr-4 transition-opacity duration-500 ease-in-out ${
                   isAnimating ? 'opacity-100' : 'opacity-0'
@@ -355,12 +339,11 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
                   disabled={saving}
                 >
                   <span className="absolute -inset-2.5" />
-                  <span className="sr-only">Cerrar panel</span>
+                  <span className="sr-only">{t('common:buttons.close')}</span>
                   <X className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
 
-              {/* Contenido */}
               <div className="flex h-full flex-col bg-white shadow-xl">
                 {/* Header */}
                 <div className="px-6 py-5 border-b border-gray-200 flex items-center justify-between bg-gradient-to-r from-green-50 via-green-50 to-green-100">
@@ -374,13 +357,10 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-gray-900">
-                        {persona ? 'Editar persona' : 'Nueva persona'}
-                      </h3>
-                      <p className="text-xs text-gray-600 mt-0.5">
                         {persona
-                          ? 'Actualiza la información'
-                          : 'Completa los datos básicos'}
-                      </p>
+                          ? `${t('common:buttons.edit')} ${t('profile:tabs.info')}`
+                          : `${t('common:buttons.add')} ${t('profile:tabs.info')}`}
+                      </h3>
                     </div>
                   </div>
                 </div>
@@ -393,20 +373,20 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
                       <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
                         <User size={18} className="text-green-600" />
                         <h4 className="text-base font-semibold text-gray-900">
-                          Información básica
+                          {t('profile:tabs.info')}
                         </h4>
                       </div>
 
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Nombre completo *
+                          {t('profile:fields.name')} *
                         </label>
                         <input
                           value={formData.nombre}
                           onChange={(e) =>
                             setFormData({ ...formData, nombre: e.target.value })
                           }
-                          placeholder="Nombre completo"
+                          placeholder={t('profile:fields.name')}
                           className={`w-full px-4 py-2.5 border ${
                             errors.nombre ? 'border-red-300' : 'border-gray-300'
                           } rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none`}
@@ -419,7 +399,7 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
 
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Sexo
+                          {t('profile:fields.sex')}
                         </label>
                         <select
                           value={formData.sexo}
@@ -428,10 +408,10 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
                           }
                           className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none bg-white"
                         >
-                          <option value="">Seleccionar...</option>
-                          <option value="M">Masculino</option>
-                          <option value="F">Femenino</option>
-                          <option value="X">Otro / No especifica</option>
+                          <option value="">...</option>
+                          <option value="M">{t('profile:fields.male')}</option>
+                          <option value="F">{t('profile:fields.female')}</option>
+                          <option value="X">{t('profile:fields.unknown')}</option>
                         </select>
                       </div>
                     </div>
@@ -441,14 +421,14 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
                       <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
                         <Baby size={18} className="text-green-600" />
                         <h4 className="text-base font-semibold text-gray-900">
-                          Nacimiento
+                          {t('profile:fields.birth')}
                         </h4>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Fecha de nacimiento
+                            {t('profile:fields.birth')}
                           </label>
                           <input
                             type="date"
@@ -462,7 +442,7 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
 
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Lugar de nacimiento
+                            {t('profile:fields.birthPlace')}
                           </label>
                           <input
                             value={formData.lugarNacimiento}
@@ -472,7 +452,6 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
                                 lugarNacimiento: e.target.value,
                               })
                             }
-                            placeholder="Ciudad, Provincia, País"
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                           />
                         </div>
@@ -484,14 +463,14 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
                       <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
                         <Church size={18} className="text-purple-600" />
                         <h4 className="text-base font-semibold text-gray-900">
-                          Bautismo
+                          {t('tree:panel.baptism')}
                         </h4>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Fecha de bautismo
+                            {t('tree:panel.baptism')}
                           </label>
                           <input
                             type="date"
@@ -508,7 +487,7 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
 
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Lugar de bautismo
+                            {t('profile:fields.birthPlace')}
                           </label>
                           <input
                             value={formData.bautismoLugar}
@@ -518,7 +497,6 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
                                 bautismoLugar: e.target.value,
                               })
                             }
-                            placeholder="Ciudad, Provincia, País"
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                           />
                         </div>
@@ -535,7 +513,6 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
                                 bautismoParroquia: e.target.value,
                               })
                             }
-                            placeholder="Nombre de la parroquia"
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                           />
                         </div>
@@ -552,7 +529,6 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
                                 bautismoNotas: e.target.value,
                               })
                             }
-                            placeholder="Información adicional"
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                           />
                         </div>
@@ -564,14 +540,14 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
                       <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
                         <Heart size={18} className="text-pink-600" />
                         <h4 className="text-base font-semibold text-gray-900">
-                          Matrimonio
+                          {t('tree:panel.marriage')}
                         </h4>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Fecha de matrimonio
+                            {t('tree:panel.marriage')}
                           </label>
                           <input
                             type="date"
@@ -588,7 +564,7 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
 
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Lugar de matrimonio
+                            {t('profile:fields.birthPlace')}
                           </label>
                           <input
                             value={formData.matrimonioLugar}
@@ -598,7 +574,6 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
                                 matrimonioLugar: e.target.value,
                               })
                             }
-                            placeholder="Parroquia / ciudad / país"
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                           />
                         </div>
@@ -610,14 +585,14 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
                       <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
                         <FileText size={18} className="text-red-600" />
                         <h4 className="text-base font-semibold text-gray-900">
-                          Defunción
+                          {t('profile:fields.death')}
                         </h4>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Fecha de defunción
+                            {t('profile:fields.death')}
                           </label>
                           <input
                             type="date"
@@ -634,7 +609,7 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
 
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Lugar de defunción
+                            {t('profile:fields.deathPlace')}
                           </label>
                           <input
                             value={formData.lugarFallecimiento}
@@ -644,14 +619,13 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
                                 lugarFallecimiento: e.target.value,
                               })
                             }
-                            placeholder="Ciudad, Provincia, País"
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                           />
                         </div>
 
                         <div className="md:col-span-2">
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Causa de defunción
+                            Causa
                           </label>
                           <input
                             value={formData.causaFallecimiento}
@@ -661,7 +635,6 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
                                 causaFallecimiento: e.target.value,
                               })
                             }
-                            placeholder="Opcional"
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                           />
                         </div>
@@ -671,41 +644,33 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
                 </div>
 
                 {/* Footer */}
-                <div className="px-6 py-4 border-t border-gray-200 flex justify-between items-center bg-gray-50">
-                  <p className="text-xs text-gray-500 flex items-center gap-1">
-                    <Sparkles size={14} />
-                    {persona
-                      ? 'Los cambios se guardarán inmediatamente'
-                      : 'Podrás agregar más información después'}
-                  </p>
-                  <div className="flex gap-3">
-                    <button
-                      type="button"
-                      onClick={onClose}
-                      className="px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-white transition-all font-medium"
-                      disabled={saving}
-                    >
-                      Cancelar
-                    </button>
-                    <button
-                      onClick={handleSubmit}
-                      className="px-5 py-2.5 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg hover:from-green-700 hover:to-green-800 transition-all font-medium shadow-sm hover:shadow-md disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-2"
-                      disabled={saving}
-                      type="button"
-                    >
-                      {saving ? (
-                        <>
-                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                          Guardando...
-                        </>
-                      ) : (
-                        <>
-                          <Save size={18} />
-                          {persona ? 'Guardar cambios' : 'Crear persona'}
-                        </>
-                      )}
-                    </button>
-                  </div>
+                <div className="px-6 py-4 border-t border-gray-200 flex justify-end gap-3 bg-gray-50">
+                  <button
+                    type="button"
+                    onClick={onClose}
+                    className="px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-white transition-all font-medium"
+                    disabled={saving}
+                  >
+                    {t('common:buttons.cancel')}
+                  </button>
+                  <button
+                    onClick={handleSubmit}
+                    className="px-5 py-2.5 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg hover:from-green-700 hover:to-green-800 transition-all font-medium shadow-sm hover:shadow-md disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-2"
+                    disabled={saving}
+                    type="button"
+                  >
+                    {saving ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        {t('common:buttons.loading')}
+                      </>
+                    ) : (
+                      <>
+                        <Save size={18} />
+                        {t('common:buttons.save')}
+                      </>
+                    )}
+                  </button>
                 </div>
               </div>
             </div>
@@ -718,6 +683,7 @@ const PersonaModal = ({ persona, open, onClose, onSave }) => {
 
 // ========= COMPONENTE PRINCIPAL CRUD =========
 export default function CRUD({ onPersonaClick }) {
+  const { t } = useTranslation('common');
   const toast = useToast();
   const [personas, setPersonas] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -728,25 +694,24 @@ export default function CRUD({ onPersonaClick }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingPersona, setEditingPersona] = useState(null);
 
-  // Confirm dialog state
   const [confirm, setConfirm] = useState({
     open: false,
     title: '',
     message: '',
     onConfirm: null,
     tone: 'danger',
-    confirmText: 'Sí, eliminar',
-    cancelText: 'Cancelar',
+    confirmText: t('buttons.confirm'),
+    cancelText: t('buttons.cancel'),
   });
 
   const askConfirm = (opts) => {
     setConfirm({
       open: true,
-      title: opts.title || 'Confirmar',
-      message: opts.message || '¿Desea continuar?',
+      title: opts.title || t('messages.confirmDelete'),
+      message: opts.message || '',
       tone: opts.tone || 'danger',
-      confirmText: opts.confirmText || 'Confirmar',
-      cancelText: opts.cancelText || 'Cancelar',
+      confirmText: opts.confirmText || t('buttons.confirm'),
+      cancelText: opts.cancelText || t('buttons.cancel'),
       onConfirm: () => {
         setConfirm((c) => ({ ...c, open: false }));
         opts.onConfirm?.();
@@ -759,19 +724,12 @@ export default function CRUD({ onPersonaClick }) {
   const cargarPersonas = async () => {
     setLoading(true);
     try {
-      const data = await personasApi.listar(
-        searchTerm,
-        page,
-        limit
-      );
+      const data = await personasApi.listar(searchTerm, page, limit);
       setPersonas(data.items || []);
       setTotal(data.total || 0);
     } catch (error) {
       console.error('Error cargando personas:', error);
-      toast.error(
-        'No se pudieron cargar las personas',
-        String(error?.message || error)
-      );
+      toast.error(t('messages.error'), String(error?.message || error));
     } finally {
       setLoading(false);
     }
@@ -779,7 +737,6 @@ export default function CRUD({ onPersonaClick }) {
 
   useEffect(() => {
     cargarPersonas();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, searchTerm]);
 
   const handleSearch = (value) => {
@@ -794,16 +751,12 @@ export default function CRUD({ onPersonaClick }) {
 
   const handleEdit = async (persona) => {
     try {
-      // Traemos la persona COMPLETA (incluye matrimonio, bautismo, etc.)
       const full = await personasApi.detalle(persona._id);
       setEditingPersona(full);
       setModalOpen(true);
     } catch (error) {
       console.error('Error cargando detalle de persona:', error);
-      toast.error(
-        'No se pudo cargar el detalle de la persona',
-        String(error?.message || error)
-      );
+      toast.error(t('messages.error'), String(error?.message || error));
     }
   };
 
@@ -818,22 +771,19 @@ export default function CRUD({ onPersonaClick }) {
 
   const handleDelete = (persona) => {
     askConfirm({
-      title: 'Eliminar persona',
-      message: `¿Eliminar a "${persona.nombre}"? Esta acción no se puede deshacer.`,
+      title: t('buttons.delete'),
+      message: `${t('messages.confirmDelete')} "${persona.nombre}"?`,
       tone: 'danger',
-      confirmText: 'Sí, eliminar',
-      cancelText: 'Cancelar',
+      confirmText: t('buttons.delete'),
+      cancelText: t('buttons.cancel'),
       onConfirm: async () => {
         try {
           await personasApi.borrar(persona._id);
           await cargarPersonas();
-          toast.success('Persona eliminada');
+          toast.success(t('messages.saved'));
         } catch (error) {
           console.error('Error eliminando persona:', error);
-          toast.error(
-            'Error al eliminar la persona',
-            String(error?.message || error)
-          );
+          toast.error(t('messages.error'), String(error?.message || error));
         }
       },
     });
@@ -851,13 +801,10 @@ export default function CRUD({ onPersonaClick }) {
             </div>
             <div>
               <h1 className="text-2xl font-bold text-gray-900">
-                Base de datos
+                {t('nav.persons')}
               </h1>
               <p className="text-sm text-gray-600 mt-1">
-                {total}{' '}
-                {total === 1
-                  ? 'persona registrada'
-                  : 'personas registradas'}
+                {total} {t('nav.persons').toLowerCase()}
               </p>
             </div>
           </div>
@@ -866,7 +813,7 @@ export default function CRUD({ onPersonaClick }) {
             className="px-5 py-2.5 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-lg hover:from-green-700 hover:to-emerald-700 transition-all font-medium shadow-sm hover:shadow-md cursor-pointer flex items-center gap-2"
           >
             <Plus size={20} />
-            Agregar persona
+            {t('buttons.add')}
           </button>
         </div>
       </div>
@@ -879,7 +826,7 @@ export default function CRUD({ onPersonaClick }) {
           />
           <input
             type="text"
-            placeholder="Buscar por nombre..."
+            placeholder={`${t('buttons.search')}...`}
             value={searchTerm}
             onChange={(e) => handleSearch(e.target.value)}
             className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all"
@@ -892,26 +839,14 @@ export default function CRUD({ onPersonaClick }) {
           <div className="flex items-center justify-center py-16">
             <div className="flex flex-col items-center gap-3">
               <div className="w-10 h-10 border-4 border-gray-200 border-t-green-600 rounded-full animate-spin" />
-              <p className="text-gray-500 text-sm">
-                Cargando personas...
-              </p>
+              <p className="text-gray-500 text-sm">{t('buttons.loading')}</p>
             </div>
           </div>
         ) : personas.length === 0 ? (
           <div className="text-center py-16">
-            <Users
-              size={64}
-              className="mx-auto text-gray-300 mb-4"
-            />
+            <Users size={64} className="mx-auto text-gray-300 mb-4" />
             <p className="text-gray-500 text-lg font-medium mb-2">
-              {searchTerm
-                ? 'No se encontraron resultados'
-                : 'No hay personas registradas'}
-            </p>
-            <p className="text-gray-400 text-sm mb-6">
-              {searchTerm
-                ? 'Intenta con otro término de búsqueda'
-                : 'Crea tu primera persona para comenzar'}
+              {searchTerm ? t('messages.noResults') : t('messages.noResults')}
             </p>
             {!searchTerm && (
               <button
@@ -919,7 +854,7 @@ export default function CRUD({ onPersonaClick }) {
                 className="px-5 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium inline-flex items-center gap-2"
               >
                 <Plus size={20} />
-                Nueva persona
+                {t('buttons.add')}
               </button>
             )}
           </div>
@@ -929,16 +864,16 @@ export default function CRUD({ onPersonaClick }) {
               <thead>
                 <tr className="bg-gray-50 border-b border-gray-200">
                   <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                    Nombre
+                    {t('profile:fields.name', 'Nombre')}
                   </th>
                   <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                    Nacimiento
+                    {t('profile:fields.birth', 'Nacimiento')}
                   </th>
                   <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                    Fallecimiento
+                    {t('profile:fields.death', 'Fallecimiento')}
                   </th>
                   <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                    Acciones
+                    {t('buttons.edit', 'Acciones')}
                   </th>
                 </tr>
               </thead>
@@ -950,6 +885,7 @@ export default function CRUD({ onPersonaClick }) {
                     onEdit={handleEdit}
                     onDelete={handleDelete}
                     onView={onPersonaClick}
+                    t={t}
                   />
                 ))}
               </tbody>
@@ -958,8 +894,7 @@ export default function CRUD({ onPersonaClick }) {
             {totalPages > 1 && (
               <div className="px-6 py-4 border-t border-gray-200 flex items-center justify-between bg-gray-50">
                 <div className="text-sm text-gray-600">
-                  Mostrando {(page - 1) * limit + 1} -{' '}
-                  {Math.min(page * limit, total)} de {total}
+                  {(page - 1) * limit + 1} - {Math.min(page * limit, total)} / {total}
                 </div>
                 <div className="flex items-center gap-2">
                   <button
@@ -975,8 +910,7 @@ export default function CRUD({ onPersonaClick }) {
                       if (
                         pageNum === 1 ||
                         pageNum === totalPages ||
-                        (pageNum >= page - 1 &&
-                          pageNum <= page + 1)
+                        (pageNum >= page - 1 && pageNum <= page + 1)
                       ) {
                         return (
                           <button
@@ -991,15 +925,9 @@ export default function CRUD({ onPersonaClick }) {
                             {pageNum}
                           </button>
                         );
-                      } else if (
-                        pageNum === page - 2 ||
-                        pageNum === page + 2
-                      ) {
+                      } else if (pageNum === page - 2 || pageNum === page + 2) {
                         return (
-                          <span
-                            key={pageNum}
-                            className="px-2 text-gray-400"
-                          >
+                          <span key={pageNum} className="px-2 text-gray-400">
                             ...
                           </span>
                         );
@@ -1021,7 +949,6 @@ export default function CRUD({ onPersonaClick }) {
         )}
       </div>
 
-      {/* Modal deslizante unificado */}
       <PersonaModal
         persona={editingPersona}
         open={modalOpen}
@@ -1030,9 +957,9 @@ export default function CRUD({ onPersonaClick }) {
           setEditingPersona(null);
         }}
         onSave={handleSave}
+        t={t}
       />
 
-      {/* ConfirmDialog global para eliminar */}
       <ConfirmDialog
         open={confirm.open}
         title={confirm.title}

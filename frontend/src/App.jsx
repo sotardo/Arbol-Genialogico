@@ -6,6 +6,7 @@ import { personasApi } from './personasApi';
 import NavBar from './components/NavBar';
 import PerfilPage from './components/PerfilPage';
 import CRUD from './components/Crud';
+import InicioPage, { getRootFromStorage, saveRootToStorage } from './components/InicioPage';
 
 function readRootFromURL() {
   try {
@@ -20,40 +21,6 @@ function readRootFromURL() {
   return '';
 }
 
-function RootPicker({ onPick }) {
-  const [val, setVal] = useState('');
-  return (
-    <div style={{
-      height: '100%', display: 'grid', placeItems: 'center', color: '#475569'
-    }}>
-      <div style={{ textAlign: 'center' }}>
-        <h2 style={{ margin: 0, marginBottom: 8 }}>Seleccioná persona raíz</h2>
-        <p style={{ marginTop: 0 }}>Pegá un <code>_id</code> o agrega <code>?root=ID</code> en la URL.</p>
-        <div style={{ display: 'flex', gap: 8, justifyContent: 'center', marginTop: 8 }}>
-          <input
-            value={val}
-            onChange={(e) => setVal(e.target.value)}
-            placeholder="ID de persona (Mongo _id)"
-            style={{
-              width: 360, height: 36, borderRadius: 8, border: '1px solid #cbd5e1',
-              padding: '0 10px', outline: 'none'
-            }}
-          />
-          <button
-            onClick={() => val && onPick(val)}
-            style={{
-              height: 36, borderRadius: 8, border: '1px solid #cbd5e1',
-              padding: '0 14px', background: '#fff', cursor: 'pointer'
-            }}
-          >
-            Usar
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function App() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -61,32 +28,27 @@ export default function App() {
   const headerH = 56;
   const canvasHeight = useMemo(() => `calc(100vh - ${headerH}px)`, [headerH]);
 
-  // ✅ ID CORRECTO de Julia Graciela
-  const FIXED_ROOT_ID = '68fd3387986ef0aa5542a352';
+  // Fallback si no hay nada guardado
+  const FALLBACK_ROOT_ID = '68fd3387986ef0aa5542a352';
 
   const initialRoot = () => {
     try {
-      const navEntry = performance.getEntriesByType('navigation')?.[0];
-      const isReload =
-        (navEntry && navEntry.type === 'reload') ||
-        (performance.navigation && performance.navigation.type === 1);
-
-      if (isReload) {
-        const url = new URL(window.location.href);
-        url.searchParams.set('root', FIXED_ROOT_ID);
-        window.history.replaceState({}, '', url.toString());
-        return FIXED_ROOT_ID;
-      }
-
+      // 1. Primero intentar desde URL
       const fromURL = readRootFromURL();
-      if (fromURL) return fromURL;
-
-      const url = new URL(window.location.href);
-      url.searchParams.set('root', FIXED_ROOT_ID);
-      window.history.replaceState({}, '', url.toString());
-      return FIXED_ROOT_ID;
+      if (fromURL) {
+        saveRootToStorage(fromURL);
+        return fromURL;
+      }
+      
+      // 2. Luego desde localStorage
+      const fromStorage = getRootFromStorage();
+      if (fromStorage) return fromStorage;
+      
+      // 3. Fallback
+      saveRootToStorage(FALLBACK_ROOT_ID);
+      return FALLBACK_ROOT_ID;
     } catch {
-      return FIXED_ROOT_ID;
+      return FALLBACK_ROOT_ID;
     }
   };
 
@@ -94,11 +56,22 @@ export default function App() {
   const [loadingRoot, setLoadingRoot] = useState(false);
   const [errorRoot, setErrorRoot] = useState(null);
 
+  // Sincronizar URL cuando cambia rootId
+  useEffect(() => {
+    if (rootId && location.pathname === '/arbol') {
+      const url = new URL(window.location.href);
+      url.searchParams.set('root', rootId);
+      window.history.replaceState({}, '', url.toString());
+    }
+  }, [rootId, location.pathname]);
+
   // Determinar vista activa basada en la ruta
   const getActiveView = () => {
+    if (location.pathname === '/') return 'inicio';
+    if (location.pathname === '/arbol') return 'arbol';
     if (location.pathname.startsWith('/perfil')) return 'arbol';
     if (location.pathname === '/personas') return 'personas';
-    return 'arbol';
+    return 'inicio';
   };
 
   useEffect(() => {
@@ -113,9 +86,7 @@ export default function App() {
         if (!alive) return;
         if (first?._id) {
           setRootId(first._id);
-          const url = new URL(window.location.href);
-          url.searchParams.set('root', first._id);
-          window.history.replaceState({}, '', url.toString());
+          saveRootToStorage(first._id);
         } else {
           setErrorRoot('No hay personas en la base. Crea una persona para iniciar el árbol.');
         }
@@ -128,23 +99,44 @@ export default function App() {
     return () => { alive = false; };
   }, [rootId]);
 
+  const handleSetRoot = (id) => {
+    if (!id) return;
+    setRootId(id);
+    saveRootToStorage(id);
+  };
+
   const handleOpenPerfil = (id) => {
     if (!id) return;
     navigate(`/perfil/${id}`);
   };
 
   const handleNavigate = (view) => {
-    if (view === 'arbol') {
+    if (view === 'inicio') {
       navigate('/');
+    } else if (view === 'arbol') {
+      navigate('/arbol');
     } else if (view === 'personas') {
       navigate('/personas');
     }
   };
 
+  const handleNavigateToArbol = (id) => {
+    if (id) {
+      setRootId(id);
+      saveRootToStorage(id);
+    }
+    navigate('/arbol');
+  };
+
   const handlePersonaClick = (persona) => {
     if (!persona?._id) return;
-    // Ir al perfil de la persona
     navigate(`/perfil/${persona._id}`);
+  };
+
+  const toAPI = (path) => {
+    if (!path) return '';
+    if (path.startsWith('http')) return path;
+    return `${API}${path.startsWith('/') ? '' : '/'}${path}`;
   };
 
   return (
@@ -156,9 +148,23 @@ export default function App() {
 
       <main style={{ minHeight: canvasHeight, position: 'relative' }}>
         <Routes>
-          {/* Ruta del árbol */}
+          {/* Ruta de Inicio */}
           <Route
             path="/"
+            element={
+              <InicioPage
+                personasApi={personasApi}
+                rootId={rootId}
+                onSetRoot={handleSetRoot}
+                onNavigateToArbol={handleNavigateToArbol}
+                toAPI={toAPI}
+              />
+            }
+          />
+
+          {/* Ruta del árbol */}
+          <Route
+            path="/arbol"
             element={
               <>
                 {loadingRoot && (
@@ -175,20 +181,22 @@ export default function App() {
                     <div style={{ textAlign: 'center' }}>
                       <h2 style={{ margin: 0, marginBottom: 8 }}>Sin datos</h2>
                       <p style={{ marginTop: 0, maxWidth: 520 }}>{errorRoot}</p>
-                      <div style={{ marginTop: 16 }}>
-                        <RootPicker onPick={(id) => setRootId(id)} />
-                      </div>
+                      <button
+                        onClick={() => navigate('/')}
+                        style={{
+                          marginTop: 16,
+                          padding: '8px 16px',
+                          background: '#16a34a',
+                          color: '#fff',
+                          border: 'none',
+                          borderRadius: 8,
+                          cursor: 'pointer'
+                        }}
+                      >
+                        Ir a Inicio
+                      </button>
                     </div>
                   </div>
-                )}
-
-                {!loadingRoot && !errorRoot && !rootId && (
-                  <RootPicker onPick={(id) => {
-                    setRootId(id);
-                    const url = new URL(window.location.href);
-                    url.searchParams.set('root', id);
-                    window.history.replaceState({}, '', url.toString());
-                  }} />
                 )}
 
                 {!loadingRoot && !errorRoot && rootId && (
@@ -198,7 +206,7 @@ export default function App() {
                     viewMode="horizontal"
                     spacing={1}
                     onPick={(id) => {
-                      setRootId(id);
+                      handleSetRoot(id);
                       const url = new URL(window.location.href);
                       url.searchParams.set('root', id);
                       window.history.replaceState({}, '', url.toString());
@@ -213,7 +221,7 @@ export default function App() {
           {/* Ruta del perfil */}
           <Route path="/perfil/:id" element={<PerfilPage />} />
 
-          {/* 🆕 Ruta del CRUD de personas */}
+          {/* Ruta del CRUD de personas */}
           <Route 
             path="/personas" 
             element={<CRUD onPersonaClick={handlePersonaClick} />} 

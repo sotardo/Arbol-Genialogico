@@ -1,0 +1,60 @@
+{
+  "title": "Profile",
+  "tabs": {
+    "info": "Information",
+    "sources": "Sources",
+    "gallery": "Gallery",
+    "details": "Details"
+  },
+  "fields": {
+    "name": "Name",
+    "code": "Code",
+    "sex": "Sex",
+    "male": "Male",
+    "female": "Female",
+    "birth": "Birth",
+    "death": "Death",
+    "birthPlace": "Place of birth",
+    "deathPlace": "Place of death",
+    "occupation": "Occupation",
+    "about": "About",
+    "unknown": "Unknown"
+  },
+  "relations": {
+    "parents": "Parents",
+    "father": "Father",
+    "mother": "Mother",
+    "spouses": "Spouses",
+    "spouse": "Spouse",
+    "children": "Children",
+    "siblings": "Siblings"
+  },
+  "sources": {
+    "title": "Sources",
+    "add": "Add source",
+    "noSources": "No sources registered",
+    "view": "View",
+    "edit": "Edit",
+    "delete": "Delete",
+    "openInTab": "Open in tab",
+    "confirmDelete": "Delete this source?"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "add": "Add photo",
+    "noPhotos": "No photos in gallery",
+    "setAsAvatar": "Set as avatar"
+  },
+  "actions": {
+    "edit": "Edit profile",
+    "delete": "Delete person",
+    "viewTree": "View in tree",
+    "confirmDelete": "Are you sure you want to delete {{name}}? This action cannot be undone."
+  },
+  "quality": {
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low",
+    "score": "Quality score"
+  }
+}

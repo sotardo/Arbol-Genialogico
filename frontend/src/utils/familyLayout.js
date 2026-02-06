@@ -1,4 +1,4 @@
-// src/utils/familyLayout.js - SISTEMA SIMPLE CON EMPTY CARDS
+// src/utils/familyLayout.js - CORREGIDO v3 - MÚLTIPLES MATRIMONIOS
 const CONFIG = {
   horizontal: {
     CARD_WIDTH: 160,
@@ -55,10 +55,42 @@ function parsePairKey(key) {
   return { type: 'single', id: key };
 }
 
+function extractIdGlobal(val) {
+  if (!val) return null;
+  if (typeof val === 'string') return val;
+  if (typeof val === 'object' && val._id) return String(val._id);
+  return String(val);
+}
+
+function filtrarHijosPorUnion(hijos, personaId, conyugeId) {
+  if (!hijos || hijos.length === 0) return [];
+  
+  return hijos.filter(hijo => {
+    const padresUnion = (hijo.padresUnion || []).map(p => extractIdGlobal(p) || String(p));
+    const padres = (hijo.padres || []).map(p => extractIdGlobal(p) || String(p));
+    
+    if (!conyugeId) {
+      if (padresUnion.length === 0) return true;
+      if (padresUnion.length === 1 && padresUnion.includes(String(personaId))) return true;
+      return false;
+    }
+    
+    if (padresUnion.length === 2) {
+      return padresUnion.includes(String(personaId)) && padresUnion.includes(String(conyugeId));
+    }
+    
+    if (padresUnion.length === 0 && padres.length === 2) {
+      return padres.includes(String(personaId)) && padres.includes(String(conyugeId));
+    }
+    
+    return false;
+  });
+}
+
 export class FamilyLayout {
   constructor(personas, rootPersonId, viewMode = 'horizontal', spacingMultiplier = 1, options = {}) {
-    this.personas = new Map(personas.map((p) => [p._id, p]));
-    this.rootPerson = this.personas.get(rootPersonId);
+    this.personas = new Map(personas.map((p) => [String(p._id), p]));
+    this.rootPerson = this.personas.get(String(rootPersonId));
     this.viewMode = viewMode;
     this.spacingMultiplier = spacingMultiplier;
 
@@ -78,10 +110,35 @@ export class FamilyLayout {
     this.expandedUpKeys = options.expandedUpKeys instanceof Set ? options.expandedUpKeys : new Set(options.expandedUpKeys || []);
     this.expandedDownKeys = options.expandedDownKeys instanceof Set ? options.expandedDownKeys : new Set(options.expandedDownKeys || []);
 
+    // ✅ Normalizar activeSpouseMap
+    const spouseMapInput = options.activeSpouseMap || {};
+    if (spouseMapInput instanceof Map) {
+      this.activeSpouseMap = new Map();
+      spouseMapInput.forEach((value, key) => {
+        this.activeSpouseMap.set(String(key), String(value));
+      });
+    } else if (typeof spouseMapInput === 'object') {
+      this.activeSpouseMap = new Map(
+        Object.entries(spouseMapInput).map(([k, v]) => [String(k), String(v)])
+      );
+    } else {
+      this.activeSpouseMap = new Map();
+    }
+
+    // ✅ Debug log
+    console.log('🏗️ FamilyLayout constructor - activeSpouseMap:', Object.fromEntries(this.activeSpouseMap));
+
     this.minX = Infinity;
     this.maxX = -Infinity;
     this.minY = Infinity;
     this.maxY = -Infinity;
+  }
+
+  extractId(val) {
+    if (!val) return null;
+    if (typeof val === 'string') return val;
+    if (typeof val === 'object' && val._id) return String(val._id);
+    return String(val);
   }
 
   trackCoordinate(x, y) {
@@ -155,28 +212,142 @@ export class FamilyLayout {
     return pairKey(aId, bId);
   }
 
-  buildAncestorGroupsFromPeople(people = []) {
+  getActiveSpouse(personaId) {
+    const key = String(personaId);
+    const result = this.activeSpouseMap.get(key) || null;
+    return result;
+  }
+
+  getAllSpouses(persona) {
+    if (!persona) return [];
+    
+    const spousesSet = new Set();
+    
+    (persona.conyuges || []).forEach(c => {
+      const id = this.extractId(c);
+      if (id) spousesSet.add(id);
+    });
+    
+    (persona.otrosConyuges || []).forEach(c => {
+      const id = this.extractId(c);
+      if (id) spousesSet.add(id);
+    });
+    
+    const result = Array.from(spousesSet)
+      .map(id => this.personas.get(id))
+      .filter(Boolean);
+    
+    return result;
+  }
+
+  getSpouseFromChildContext(persona, childPerson) {
+    if (!persona || !childPerson) return null;
+    
+    const childParentIds = (childPerson.padres || []).map(p => this.extractId(p));
+    const personaId = String(persona._id);
+    
+    if (childParentIds.includes(personaId)) {
+      const otherParentId = childParentIds.find(id => id !== personaId);
+      if (otherParentId) {
+        const otherParent = this.personas.get(otherParentId);
+        if (otherParent) {
+          return otherParent;
+        }
+      }
+    }
+    
+    return null;
+  }
+
+  getSpouseForAncestorContext(persona, childPerson = null) {
+    if (!persona) return null;
+    
+    if (childPerson) {
+      const spouseFromChild = this.getSpouseFromChildContext(persona, childPerson);
+      if (spouseFromChild) return spouseFromChild;
+    }
+    
+    const activeSpouseId = this.getActiveSpouse(persona._id);
+    const allSpouses = this.getAllSpouses(persona);
+    
+    if (allSpouses.length === 0) return null;
+    
+    if (activeSpouseId) {
+      const activeSpouse = allSpouses.find(s => String(s._id) === activeSpouseId);
+      if (activeSpouse) return activeSpouse;
+    }
+    
+    if (persona.conyugePreferido) {
+      const preferredId = this.extractId(persona.conyugePreferido);
+      const preferred = allSpouses.find(s => String(s._id) === preferredId);
+      if (preferred) return preferred;
+    }
+    
+    return allSpouses[0];
+  }
+
+  getFilteredChildren(persona, conyugeId = null) {
+    if (!persona) return [];
+    
+    const allChildren = (persona.hijos || [])
+      .map(id => {
+        const childId = this.extractId(id);
+        return childId ? this.personas.get(childId) : null;
+      })
+      .filter(Boolean);
+    
+    if (!conyugeId) {
+      return allChildren;
+    }
+    
+    return filtrarHijosPorUnion(allChildren, String(persona._id), String(conyugeId));
+  }
+
+  buildAncestorGroupsFromPeople(people = [], childContextMap = new Map()) {
     const map = new Map();
+    
     people.forEach((p) => {
       if (!p) return;
-      const spouses = (p?.conyuges || []).map((id) => this.personas.get(id)).filter(Boolean);
-      if (spouses.length === 0) {
-        const hijos = (p?.hijos || []).map((id) => this.personas.get(id)).filter(Boolean);
+      
+      const childPerson = childContextMap.get(String(p._id));
+      const targetSpouse = this.getSpouseForAncestorContext(p, childPerson);
+      const allSpouses = this.getAllSpouses(p);
+      
+      if (!targetSpouse) {
+        const hijos = this.getFilteredChildren(p, null);
         const gKey = pairKey(p._id, null);
         if (!map.has(gKey)) {
-          map.set(gKey, { id: `anc-group-${gKey}`, persona: p, conyuge: null, hijos, esDescendencia: false, groupKey: gKey });
+          map.set(gKey, { 
+            id: `anc-group-${gKey}`, 
+            persona: p, 
+            conyuge: null, 
+            hijos, 
+            esDescendencia: false, 
+            groupKey: gKey,
+            todosConyuges: allSpouses,
+            conyugeActivo: null
+          });
         }
         return;
       }
-      spouses.forEach((s) => {
-        const hijosIds = new Set([...(p?.hijos || []), ...(s?.hijos || [])]);
-        const hijos = Array.from(hijosIds).map((id) => this.personas.get(id)).filter(Boolean);
-        const gKey = pairKey(p._id, s?._id);
-        if (!map.has(gKey)) {
-          map.set(gKey, { id: `anc-group-${gKey}`, persona: p, conyuge: s, hijos, esDescendencia: false, groupKey: gKey });
-        }
-      });
+      
+      const hijos = this.getFilteredChildren(p, targetSpouse._id);
+      const gKey = pairKey(p._id, targetSpouse._id);
+      
+      if (!map.has(gKey)) {
+        map.set(gKey, { 
+          id: `anc-group-${gKey}`, 
+          persona: p, 
+          conyuge: targetSpouse, 
+          hijos, 
+          esDescendencia: false, 
+          groupKey: gKey,
+          todosConyuges: allSpouses,
+          conyugeActivo: String(targetSpouse._id)
+        });
+      }
     });
+    
     return Array.from(map.values());
   }
 
@@ -184,10 +355,12 @@ export class FamilyLayout {
     const map = new Map();
     people.forEach((p) => {
       if (!p) return;
-      const spouses = (p?.conyuges || []).map((id) => this.personas.get(id)).filter(Boolean);
       
-      if (spouses.length === 0) {
-        const hijos = (p?.hijos || []).map((id) => this.personas.get(id)).filter(Boolean);
+      const activeSpouseId = this.getActiveSpouse(p._id);
+      const allSpouses = this.getAllSpouses(p);
+      
+      if (allSpouses.length === 0) {
+        const hijos = this.getFilteredChildren(p, null);
         const gKey = pairKey(p._id, null);
         if (!map.has(gKey)) {
           map.set(gKey, { 
@@ -196,27 +369,33 @@ export class FamilyLayout {
             conyuge: null, 
             hijos, 
             esDescendencia: true, 
-            groupKey: gKey 
+            groupKey: gKey,
+            todosConyuges: [],
+            conyugeActivo: null
           });
         }
         return;
       }
       
-      spouses.forEach((s) => {
-        const hijosIds = new Set([...(p?.hijos || []), ...(s?.hijos || [])]);
-        const hijos = Array.from(hijosIds).map((id) => this.personas.get(id)).filter(Boolean);
-        const gKey = pairKey(p._id, s?._id);
-        if (!map.has(gKey)) {
-          map.set(gKey, { 
-            id: `desc-group-${gKey}`, 
-            persona: p, 
-            conyuge: s, 
-            hijos, 
-            esDescendencia: true, 
-            groupKey: gKey 
-          });
-        }
-      });
+      const targetSpouse = activeSpouseId 
+        ? allSpouses.find(s => String(s._id) === activeSpouseId) || allSpouses[0]
+        : allSpouses[0];
+      
+      const hijos = this.getFilteredChildren(p, targetSpouse?._id);
+      const gKey = pairKey(p._id, targetSpouse?._id);
+      
+      if (!map.has(gKey)) {
+        map.set(gKey, { 
+          id: `desc-group-${gKey}`, 
+          persona: p, 
+          conyuge: targetSpouse, 
+          hijos, 
+          esDescendencia: true, 
+          groupKey: gKey,
+          todosConyuges: allSpouses,
+          conyugeActivo: targetSpouse?._id ? String(targetSpouse._id) : null
+        });
+      }
     });
     return Array.from(map.values());
   }
@@ -348,10 +527,24 @@ export class FamilyLayout {
       conyuge = this.personas.get(asId(parsed.bId)) || null;
     }
     if (!persona && !conyuge) return null;
-    const childIds = new Set([...(persona?.hijos || []), ...(conyuge?.hijos || [])]);
-    const hijos = Array.from(childIds).map((id) => this.personas.get(asId(id))).filter(Boolean);
-    const gKey = pairKey(persona?._id, conyuge?._id);
-    return { id: `anc-group-${gKey}`, persona, conyuge, hijos, esDescendencia: false, groupKey: gKey };
+    
+    const activeSpouseId = this.getActiveSpouse(persona?._id);
+    const allSpouses = this.getAllSpouses(persona);
+    const effectiveConyuge = conyuge || (activeSpouseId ? allSpouses.find(s => String(s._id) === activeSpouseId) : null);
+    
+    const hijos = this.getFilteredChildren(persona, effectiveConyuge?._id);
+    const gKey = pairKey(persona?._id, effectiveConyuge?._id);
+    
+    return { 
+      id: `anc-group-${gKey}`, 
+      persona, 
+      conyuge: effectiveConyuge, 
+      hijos, 
+      esDescendencia: false, 
+      groupKey: gKey,
+      todosConyuges: allSpouses,
+      conyugeActivo: effectiveConyuge?._id ? String(effectiveConyuge._id) : null
+    };
   }
 
   getPersonAnchor(familyCardNode, personId, side = 'right') {
@@ -564,7 +757,7 @@ export class FamilyLayout {
     for (const childPersonId of childPersonIds) {
       const childPerson = this.personas.get(childPersonId);
       if (!childPerson) continue;
-      const padresIds = (childPerson.padres || []).map(asId);
+      const padresIds = (childPerson.padres || []).map(p => this.extractId(p) || asId(p));
       for (const padreId of padresIds) {
         if (parentIds.has(padreId)) return true;
       }
@@ -596,7 +789,7 @@ export class FamilyLayout {
     const peopleInGroup = [fromGroup.persona, fromGroup.conyuge].filter(Boolean);
     for (const person of peopleInGroup) {
       if (!person?._id || !person.padres?.length) continue;
-      const parentIds = person.padres.map(asId);
+      const parentIds = person.padres.map(p => this.extractId(p) || asId(p));
       for (const parentId of parentIds) {
         for (const targetGroup of targetGroups) {
           if (targetGroup.isEmpty || targetGroup.isEmptyCard) continue;
@@ -706,45 +899,69 @@ export class FamilyLayout {
   }
 
   generateAllDescendantColumns() {
+    const activeSpouseId = this.getActiveSpouse(this.rootPerson?._id);
+    const allSpouses = this.getAllSpouses(this.rootPerson);
+    
+    console.log('🔍 generateAllDescendantColumns:', {
+      rootId: this.rootPerson?._id,
+      rootNombre: this.rootPerson?.nombre,
+      activeSpouseId,
+      allSpousesCount: allSpouses.length,
+      allSpousesNames: allSpouses.map(s => s.nombre)
+    });
+    
+    let targetSpouse = null;
+    if (allSpouses.length > 0) {
+      targetSpouse = activeSpouseId 
+        ? allSpouses.find(s => String(s._id) === activeSpouseId) || allSpouses[0]
+        : allSpouses[0];
+    }
+    
+    console.log('🎯 targetSpouse seleccionado:', targetSpouse?.nombre, targetSpouse?._id);
+    
+    const filteredHijos = this.getFilteredChildren(this.rootPerson, targetSpouse?._id);
+    
+    console.log('👶 Hijos filtrados:', filteredHijos.map(h => h.nombre));
+
+    // ✅ groupKey ESTABLE basado solo en persona principal
     const rootGroup = {
       id: 'group-root',
       persona: this.rootPerson,
-      conyuge: null,
-      hijos: [],
+      conyuge: targetSpouse,
+      hijos: filteredHijos,
       esDescendencia: false,
-      groupKey: this.pairKey(this.rootPerson?._id, this.rootPerson?.conyuges?.[0] || null),
+      groupKey: `root:${this.rootPerson._id}`,
+      todosConyuges: allSpouses,
+      conyugeActivo: targetSpouse?._id ? String(targetSpouse._id) : null
     };
-    
-    if (Array.isArray(this.rootPerson?.conyuges) && this.rootPerson.conyuges.length > 0) {
-      const c = this.personas.get(this.rootPerson.conyuges[0]);
-      if (c) rootGroup.conyuge = c;
-    }
-    
-    if (Array.isArray(this.rootPerson?.hijos)) {
-      rootGroup.hijos = this.rootPerson.hijos.map((id) => this.personas.get(id)).filter(Boolean);
-    }
     
     const result = { rootGroup, columns: [] };
     
     const gen1Children = rootGroup.hijos || [];
     if (gen1Children.length > 0) {
       const gen1Groups = gen1Children.map(child => {
+        const childActiveSpouse = this.getActiveSpouse(child._id);
+        const childAllSpouses = this.getAllSpouses(child);
+        
         let spouse = null;
-        if (Array.isArray(child.conyuges) && child.conyuges.length > 0) {
-          spouse = this.personas.get(child.conyuges[0]) || null;
+        if (childAllSpouses.length > 0) {
+          spouse = childActiveSpouse 
+            ? childAllSpouses.find(s => String(s._id) === childActiveSpouse) || childAllSpouses[0]
+            : childAllSpouses[0];
         }
         
-        const childHijos = Array.isArray(child.hijos) 
-          ? child.hijos.map((id) => this.personas.get(id)).filter(Boolean) 
-          : [];
+        const childHijos = this.getFilteredChildren(child, spouse?._id);
         
+        // ✅ CORREGIDO: Solo un groupKey, basado en la persona
         return {
           id: `desc-group-gen1-${child._id}`,
           persona: child,
           conyuge: spouse,
           hijos: childHijos,
           esDescendencia: true,
-          groupKey: this.pairKey(child._id, spouse?._id)
+          groupKey: `desc:${child._id}`,
+          todosConyuges: childAllSpouses,
+          conyugeActivo: spouse?._id ? String(spouse._id) : null
         };
       });
       
@@ -763,14 +980,17 @@ export class FamilyLayout {
           const childrenOfThisParent = parentGroup.hijos || [];
           
           childrenOfThisParent.forEach(child => {
+            const childActiveSpouse = this.getActiveSpouse(child._id);
+            const childAllSpouses = this.getAllSpouses(child);
+            
             let spouse = null;
-            if (Array.isArray(child.conyuges) && child.conyuges.length > 0) {
-              spouse = this.personas.get(child.conyuges[0]) || null;
+            if (childAllSpouses.length > 0) {
+              spouse = childActiveSpouse 
+                ? childAllSpouses.find(s => String(s._id) === childActiveSpouse) || childAllSpouses[0]
+                : childAllSpouses[0];
             }
             
-            const childHijos = Array.isArray(child.hijos) 
-              ? child.hijos.map((id) => this.personas.get(id)).filter(Boolean) 
-              : [];
+            const childHijos = this.getFilteredChildren(child, spouse?._id);
             
             currentGenGroups.push({
               id: `desc-group-gen${gen}-${child._id}`,
@@ -778,7 +998,9 @@ export class FamilyLayout {
               conyuge: spouse,
               hijos: childHijos,
               esDescendencia: true,
-              groupKey: this.pairKey(child._id, spouse?._id)
+              groupKey: `desc:${child._id}`,
+              todosConyuges: childAllSpouses,
+              conyugeActivo: spouse?._id ? String(spouse._id) : null
             });
           });
           
@@ -808,16 +1030,33 @@ export class FamilyLayout {
     
     const groups = [];
     
-    const rootParentIds = new Set(root?.padres || []);
+    const activeSpouseId = this.getActiveSpouse(root._id);
+    const allSpouses = this.getAllSpouses(root);
+    let conyuge = null;
+    
+    if (allSpouses.length > 0) {
+      conyuge = activeSpouseId 
+        ? allSpouses.find(s => String(s._id) === activeSpouseId) || allSpouses[0]
+        : allSpouses[0];
+    }
+    
+    const rootParentIds = new Set((root?.padres || []).map(p => this.extractId(p) || String(p)));
     
     let conyugeParentIds = new Set();
-    let conyuge = null;
-    if (root.conyuges?.length > 0) {
-      const conyugeId = root.conyuges[0];
-      conyuge = this.personas.get(conyugeId);
-      if (conyuge) {
-        conyugeParentIds = new Set(conyuge.padres || []);
-      }
+    if (conyuge) {
+      conyugeParentIds = new Set((conyuge.padres || []).map(p => this.extractId(p) || String(p)));
+    }
+    
+    const childContextMap = new Map();
+    
+    rootParentIds.forEach(parentId => {
+      childContextMap.set(parentId, root);
+    });
+    
+    if (conyuge) {
+      conyugeParentIds.forEach(parentId => {
+        childContextMap.set(parentId, conyuge);
+      });
     }
     
     const allParentIds = new Set([...rootParentIds, ...conyugeParentIds]);
@@ -825,7 +1064,7 @@ export class FamilyLayout {
       .map((id) => this.personas.get(id))
       .filter(Boolean);
     
-    const parentGroups = this.buildAncestorGroupsFromPeople(parents);
+    const parentGroups = this.buildAncestorGroupsFromPeople(parents, childContextMap);
     
     if (rootParentIds.size === 0) {
       groups.push({
@@ -863,14 +1102,30 @@ export class FamilyLayout {
   }
 
   generateGrandAncestorGroups(ancestorGroups = []) {
-    const ids = new Set();
+    const childContextMap = new Map();
+    
     ancestorGroups.forEach((g) => {
       if (g.isEmpty || g.isEmptyCard) return;
-      (g?.persona?.padres || []).forEach((id) => ids.add(id));
-      (g?.conyuge?.padres || []).forEach((id) => ids.add(id));
+      
+      if (g.persona?.padres) {
+        (g.persona.padres || []).forEach((p) => {
+          const id = this.extractId(p) || String(p);
+          childContextMap.set(id, g.persona);
+        });
+      }
+      
+      if (g.conyuge?.padres) {
+        (g.conyuge.padres || []).forEach((p) => {
+          const id = this.extractId(p) || String(p);
+          childContextMap.set(id, g.conyuge);
+        });
+      }
     });
+    
+    const ids = new Set(childContextMap.keys());
     const grands = Array.from(ids).map((id) => this.personas.get(id)).filter(Boolean);
-    const normalGroups = this.buildAncestorGroupsFromPeople(grands);
+    
+    const normalGroups = this.buildAncestorGroupsFromPeople(grands, childContextMap);
     
     const emptyCards = this.generateEmptyCardsFor(ancestorGroups);
     
@@ -878,14 +1133,30 @@ export class FamilyLayout {
   }
 
   generateGreatAncestorGroups(selectedGrands = []) {
-    const ids = new Set();
+    const childContextMap = new Map();
+    
     selectedGrands.forEach((g) => {
       if (g.isEmpty || g.isEmptyCard) return;
-      (g?.persona?.padres || []).forEach((id) => ids.add(id));
-      (g?.conyuge?.padres || []).forEach((id) => ids.add(id));
+      
+      if (g.persona?.padres) {
+        (g.persona.padres || []).forEach((p) => {
+          const id = this.extractId(p) || String(p);
+          childContextMap.set(id, g.persona);
+        });
+      }
+      
+      if (g.conyuge?.padres) {
+        (g.conyuge.padres || []).forEach((p) => {
+          const id = this.extractId(p) || String(p);
+          childContextMap.set(id, g.conyuge);
+        });
+      }
     });
+    
+    const ids = new Set(childContextMap.keys());
     const greats = Array.from(ids).map((id) => this.personas.get(id)).filter(Boolean);
-    const normalGroups = this.buildAncestorGroupsFromPeople(greats);
+    
+    const normalGroups = this.buildAncestorGroupsFromPeople(greats, childContextMap);
     
     const emptyCards = this.generateEmptyCardsFor(selectedGrands);
     
@@ -935,7 +1206,6 @@ export class FamilyLayout {
 
     const colW = 240 + this.columnGap;
 
-    // ✅ FIX: Posición FIJA del root - nunca cambia independientemente de expansiones
     const FIXED_ROOT_X = 4500;
     const FIXED_CENTER_Y = 1500;
     const rootX = FIXED_ROOT_X;
@@ -1191,3 +1461,5 @@ export class FamilyLayout {
     return this.calculateHorizontalTreeLayout();
   }
 }
+
+export { filtrarHijosPorUnion };

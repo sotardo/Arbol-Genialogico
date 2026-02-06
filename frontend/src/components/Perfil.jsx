@@ -24,16 +24,9 @@ import { toAPI } from '../utils';
 import Fuentes from './Fuentes';
 import RelacionesEditor from './RelacionesEditor';
 import Galeria from './Galeria';
-const imgSrc = (u) => (u ? (u.startsWith?.('http') ? u : toAPI(u)) : '');
+import { useTranslation } from "react-i18next";
 
-const formatSexo = (sexo) => {
-  const map = {
-    M: 'Masculino',
-    F: 'Femenino',
-    X: 'Otro / No especifica',
-  };
-  return map[sexo] || '—';
-};
+const imgSrc = (u) => (u ? (u.startsWith?.('http') ? u : toAPI(u)) : '');
 
 const toInputDate = (d) => {
   if (!d) return '';
@@ -123,58 +116,35 @@ const PersonCard = ({ persona, relation, onClick }) => (
   </div>
 );
 
-const ModernInput = ({ label, icon: Icon, ...props }) => (
-  <div>
-    <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
-      {Icon && <Icon size={16} className="text-gray-500" />}
-      {label}
-    </label>
-    <input
-      {...props}
-      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all outline-none bg-white"
-    />
-  </div>
-);
-
-const ModernSelect = ({ label, icon: Icon, children, ...props }) => (
-  <div>
-    <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
-      {Icon && <Icon size={16} className="text-gray-500" />}
-      {label}
-    </label>
-    <select
-      {...props}
-      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all outline-none bg-white appearance-none cursor-pointer"
-      style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'right 0.75rem center',
-        backgroundSize: '1.25rem',
-        paddingRight: '2.5rem',
-      }}
-    >
-      {children}
-    </select>
-  </div>
-);
-
 export default function Perfil({
   personaId,
   personasApi,
   onPersonaClick,
   onVerArbol,
 }) {
+  const { t } = useTranslation('profile');
+  
   const [persona, setPersona] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('acerca');
+
+  // Función para formatear sexo con traducciones
+  const formatSexo = (sexo) => {
+    const map = {
+      M: t('fields.male'),
+      F: t('fields.female'),
+      X: t('fields.unknown'),
+    };
+    return map[sexo] || '—';
+  };
 
   useEffect(() => {
     const applyTabFromURL = () => {
       try {
         const url = new URL(window.location.href);
-        const t = url.searchParams.get('tab');
+        const tab = url.searchParams.get('tab');
         const pid = url.searchParams.get('perfil');
-        if (t === 'detalles' && (!pid || pid === personaId)) {
+        if (tab === 'detalles' && (!pid || pid === personaId)) {
           setActiveTab('detalles');
         }
       } catch {}
@@ -187,8 +157,6 @@ export default function Perfil({
       if (!tab) return;
       if (!targetId || targetId === personaId) {
         setActiveTab(tab);
-        if (openModal) {
-        }
       }
     };
 
@@ -225,12 +193,10 @@ export default function Perfil({
   });
   const [savingDetalles, setSavingDetalles] = useState(false);
 
-  // Estados para manejar la transición del panel
   const [shouldRender, setShouldRender] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const panelRef = useRef(null);
 
-  // Click fuera del panel para cerrar
   const handleClickOutside = useCallback(
     (event) => {
       if (!panelRef.current) return;
@@ -241,7 +207,6 @@ export default function Perfil({
     []
   );
 
-  // Manejar apertura/cierre con animación
   useEffect(() => {
     if (editDetallesOpen) {
       setShouldRender(true);
@@ -259,7 +224,6 @@ export default function Perfil({
     }
   }, [editDetallesOpen]);
 
-  // Cerrar con Escape
   useEffect(() => {
     if (!editDetallesOpen) return;
     const handleEscape = (e) => {
@@ -269,7 +233,6 @@ export default function Perfil({
     return () => document.removeEventListener('keydown', handleEscape);
   }, [editDetallesOpen]);
 
-  // Bloquear scroll del body
   useEffect(() => {
     if (shouldRender) {
       document.body.style.overflow = 'hidden';
@@ -318,10 +281,10 @@ export default function Perfil({
       await personasApi.editar(personaId, { acercaDe: historiaText });
       setPersona({ ...persona, acercaDe: historiaText });
       setEditingHistoria(false);
-      alertSuccess('Historia guardada');
+      alertSuccess(t('common:messages.saved'));
     } catch (err) {
       console.error('Error guardando historia:', err);
-      alertError('No se pudo guardar la historia');
+      alertError(t('common:messages.error'));
     }
   };
 
@@ -338,10 +301,10 @@ export default function Perfil({
       const resp = await personasApi.subirAvatar?.(personaId, file);
       const updated = resp?.persona || resp;
       if (updated?._id) setPersona(updated);
-      alertSuccess('Foto actualizada');
+      alertSuccess(t('common:messages.saved'));
     } catch (err) {
       console.error('Error subiendo avatar:', err);
-      alertError('No se pudo subir la foto');
+      alertError(t('common:messages.error'));
     } finally {
       setSubiendoAvatar(false);
       if (fileRef.current) fileRef.current.value = '';
@@ -364,7 +327,7 @@ export default function Perfil({
       setEditNombre(false);
     } catch (err) {
       console.error('Error guardando nombre:', err);
-      alert('No se pudo guardar el nombre.');
+      alertError(t('common:messages.error'));
     }
   };
 
@@ -394,19 +357,13 @@ export default function Perfil({
       const payload = {
         nombre: det.nombre?.trim() || undefined,
         sexo: det.sexo || undefined,
-        nacimiento: det.nacimiento
-          ? fromInputDate(det.nacimiento)
-          : null,
+        nacimiento: det.nacimiento ? fromInputDate(det.nacimiento) : null,
         lugarNacimiento: det.lugarNacimiento || '',
-        fallecimiento: det.fallecimiento
-          ? fromInputDate(det.fallecimiento)
-          : null,
+        fallecimiento: det.fallecimiento ? fromInputDate(det.fallecimiento) : null,
         lugarFallecimiento: det.lugarFallecimiento || '',
         causaFallecimiento: det.causaFallecimiento || '',
         bautismo: {
-          fecha: det.bautismoFecha
-            ? fromInputDate(det.bautismoFecha)
-            : null,
+          fecha: det.bautismoFecha ? fromInputDate(det.bautismoFecha) : null,
           lugar: det.bautismoLugar || '',
           parroquia: det.bautismoParroquia || '',
           notas: det.bautismoNotas || '',
@@ -424,9 +381,7 @@ export default function Perfil({
 
       if (det.matrimonioFecha || det.matrimonioLugar) {
         payload.matrimonio = {
-          fecha: det.matrimonioFecha
-            ? fromInputDate(det.matrimonioFecha)
-            : null,
+          fecha: det.matrimonioFecha ? fromInputDate(det.matrimonioFecha) : null,
           lugar: det.matrimonioLugar || '',
         };
       } else {
@@ -448,29 +403,28 @@ export default function Perfil({
         matrimonio: payload.matrimonio ?? prev.matrimonio,
       }));
       setEditDetallesOpen(false);
-      alertSuccess('Cambios guardados');
+      alertSuccess(t('common:messages.saved'));
     } catch (e) {
       console.error('Error guardando detalles:', e);
-      alertError('No se pudieron guardar los datos');
+      alertError(t('common:messages.error'));
     } finally {
       setSavingDetalles(false);
     }
   };
 
-const toArray = (v) => (Array.isArray(v) ? v : v ? [v] : []);
+  const toArray = (v) => (Array.isArray(v) ? v : v ? [v] : []);
 
-// Fuentes documentales = fuentes + recuerdos (PDFs, documentos E imágenes históricas)
-const fuentesList = [
-  ...toArray(persona?.fuentes),
-  ...toArray(persona?.recuerdos)
-];
+  const fuentesList = [
+    ...toArray(persona?.fuentes),
+    ...toArray(persona?.recuerdos)
+  ];
 
-// Galería de fotos = SOLO galeria (fotos personales/familiares)
-const fotosList = toArray(persona?.galeria);
+  const fotosList = toArray(persona?.galeria);
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="text-gray-500">Cargando...</div>
+        <div className="text-gray-500">{t('common:buttons.loading')}</div>
       </div>
     );
   }
@@ -478,13 +432,14 @@ const fotosList = toArray(persona?.galeria);
   if (!persona) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="text-gray-500">No se encontró la persona</div>
+        <div className="text-gray-500">{t('common:messages.noResults')}</div>
       </div>
     );
   }
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-6">
+      {/* Modal editar historia */}
       {editingHistoria && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 animate-fadeIn"
@@ -500,7 +455,7 @@ const fotosList = toArray(persona?.galeria);
                   <FileText size={20} className="text-emerald-600" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900">
-                  Editar historia de vida
+                  {t('common:buttons.edit')} {t('tree:panel.lifeStory')}
                 </h3>
               </div>
               <button
@@ -512,21 +467,11 @@ const fotosList = toArray(persona?.galeria);
             </div>
 
             <div className="p-6 overflow-y-auto flex-1">
-              <p className="text-sm text-gray-600 mb-4 flex items-start gap-2">
-                <Sparkles
-                  size={16}
-                  className="text-emerald-500 mt-0.5 flex-shrink-0"
-                />
-                <span>
-                  Escribe una breve historia que cuente los momentos
-                  importantes de la vida de esta persona.
-                </span>
-              </p>
               <textarea
                 value={historiaText}
                 onChange={(e) => setHistoriaText(e.target.value)}
                 className="w-full h-64 px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none transition-all outline-none"
-                placeholder="Ej.: Nació el 15/03/1950 en Buenos Aires... Se casó en 1972..."
+                placeholder="..."
               />
               <div className="mt-2 text-xs text-gray-500 text-right">
                 {historiaText.length} caracteres
@@ -538,13 +483,13 @@ const fotosList = toArray(persona?.galeria);
                 onClick={handleCancelHistoria}
                 className="px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-white transition-all font-medium"
               >
-                Cancelar
+                {t('common:buttons.cancel')}
               </button>
               <button
                 onClick={handleSaveHistoria}
                 className="px-5 py-2.5 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-lg hover:from-emerald-700 hover:to-emerald-800 transition-all font-medium shadow-sm hover:shadow-md"
               >
-                Guardar
+                {t('common:buttons.save')}
               </button>
             </div>
           </div>
@@ -559,7 +504,6 @@ const fotosList = toArray(persona?.galeria);
           aria-modal="true"
           onMouseDown={handleClickOutside}
         >
-          {/* Backdrop */}
           <div
             className={`absolute inset-0 bg-gray-900/50 transition-opacity duration-500 ease-in-out ${
               isAnimating ? 'opacity-100' : 'opacity-0'
@@ -567,18 +511,15 @@ const fotosList = toArray(persona?.galeria);
             aria-hidden="true"
           />
 
-          {/* Panel container */}
           <div className="fixed inset-0 overflow-hidden">
             <div className="absolute inset-0 overflow-hidden">
               <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10 sm:pl-16">
-                {/* Panel */}
                 <div
                   ref={panelRef}
                   className={`pointer-events-auto relative w-screen max-w-2xl transition-transform duration-500 ease-in-out ${
                     isAnimating ? 'translate-x-0' : 'translate-x-full'
                   }`}
                 >
-                  {/* Botón cerrar */}
                   <div
                     className={`absolute top-0 left-0 -ml-8 flex pt-4 pr-2 sm:-ml-10 sm:pr-4 transition-opacity duration-500 ease-in-out ${
                       isAnimating ? 'opacity-100' : 'opacity-0'
@@ -591,14 +532,12 @@ const fotosList = toArray(persona?.galeria);
                       disabled={savingDetalles}
                     >
                       <span className="absolute -inset-2.5" />
-                      <span className="sr-only">Cerrar panel</span>
+                      <span className="sr-only">{t('common:buttons.close')}</span>
                       <X className="h-6 w-6" aria-hidden="true" />
                     </button>
                   </div>
 
-                  {/* Contenido */}
                   <div className="flex h-full flex-col bg-white shadow-xl">
-                    {/* Header */}
                     <div className="px-6 py-5 border-b border-gray-200 flex items-center justify-between bg-gradient-to-r from-green-50 via-green-50 to-green-100">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center shadow-md">
@@ -606,16 +545,12 @@ const fotosList = toArray(persona?.galeria);
                         </div>
                         <div>
                           <h3 className="text-xl font-semibold text-gray-900">
-                            Editar información
+                            {t('common:buttons.edit')} {t('tabs.info')}
                           </h3>
-                          <p className="text-xs text-gray-600 mt-0.5">
-                            Actualiza los datos personales
-                          </p>
                         </div>
                       </div>
                     </div>
 
-                    {/* Formulario */}
                     <div className="flex-1 overflow-y-auto p-6 bg-white">
                       <form className="space-y-6">
                         {/* Información básica */}
@@ -623,27 +558,27 @@ const fotosList = toArray(persona?.galeria);
                           <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
                             <User size={18} className="text-green-600" />
                             <h4 className="text-base font-semibold text-gray-900">
-                              Información básica
+                              {t('tabs.info')}
                             </h4>
                           </div>
 
                           <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Nombre completo
+                              {t('fields.name')}
                             </label>
                             <input
                               value={det.nombre}
                               onChange={(e) =>
                                 setDet((s) => ({ ...s, nombre: e.target.value }))
                               }
-                              placeholder="Nombre completo"
+                              placeholder={t('fields.name')}
                               className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                             />
                           </div>
 
                           <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Sexo
+                              {t('fields.sex')}
                             </label>
                             <select
                               value={det.sexo}
@@ -652,10 +587,10 @@ const fotosList = toArray(persona?.galeria);
                               }
                               className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none bg-white"
                             >
-                              <option value="">Seleccionar...</option>
-                              <option value="M">Masculino</option>
-                              <option value="F">Femenino</option>
-                              <option value="X">Otro / No especifica</option>
+                              <option value="">...</option>
+                              <option value="M">{t('fields.male')}</option>
+                              <option value="F">{t('fields.female')}</option>
+                              <option value="X">{t('fields.unknown')}</option>
                             </select>
                           </div>
                         </div>
@@ -665,14 +600,14 @@ const fotosList = toArray(persona?.galeria);
                           <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
                             <Baby size={18} className="text-green-600" />
                             <h4 className="text-base font-semibold text-gray-900">
-                              Nacimiento
+                              {t('fields.birth')}
                             </h4>
                           </div>
 
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                               <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Fecha de nacimiento
+                                {t('fields.birth')}
                               </label>
                               <input
                                 type="date"
@@ -686,7 +621,7 @@ const fotosList = toArray(persona?.galeria);
 
                             <div>
                               <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Lugar de nacimiento
+                                {t('fields.birthPlace')}
                               </label>
                               <input
                                 value={det.lugarNacimiento}
@@ -696,7 +631,6 @@ const fotosList = toArray(persona?.galeria);
                                     lugarNacimiento: e.target.value,
                                   }))
                                 }
-                                placeholder="Ciudad, Provincia, País"
                                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                               />
                             </div>
@@ -708,14 +642,14 @@ const fotosList = toArray(persona?.galeria);
                           <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
                             <Church size={18} className="text-purple-600" />
                             <h4 className="text-base font-semibold text-gray-900">
-                              Bautismo
+                              {t('tree:panel.baptism')}
                             </h4>
                           </div>
 
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                               <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Fecha de bautismo
+                                {t('tree:panel.baptism')}
                               </label>
                               <input
                                 type="date"
@@ -732,7 +666,7 @@ const fotosList = toArray(persona?.galeria);
 
                             <div>
                               <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Lugar de bautismo
+                                {t('fields.birthPlace')}
                               </label>
                               <input
                                 value={det.bautismoLugar}
@@ -742,7 +676,6 @@ const fotosList = toArray(persona?.galeria);
                                     bautismoLugar: e.target.value,
                                   }))
                                 }
-                                placeholder="Ciudad, Provincia, País"
                                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                               />
                             </div>
@@ -759,7 +692,6 @@ const fotosList = toArray(persona?.galeria);
                                     bautismoParroquia: e.target.value,
                                   }))
                                 }
-                                placeholder="Nombre de la parroquia"
                                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                               />
                             </div>
@@ -776,7 +708,6 @@ const fotosList = toArray(persona?.galeria);
                                     bautismoNotas: e.target.value,
                                   }))
                                 }
-                                placeholder="Información adicional"
                                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                               />
                             </div>
@@ -788,14 +719,14 @@ const fotosList = toArray(persona?.galeria);
                           <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
                             <Heart size={18} className="text-pink-600" />
                             <h4 className="text-base font-semibold text-gray-900">
-                              Matrimonio
+                              {t('tree:panel.marriage')}
                             </h4>
                           </div>
 
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                               <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Fecha de matrimonio
+                                {t('tree:panel.marriage')}
                               </label>
                               <input
                                 type="date"
@@ -812,7 +743,7 @@ const fotosList = toArray(persona?.galeria);
 
                             <div>
                               <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Lugar de matrimonio
+                                {t('fields.birthPlace')}
                               </label>
                               <input
                                 value={det.matrimonioLugar}
@@ -822,7 +753,6 @@ const fotosList = toArray(persona?.galeria);
                                     matrimonioLugar: e.target.value,
                                   }))
                                 }
-                                placeholder="Parroquia / ciudad / país"
                                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                               />
                             </div>
@@ -834,14 +764,14 @@ const fotosList = toArray(persona?.galeria);
                           <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
                             <FileText size={18} className="text-red-600" />
                             <h4 className="text-base font-semibold text-gray-900">
-                              Defunción
+                              {t('fields.death')}
                             </h4>
                           </div>
 
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                               <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Fecha de defunción
+                                {t('fields.death')}
                               </label>
                               <input
                                 type="date"
@@ -858,7 +788,7 @@ const fotosList = toArray(persona?.galeria);
 
                             <div>
                               <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Lugar de defunción
+                                {t('fields.deathPlace')}
                               </label>
                               <input
                                 value={det.lugarFallecimiento}
@@ -868,14 +798,13 @@ const fotosList = toArray(persona?.galeria);
                                     lugarFallecimiento: e.target.value,
                                   }))
                                 }
-                                placeholder="Ciudad, Provincia, País"
                                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                               />
                             </div>
 
                             <div className="md:col-span-2">
                               <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Causa de defunción
+                                Causa
                               </label>
                               <input
                                 value={det.causaFallecimiento}
@@ -885,7 +814,6 @@ const fotosList = toArray(persona?.galeria);
                                     causaFallecimiento: e.target.value,
                                   }))
                                 }
-                                placeholder="Opcional"
                                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all outline-none"
                               />
                             </div>
@@ -894,40 +822,33 @@ const fotosList = toArray(persona?.galeria);
                       </form>
                     </div>
 
-                    {/* Footer */}
-                    <div className="px-6 py-4 border-t border-gray-200 flex justify-between items-center bg-gray-50">
-                      <p className="text-xs text-gray-500 flex items-center gap-1">
-                        <Sparkles size={14} />
-                        Los cambios se guardarán inmediatamente
-                      </p>
-                      <div className="flex gap-3">
-                        <button
-                          type="button"
-                          onClick={() => setEditDetallesOpen(false)}
-                          className="px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-white transition-all font-medium"
-                          disabled={savingDetalles}
-                        >
-                          Cancelar
-                        </button>
-                        <button
-                          onClick={saveDetalles}
-                          className="px-5 py-2.5 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg hover:from-green-700 hover:to-green-800 transition-all font-medium shadow-sm hover:shadow-md disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-2"
-                          disabled={savingDetalles}
-                          type="button"
-                        >
-                          {savingDetalles ? (
-                            <>
-                              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                              Guardando...
-                            </>
-                          ) : (
-                            <>
-                              <Save size={18} />
-                              Guardar cambios
-                            </>
-                          )}
-                        </button>
-                      </div>
+                    <div className="px-6 py-4 border-t border-gray-200 flex justify-end gap-3 bg-gray-50">
+                      <button
+                        type="button"
+                        onClick={() => setEditDetallesOpen(false)}
+                        className="px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-white transition-all font-medium"
+                        disabled={savingDetalles}
+                      >
+                        {t('common:buttons.cancel')}
+                      </button>
+                      <button
+                        onClick={saveDetalles}
+                        className="px-5 py-2.5 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg hover:from-green-700 hover:to-green-800 transition-all font-medium shadow-sm hover:shadow-md disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-2"
+                        disabled={savingDetalles}
+                        type="button"
+                      >
+                        {savingDetalles ? (
+                          <>
+                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                            {t('common:buttons.loading')}
+                          </>
+                        ) : (
+                          <>
+                            <Save size={18} />
+                            {t('common:buttons.save')}
+                          </>
+                        )}
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -937,6 +858,7 @@ const fotosList = toArray(persona?.galeria);
         </div>
       )}
 
+      {/* Modal relaciones */}
       {mostrarRelaciones && (
         <div
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn"
@@ -953,11 +875,8 @@ const fotosList = toArray(persona?.galeria);
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900">
-                    Editar relaciones familiares
+                    {t('common:buttons.edit')} {t('relations.parents')}
                   </h3>
-                  <p className="text-xs text-gray-600 mt-0.5">
-                    Administra padres, hijos y cónyuges
-                  </p>
                 </div>
               </div>
               <button
@@ -980,6 +899,7 @@ const fotosList = toArray(persona?.galeria);
         </div>
       )}
 
+      {/* Header principal */}
       <div className="bg-white border-b border-gray-200 mb-6">
         <div className="flex items-start gap-6 p-6">
           <div className="relative">
@@ -1017,7 +937,7 @@ const fotosList = toArray(persona?.galeria);
                   <button
                     onClick={startEditNombre}
                     className="p-1.5 rounded hover:bg-gray-100"
-                    title="Editar nombre"
+                    title={t('common:buttons.edit')}
                   >
                     <Edit size={18} className="text-gray-500" />
                   </button>
@@ -1026,23 +946,21 @@ const fotosList = toArray(persona?.galeria);
                 <div className="flex flex-wrap items-center gap-2">
                   <input
                     value={nombreDraft}
-                    onChange={(e) =>
-                      setNombreDraft(e.target.value)
-                    }
+                    onChange={(e) => setNombreDraft(e.target.value)}
                     className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-                    placeholder="Nombre completo"
+                    placeholder={t('fields.name')}
                   />
                   <button
                     onClick={saveNombre}
                     className="px-3 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700"
                   >
-                    Guardar
+                    {t('common:buttons.save')}
                   </button>
                   <button
                     onClick={cancelEditNombre}
                     className="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
                   >
-                    Cancelar
+                    {t('common:buttons.cancel')}
                   </button>
                 </div>
               )}
@@ -1080,52 +998,36 @@ const fotosList = toArray(persona?.galeria);
                 }}
               >
                 <TreePine color='green' size={20} />
-                VER ÁRBOL
+                {t('actions.viewTree')}
               </button>
             </div>
           </div>
         </div>
 
-<div className="flex gap-1 px-6 border-t border-gray-200">
-  <TabButton
-    active={activeTab === 'acerca'}
-    onClick={() => setActiveTab('acerca')}
-    icon={User}
-  >
-    Acerca de
-  </TabButton>
-  <TabButton
-    active={activeTab === 'detalles'}
-    onClick={() => setActiveTab('detalles')}
-    icon={ClipboardList}
-  >
-    Detalles
-  </TabButton>
-  <TabButton
-    active={activeTab === 'fuentes'}
-    onClick={() => setActiveTab('fuentes')}
-    icon={FileSearch}
-  >
-    Fuentes ({fuentesList.length})
-  </TabButton>
-  <TabButton
-    active={activeTab === 'galeria'}
-    onClick={() => setActiveTab('galeria')}
-    icon={Image}
-  >
-    Galería ({fotosList.length})
-  </TabButton>
-</div>
+        {/* Tabs */}
+        <div className="flex gap-1 px-6 border-t border-gray-200">
+          <TabButton active={activeTab === 'acerca'} onClick={() => setActiveTab('acerca')} icon={User}>
+            {t('tabs.info')}
+          </TabButton>
+          <TabButton active={activeTab === 'detalles'} onClick={() => setActiveTab('detalles')} icon={ClipboardList}>
+            {t('tabs.details')}
+          </TabButton>
+          <TabButton active={activeTab === 'fuentes'} onClick={() => setActiveTab('fuentes')} icon={FileSearch}>
+            {t('sources.title')} ({fuentesList.length})
+          </TabButton>
+          <TabButton active={activeTab === 'galeria'} onClick={() => setActiveTab('galeria')} icon={Image}>
+            {t('gallery.title')} ({fotosList.length})
+          </TabButton>
+        </div>
       </div>
 
+      {/* Contenido principal */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
           {activeTab === 'acerca' && (
             <>
               <Section
-                title={`Breve historia de vida de ${
-                  persona.nombre?.split(' ')[0] || 'la persona'
-                }`}
+                title={`${t('tree:panel.lifeStory')} - ${persona.nombre?.split(' ')[0] || ''}`}
                 actions={
                   persona.acercaDe && (
                     <button
@@ -1135,7 +1037,7 @@ const fotosList = toArray(persona?.galeria);
                       }}
                       className="text-emerald-600 hover:text-emerald-800 text-sm font-medium"
                     >
-                      Editar
+                      {t('common:buttons.edit')}
                     </button>
                   )
                 }
@@ -1147,42 +1049,30 @@ const fotosList = toArray(persona?.galeria);
                         {persona.acercaDe}
                       </p>
                     </div>
-                    {persona.acercaDe.length > 300 && (
-                      <button className="mt-4 text-emerald-600 hover:text-emerald-800 font-medium">
-                        MÁS
-                      </button>
-                    )}
                   </div>
                 ) : (
                   <div className="text-center py-8">
                     <div className="mb-4">
-                      <FileText
-                        size={48}
-                        className="mx-auto text-gray-300"
-                      />
+                      <FileText size={48} className="mx-auto text-gray-300" />
                     </div>
                     <p className="text-gray-500 mb-4">
-                      No hay historia de vida registrada
+                      {t('common:messages.noResults')}
                     </p>
                     <button
                       onClick={() => setEditingHistoria(true)}
                       className="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium"
                     >
-                      + AGREGAR BREVE HISTORIA DE VIDA
+                      + {t('common:buttons.add')}
                     </button>
-                    <p className="text-xs text-gray-400 mt-3">
-                      Esta historia se puede basar en los datos de la
-                      pestaña Detalles. Puedes editarla cuando quieras.
-                    </p>
                   </div>
                 )}
               </Section>
 
               <Section
-                title="Padres y hermanos"
+                title={`${t('relations.parents')} & ${t('relations.siblings')}`}
                 actions={
                   <button className="text-emerald-600 hover:text-emerald-800 text-sm font-medium">
-                    VER TODO
+                    {t('common:buttons.view')}
                   </button>
                 }
               >
@@ -1191,7 +1081,7 @@ const fotosList = toArray(persona?.galeria);
                     <PersonCard
                       key={padre._id || i}
                       persona={padre}
-                      relation="Padre"
+                      relation={padre.sexo === 'F' ? t('relations.mother') : t('relations.father')}
                       onClick={onPersonaClick}
                     />
                   ))}
@@ -1199,7 +1089,7 @@ const fotosList = toArray(persona?.galeria);
                   {persona.hermanos && persona.hermanos.length > 0 && (
                     <>
                       <div className="text-sm font-semibold text-gray-600 mt-4 mb-2">
-                        Hermanos ({persona.hermanos.length})
+                        {t('relations.siblings')} ({persona.hermanos.length})
                       </div>
                       {persona.hermanos.map((hermano, i) => (
                         <PersonCard
@@ -1218,7 +1108,7 @@ const fotosList = toArray(persona?.galeria);
           {activeTab === 'detalles' && (
             <>
               <Section
-                title="Información esencial"
+                title={t('tree:panel.essentialInfo')}
                 actions={
                   <button
                     onClick={(e) => {
@@ -1226,23 +1116,17 @@ const fotosList = toArray(persona?.galeria);
                       openEditDetalles();
                     }}
                     className="p-1.5 hover:bg-gray-200 rounded transition-colors"
-                    aria-label="Editar información esencial"
-                    title="Editar"
+                    title={t('common:buttons.edit')}
                   >
                     <Edit size={18} className="text-gray-600" />
                   </button>
                 }
               >
                 <div className="space-y-6">
-                  <div className="flex items-start gap-3 text-emerald-600 text-sm font-medium mb-4">
-                    <Calendar size={20} />
-                    <span>Vista de detalles</span>
-                  </div>
-
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <div className="text-sm font-semibold text-gray-900">
-                        Nombre
+                        {t('fields.name')}
                       </div>
                       <div className="text-gray-700">
                         {persona.nombre || '—'}
@@ -1250,7 +1134,7 @@ const fotosList = toArray(persona?.galeria);
                     </div>
                     <div>
                       <div className="text-sm font-semibold text-gray-900">
-                        Sexo
+                        {t('fields.sex')}
                       </div>
                       <div className="text-gray-700">
                         {formatSexo(persona.sexo)}
@@ -1261,17 +1145,15 @@ const fotosList = toArray(persona?.galeria);
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <div className="text-sm font-semibold text-gray-900">
-                        Nacimiento
+                        {t('fields.birth')}
                       </div>
                       <div className="text-gray-700">
-                        {persona.nacimiento
-                          ? formatDate(persona.nacimiento)
-                          : '—'}
+                        {persona.nacimiento ? formatDate(persona.nacimiento) : '—'}
                       </div>
                     </div>
                     <div>
                       <div className="text-sm font-semibold text-gray-900">
-                        Lugar de nacimiento
+                        {t('fields.birthPlace')}
                       </div>
                       <div className="text-gray-700">
                         {persona.lugarNacimiento || '—'}
@@ -1281,28 +1163,16 @@ const fotosList = toArray(persona?.galeria);
 
                   <div>
                     <div className="text-sm font-semibold text-gray-900">
-                      Bautismo
+                      {t('tree:panel.baptism')}
                     </div>
                     {persona.bautismo ? (
                       <div className="text-gray-700 space-y-1">
                         <div>
-                          {persona.bautismo.fecha
-                            ? formatDate(persona.bautismo.fecha)
-                            : '—'}
+                          {persona.bautismo.fecha ? formatDate(persona.bautismo.fecha) : '—'}
                         </div>
-                        {persona.bautismo.lugar && (
-                          <div>{persona.bautismo.lugar}</div>
-                        )}
+                        {persona.bautismo.lugar && <div>{persona.bautismo.lugar}</div>}
                         {persona.bautismo.parroquia && (
-                          <div>
-                            Parroquia:{' '}
-                            {persona.bautismo.parroquia}
-                          </div>
-                        )}
-                        {persona.bautismo.notas && (
-                          <div className="text-sm text-gray-600">
-                            Notas: {persona.bautismo.notas}
-                          </div>
+                          <div>Parroquia: {persona.bautismo.parroquia}</div>
                         )}
                       </div>
                     ) : (
@@ -1313,17 +1183,15 @@ const fotosList = toArray(persona?.galeria);
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <div className="text-sm font-semibold text-gray-900">
-                        Matrimonio
+                        {t('tree:panel.marriage')}
                       </div>
                       <div className="text-gray-700">
-                        {persona.matrimonio?.fecha
-                          ? formatDate(persona.matrimonio.fecha)
-                          : '—'}
+                        {persona.matrimonio?.fecha ? formatDate(persona.matrimonio.fecha) : '—'}
                       </div>
                     </div>
                     <div>
                       <div className="text-sm font-semibold text-gray-900">
-                        Lugar de matrimonio
+                        Lugar
                       </div>
                       <div className="text-gray-700">
                         {persona.matrimonio?.lugar || '—'}
@@ -1334,31 +1202,19 @@ const fotosList = toArray(persona?.galeria);
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <div className="text-sm font-semibold text-gray-900">
-                        Defunción
+                        {t('fields.death')}
                       </div>
                       <div className="text-gray-700">
-                        {persona.fallecimiento
-                          ? formatDate(persona.fallecimiento)
-                          : '—'}
+                        {persona.fallecimiento ? formatDate(persona.fallecimiento) : '—'}
                       </div>
                       <div className="text-gray-700">
-                        {persona.lugarFallecimiento || '—'}
+                        {persona.lugarFallecimiento || ''}
                       </div>
-                      {persona.causaFallecimiento && (
-                        <div className="mt-2">
-                          <div className="text-sm text-gray-600">
-                            Razón:
-                          </div>
-                          <div className="text-gray-700">
-                            {persona.causaFallecimiento}
-                          </div>
-                        </div>
-                      )}
                     </div>
 
                     <div>
                       <div className="text-sm font-semibold text-gray-900">
-                        Entierro
+                        {t('tree:panel.burial')}
                       </div>
                       {persona.entierro ? (
                         <>
@@ -1368,16 +1224,6 @@ const fotosList = toArray(persona?.galeria);
                           <div className="text-gray-700">
                             {persona.entierro.lugar}
                           </div>
-                          {persona.entierro.razon && (
-                            <div className="mt-2">
-                              <div className="text-sm text-gray-600">
-                                Razón:
-                              </div>
-                              <div className="text-gray-700">
-                                {persona.entierro.razon}
-                              </div>
-                            </div>
-                          )}
                         </>
                       ) : (
                         <div className="text-gray-500">—</div>
@@ -1388,10 +1234,10 @@ const fotosList = toArray(persona?.galeria);
               </Section>
 
               <Section
-                title="Padres y hermanos"
+                title={`${t('relations.parents')} & ${t('relations.siblings')}`}
                 actions={
                   <button className="text-emerald-600 hover:text-emerald-800 text-sm font-medium">
-                    VER TODO
+                    {t('common:buttons.view')}
                   </button>
                 }
               >
@@ -1400,7 +1246,7 @@ const fotosList = toArray(persona?.galeria);
                     <PersonCard
                       key={padre._id || i}
                       persona={padre}
-                      relation="Padre"
+                      relation={padre.sexo === 'F' ? t('relations.mother') : t('relations.father')}
                       onClick={onPersonaClick}
                     />
                   ))}
@@ -1408,7 +1254,7 @@ const fotosList = toArray(persona?.galeria);
                   {persona.hermanos && persona.hermanos.length > 0 && (
                     <>
                       <div className="text-sm font-semibold text-gray-600 mt-4 mb-2">
-                        Hermanos ({persona.hermanos.length})
+                        {t('relations.siblings')} ({persona.hermanos.length})
                       </div>
                       {persona.hermanos.map((hermano, i) => (
                         <PersonCard
@@ -1425,10 +1271,7 @@ const fotosList = toArray(persona?.galeria);
           )}
 
           {activeTab === 'fuentes' && (
-            <Section
-              title="Fuentes documentales"
-              count={fuentesList.length}
-            >
+            <Section title={t('sources.title')} count={fuentesList.length}>
               <Fuentes
                 personaId={personaId}
                 fuentes={fuentesList}
@@ -1437,77 +1280,55 @@ const fotosList = toArray(persona?.galeria);
               />
             </Section>
           )}
+
           {activeTab === 'galeria' && (
-  <Section
-    title="Galería de fotos"
-    count={fotosList.length}
-  >
-    <Galeria
-      personaId={personaId}
-      fotos={fotosList}
-      onFotoAdded={loadPersona}
-      personasApi={personasApi}
-    />
-  </Section>
-)}
-          {activeTab === 'colaborar' && (
-            <Section title="Colaborar">
-              <div className="text-center py-12">
-                <Users
-                  size={48}
-                  className="mx-auto text-gray-300 mb-4"
-                />
-                <p className="text-gray-600 mb-2 font-medium">
-                  Colaboración disponible próximamente
-                </p>
-                <p className="text-sm text-gray-500">
-                  Podrás invitar a familiares a contribuir con
-                  información
-                </p>
-              </div>
+            <Section title={t('gallery.title')} count={fotosList.length}>
+              <Galeria
+                personaId={personaId}
+                fotos={fotosList}
+                onFotoAdded={loadPersona}
+                personasApi={personasApi}
+              />
             </Section>
           )}
         </div>
 
+        {/* Sidebar */}
         <div className="lg:col-span-1">
-          <Section title="Cónyuge e hijos">
+          <Section title={`${t('relations.spouse')} & ${t('relations.children')}`}>
             {persona.conyuge && (
               <div className="mb-4">
                 <PersonCard
                   persona={persona.conyuge}
-                  relation="Cónyuge"
+                  relation={t('relations.spouse')}
                   onClick={onPersonaClick}
                 />
               </div>
             )}
 
-            {persona.otrosConyuges &&
-              persona.otrosConyuges.length > 0 && (
-                <div className="mb-4">
-                  <div className="text-sm font-semibold text-gray-600 mb-2 flex items-center gap-2">
-                    <Heart
-                      size={16}
-                      className="text-amber-500"
-                    />
-                    Otros Cónyuges ({persona.otrosConyuges.length})
-                  </div>
-                  <div className="space-y-2">
-                    {persona.otrosConyuges.map((otroConyuge, i) => (
-                      <PersonCard
-                        key={otroConyuge._id || i}
-                        persona={otroConyuge}
-                        relation="Otro Cónyuge"
-                        onClick={onPersonaClick}
-                      />
-                    ))}
-                  </div>
+            {persona.otrosConyuges && persona.otrosConyuges.length > 0 && (
+              <div className="mb-4">
+                <div className="text-sm font-semibold text-gray-600 mb-2 flex items-center gap-2">
+                  <Heart size={16} className="text-amber-500" />
+                  {t('relations.spouses')} ({persona.otrosConyuges.length})
                 </div>
-              )}
+                <div className="space-y-2">
+                  {persona.otrosConyuges.map((otroConyuge, i) => (
+                    <PersonCard
+                      key={otroConyuge._id || i}
+                      persona={otroConyuge}
+                      relation={t('relations.spouse')}
+                      onClick={onPersonaClick}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
 
             {persona.hijos && persona.hijos.length > 0 && (
               <>
                 <div className="text-sm font-semibold text-gray-600 mb-2">
-                  Hijos ({persona.hijos.length})
+                  {t('relations.children')} ({persona.hijos.length})
                 </div>
                 <div className="space-y-2">
                   {persona.hijos.map((hijo, i) => (
@@ -1522,7 +1343,7 @@ const fotosList = toArray(persona?.galeria);
             )}
 
             <button className="w-full mt-4 py-2 border border-gray-300 rounded-lg text-emerald-600 hover:bg-gray-50 transition-colors">
-              VER TODO
+              {t('common:buttons.view')}
             </button>
 
             <button
@@ -1530,24 +1351,17 @@ const fotosList = toArray(persona?.galeria);
               className="w-full mt-3 py-2.5 bg-gradient-to-r from-emerald-600 to-green-600 text-white rounded-lg hover:from-emerald-700 hover:to-green-700 transition-all font-medium shadow-sm hover:shadow-md flex items-center justify-center gap-2"
             >
               <UserPlus size={18} />
-              EDITAR RELACIONES
+              {t('common:buttons.edit')} {t('relations.parents')}
             </button>
           </Section>
-
-
         </div>
       </div>
 
       <style jsx>{`
         @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
-
         @keyframes slideUp {
           from {
             opacity: 0;
@@ -1558,11 +1372,9 @@ const fotosList = toArray(persona?.galeria);
             transform: translateY(0) scale(1);
           }
         }
-
         .animate-fadeIn {
           animation: fadeIn 0.2s ease-out;
         }
-
         .animate-slideUp {
           animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }

@@ -1,0 +1,33 @@
+{
+  "appName": "Rodzina Fahler",
+  "nav": {
+    "home": "Start",
+    "tree": "Drzewo",
+    "persons": "Osoby"
+  },
+  "buttons": {
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "delete": "Usuń",
+    "edit": "Edytuj",
+    "add": "Dodaj",
+    "search": "Szukaj",
+    "close": "Zamknij",
+    "confirm": "Potwierdź",
+    "back": "Wstecz",
+    "view": "Zobacz",
+    "loading": "Ładowanie..."
+  },
+  "messages": {
+    "confirmDelete": "Czy na pewno chcesz usunąć?",
+    "saved": "Zapisano pomyślnie",
+    "error": "Wystąpił błąd",
+    "noResults": "Brak wyników"
+  },
+  "dates": {
+    "birthAbbr": "ur.",
+    "deathAbbr": "zm.",
+    "birth": "Urodzenie",
+    "death": "Śmierć"
+  }
+}

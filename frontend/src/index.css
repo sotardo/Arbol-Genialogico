@@ -1,6 +1,6 @@
 
 @import 'tailwindcss';
-
+@import './anti-pixel.css';
 @plugin 'tailwindcss-animate';
 @import "tw-animate-css";
 

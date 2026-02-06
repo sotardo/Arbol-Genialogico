@@ -1,0 +1,5638 @@
+{
+  "ok": true,
+  "version": 1,
+  "exportedAt": "2025-12-09T13:31:50.257Z",
+  "count": 295,
+  "personas": [
+    {
+      "_id": "68fd3387986ef0aa5542a352",
+      "nombre": "Julia Graciela Mariña Fahler",
+      "sexo": "F",
+      "nacimiento": "1952-05-28T03:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a358",
+        "68fd3387986ef0aa5542a35a"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a35c",
+        "68fd3387986ef0aa5542a3de"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a35e",
+        "68fd3387986ef0aa5542a356",
+        "68fd3387986ef0aa5542a354",
+        "68fd3387986ef0aa5542a360",
+        "691641e5b9718f89ffdc71fc",
+        "691f66769a40faf4eef45e2d",
+        "691e82d71d53330c93dbdd31"
+      ],
+      "medios": [
+        {
+          "_id": "6931b79db88589a51760d418",
+          "tipo": "imagen",
+          "titulo": "ejemplo",
+          "fecha": "2025-12-11T00:00:00.000Z",
+          "ruta": "/uploads/1764865949037_8.jpg",
+          "nombreArchivo": "8.jpg",
+          "descripcion": "ejemplo"
+        },
+        {
+          "_id": "6931b7adb88589a51760d420",
+          "tipo": "imagen",
+          "titulo": "aa",
+          "fecha": "2025-12-26T00:00:00.000Z",
+          "ruta": "/uploads/1764865965133_DELFIN.JPG",
+          "nombreArchivo": "DELFIN.JPG",
+          "descripcion": "aa"
+        },
+        {
+          "_id": "6931ea4bb88589a51760d44a",
+          "tipo": "imagen",
+          "titulo": "ee",
+          "fecha": "2025-12-10T00:00:00.000Z",
+          "ruta": "/uploads/1764878923200_8.jpg",
+          "nombreArchivo": "8.jpg",
+          "descripcion": "ee"
+        },
+        {
+          "_id": "6931ebfcb88589a51760d47d",
+          "tipo": "imagen",
+          "titulo": "aa",
+          "fecha": "2025-12-19T00:00:00.000Z",
+          "ruta": "/uploads/1764879356876_8.jpg",
+          "nombreArchivo": "8.jpg",
+          "descripcion": "aa"
+        },
+        {
+          "_id": "6931ecd8b88589a51760d492",
+          "tipo": "imagen",
+          "titulo": "eee",
+          "fecha": "2025-12-12T00:00:00.000Z",
+          "ruta": "/uploads/1764879576050_grafica.jpg",
+          "nombreArchivo": "grafica.jpg",
+          "descripcion": "eee"
+        }
+      ],
+      "createdAt": "2025-10-25T20:31:03.905Z",
+      "updatedAt": "2025-12-04T20:19:36.052Z",
+      "__v": 0,
+      "causaFallecimiento": "",
+      "fallecimiento": null,
+      "lugarFallecimiento": "",
+      "lugarNacimiento": "",
+      "acercaDe": "Ejemplo de historia de vida",
+      "bautismo": {
+        "fecha": "2025-10-09T03:00:00.000Z",
+        "lugar": "",
+        "parroquia": "",
+        "notas": ""
+      },
+      "avatarUrl": "/uploads/1761782482468_GATO.avif",
+      "matrimonio": {
+        "fecha": "2008-02-16T02:00:00.000Z",
+        "lugar": "Neuquen"
+      }
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a354",
+      "nombre": "Esteban Rubén Salvarezza Mariña",
+      "sexo": "M",
+      "nacimiento": "1980-03-28T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a35c",
+        "68fd3387986ef0aa5542a352"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a378"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a37a"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.912Z",
+      "updatedAt": "2025-10-25T20:41:07.635Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a356",
+      "nombre": "Paola Romina Salvarezza Mariña",
+      "sexo": "F",
+      "nacimiento": "1974-06-21T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a35c",
+        "68fd3387986ef0aa5542a352"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a39a"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a362",
+        "68fd3387986ef0aa5542a398"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.914Z",
+      "updatedAt": "2025-10-26T20:35:54.232Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a358",
+      "nombre": "Milo Teodoro Gines Mariña Martinez",
+      "sexo": "M",
+      "nacimiento": "1923-10-16T00:00:00.000Z",
+      "fallecimiento": "1997-08-23T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a36c",
+        "68fd3387986ef0aa5542a37e"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a35a"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a352",
+        "68fd3387986ef0aa5542a368",
+        "68fd3387986ef0aa5542a364"
+      ],
+      "medios": [
+        {
+          "_id": "691383250ec3836b40cfebb9",
+          "tipo": "pdf",
+          "titulo": "aa",
+          "ruta": "/uploads/1762886437075_CCF_000112-1.pdf",
+          "nombreArchivo": "CCF_000112-1.pdf",
+          "descripcion": "aa"
+        },
+        {
+          "_id": "69251910acdfef6c1086f93a",
+          "tipo": "imagen",
+          "titulo": "Ejemplo 2",
+          "fecha": "2025-11-13T00:00:00.000Z",
+          "ruta": "/uploads/1764038928403_certificado_ciso.jpg",
+          "nombreArchivo": "certificado ciso.jpg",
+          "descripcion": ""
+        }
+      ],
+      "createdAt": "2025-10-25T20:31:03.916Z",
+      "updatedAt": "2025-11-25T02:48:48.406Z",
+      "__v": 0,
+      "avatarUrl": "/uploads/1764038883898_mi_trabajo.jpg"
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a35a",
+      "nombre": "Julia Carmen Fahler Cosso",
+      "sexo": "F",
+      "nacimiento": "1928-08-13T04:00:00.000Z",
+      "fallecimiento": "2016-03-12T03:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a36e",
+        "68fd3387986ef0aa5542a372"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a358"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a352",
+        "68fd3387986ef0aa5542a368",
+        "68fd3387986ef0aa5542a364"
+      ],
+      "medios": [
+        {
+          "_id": "691f67a59a40faf4eef464ca",
+          "tipo": "pdf",
+          "titulo": "Ejemplito",
+          "fecha": "2025-11-14T00:00:00.000Z",
+          "ruta": "/uploads/1763665829905_INFORMATICA-Fortalecimiento_2B.pdf",
+          "nombreArchivo": "INFORMATICA-Fortalecimiento 2B.pdf",
+          "descripcion": "aaa"
+        },
+        {
+          "_id": "691f68a69a40faf4eef464d3",
+          "tipo": "imagen",
+          "titulo": "Certificado",
+          "fecha": "2025-11-14T00:00:00.000Z",
+          "ruta": "/uploads/1763666086171_certificado_ciso.jpg",
+          "nombreArchivo": "certificado ciso.jpg",
+          "descripcion": "Ejemplo"
+        },
+        {
+          "_id": "691f6a819a40faf4eef46504",
+          "tipo": "imagen",
+          "titulo": "aa",
+          "fecha": "2025-11-16T00:00:00.000Z",
+          "ruta": "/uploads/1763666561749_8.jpg",
+          "nombreArchivo": "8.jpg",
+          "descripcion": "aa"
+        }
+      ],
+      "createdAt": "2025-10-25T20:31:03.918Z",
+      "updatedAt": "2025-12-04T23:12:53.736Z",
+      "__v": 0,
+      "causaFallecimiento": "",
+      "lugarFallecimiento": "",
+      "lugarNacimiento": "",
+      "avatarUrl": "/uploads/1762884593473_GATO.avif",
+      "acercaDe": "Ejemplificación"
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a35c",
+      "nombre": "Rubén Alberto Salvarezza Degregori",
+      "sexo": "M",
+      "nacimiento": "1938-11-23T00:00:00.000Z",
+      "fallecimiento": "2019-10-10T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fe64492383570f09719b2c",
+        "68fe63cd2383570f09719b14"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a352"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a35e",
+        "68fd3387986ef0aa5542a356",
+        "68fd3387986ef0aa5542a354",
+        "68fd3387986ef0aa5542a360",
+        "691641e5b9718f89ffdc71fc",
+        "691f66769a40faf4eef45e2d"
+      ],
+      "medios": [
+        {
+          "_id": "68fe8d596b7169cb1be47d8a",
+          "tipo": "pdf",
+          "titulo": "aaaaassss",
+          "fecha": "2025-10-26T00:00:00.000Z",
+          "ruta": "/uploads/1761512793557_CCF_000112-1.pdf",
+          "nombreArchivo": "CCF_000112-1.pdf",
+          "descripcion": "aassss"
+        },
+        {
+          "_id": "68ffe5c7249d3964bb62bf75",
+          "tipo": "pdf",
+          "titulo": "aaaas",
+          "ruta": "/uploads/1761600967685_CCF_000112-7.pdf",
+          "nombreArchivo": "CCF_000112-7.pdf",
+          "descripcion": ""
+        },
+        {
+          "_id": "6902abf39e6a078839cc9560",
+          "tipo": "pdf",
+          "titulo": "Bautismo",
+          "fecha": "2025-10-17T00:00:00.000Z",
+          "ruta": "/uploads/1761782771867_CCF_000112-8.pdf",
+          "nombreArchivo": "CCF_000112-8.pdf",
+          "descripcion": ""
+        },
+        {
+          "_id": "692a6395ad698a2ebc47da54",
+          "tipo": "imagen",
+          "titulo": "aaww",
+          "fecha": "2025-11-30T00:00:00.000Z",
+          "ruta": "/uploads/1764385685988_1-9-25.jpg",
+          "nombreArchivo": "1-9-25.jpg",
+          "descripcion": "aaew"
+        }
+      ],
+      "createdAt": "2025-10-25T20:31:03.919Z",
+      "updatedAt": "2025-12-04T22:27:14.424Z",
+      "__v": 1,
+      "avatarUrl": "/uploads/1761499455806_DELFIN.JPG",
+      "acercaDe": "ejemplo",
+      "otrosConyuges": [],
+      "galeria": [
+        {
+          "titulo": "Sin título",
+          "descripcion": "",
+          "ruta": "/uploads/1764879712203_8.jpg",
+          "nombreArchivo": "8.jpg",
+          "fecha": "2025-12-04T20:21:52.187Z",
+          "_id": "6931ed60c82bbf60970df330"
+        },
+        {
+          "titulo": "aa",
+          "descripcion": "aa",
+          "ruta": "/uploads/1764879785671_dni2.jpg",
+          "nombreArchivo": "dni2.jpg",
+          "fecha": "2025-12-26T00:00:00.000Z",
+          "_id": "6931eda9c82bbf60970df347"
+        },
+        {
+          "titulo": "aa",
+          "descripcion": "aa",
+          "ruta": "/uploads/1764879792991_8.jpg",
+          "nombreArchivo": "8.jpg",
+          "fecha": "2025-11-13T00:00:00.000Z",
+          "_id": "6931edb0c82bbf60970df354"
+        },
+        {
+          "titulo": "aa",
+          "descripcion": "aa",
+          "ruta": "/uploads/1764879799665_8.jpg",
+          "nombreArchivo": "8.jpg",
+          "fecha": "2025-12-20T00:00:00.000Z",
+          "_id": "6931edb7c82bbf60970df362"
+        },
+        {
+          "titulo": "aa",
+          "descripcion": "aa",
+          "ruta": "/uploads/1764887234420_30-04__2.png",
+          "nombreArchivo": "30-04 _2.png",
+          "fecha": "2025-12-20T00:00:00.000Z",
+          "_id": "69320ac2c82bbf60970e08ad"
+        }
+      ]
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a35e",
+      "nombre": "Ianina Gabriela Salvarezza Mariña",
+      "sexo": "F",
+      "nacimiento": "1973-07-13T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a35c",
+        "68fd3387986ef0aa5542a352"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a366"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a36a",
+        "68fd3387986ef0aa5542a37c"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.921Z",
+      "updatedAt": "2025-10-25T20:41:07.631Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a360",
+      "nombre": "Ioana Emilia Salvarezza Mariña",
+      "sexo": "F",
+      "nacimiento": "1981-02-25T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a35c",
+        "68fd3387986ef0aa5542a352"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a370"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a374",
+        "68fd3387986ef0aa5542a376"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.922Z",
+      "updatedAt": "2025-10-30T00:03:13.454Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a362",
+      "nombre": "Nicolás Agustín Pérez Salvarezza",
+      "sexo": "M",
+      "nacimiento": "1998-03-26T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a39a",
+        "68fd3387986ef0aa5542a356"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.924Z",
+      "updatedAt": "2025-10-25T20:41:07.662Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a364",
+      "nombre": "Marcela Irene Mariña Fahler",
+      "sexo": "F",
+      "nacimiento": "1957-09-19T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a358",
+        "68fd3387986ef0aa5542a35a"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3ba"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.926Z",
+      "updatedAt": "2025-10-25T20:41:07.627Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a366",
+      "nombre": "Andrés Miguel Benítez Sánchez",
+      "sexo": "M",
+      "nacimiento": "1971-08-08T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a35e"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a36a",
+        "68fd3387986ef0aa5542a37c"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.927Z",
+      "updatedAt": "2025-10-25T20:41:07.664Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a368",
+      "nombre": "Mónica Mariña Fahler",
+      "sexo": "F",
+      "nacimiento": "1951-02-02T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a358",
+        "68fd3387986ef0aa5542a35a"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a380"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.928Z",
+      "updatedAt": "2025-10-25T20:41:07.623Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a36a",
+      "nombre": "Rocío Valentina Benítez Salvarezza",
+      "sexo": "F",
+      "nacimiento": "2007-05-16T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a366",
+        "68fd3387986ef0aa5542a35e"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.930Z",
+      "updatedAt": "2025-10-25T20:41:07.666Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a36c",
+      "nombre": "Jose Vicente Eduardo Mariña Martinez",
+      "sexo": "M",
+      "nacimiento": "1891-01-18T00:00:00.000Z",
+      "fallecimiento": "1927-02-24T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3a4",
+        "68fd3387986ef0aa5542a3a2"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a37e"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a358"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.931Z",
+      "updatedAt": "2025-10-25T20:41:07.656Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a36e",
+      "nombre": "Justo Benigno Fahler Larrosa",
+      "sexo": "M",
+      "nacimiento": "1899-02-13T00:00:00.000Z",
+      "fallecimiento": "1962-11-23T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a39c",
+        "68fd3387986ef0aa5542a3be"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a372"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a35a",
+        "68fd3387986ef0aa5542a382",
+        "68fd3387986ef0aa5542a384",
+        "68fd3387986ef0aa5542a386",
+        "68fd3387986ef0aa5542a388",
+        "68fd3387986ef0aa5542a38a",
+        "68fd3387986ef0aa5542a38c",
+        "68fd3387986ef0aa5542a38e",
+        "68fd3387986ef0aa5542a390",
+        "68fd3387986ef0aa5542a394"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.932Z",
+      "updatedAt": "2025-10-25T20:41:07.641Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a370",
+      "nombre": "Ariel Gustavo Dalino Kuchak",
+      "sexo": "M",
+      "nacimiento": "1977-02-24T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a360"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a374",
+        "68fd3387986ef0aa5542a376"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.933Z",
+      "updatedAt": "2025-10-25T20:41:07.669Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a372",
+      "nombre": "Juana Delfina Cosso Percivale",
+      "sexo": "F",
+      "nacimiento": "1902-02-01T00:00:00.000Z",
+      "fallecimiento": "1994-11-06T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3b4",
+        "68fd3387986ef0aa5542a3b8"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a36e"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a35a",
+        "68fd3387986ef0aa5542a382",
+        "68fd3387986ef0aa5542a384",
+        "68fd3387986ef0aa5542a386",
+        "68fd3387986ef0aa5542a388",
+        "68fd3387986ef0aa5542a38a",
+        "68fd3387986ef0aa5542a38c",
+        "68fd3387986ef0aa5542a38e",
+        "68fd3387986ef0aa5542a390",
+        "68fd3387986ef0aa5542a394"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.935Z",
+      "updatedAt": "2025-10-25T20:41:07.643Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a374",
+      "nombre": "Abril Michelle Dalino Salvarezza",
+      "sexo": "F",
+      "nacimiento": "1998-11-18T03:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a370",
+        "68fd3387986ef0aa5542a360"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a392"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a396"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.936Z",
+      "updatedAt": "2025-11-27T03:40:55.798Z",
+      "__v": 0,
+      "causaFallecimiento": "",
+      "fallecimiento": null,
+      "lugarFallecimiento": "",
+      "lugarNacimiento": ""
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a376",
+      "nombre": "Lucas Agustín Dalino Salvarezza",
+      "sexo": "M",
+      "nacimiento": "2001-04-28T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a370",
+        "68fd3387986ef0aa5542a360"
+      ],
+      "conyuges": [
+        "69162fbeb9718f89ffdbfbab"
+      ],
+      "hijos": [
+        "68fe975c6b7169cb1be48830"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.938Z",
+      "updatedAt": "2025-11-13T19:21:34.585Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a378",
+      "nombre": "Klavdija Kuharic",
+      "sexo": "F",
+      "nacimiento": "1982-02-02T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a354"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a37a"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.939Z",
+      "updatedAt": "2025-10-25T20:41:07.673Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a37a",
+      "nombre": "Ania Irina Salvarezza Kuharic",
+      "sexo": "F",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a354",
+        "68fd3387986ef0aa5542a378"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.940Z",
+      "updatedAt": "2025-10-25T20:41:07.675Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a37c",
+      "nombre": "María Guadalupe Benítez Salvarezza",
+      "sexo": "F",
+      "nacimiento": "2009-07-14T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a366",
+        "68fd3387986ef0aa5542a35e"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.942Z",
+      "updatedAt": "2025-10-25T20:41:07.667Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a37e",
+      "nombre": "Esperanza Martínez Galdo",
+      "sexo": "F",
+      "nacimiento": "1891-03-17T00:00:00.000Z",
+      "fallecimiento": "1959-07-02T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3bc",
+        "68fd3387986ef0aa5542a3aa"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a36c"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a358"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.943Z",
+      "updatedAt": "2025-10-25T20:41:07.659Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a380",
+      "nombre": "Norberto Ricardo Stocchetti Canda",
+      "sexo": "M",
+      "nacimiento": "1946-11-16T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a368"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.944Z",
+      "updatedAt": "2025-10-25T20:41:07.677Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a382",
+      "nombre": "Juana Idalina Fahler Cosso",
+      "sexo": "F",
+      "nacimiento": "1924-01-27T00:00:00.000Z",
+      "fallecimiento": "1990-07-11T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a36e",
+        "68fd3387986ef0aa5542a372"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3b0"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.945Z",
+      "updatedAt": "2025-10-25T20:41:07.645Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a384",
+      "nombre": "Aníbal Héctor Fahler Cosso",
+      "sexo": "M",
+      "nacimiento": "1925-01-15T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a36e",
+        "68fd3387986ef0aa5542a372"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a39e"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.946Z",
+      "updatedAt": "2025-10-25T20:41:07.646Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a386",
+      "nombre": "Élida Rosa Delfina Fahler Cosso",
+      "sexo": "F",
+      "nacimiento": "1926-06-24T00:00:00.000Z",
+      "fallecimiento": "2011-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a36e",
+        "68fd3387986ef0aa5542a372"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3ae"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.947Z",
+      "updatedAt": "2025-10-25T20:41:07.647Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a388",
+      "nombre": "Celia Estela Fahler Cosso",
+      "sexo": "F",
+      "nacimiento": "1927-07-25T00:00:00.000Z",
+      "fallecimiento": "2017-02-26T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a36e",
+        "68fd3387986ef0aa5542a372"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3a0"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.949Z",
+      "updatedAt": "2025-10-25T20:41:07.648Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a38a",
+      "nombre": "Justo Alfredo Fahler Cosso",
+      "sexo": "M",
+      "nacimiento": "1929-10-05T00:00:00.000Z",
+      "fallecimiento": "1994-01-30T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a36e",
+        "68fd3387986ef0aa5542a372"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3ac"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.950Z",
+      "updatedAt": "2025-10-25T20:41:07.649Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a38c",
+      "nombre": "María Antonia Fahler Cosso",
+      "sexo": "F",
+      "nacimiento": "1931-03-13T00:00:00.000Z",
+      "fallecimiento": "1998-10-22T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a36e",
+        "68fd3387986ef0aa5542a372"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3a8"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.953Z",
+      "updatedAt": "2025-10-25T20:41:07.650Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a38e",
+      "nombre": "Ana Valentina Fahler Cosso",
+      "sexo": "F",
+      "nacimiento": "1932-05-22T00:00:00.000Z",
+      "fallecimiento": "1998-10-22T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a36e",
+        "68fd3387986ef0aa5542a372"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3a6"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.954Z",
+      "updatedAt": "2025-10-25T20:41:07.652Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a390",
+      "nombre": "Juan Orlando Fahler Cosso",
+      "sexo": "M",
+      "nacimiento": "1934-12-12T00:00:00.000Z",
+      "fallecimiento": "1935-12-22T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a36e",
+        "68fd3387986ef0aa5542a372"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.955Z",
+      "updatedAt": "2025-10-25T20:41:07.653Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a392",
+      "nombre": "Franco Melideo",
+      "sexo": "M",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a374"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a396"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.956Z",
+      "updatedAt": "2025-10-25T20:41:07.703Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a394",
+      "nombre": "Ricardo Fahler Cosso",
+      "sexo": "M",
+      "nacimiento": "1936-06-19T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a36e",
+        "68fd3387986ef0aa5542a372"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3b2",
+        "68fd3387986ef0aa5542a3b6"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.957Z",
+      "updatedAt": "2025-10-25T20:41:07.655Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a396",
+      "nombre": "Bizantino Melideo Dalino",
+      "sexo": "M",
+      "nacimiento": "2025-07-20T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a392",
+        "68fd3387986ef0aa5542a374"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.958Z",
+      "updatedAt": "2025-10-25T20:41:07.704Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a398",
+      "nombre": "Valentino Giuliano Pérez Salvarezza",
+      "sexo": "M",
+      "nacimiento": "2009-12-10T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a39a",
+        "68fd3387986ef0aa5542a356"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.960Z",
+      "updatedAt": "2025-10-25T20:41:07.663Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a39a",
+      "nombre": "Enrique Pérez Martínez",
+      "sexo": "M",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a356"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a362",
+        "68fd3387986ef0aa5542a398"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.961Z",
+      "updatedAt": "2025-10-26T20:35:54.232Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a39c",
+      "nombre": "Juan Fahler Jenny",
+      "sexo": "M",
+      "nacimiento": "1877-01-01T00:00:00.000Z",
+      "fallecimiento": "1955-11-11T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a426",
+        "68fd3388986ef0aa5542a424"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3be"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a36e",
+        "68fd3388986ef0aa5542a408"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.962Z",
+      "updatedAt": "2025-11-12T17:25:38.169Z",
+      "__v": 0,
+      "otrosConyuges": [
+        "69112f940924e9a7b6008f67"
+      ]
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a39e",
+      "nombre": "Adriana Elvira Cantoni",
+      "sexo": "F",
+      "nacimiento": "1926-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a384"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.963Z",
+      "updatedAt": "2025-10-25T20:41:07.733Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3a0",
+      "nombre": "Jerónimo Daniel Donnelly",
+      "sexo": "M",
+      "nacimiento": "1932-01-01T00:00:00.000Z",
+      "fallecimiento": "2010-06-17T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a388"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.964Z",
+      "updatedAt": "2025-10-25T20:41:07.735Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3a2",
+      "nombre": "Maria Antonia Martinez Castro",
+      "sexo": "F",
+      "nacimiento": "1856-12-24T00:00:00.000Z",
+      "fallecimiento": "1953-02-27T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a3fc",
+        "68fd3388986ef0aa5542a3fe"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3a4"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a36c",
+        "68fd3387986ef0aa5542a3c2",
+        "68fd3387986ef0aa5542a3d8",
+        "68fd3387986ef0aa5542a3da",
+        "68fd3387986ef0aa5542a3c4",
+        "68fd3387986ef0aa5542a3c6"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.965Z",
+      "updatedAt": "2025-10-25T20:41:07.711Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3a4",
+      "nombre": "Jose Mariña Juncal",
+      "sexo": "M",
+      "nacimiento": "1863-08-30T00:00:00.000Z",
+      "fallecimiento": "1952-01-05T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3cc",
+        "68fd3387986ef0aa5542a3c0"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3a2"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a36c",
+        "68fd3387986ef0aa5542a3c2",
+        "68fd3387986ef0aa5542a3d8",
+        "68fd3387986ef0aa5542a3da",
+        "68fd3387986ef0aa5542a3c4",
+        "68fd3387986ef0aa5542a3c6"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.966Z",
+      "updatedAt": "2025-10-25T20:41:07.709Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3a6",
+      "nombre": "José Luis Areces",
+      "sexo": "M",
+      "nacimiento": "1925-08-08T00:00:00.000Z",
+      "fallecimiento": "1994-11-07T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a38e"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.967Z",
+      "updatedAt": "2025-10-25T20:41:07.739Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3a8",
+      "nombre": "Jozeph Huisman Bego",
+      "sexo": "M",
+      "nacimiento": "1912-07-03T00:00:00.000Z",
+      "fallecimiento": "1997-05-05T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a38c"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.968Z",
+      "updatedAt": "2025-10-25T20:41:07.738Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3aa",
+      "nombre": "Generosa Galdo",
+      "sexo": "F",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3c8",
+        "68fd3387986ef0aa5542a3ca"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3bc"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a37e",
+        "68fd3387986ef0aa5542a3d4",
+        "68fd3387986ef0aa5542a3d2",
+        "68fd3387986ef0aa5542a3ce",
+        "68fd3387986ef0aa5542a3d0",
+        "68fd3387986ef0aa5542a3d6"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.969Z",
+      "updatedAt": "2025-10-25T20:41:07.723Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3ac",
+      "nombre": "Eva Catalina Karle Schmidt",
+      "sexo": "F",
+      "nacimiento": "1928-05-26T00:00:00.000Z",
+      "fallecimiento": "2005-11-06T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a38a"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.970Z",
+      "updatedAt": "2025-10-25T20:41:07.740Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3ae",
+      "nombre": "Juan Ángel García Fraga",
+      "sexo": "M",
+      "nacimiento": "1918-10-10T00:00:00.000Z",
+      "fallecimiento": "1996-08-16T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a386"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.971Z",
+      "updatedAt": "2025-10-25T20:41:07.741Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3b0",
+      "nombre": "Alfredo Giovanni Mario Raffaele Manara Cerruti",
+      "sexo": "M",
+      "nacimiento": "1910-09-20T00:00:00.000Z",
+      "fallecimiento": "1993-08-25T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a382"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.972Z",
+      "updatedAt": "2025-10-25T20:41:07.743Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3b2",
+      "nombre": "Julia Semsey",
+      "sexo": "F",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a394"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.973Z",
+      "updatedAt": "2025-10-25T20:41:07.744Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3b4",
+      "nombre": "Giovanni Battista Cosso Balestra",
+      "sexo": "M",
+      "nacimiento": "1875-05-03T00:00:00.000Z",
+      "fallecimiento": "1967-08-26T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a422",
+        "68fd3388986ef0aa5542a428"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3b8"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a372",
+        "68fd3388986ef0aa5542a3f2",
+        "68fd3388986ef0aa5542a3ee",
+        "68fd3387986ef0aa5542a3dc",
+        "68fd3387986ef0aa5542a3e0",
+        "68fd3388986ef0aa5542a3f8",
+        "68fd3387986ef0aa5542a3de",
+        "68fd3387986ef0aa5542a3e2",
+        "68fd3387986ef0aa5542a3e4",
+        "68fd3388986ef0aa5542a3ea",
+        "68fd3388986ef0aa5542a3e8",
+        "68fd3388986ef0aa5542a3ec",
+        "68fd3388986ef0aa5542a3fa",
+        "68fd3388986ef0aa5542a3e6",
+        "68fd3388986ef0aa5542a3f6",
+        "68fd3388986ef0aa5542a3f0",
+        "68fd3388986ef0aa5542a3f4"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.974Z",
+      "updatedAt": "2025-10-25T20:41:07.678Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3b6",
+      "nombre": "Orietta Menutti",
+      "sexo": "F",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a394"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.975Z",
+      "updatedAt": "2025-10-25T20:41:07.747Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3b8",
+      "nombre": "Delfina Percivale Cosso",
+      "sexo": "F",
+      "nacimiento": "1875-01-01T00:00:00.000Z",
+      "fallecimiento": "1956-07-26T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a412",
+        "68fd3388986ef0aa5542a414"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3b4"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a372",
+        "68fd3388986ef0aa5542a3f2",
+        "68fd3388986ef0aa5542a3ee",
+        "68fd3387986ef0aa5542a3dc",
+        "68fd3387986ef0aa5542a3e0",
+        "68fd3388986ef0aa5542a3f8",
+        "68fd3387986ef0aa5542a3de",
+        "68fd3387986ef0aa5542a3e2",
+        "68fd3387986ef0aa5542a3e4",
+        "68fd3388986ef0aa5542a3ea",
+        "68fd3388986ef0aa5542a3e8",
+        "68fd3388986ef0aa5542a3ec",
+        "68fd3388986ef0aa5542a3fa",
+        "68fd3388986ef0aa5542a3e6",
+        "68fd3388986ef0aa5542a3f6",
+        "68fd3388986ef0aa5542a3f0",
+        "68fd3388986ef0aa5542a3f4"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.976Z",
+      "updatedAt": "2025-10-25T20:41:07.679Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3ba",
+      "nombre": "Jorge Ricardo Perez Talento",
+      "sexo": "M",
+      "nacimiento": "1950-11-25T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a364"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.977Z",
+      "updatedAt": "2025-10-25T20:41:07.750Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3bc",
+      "nombre": "Vicente Martínez Rodríguez",
+      "sexo": "M",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a400",
+        "68fd3388986ef0aa5542a402"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3aa"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a37e",
+        "68fd3387986ef0aa5542a3d4",
+        "68fd3387986ef0aa5542a3d2",
+        "68fd3387986ef0aa5542a3ce",
+        "68fd3387986ef0aa5542a3d0",
+        "68fd3387986ef0aa5542a3d6"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.978Z",
+      "updatedAt": "2025-10-25T20:41:07.721Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3be",
+      "nombre": "Carmen Arsenia Larrosa",
+      "sexo": "F",
+      "nacimiento": "1879-12-14T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a410",
+        "68fd3388986ef0aa5542a420"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a39c"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a36e",
+        "68fd3388986ef0aa5542a408"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.979Z",
+      "updatedAt": "2025-10-25T20:41:07.707Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3c0",
+      "nombre": "Rosa Juncal Fernández",
+      "sexo": "F",
+      "notas": "",
+      "padres": [
+        "690fbe20e675ff1fc757f6ce",
+        "690fbde5e675ff1fc757f6b4"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3cc"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a3a4"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.980Z",
+      "updatedAt": "2025-11-08T22:11:31.527Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3c2",
+      "nombre": "Francisco Mariña Martinez",
+      "sexo": "M",
+      "nacimiento": "1889-06-21T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3a4",
+        "68fd3387986ef0aa5542a3a2"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.981Z",
+      "updatedAt": "2025-10-25T20:41:07.712Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3c4",
+      "nombre": "Maria Evangelina Mariña Juncal",
+      "sexo": "F",
+      "nacimiento": "1900-06-14T00:00:00.000Z",
+      "fallecimiento": "1989-08-22T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3a4",
+        "68fd3387986ef0aa5542a3a2"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.982Z",
+      "updatedAt": "2025-10-25T20:41:07.717Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3c6",
+      "nombre": "Jose Antonio Mariña Martinez",
+      "sexo": "M",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3a4",
+        "68fd3387986ef0aa5542a3a2"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.983Z",
+      "updatedAt": "2025-10-25T20:41:07.719Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3c8",
+      "nombre": "Vicente Galdo Díaz",
+      "sexo": "M",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3ca"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a3aa"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.985Z",
+      "updatedAt": "2025-10-25T20:41:07.755Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3ca",
+      "nombre": "Josefa Martínez Simón",
+      "sexo": "F",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3c8"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a3aa"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.986Z",
+      "updatedAt": "2025-10-25T20:41:07.757Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3cc",
+      "nombre": "Francisco Mariña y Vázquez",
+      "sexo": "M",
+      "nacimiento": "1820-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "690fbcd0e675ff1fc757f035",
+        "690fbcd5e675ff1fc757f039"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3c0"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a3a4"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.987Z",
+      "updatedAt": "2025-11-11T02:33:22.739Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3ce",
+      "nombre": "Dora Galdo",
+      "sexo": "F",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3bc",
+        "68fd3387986ef0aa5542a3aa"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.988Z",
+      "updatedAt": "2025-10-25T20:41:07.727Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3d0",
+      "nombre": "José Martínez Galdo",
+      "sexo": "M",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3bc",
+        "68fd3387986ef0aa5542a3aa"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.988Z",
+      "updatedAt": "2025-10-25T20:41:07.728Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3d2",
+      "nombre": "Purificación Martínez Galdo",
+      "sexo": "F",
+      "nacimiento": "1899-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3bc",
+        "68fd3387986ef0aa5542a3aa"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a404"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.989Z",
+      "updatedAt": "2025-10-25T20:41:07.726Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3d4",
+      "nombre": "Rogelia Martínez Galdo",
+      "sexo": "F",
+      "nacimiento": "1894-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3bc",
+        "68fd3387986ef0aa5542a3aa"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a406"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.990Z",
+      "updatedAt": "2025-10-25T20:41:07.724Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3d6",
+      "nombre": "Leonor Martínez Galdo",
+      "sexo": "F",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3bc",
+        "68fd3387986ef0aa5542a3aa"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.991Z",
+      "updatedAt": "2025-10-25T20:41:07.730Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3d8",
+      "nombre": "Maria Rosa Antonia Mariña Martinez",
+      "sexo": "F",
+      "nacimiento": "1893-03-21T00:00:00.000Z",
+      "fallecimiento": "1987-05-09T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3a4",
+        "68fd3387986ef0aa5542a3a2"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.992Z",
+      "updatedAt": "2025-10-25T20:41:07.713Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3da",
+      "nombre": "Fidel Mariña Martinez",
+      "sexo": "M",
+      "nacimiento": "1894-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3a4",
+        "68fd3387986ef0aa5542a3a2"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.993Z",
+      "updatedAt": "2025-10-25T20:41:07.715Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3dc",
+      "nombre": "Luis Amadeo Cosso Percivale",
+      "sexo": "M",
+      "nacimiento": "1899-01-01T00:00:00.000Z",
+      "fallecimiento": "1899-06-07T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3b4",
+        "68fd3387986ef0aa5542a3b8"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.994Z",
+      "updatedAt": "2025-10-25T20:41:07.684Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3de",
+      "nombre": "Emiliano Basilio Cosso Percivale",
+      "sexo": "M",
+      "nacimiento": "1906-01-10T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3b4",
+        "68fd3387986ef0aa5542a3b8"
+      ],
+      "conyuges": [
+        "68fd3387986ef0aa5542a352"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.995Z",
+      "updatedAt": "2025-10-26T17:21:45.898Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3e0",
+      "nombre": "María Luisa Luján Cosso Percivale",
+      "sexo": "F",
+      "nacimiento": "1900-05-13T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3b4",
+        "68fd3387986ef0aa5542a3b8"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a40a"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.996Z",
+      "updatedAt": "2025-10-25T20:41:07.686Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3e2",
+      "nombre": "Juan Santiago Cosso Percivale",
+      "sexo": "M",
+      "nacimiento": "1907-12-30T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3b4",
+        "68fd3387986ef0aa5542a3b8"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a418"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.997Z",
+      "updatedAt": "2025-10-25T20:41:07.689Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3387986ef0aa5542a3e4",
+      "nombre": "María Delfina Cosso Percivale",
+      "sexo": "F",
+      "nacimiento": "1909-07-18T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3b4",
+        "68fd3387986ef0aa5542a3b8"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a416"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:03.999Z",
+      "updatedAt": "2025-10-25T20:41:07.691Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a3e6",
+      "nombre": "Emilio Eduardo Cosso",
+      "sexo": "M",
+      "nacimiento": "1916-09-06T00:00:00.000Z",
+      "fallecimiento": "1916-09-13T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3b4",
+        "68fd3387986ef0aa5542a3b8"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.000Z",
+      "updatedAt": "2025-10-25T20:41:07.697Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a3e8",
+      "nombre": "Isabel Valentina Cosso Percivale",
+      "sexo": "F",
+      "nacimiento": "1913-02-16T00:00:00.000Z",
+      "fallecimiento": "2007-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3b4",
+        "68fd3387986ef0aa5542a3b8"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.001Z",
+      "updatedAt": "2025-10-25T20:41:07.693Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a3ea",
+      "nombre": "Humberto Natalio Cosso Percivale",
+      "sexo": "M",
+      "nacimiento": "1910-12-04T00:00:00.000Z",
+      "fallecimiento": "1984-11-29T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3b4",
+        "68fd3387986ef0aa5542a3b8"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a40e"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.002Z",
+      "updatedAt": "2025-10-25T20:41:07.692Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a3ec",
+      "nombre": "Blanca Nieves Cosso Percivale",
+      "sexo": "F",
+      "nacimiento": "1914-12-15T00:00:00.000Z",
+      "fallecimiento": "1995-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3b4",
+        "68fd3387986ef0aa5542a3b8"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a40c"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.004Z",
+      "updatedAt": "2025-10-25T20:41:07.695Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a3ee",
+      "nombre": "Raquela Maria Cosso Percivale",
+      "sexo": "F",
+      "nacimiento": "1898-05-25T00:00:00.000Z",
+      "fallecimiento": "1971-09-03T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3b4",
+        "68fd3387986ef0aa5542a3b8"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a41a"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.005Z",
+      "updatedAt": "2025-10-25T20:41:07.682Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a3f0",
+      "nombre": "Maria Delfina Cosso",
+      "sexo": "F",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3b4",
+        "68fd3387986ef0aa5542a3b8"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.007Z",
+      "updatedAt": "2025-10-25T20:41:07.700Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a3f2",
+      "nombre": "Rosa Raquel Cosso Percivale",
+      "sexo": "F",
+      "nacimiento": "1895-12-04T00:00:00.000Z",
+      "fallecimiento": "1997-06-14T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3b4",
+        "68fd3387986ef0aa5542a3b8"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a41e"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.008Z",
+      "updatedAt": "2025-10-25T20:41:07.681Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a3f4",
+      "nombre": "Maria Isabel Emilia Cosso",
+      "sexo": "F",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3b4",
+        "68fd3387986ef0aa5542a3b8"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.010Z",
+      "updatedAt": "2025-10-25T20:41:07.702Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a3f6",
+      "nombre": "Amadeo Romualdo Cosso",
+      "sexo": "M",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3b4",
+        "68fd3387986ef0aa5542a3b8"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.011Z",
+      "updatedAt": "2025-10-25T20:41:07.698Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a3f8",
+      "nombre": "Amadeo Romualdo Cosso Percivale",
+      "sexo": "M",
+      "nacimiento": "1904-02-07T00:00:00.000Z",
+      "fallecimiento": "1994-11-15T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3b4",
+        "68fd3387986ef0aa5542a3b8"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a41c"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.013Z",
+      "updatedAt": "2025-10-25T20:41:07.687Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a3fa",
+      "nombre": "José Enrique Cosso Percivale",
+      "sexo": "M",
+      "nacimiento": "1916-09-05T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a3b4",
+        "68fd3387986ef0aa5542a3b8"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.014Z",
+      "updatedAt": "2025-10-25T20:41:07.696Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a3fc",
+      "nombre": "Francisco Martínez Vazquez",
+      "sexo": "M",
+      "notas": "",
+      "padres": [
+        "69112ba40924e9a7b60082e1",
+        "69112bac0924e9a7b60082e5"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a3fe"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a3a2"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.016Z",
+      "updatedAt": "2025-11-10T00:03:11.302Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a3fe",
+      "nombre": "Rita Castro Moreda",
+      "sexo": "F",
+      "nacimiento": "1825-03-10T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "69112b8b0924e9a7b60082d3",
+        "69112b800924e9a7b60082cf"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a3fc"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a3a2"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.017Z",
+      "updatedAt": "2025-11-10T00:03:50.276Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a400",
+      "nombre": "José Martínez Albaciñeira",
+      "sexo": "M",
+      "notas": "",
+      "padres": [
+        "69164da7b9718f89ffdcd0d6"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a402"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a3bc"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.019Z",
+      "updatedAt": "2025-11-13T21:29:11.515Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a402",
+      "nombre": "Rosa Rodríguez",
+      "sexo": "F",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a400"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a3bc"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.020Z",
+      "updatedAt": "2025-10-25T20:41:07.803Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a404",
+      "nombre": "Jose Lorenzo",
+      "sexo": "M",
+      "nacimiento": "1896-04-12T00:00:00.000Z",
+      "fallecimiento": "1956-06-19T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3d2"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.021Z",
+      "updatedAt": "2025-10-25T20:41:07.804Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a406",
+      "nombre": "Manuel Lorenzo",
+      "sexo": "M",
+      "nacimiento": "1890-03-26T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3d4"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.022Z",
+      "updatedAt": "2025-10-25T20:41:07.805Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a408",
+      "nombre": "Juan José Fahler Larrosa",
+      "sexo": "M",
+      "nacimiento": "1897-11-25T00:00:00.000Z",
+      "fallecimiento": "1908-06-23T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3387986ef0aa5542a39c",
+        "68fd3387986ef0aa5542a3be"
+      ],
+      "conyuges": [
+        "69288770d00039cbba09b235"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.024Z",
+      "updatedAt": "2025-11-27T17:16:32.211Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a40a",
+      "nombre": "Miguel Abrigo",
+      "sexo": "M",
+      "nacimiento": "1893-12-11T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3e0",
+        "68fd3388986ef0aa5542a45e"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.025Z",
+      "updatedAt": "2025-10-25T20:41:07.834Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a40c",
+      "nombre": "Carlo Berchialla Vero",
+      "sexo": "M",
+      "nacimiento": "1902-09-15T00:00:00.000Z",
+      "fallecimiento": "1980-06-10T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a3ec"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.027Z",
+      "updatedAt": "2025-10-25T20:41:07.836Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a40e",
+      "nombre": "Luisa Ramona Bidegain Dalbano",
+      "sexo": "F",
+      "nacimiento": "1921-06-21T00:00:00.000Z",
+      "fallecimiento": "2005-10-30T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a3ea"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.028Z",
+      "updatedAt": "2025-10-25T20:41:07.835Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a410",
+      "nombre": "Juan Corvalán Carcacha",
+      "sexo": "M",
+      "nacimiento": "1835-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "69287b48d00039cbba0963c6",
+        "692886dbd00039cbba099b09"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a420"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a3be",
+        "68fd3388986ef0aa5542a42a",
+        "68fd3388986ef0aa5542a42e",
+        "68fd3388986ef0aa5542a42c",
+        "68fd3388986ef0aa5542a432",
+        "68fd3388986ef0aa5542a43c",
+        "68fd3388986ef0aa5542a434",
+        "68fd3388986ef0aa5542a43a",
+        "68fd3388986ef0aa5542a436",
+        "68fd3388986ef0aa5542a430",
+        "68fd3388986ef0aa5542a43e"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.029Z",
+      "updatedAt": "2025-11-27T17:14:03.933Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a412",
+      "nombre": "Giuseppe Nicoló Percivale Gatto",
+      "sexo": "M",
+      "nacimiento": "1851-11-23T00:00:00.000Z",
+      "fallecimiento": "1936-04-17T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a414"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a3b8",
+        "68fd3388986ef0aa5542a44e",
+        "68fd3388986ef0aa5542a444",
+        "68fd3388986ef0aa5542a456",
+        "68fd3388986ef0aa5542a458",
+        "68fd3388986ef0aa5542a438",
+        "68fd3388986ef0aa5542a44c",
+        "68fd3388986ef0aa5542a44a",
+        "68fd3388986ef0aa5542a452",
+        "68fd3388986ef0aa5542a440",
+        "68fd3388986ef0aa5542a446",
+        "68fd3388986ef0aa5542a450",
+        "68fd3388986ef0aa5542a442",
+        "68fd3388986ef0aa5542a448",
+        "68fd3388986ef0aa5542a454"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.031Z",
+      "updatedAt": "2025-10-25T20:41:07.758Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a414",
+      "nombre": "Rosa Maria Cosso Cosso",
+      "sexo": "F",
+      "nacimiento": "1855-08-10T00:00:00.000Z",
+      "fallecimiento": "1936-04-26T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a412"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a3b8",
+        "68fd3388986ef0aa5542a44e",
+        "68fd3388986ef0aa5542a444",
+        "68fd3388986ef0aa5542a456",
+        "68fd3388986ef0aa5542a458",
+        "68fd3388986ef0aa5542a438",
+        "68fd3388986ef0aa5542a44c",
+        "68fd3388986ef0aa5542a44a",
+        "68fd3388986ef0aa5542a452",
+        "68fd3388986ef0aa5542a440",
+        "68fd3388986ef0aa5542a446",
+        "68fd3388986ef0aa5542a450",
+        "68fd3388986ef0aa5542a442",
+        "68fd3388986ef0aa5542a448",
+        "68fd3388986ef0aa5542a454"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.032Z",
+      "updatedAt": "2025-10-25T20:41:07.759Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a416",
+      "nombre": "Orlando De Simone",
+      "sexo": "M",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3e4"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.033Z",
+      "updatedAt": "2025-10-25T20:41:07.841Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a418",
+      "nombre": "Angelica Maldonato",
+      "sexo": "F",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a3e2"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.034Z",
+      "updatedAt": "2025-10-25T20:41:07.842Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a41a",
+      "nombre": "Eduardo María Abramor Benitez",
+      "sexo": "M",
+      "nacimiento": "1890-10-13T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a3ee",
+        "68fd3388986ef0aa5542a44a"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.035Z",
+      "updatedAt": "2025-10-25T20:41:07.837Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a41c",
+      "nombre": "Maria Anselma Josefa Bidegain Dalbano",
+      "sexo": "F",
+      "nacimiento": "1912-04-21T00:00:00.000Z",
+      "fallecimiento": "1996-02-27T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a3f8"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.036Z",
+      "updatedAt": "2025-10-25T20:41:07.839Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a41e",
+      "nombre": "Jacinto Fahler",
+      "sexo": "M",
+      "nacimiento": "1894-06-04T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a3f2"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.038Z",
+      "updatedAt": "2025-10-25T20:41:07.838Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a420",
+      "nombre": "María Valentina La Rosa Chaves",
+      "sexo": "F",
+      "nacimiento": "1849-02-14T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "69288701d00039cbba09a197",
+        "69288708d00039cbba09a4df"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a410"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a3be",
+        "68fd3388986ef0aa5542a42a",
+        "68fd3388986ef0aa5542a42e",
+        "68fd3388986ef0aa5542a42c",
+        "68fd3388986ef0aa5542a432",
+        "68fd3388986ef0aa5542a43c",
+        "68fd3388986ef0aa5542a434",
+        "68fd3388986ef0aa5542a43a",
+        "68fd3388986ef0aa5542a436",
+        "68fd3388986ef0aa5542a430",
+        "68fd3388986ef0aa5542a43e"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.039Z",
+      "updatedAt": "2025-11-27T17:14:48.620Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a422",
+      "nombre": "Luigi Cosso Tavella",
+      "sexo": "M",
+      "nacimiento": "1850-10-07T00:00:00.000Z",
+      "fallecimiento": "1933-06-10T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a428"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a3b4",
+        "68fd3388986ef0aa5542a466",
+        "68fd3388986ef0aa5542a47c",
+        "68fd3388986ef0aa5542a470",
+        "68fd3388986ef0aa5542a46c",
+        "68fd3388986ef0aa5542a46e",
+        "68fd3388986ef0aa5542a480",
+        "68fd3388986ef0aa5542a478",
+        "68fd3388986ef0aa5542a476",
+        "68fd3388986ef0aa5542a482",
+        "68fd3388986ef0aa5542a472",
+        "68fd3388986ef0aa5542a47a",
+        "68fd3388986ef0aa5542a474"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.040Z",
+      "updatedAt": "2025-10-25T20:41:07.778Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a424",
+      "nombre": "Anna Maria Jenny",
+      "sexo": "F",
+      "nacimiento": "1852-10-22T00:00:00.000Z",
+      "fallecimiento": "1923-11-24T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "6916303db9718f89ffdc15a7",
+        "6916443eb9718f89ffdc9b2f"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a426"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a39c",
+        "68fd3388986ef0aa5542a45a",
+        "68fd3388986ef0aa5542a45c",
+        "68fd3388986ef0aa5542a45e",
+        "68fd3388986ef0aa5542a462",
+        "68fd3388986ef0aa5542a47e",
+        "68fd3388986ef0aa5542a468",
+        "68fd3388986ef0aa5542a464",
+        "68fd3388986ef0aa5542a46a"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.042Z",
+      "updatedAt": "2025-11-13T20:49:02.116Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a426",
+      "nombre": "Johann Pfahler Mangold",
+      "sexo": "M",
+      "nacimiento": "1843-03-06T00:00:00.000Z",
+      "fallecimiento": "1911-03-06T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "69162a22b9718f89ffdbda31",
+        "69251824acdfef6c1086ebec"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a424",
+        "68fd3388986ef0aa5542a460",
+        "69112f940924e9a7b6008f67"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a39c",
+        "68fd3388986ef0aa5542a45a",
+        "68fd3388986ef0aa5542a45c",
+        "68fd3388986ef0aa5542a45e",
+        "68fd3388986ef0aa5542a462",
+        "68fd3388986ef0aa5542a47e",
+        "68fd3388986ef0aa5542a468",
+        "68fd3388986ef0aa5542a464",
+        "68fd3388986ef0aa5542a46a"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.043Z",
+      "updatedAt": "2025-11-25T02:44:52.474Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a428",
+      "nombre": "Maria Rachele Ballestra Cipollina",
+      "sexo": "F",
+      "nacimiento": "1849-03-10T00:00:00.000Z",
+      "fallecimiento": "1935-12-03T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a422"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a3b4",
+        "68fd3388986ef0aa5542a466",
+        "68fd3388986ef0aa5542a47c",
+        "68fd3388986ef0aa5542a470",
+        "68fd3388986ef0aa5542a46c",
+        "68fd3388986ef0aa5542a46e",
+        "68fd3388986ef0aa5542a480",
+        "68fd3388986ef0aa5542a478",
+        "68fd3388986ef0aa5542a476",
+        "68fd3388986ef0aa5542a482",
+        "68fd3388986ef0aa5542a472",
+        "68fd3388986ef0aa5542a47a",
+        "68fd3388986ef0aa5542a474"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.044Z",
+      "updatedAt": "2025-10-25T20:41:07.781Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a42a",
+      "nombre": "Cornelia Corbalán Larrosa",
+      "sexo": "F",
+      "nacimiento": "1865-09-11T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a410",
+        "68fd3388986ef0aa5542a420"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.046Z",
+      "updatedAt": "2025-10-25T20:41:07.808Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a42c",
+      "nombre": "Juan Francisco Corbalan Larrosa",
+      "sexo": "M",
+      "nacimiento": "1869-04-02T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a410",
+        "68fd3388986ef0aa5542a420"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.047Z",
+      "updatedAt": "2025-10-25T20:41:07.810Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a42e",
+      "nombre": "Pedro Paulino Corvalan Larrosa",
+      "sexo": "M",
+      "nacimiento": "1867-04-29T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a410",
+        "68fd3388986ef0aa5542a420"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a484"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.048Z",
+      "updatedAt": "2025-10-25T20:41:07.809Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a430",
+      "nombre": "Josefa Dorotea Larrosa",
+      "sexo": "F",
+      "nacimiento": "1889-05-12T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a410",
+        "68fd3388986ef0aa5542a420"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.049Z",
+      "updatedAt": "2025-10-25T20:41:07.819Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a432",
+      "nombre": "Valeriano Corbalán Larrosa",
+      "sexo": "M",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a410",
+        "68fd3388986ef0aa5542a420"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.050Z",
+      "updatedAt": "2025-10-25T20:41:07.812Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a434",
+      "nombre": "Teodoro Larrosa",
+      "sexo": "M",
+      "nacimiento": "1878-01-29T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a410",
+        "68fd3388986ef0aa5542a420"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a486"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.051Z",
+      "updatedAt": "2025-10-25T20:41:07.815Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a436",
+      "nombre": "Agustín Larrosa",
+      "sexo": "M",
+      "nacimiento": "1884-08-28T00:00:00.000Z",
+      "fallecimiento": "1918-12-08T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a410",
+        "68fd3388986ef0aa5542a420"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a48a"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.053Z",
+      "updatedAt": "2025-10-25T20:41:07.818Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a438",
+      "nombre": "Bernardino Percivale Cosso",
+      "sexo": "M",
+      "nacimiento": "1884-05-20T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a412",
+        "68fd3388986ef0aa5542a414"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.054Z",
+      "updatedAt": "2025-10-25T20:41:07.766Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a43a",
+      "nombre": "Juan Gualberto Larrosa",
+      "sexo": "M",
+      "nacimiento": "1882-06-12T00:00:00.000Z",
+      "fallecimiento": "1961-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a410",
+        "68fd3388986ef0aa5542a420"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a4a6"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.055Z",
+      "updatedAt": "2025-10-25T20:41:07.817Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a43c",
+      "nombre": "Segundo Alejo Corbalan",
+      "sexo": "M",
+      "nacimiento": "1874-07-17T00:00:00.000Z",
+      "fallecimiento": "1937-02-22T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a410",
+        "68fd3388986ef0aa5542a420"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a496"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.056Z",
+      "updatedAt": "2025-10-25T20:41:07.813Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a43e",
+      "nombre": "Celia Evarista Larrosa",
+      "sexo": "F",
+      "nacimiento": "1892-10-14T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a410",
+        "68fd3388986ef0aa5542a420"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a48e"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.058Z",
+      "updatedAt": "2025-10-25T20:41:07.820Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a440",
+      "nombre": "Carlos Alejandro Percival",
+      "sexo": "M",
+      "nacimiento": "1890-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a412",
+        "68fd3388986ef0aa5542a414"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a488"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.059Z",
+      "updatedAt": "2025-10-25T20:41:07.770Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a442",
+      "nombre": "Juan Clodomiro Percivale Cosso",
+      "sexo": "M",
+      "nacimiento": "1894-11-04T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a412",
+        "68fd3388986ef0aa5542a414"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a48c"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.061Z",
+      "updatedAt": "2025-10-25T20:41:07.774Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a444",
+      "nombre": "Sixta Gregoria Perchivale",
+      "sexo": "F",
+      "nacimiento": "1878-12-18T00:00:00.000Z",
+      "fallecimiento": "1923-05-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a412",
+        "68fd3388986ef0aa5542a414"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a49a",
+        "68fd3388986ef0aa5542a490"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.062Z",
+      "updatedAt": "2025-10-25T20:41:07.762Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a446",
+      "nombre": "Alejandro Baldomero Percivale Cosso",
+      "sexo": "M",
+      "nacimiento": "1891-02-27T00:00:00.000Z",
+      "fallecimiento": "1973-03-29T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a412",
+        "68fd3388986ef0aa5542a414"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a492"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.063Z",
+      "updatedAt": "2025-10-25T20:41:07.772Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a448",
+      "nombre": "Juan Carlos Perchivale",
+      "sexo": "M",
+      "nacimiento": "1896-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a412",
+        "68fd3388986ef0aa5542a414"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a48c"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.064Z",
+      "updatedAt": "2025-10-25T20:41:07.775Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a44a",
+      "nombre": "María Juana Percivale Cosso",
+      "sexo": "F",
+      "nacimiento": "1887-10-09T00:00:00.000Z",
+      "fallecimiento": "1920-03-05T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a412",
+        "68fd3388986ef0aa5542a414"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a41a"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.065Z",
+      "updatedAt": "2025-10-25T20:41:07.768Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a44c",
+      "nombre": "Catalina Dolores Percivale Cosso",
+      "sexo": "F",
+      "nacimiento": "1886-04-08T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a412",
+        "68fd3388986ef0aa5542a414"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a49e"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.066Z",
+      "updatedAt": "2025-10-25T20:41:07.767Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a44e",
+      "nombre": "Stefano Raffaele Francesco Percivale Cosso",
+      "sexo": "M",
+      "nacimiento": "1874-06-10T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a412",
+        "68fd3388986ef0aa5542a414"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a4a0"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.068Z",
+      "updatedAt": "2025-10-25T20:41:07.760Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a450",
+      "nombre": "Rosa Edelmira Percivale Cosso",
+      "sexo": "F",
+      "nacimiento": "1893-04-03T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a412",
+        "68fd3388986ef0aa5542a414"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a498"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.069Z",
+      "updatedAt": "2025-10-25T20:41:07.773Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a452",
+      "nombre": "Luis Ernesto Perchivale",
+      "sexo": "M",
+      "nacimiento": "1889-06-09T00:00:00.000Z",
+      "fallecimiento": "1963-07-06T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a412",
+        "68fd3388986ef0aa5542a414"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a49c"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.070Z",
+      "updatedAt": "2025-10-25T20:41:07.769Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a454",
+      "nombre": "Rosa Percivale Cosso",
+      "sexo": "F",
+      "nacimiento": "1897-01-13T00:00:00.000Z",
+      "fallecimiento": "1987-08-07T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a412",
+        "68fd3388986ef0aa5542a414"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a494"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.072Z",
+      "updatedAt": "2025-10-25T20:41:07.777Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a456",
+      "nombre": "Antonio Amadeo Percivale Cosso",
+      "sexo": "M",
+      "nacimiento": "1880-10-01T00:00:00.000Z",
+      "fallecimiento": "1967-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a412",
+        "68fd3388986ef0aa5542a414"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a4a2"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.073Z",
+      "updatedAt": "2025-10-25T20:41:07.763Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a458",
+      "nombre": "José Federico Percivalle",
+      "sexo": "M",
+      "nacimiento": "1882-09-27T00:00:00.000Z",
+      "fallecimiento": "1949-01-30T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a412",
+        "68fd3388986ef0aa5542a414"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a4a4"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.076Z",
+      "updatedAt": "2025-10-25T20:41:07.765Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a45a",
+      "nombre": "Sophie Pfahler Jenny",
+      "sexo": "F",
+      "nacimiento": "1874-12-09T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a426",
+        "68fd3388986ef0aa5542a424"
+      ],
+      "conyuges": [
+        "691f8fc49a40faf4eef48fc1"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.077Z",
+      "updatedAt": "2025-11-20T22:01:40.535Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a45c",
+      "nombre": "Johannes Fahler Jenny",
+      "sexo": "M",
+      "nacimiento": "1875-12-29T00:00:00.000Z",
+      "fallecimiento": "1876-05-24T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a426",
+        "68fd3388986ef0aa5542a424"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.079Z",
+      "updatedAt": "2025-10-25T20:41:07.826Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a45e",
+      "nombre": "Lina Fahler Jenny",
+      "sexo": "F",
+      "nacimiento": "1879-09-25T00:00:00.000Z",
+      "fallecimiento": "1924-05-26T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a426",
+        "68fd3388986ef0aa5542a424"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a40a"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.081Z",
+      "updatedAt": "2025-10-25T20:41:07.828Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a460",
+      "nombre": "Elisabeth Kümmerli Suter",
+      "sexo": "F",
+      "nacimiento": "1839-09-25T00:00:00.000Z",
+      "fallecimiento": "1874-02-08T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a426"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.082Z",
+      "updatedAt": "2025-10-25T20:41:07.843Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a462",
+      "nombre": "José Fahler Jenny",
+      "sexo": "M",
+      "nacimiento": "1881-09-25T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a426",
+        "68fd3388986ef0aa5542a424"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a4b0"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.083Z",
+      "updatedAt": "2025-10-25T20:41:07.829Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a464",
+      "nombre": "Luis Cantalicio Fahler Jenny",
+      "sexo": "M",
+      "nacimiento": "1888-04-30T00:00:00.000Z",
+      "fallecimiento": "1968-08-14T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a426",
+        "68fd3388986ef0aa5542a424"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a4a8"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.084Z",
+      "updatedAt": "2025-10-25T20:41:07.832Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a466",
+      "nombre": "NN Cosso Ballestra",
+      "sexo": "M",
+      "nacimiento": "1873-02-02T00:00:00.000Z",
+      "fallecimiento": "1873-02-02T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a422",
+        "68fd3388986ef0aa5542a428"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.085Z",
+      "updatedAt": "2025-10-25T20:41:07.782Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a468",
+      "nombre": "Ramón Alberto Fahler Jenny",
+      "sexo": "M",
+      "nacimiento": "1885-08-31T00:00:00.000Z",
+      "fallecimiento": "1970-07-12T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a426",
+        "68fd3388986ef0aa5542a424"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a4aa"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.086Z",
+      "updatedAt": "2025-10-25T20:41:07.831Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a46a",
+      "nombre": "Rosa Crispina Fahler Jenny",
+      "sexo": "F",
+      "nacimiento": "1889-10-25T00:00:00.000Z",
+      "fallecimiento": "1955-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a426",
+        "68fd3388986ef0aa5542a424"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a4ac"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.088Z",
+      "updatedAt": "2025-10-25T20:41:07.833Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a46c",
+      "nombre": "Francesco Cosso Balestra",
+      "sexo": "M",
+      "nacimiento": "1878-10-25T00:00:00.000Z",
+      "fallecimiento": "1880-04-13T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a422",
+        "68fd3388986ef0aa5542a428"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.089Z",
+      "updatedAt": "2025-10-25T20:41:07.786Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a46e",
+      "nombre": "Emilio Cosso Balestra",
+      "sexo": "M",
+      "nacimiento": "1878-10-25T00:00:00.000Z",
+      "fallecimiento": "1880-04-14T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a422",
+        "68fd3388986ef0aa5542a428"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.090Z",
+      "updatedAt": "2025-10-25T20:41:07.787Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a470",
+      "nombre": "Bartolomeo Cosso Balestra",
+      "sexo": "M",
+      "nacimiento": "1878-10-25T00:00:00.000Z",
+      "fallecimiento": "1879-03-20T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a422",
+        "68fd3388986ef0aa5542a428"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.092Z",
+      "updatedAt": "2025-10-25T20:41:07.785Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a472",
+      "nombre": "Luisa Felisa Cosso Balestra",
+      "sexo": "F",
+      "nacimiento": "1889-07-21T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a422",
+        "68fd3388986ef0aa5542a428"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.093Z",
+      "updatedAt": "2025-10-25T20:41:07.795Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a474",
+      "nombre": "Teresa Juana Cosso Balestra",
+      "sexo": "F",
+      "nacimiento": "1895-03-11T00:00:00.000Z",
+      "fallecimiento": "1900-05-26T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a422",
+        "68fd3388986ef0aa5542a428"
+      ],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.094Z",
+      "updatedAt": "2025-10-25T20:41:07.798Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a476",
+      "nombre": "José Francisco Cosso Balestra",
+      "sexo": "M",
+      "nacimiento": "1886-03-04T00:00:00.000Z",
+      "fallecimiento": "1926-03-31T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a422",
+        "68fd3388986ef0aa5542a428"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a4b2"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.095Z",
+      "updatedAt": "2025-10-25T20:41:07.791Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a478",
+      "nombre": "Rosa Catalina Cosso Balestra",
+      "sexo": "F",
+      "nacimiento": "1884-04-16T00:00:00.000Z",
+      "fallecimiento": "1946-10-21T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a422",
+        "68fd3388986ef0aa5542a428"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a4be"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.097Z",
+      "updatedAt": "2025-10-25T20:41:07.790Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a47a",
+      "nombre": "Pura Rafaela Cosso Balestra",
+      "sexo": "F",
+      "nacimiento": "1892-07-28T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a422",
+        "68fd3388986ef0aa5542a428"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a4b4"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.098Z",
+      "updatedAt": "2025-10-25T20:41:07.796Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a47c",
+      "nombre": "Pietro Basilio Cosso Balestra",
+      "sexo": "M",
+      "nacimiento": "1875-05-03T00:00:00.000Z",
+      "fallecimiento": "1950-02-17T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a422",
+        "68fd3388986ef0aa5542a428"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a4b8",
+        "68fd3388986ef0aa5542a4b6"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.099Z",
+      "updatedAt": "2025-10-25T20:41:07.783Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a47e",
+      "nombre": "Domingo Fahler Jenny",
+      "sexo": "M",
+      "nacimiento": "1883-08-26T00:00:00.000Z",
+      "fallecimiento": "1935-07-02T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a426",
+        "68fd3388986ef0aa5542a424"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a4c0",
+        "68fd3388986ef0aa5542a4ae"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.100Z",
+      "updatedAt": "2025-10-25T20:41:07.830Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a480",
+      "nombre": "María Catalina Cosso Balestra",
+      "sexo": "F",
+      "nacimiento": "1882-04-29T00:00:00.000Z",
+      "fallecimiento": "1968-02-29T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a422",
+        "68fd3388986ef0aa5542a428"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a4bc"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.101Z",
+      "updatedAt": "2025-10-25T20:41:07.789Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a482",
+      "nombre": "Catalina Teresa Cosso Balestra",
+      "sexo": "F",
+      "nacimiento": "1887-12-29T00:00:00.000Z",
+      "notas": "",
+      "padres": [
+        "68fd3388986ef0aa5542a422",
+        "68fd3388986ef0aa5542a428"
+      ],
+      "conyuges": [
+        "68fd3388986ef0aa5542a4ba"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.102Z",
+      "updatedAt": "2025-10-25T20:41:07.793Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a484",
+      "nombre": "Saturnina Garcia",
+      "sexo": "F",
+      "nacimiento": "1873-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a42e"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.103Z",
+      "updatedAt": "2025-10-25T20:41:07.844Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a486",
+      "nombre": "Raimunda Iglesias",
+      "sexo": "F",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a434"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.105Z",
+      "updatedAt": "2025-10-25T20:41:07.845Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a488",
+      "nombre": "Demetria Morales",
+      "sexo": "F",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a440"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.107Z",
+      "updatedAt": "2025-10-28T02:44:51.149Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a48a",
+      "nombre": "Maria Dolores Otero",
+      "sexo": "F",
+      "nacimiento": "1893-09-07T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a436"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.108Z",
+      "updatedAt": "2025-10-25T20:41:07.846Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a48c",
+      "nombre": "Valentina Chanquet",
+      "sexo": "F",
+      "nacimiento": "1908-12-16T00:00:00.000Z",
+      "fallecimiento": "1974-07-21T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a442",
+        "68fd3388986ef0aa5542a448"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.109Z",
+      "updatedAt": "2025-10-25T20:41:07.848Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a48e",
+      "nombre": "Evaristo Estanislao Alem",
+      "sexo": "M",
+      "nacimiento": "1888-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a43e"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.111Z",
+      "updatedAt": "2025-10-25T20:41:07.847Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a490",
+      "nombre": "Felipe Tomás Scandella Acosta",
+      "sexo": "M",
+      "nacimiento": "1879-05-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a444"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.112Z",
+      "updatedAt": "2025-10-25T20:41:07.858Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a492",
+      "nombre": "Eugenia Luisa Humore",
+      "sexo": "F",
+      "nacimiento": "1890-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a446"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.114Z",
+      "updatedAt": "2025-10-25T20:41:07.851Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a494",
+      "nombre": "Francesco Salvatore Gangale",
+      "sexo": "M",
+      "nacimiento": "1897-12-15T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a454"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.115Z",
+      "updatedAt": "2025-10-25T20:41:07.852Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a496",
+      "nombre": "Maria Juana De Paoli",
+      "sexo": "F",
+      "nacimiento": "1885-11-22T00:00:00.000Z",
+      "fallecimiento": "1948-04-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a43c"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.117Z",
+      "updatedAt": "2025-10-25T20:41:07.849Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a498",
+      "nombre": "Genaro Antonio Francisco Casella",
+      "sexo": "M",
+      "nacimiento": "1888-07-10T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a450"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.119Z",
+      "updatedAt": "2025-10-25T20:41:07.853Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a49a",
+      "nombre": "Ireneo Teodosio Perez",
+      "sexo": "M",
+      "nacimiento": "1879-01-01T00:00:00.000Z",
+      "fallecimiento": "1918-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a444"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.122Z",
+      "updatedAt": "2025-10-25T20:41:07.857Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a49c",
+      "nombre": "María Emma Casella",
+      "sexo": "F",
+      "nacimiento": "1889-01-01T00:00:00.000Z",
+      "fallecimiento": "1957-01-10T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a452"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.124Z",
+      "updatedAt": "2025-10-25T20:41:07.852Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a49e",
+      "nombre": "Serapio Euclides Abramor Benitez",
+      "sexo": "M",
+      "nacimiento": "1888-02-29T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a44c"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.125Z",
+      "updatedAt": "2025-10-25T20:41:07.850Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a4a0",
+      "nombre": "Maria Baldomera Caprile",
+      "sexo": "F",
+      "nacimiento": "1885-02-28T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a44e"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.126Z",
+      "updatedAt": "2025-10-25T20:41:07.855Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a4a2",
+      "nombre": "Maria Rosa Apesteguía",
+      "sexo": "F",
+      "nacimiento": "1881-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a456"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.127Z",
+      "updatedAt": "2025-10-25T20:41:07.854Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a4a4",
+      "nombre": "Cenobia Troncoso Martinez",
+      "sexo": "F",
+      "nacimiento": "1889-10-29T00:00:00.000Z",
+      "fallecimiento": "1976-07-07T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a458"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.128Z",
+      "updatedAt": "2025-10-25T20:41:07.859Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a4a6",
+      "nombre": "Serapia Amelia De Paoli",
+      "sexo": "F",
+      "nacimiento": "1900-09-12T00:00:00.000Z",
+      "fallecimiento": "1963-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a43a"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.129Z",
+      "updatedAt": "2025-10-25T20:41:07.860Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a4a8",
+      "nombre": "Amalia Lafolie",
+      "sexo": "F",
+      "nacimiento": "1901-04-13T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a464"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.131Z",
+      "updatedAt": "2025-11-12T18:01:39.126Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a4aa",
+      "nombre": "Rosa Dal Bó Armelín",
+      "sexo": "F",
+      "nacimiento": "1892-10-21T00:00:00.000Z",
+      "fallecimiento": "1935-10-10T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a468"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.132Z",
+      "updatedAt": "2025-10-25T20:41:07.864Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a4ac",
+      "nombre": "Candido Acosta",
+      "sexo": "M",
+      "nacimiento": "1887-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a46a"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.133Z",
+      "updatedAt": "2025-10-25T20:41:07.863Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a4ae",
+      "nombre": "Zulema Correa",
+      "sexo": "F",
+      "nacimiento": "1889-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a47e"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.134Z",
+      "updatedAt": "2025-10-25T20:41:07.868Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a4b0",
+      "nombre": "Andrea Quintana",
+      "sexo": "F",
+      "nacimiento": "1890-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a462"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.136Z",
+      "updatedAt": "2025-10-25T20:41:07.862Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a4b2",
+      "nombre": "Luisa Adriana Maria Cicerone",
+      "sexo": "F",
+      "nacimiento": "1891-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a476"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.139Z",
+      "updatedAt": "2025-10-25T20:41:07.865Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a4b4",
+      "nombre": "José Francisco Carlos Falcon",
+      "sexo": "M",
+      "nacimiento": "1892-01-01T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a47a"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.140Z",
+      "updatedAt": "2025-10-25T20:41:07.866Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a4b6",
+      "nombre": "Rosa Tassistro Piacentini",
+      "sexo": "F",
+      "nacimiento": "1877-04-16T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a47c"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.142Z",
+      "updatedAt": "2025-10-25T20:41:07.872Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a4b8",
+      "nombre": "Ermelina Tassistro Piacentini",
+      "sexo": "F",
+      "nacimiento": "1887-01-05T00:00:00.000Z",
+      "fallecimiento": "1978-07-31T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a47c"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.144Z",
+      "updatedAt": "2025-11-12T18:01:35.947Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a4ba",
+      "nombre": "Manuel Cristaldo",
+      "sexo": "M",
+      "nacimiento": "1879-12-01T00:00:00.000Z",
+      "fallecimiento": "1921-03-23T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a482"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.145Z",
+      "updatedAt": "2025-10-25T20:41:07.873Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a4bc",
+      "nombre": "Emilio Nicolas Julian Cosso Percivale",
+      "sexo": "M",
+      "nacimiento": "1877-05-28T00:00:00.000Z",
+      "fallecimiento": "1967-09-23T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a480"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.146Z",
+      "updatedAt": "2025-10-25T20:41:07.869Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a4be",
+      "nombre": "Saverio Cosso Tavella",
+      "sexo": "M",
+      "nacimiento": "1875-08-21T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a478"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.147Z",
+      "updatedAt": "2025-10-25T20:41:07.875Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fd3388986ef0aa5542a4c0",
+      "nombre": "Maria Zulema Correa",
+      "sexo": "F",
+      "nacimiento": "1889-01-04T00:00:00.000Z",
+      "fallecimiento": "1937-09-09T00:00:00.000Z",
+      "notas": "",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a47e"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-25T20:31:04.148Z",
+      "updatedAt": "2025-10-25T20:41:07.867Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fe63cd2383570f09719b14",
+      "nombre": "Alberto Casimiro Salvarezza Perosio",
+      "sexo": "M",
+      "nacimiento": "1980-03-06T03:00:00.000Z",
+      "fallecimiento": "1970-12-17T03:00:00.000Z",
+      "padres": [
+        "69002d4455c127badcad5a55",
+        "69002d5855c127badcad5a59"
+      ],
+      "conyuges": [
+        "68fe64492383570f09719b2c"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a35c"
+      ],
+      "medios": [
+        {
+          "_id": "6930cfd37a7d38f36e6a692e",
+          "tipo": "imagen",
+          "titulo": "aa",
+          "fecha": "2025-12-12T00:00:00.000Z",
+          "ruta": "/uploads/1764806611788_8.jpg",
+          "nombreArchivo": "8.jpg",
+          "descripcion": "aa"
+        }
+      ],
+      "createdAt": "2025-10-26T18:09:17.896Z",
+      "updatedAt": "2025-12-04T00:03:31.794Z",
+      "__v": 0,
+      "avatarUrl": "/uploads/1763087494907_GATO.avif"
+    },
+    {
+      "_id": "68fe64492383570f09719b2c",
+      "nombre": "Ana Maria Degregori Perez",
+      "sexo": "F",
+      "nacimiento": "1899-11-24T04:16:48.000Z",
+      "fallecimiento": "1963-03-20T03:00:00.000Z",
+      "padres": [
+        "69002d6d55c127badcad5a5d",
+        "69002d7955c127badcad5a61"
+      ],
+      "conyuges": [
+        "68fe63cd2383570f09719b14"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a35c"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-26T18:11:21.191Z",
+      "updatedAt": "2025-10-28T02:43:07.207Z",
+      "__v": 0
+    },
+    {
+      "_id": "68fe975c6b7169cb1be48830",
+      "nombre": "Benjamin Soto",
+      "sexo": "M",
+      "nacimiento": "2001-02-09T03:00:00.000Z",
+      "padres": [
+        "68fd3387986ef0aa5542a376",
+        "69162fbeb9718f89ffdbfbab"
+      ],
+      "conyuges": [
+        "69162fd0b9718f89ffdc01c3"
+      ],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-26T21:49:16.104Z",
+      "updatedAt": "2025-11-13T19:21:52.441Z",
+      "__v": 0
+    },
+    {
+      "_id": "69002d4455c127badcad5a55",
+      "nombre": "Giambattista Stefano Salvarezza",
+      "sexo": "M",
+      "nacimiento": "1956-08-28T03:00:00.000Z",
+      "padres": [
+        "69002fbf55c127badcad6f4e",
+        "69002fca55c127badcad6f52"
+      ],
+      "conyuges": [
+        "69002d5855c127badcad5a59",
+        "69112f940924e9a7b6008f67"
+      ],
+      "hijos": [
+        "68fe63cd2383570f09719b14"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-28T02:41:08.812Z",
+      "updatedAt": "2025-11-12T18:01:54.343Z",
+      "__v": 0
+    },
+    {
+      "_id": "69002d5855c127badcad5a59",
+      "nombre": "Emetria Fortunata Anita",
+      "sexo": "F",
+      "padres": [
+        "692b2d0b9ea43ec9a8226dbc"
+      ],
+      "conyuges": [
+        "69002d4455c127badcad5a55"
+      ],
+      "hijos": [
+        "68fe63cd2383570f09719b14"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-28T02:41:28.872Z",
+      "updatedAt": "2025-11-29T17:27:39.940Z",
+      "__v": 0
+    },
+    {
+      "_id": "69002d6d55c127badcad5a5d",
+      "nombre": "Matias Degregori Deluchi",
+      "sexo": "M",
+      "padres": [
+        "691649e6b9718f89ffdcaae7"
+      ],
+      "conyuges": [
+        "69002d7955c127badcad5a61"
+      ],
+      "hijos": [
+        "68fe64492383570f09719b2c"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-28T02:41:49.541Z",
+      "updatedAt": "2025-12-01T22:40:33.924Z",
+      "__v": 0,
+      "causaFallecimiento": "",
+      "fallecimiento": null,
+      "lugarFallecimiento": "",
+      "lugarNacimiento": "",
+      "matrimonio": {
+        "fecha": "2025-12-12T03:00:00.000Z",
+        "lugar": "Neuquen"
+      },
+      "nacimiento": null
+    },
+    {
+      "_id": "69002d7955c127badcad5a61",
+      "nombre": "Eugenia Rosa Perez Favré",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "69002d6d55c127badcad5a5d"
+      ],
+      "hijos": [
+        "68fe64492383570f09719b2c"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-28T02:42:02.000Z",
+      "updatedAt": "2025-10-28T02:43:50.747Z",
+      "__v": 0
+    },
+    {
+      "_id": "69002f9f55c127badcad6f4a",
+      "nombre": "Eugenia Rosa Perez Favré",
+      "sexo": "X",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-28T02:51:11.798Z",
+      "updatedAt": "2025-10-28T02:51:11.798Z",
+      "__v": 0
+    },
+    {
+      "_id": "69002fbf55c127badcad6f4e",
+      "nombre": "Domenico Michele Salvarezza",
+      "sexo": "M",
+      "padres": [
+        "69002ff055c127badcad6f5e",
+        "69002ff955c127badcad6f62"
+      ],
+      "conyuges": [
+        "69002fca55c127badcad6f52"
+      ],
+      "hijos": [
+        "69002d4455c127badcad5a55"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-28T02:51:43.925Z",
+      "updatedAt": "2025-10-28T02:58:05.352Z",
+      "__v": 0
+    },
+    {
+      "_id": "69002fca55c127badcad6f52",
+      "nombre": "Teresa Salvarezza",
+      "sexo": "F",
+      "padres": [
+        "6900300255c127badcad6f66",
+        "6900301155c127badcad6f6a"
+      ],
+      "conyuges": [
+        "69002fbf55c127badcad6f4e"
+      ],
+      "hijos": [
+        "69002d4455c127badcad5a55"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-28T02:51:54.941Z",
+      "updatedAt": "2025-10-28T02:59:30.835Z",
+      "__v": 0
+    },
+    {
+      "_id": "69002fd455c127badcad6f56",
+      "nombre": "Juan Perosio",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-28T02:52:04.332Z",
+      "updatedAt": "2025-10-28T02:52:04.332Z",
+      "__v": 0
+    },
+    {
+      "_id": "69002fe055c127badcad6f5a",
+      "nombre": "Rosa Sumino",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-28T02:52:16.378Z",
+      "updatedAt": "2025-10-28T02:52:16.378Z",
+      "__v": 0
+    },
+    {
+      "_id": "69002ff055c127badcad6f5e",
+      "nombre": "Giovanni Battista Salvarezza",
+      "sexo": "M",
+      "padres": [
+        "69164c96b9718f89ffdcc404"
+      ],
+      "conyuges": [
+        "69002ff955c127badcad6f62"
+      ],
+      "hijos": [
+        "69002fbf55c127badcad6f4e"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-28T02:52:32.202Z",
+      "updatedAt": "2025-11-13T21:24:38.256Z",
+      "__v": 0
+    },
+    {
+      "_id": "69002ff955c127badcad6f62",
+      "nombre": "Francesca Deluchi",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "69002ff055c127badcad6f5e"
+      ],
+      "hijos": [
+        "69002fbf55c127badcad6f4e"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-28T02:52:41.222Z",
+      "updatedAt": "2025-10-28T02:58:25.414Z",
+      "__v": 0
+    },
+    {
+      "_id": "6900300255c127badcad6f66",
+      "nombre": "Giorgio Salvarezza",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [
+        "6900301155c127badcad6f6a"
+      ],
+      "hijos": [
+        "69002fca55c127badcad6f52"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-28T02:52:50.910Z",
+      "updatedAt": "2025-10-28T02:59:47.326Z",
+      "__v": 0
+    },
+    {
+      "_id": "6900301155c127badcad6f6a",
+      "nombre": "Catterina Repetto",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "6900300255c127badcad6f66"
+      ],
+      "hijos": [
+        "69002fca55c127badcad6f52"
+      ],
+      "medios": [],
+      "createdAt": "2025-10-28T02:53:05.978Z",
+      "updatedAt": "2025-10-28T02:59:47.326Z",
+      "__v": 0
+    },
+    {
+      "_id": "6900302c55c127badcad6f6e",
+      "nombre": "Giovanni Degregori",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-28T02:53:32.260Z",
+      "updatedAt": "2025-10-28T02:53:32.260Z",
+      "__v": 0
+    },
+    {
+      "_id": "6900303f55c127badcad6f72",
+      "nombre": "Maria Deluchi",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-28T02:53:51.494Z",
+      "updatedAt": "2025-10-28T02:53:51.494Z",
+      "__v": 0
+    },
+    {
+      "_id": "6900304b55c127badcad6f76",
+      "nombre": "Giuseppe Deluchi",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-28T02:54:03.566Z",
+      "updatedAt": "2025-10-28T02:54:03.566Z",
+      "__v": 0
+    },
+    {
+      "_id": "6900305355c127badcad6f7a",
+      "nombre": "Catterina Sobrero",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-28T02:54:11.559Z",
+      "updatedAt": "2025-10-28T02:54:11.559Z",
+      "__v": 0
+    },
+    {
+      "_id": "6900306455c127badcad6f7e",
+      "nombre": "Pedro José Pepey Bozon",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-28T02:54:28.046Z",
+      "updatedAt": "2025-10-28T02:54:28.046Z",
+      "__v": 0
+    },
+    {
+      "_id": "6900307155c127badcad6f82",
+      "nombre": "Anne Marie Favre-Buisson",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-28T02:54:41.519Z",
+      "updatedAt": "2025-10-28T02:54:41.519Z",
+      "__v": 0
+    },
+    {
+      "_id": "6900308255c127badcad6f86",
+      "nombre": "Saturnin Pepey",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-28T02:54:58.828Z",
+      "updatedAt": "2025-10-28T02:54:58.828Z",
+      "__v": 0
+    },
+    {
+      "_id": "6900308c55c127badcad6f8a",
+      "nombre": "Ana Maria de Pepey",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-28T02:55:08.247Z",
+      "updatedAt": "2025-10-28T02:55:08.247Z",
+      "__v": 0
+    },
+    {
+      "_id": "690030a555c127badcad6f8e",
+      "nombre": "François Favre Buisson",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-28T02:55:33.871Z",
+      "updatedAt": "2025-10-28T02:55:33.871Z",
+      "__v": 0
+    },
+    {
+      "_id": "690030b055c127badcad6f92",
+      "nombre": "Cecille Paret Gris",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-10-28T02:55:44.335Z",
+      "updatedAt": "2025-10-28T02:55:44.335Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbcd0e675ff1fc757f035",
+      "nombre": "ejemplo1",
+      "sexo": "M",
+      "padres": [
+        "690fbe2de675ff1fc757f6d2",
+        "690fbe33e675ff1fc757f6d6"
+      ],
+      "conyuges": [
+        "690fbcd5e675ff1fc757f039"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a3cc"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T21:57:36.563Z",
+      "updatedAt": "2025-11-11T02:33:18.416Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbcd5e675ff1fc757f039",
+      "nombre": "ejemplo2",
+      "sexo": "F",
+      "padres": [
+        "690fbe38e675ff1fc757f6da",
+        "690fbe40e675ff1fc757f6de"
+      ],
+      "conyuges": [
+        "690fbcd0e675ff1fc757f035"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a3cc"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T21:57:41.488Z",
+      "updatedAt": "2025-11-11T02:33:22.739Z",
+      "__v": 0,
+      "causaFallecimiento": "",
+      "fallecimiento": null,
+      "lugarFallecimiento": "",
+      "lugarNacimiento": "",
+      "nacimiento": null
+    },
+    {
+      "_id": "690fbdd4e675ff1fc757f6ac",
+      "nombre": "ejemplo3-gen5",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-11-08T22:01:56.308Z",
+      "updatedAt": "2025-11-08T22:01:56.308Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbddbe675ff1fc757f6b0",
+      "nombre": "ejemplo4-gen5",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-11-08T22:02:03.034Z",
+      "updatedAt": "2025-11-08T22:02:03.034Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbde5e675ff1fc757f6b4",
+      "nombre": "ejemplo1-gen6",
+      "sexo": "M",
+      "padres": [
+        "690fd589e675ff1fc75826ee",
+        "690fd58fe675ff1fc75826f2"
+      ],
+      "conyuges": [
+        "690fbe20e675ff1fc757f6ce"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a3c0"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:02:13.458Z",
+      "updatedAt": "2025-11-08T23:46:10.345Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbdf2e675ff1fc757f6b8",
+      "nombre": "ejemplo2-gen6",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-11-08T22:02:26.745Z",
+      "updatedAt": "2025-11-08T22:10:55.665Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbdf9e675ff1fc757f6bc",
+      "nombre": "ejemplo3-gen6",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-11-08T22:02:33.529Z",
+      "updatedAt": "2025-11-08T22:11:08.615Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbe20e675ff1fc757f6ce",
+      "nombre": "ejemplo4-gen6",
+      "sexo": "F",
+      "padres": [
+        "690fd594e675ff1fc75826f6",
+        "690fd59be675ff1fc75826fa"
+      ],
+      "conyuges": [
+        "690fbde5e675ff1fc757f6b4"
+      ],
+      "hijos": [
+        "68fd3387986ef0aa5542a3c0"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:03:12.114Z",
+      "updatedAt": "2025-11-08T23:47:02.293Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbe2de675ff1fc757f6d2",
+      "nombre": "ejemplo1-gen7",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [
+        "690fbe33e675ff1fc757f6d6"
+      ],
+      "hijos": [
+        "690fbcd0e675ff1fc757f035"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:03:25.370Z",
+      "updatedAt": "2025-11-08T22:14:50.327Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbe33e675ff1fc757f6d6",
+      "nombre": "ejemplo2-gen7",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "690fbe2de675ff1fc757f6d2"
+      ],
+      "hijos": [
+        "690fbcd0e675ff1fc757f035"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:03:31.072Z",
+      "updatedAt": "2025-11-08T22:14:50.327Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbe38e675ff1fc757f6da",
+      "nombre": "ejemplo3-gen7",
+      "sexo": "M",
+      "padres": [
+        "69164c75b9718f89ffdcbd91",
+        "6928b1b5d00039cbba09d724"
+      ],
+      "conyuges": [
+        "690fbe40e675ff1fc757f6de"
+      ],
+      "hijos": [
+        "690fbcd5e675ff1fc757f039"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:03:36.651Z",
+      "updatedAt": "2025-11-27T20:16:53.509Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbe40e675ff1fc757f6de",
+      "nombre": "ejemplo4-gen7",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "690fbe38e675ff1fc757f6da"
+      ],
+      "hijos": [
+        "690fbcd5e675ff1fc757f039"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:03:44.532Z",
+      "updatedAt": "2025-11-08T23:45:14.992Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbe47e675ff1fc757f6e2",
+      "nombre": "ejemplo1-gen8",
+      "sexo": "M",
+      "padres": [
+        "690fbe79e675ff1fc757f6f2",
+        "690fbe7ee675ff1fc757f6f6"
+      ],
+      "conyuges": [
+        "690fbe63e675ff1fc757f6e6"
+      ],
+      "hijos": [
+        "690fd594e675ff1fc75826f6"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:03:51.240Z",
+      "updatedAt": "2025-11-09T00:10:25.101Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbe63e675ff1fc757f6e6",
+      "nombre": "ejemplo2-gen8",
+      "sexo": "F",
+      "padres": [
+        "690fbe88e675ff1fc757f6fe",
+        "690fbe8de675ff1fc757f702"
+      ],
+      "conyuges": [
+        "690fbe47e675ff1fc757f6e2"
+      ],
+      "hijos": [
+        "690fd594e675ff1fc75826f6"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:04:19.954Z",
+      "updatedAt": "2025-11-09T00:11:42.395Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbe69e675ff1fc757f6ea",
+      "nombre": "ejemplo3-gen8",
+      "sexo": "M",
+      "padres": [
+        "690fdb90e675ff1fc7585dba",
+        "690fdb96e675ff1fc7585dbe"
+      ],
+      "conyuges": [
+        "690fbe6fe675ff1fc757f6ee"
+      ],
+      "hijos": [
+        "690fd59be675ff1fc75826fa"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:04:25.437Z",
+      "updatedAt": "2025-11-09T00:12:47.152Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbe6fe675ff1fc757f6ee",
+      "nombre": "ejemplo4-gen8",
+      "sexo": "F",
+      "padres": [
+        "690fdb9ce675ff1fc7585dc2",
+        "690fdba1e675ff1fc7585dc6"
+      ],
+      "conyuges": [
+        "690fbe69e675ff1fc757f6ea"
+      ],
+      "hijos": [
+        "690fd59be675ff1fc75826fa"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:04:31.681Z",
+      "updatedAt": "2025-11-09T00:13:48.870Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbe79e675ff1fc757f6f2",
+      "nombre": "ejemplo1-gen9",
+      "sexo": "M",
+      "padres": [
+        "690fbe97e675ff1fc757f706",
+        "690fbe9ce675ff1fc757f70a"
+      ],
+      "conyuges": [
+        "690fbe7ee675ff1fc757f6f6"
+      ],
+      "hijos": [
+        "690fbe47e675ff1fc757f6e2"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:04:41.370Z",
+      "updatedAt": "2025-11-09T00:16:04.864Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbe7ee675ff1fc757f6f6",
+      "nombre": "ejemplo2-gen9",
+      "sexo": "F",
+      "padres": [
+        "690fbea4e675ff1fc757f70e",
+        "690fbeb0e675ff1fc757f716"
+      ],
+      "conyuges": [
+        "690fbe79e675ff1fc757f6f2"
+      ],
+      "hijos": [
+        "690fbe47e675ff1fc757f6e2"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:04:46.431Z",
+      "updatedAt": "2025-11-09T00:16:32.658Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbe82e675ff1fc757f6fa",
+      "nombre": "ejemplo3-gen9",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-11-08T22:04:50.957Z",
+      "updatedAt": "2025-11-08T22:04:50.957Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbe88e675ff1fc757f6fe",
+      "nombre": "ejemplo3-gen9",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [
+        "690fbe8de675ff1fc757f702"
+      ],
+      "hijos": [
+        "690fbe63e675ff1fc757f6e6"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:04:56.521Z",
+      "updatedAt": "2025-11-09T00:11:59.705Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbe8de675ff1fc757f702",
+      "nombre": "ejemplo4-gen9",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "690fbe88e675ff1fc757f6fe"
+      ],
+      "hijos": [
+        "690fbe63e675ff1fc757f6e6"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:05:01.665Z",
+      "updatedAt": "2025-11-09T00:11:59.705Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbe97e675ff1fc757f706",
+      "nombre": "ejemplo1-gen10",
+      "sexo": "M",
+      "padres": [
+        "690fbeb4e675ff1fc757f71a",
+        "690fbebce675ff1fc757f71e"
+      ],
+      "conyuges": [
+        "690fbe9ce675ff1fc757f70a"
+      ],
+      "hijos": [
+        "690fbe79e675ff1fc757f6f2"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:05:11.015Z",
+      "updatedAt": "2025-11-09T00:18:47.590Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbe9ce675ff1fc757f70a",
+      "nombre": "ejemplo2-gen10",
+      "sexo": "F",
+      "padres": [
+        "690fbec3e675ff1fc757f722",
+        "690fbecae675ff1fc757f726"
+      ],
+      "conyuges": [
+        "690fbe97e675ff1fc757f706"
+      ],
+      "hijos": [
+        "690fbe79e675ff1fc757f6f2"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:05:16.474Z",
+      "updatedAt": "2025-11-09T00:19:21.130Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbea4e675ff1fc757f70e",
+      "nombre": "ejemplo3-gen10",
+      "sexo": "M",
+      "padres": [
+        "690fdd8ee675ff1fc75881e5",
+        "690fdd94e675ff1fc75881e9"
+      ],
+      "conyuges": [
+        "690fbeb0e675ff1fc757f716"
+      ],
+      "hijos": [
+        "690fbe7ee675ff1fc757f6f6"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:05:24.134Z",
+      "updatedAt": "2025-11-09T00:19:47.065Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbea9e675ff1fc757f712",
+      "nombre": "ejemplo3-gen10",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [],
+      "medios": [],
+      "createdAt": "2025-11-08T22:05:29.697Z",
+      "updatedAt": "2025-11-08T22:05:29.697Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbeb0e675ff1fc757f716",
+      "nombre": "ejemplo4-gen10",
+      "sexo": "F",
+      "padres": [
+        "690fddafe675ff1fc75881ff",
+        "690fddb3e675ff1fc7588203"
+      ],
+      "conyuges": [
+        "690fbea4e675ff1fc757f70e"
+      ],
+      "hijos": [
+        "690fbe7ee675ff1fc757f6f6"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:05:36.068Z",
+      "updatedAt": "2025-11-09T00:20:11.118Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbeb4e675ff1fc757f71a",
+      "nombre": "ejemplo1-gen11",
+      "sexo": "M",
+      "padres": [
+        "692b67319ea43ec9a822e881",
+        "692b686c9ea43ec9a8230293"
+      ],
+      "conyuges": [
+        "690fbebce675ff1fc757f71e"
+      ],
+      "hijos": [
+        "690fbe97e675ff1fc757f706"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:05:40.457Z",
+      "updatedAt": "2025-11-29T21:41:00.553Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbebce675ff1fc757f71e",
+      "nombre": "ejemplo2-gen11",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "690fbeb4e675ff1fc757f71a"
+      ],
+      "hijos": [
+        "690fbe97e675ff1fc757f706"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:05:48.096Z",
+      "updatedAt": "2025-11-09T00:18:47.590Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbec3e675ff1fc757f722",
+      "nombre": "ejemplo3-gen11",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [
+        "690fbecae675ff1fc757f726"
+      ],
+      "hijos": [
+        "690fbe9ce675ff1fc757f70a"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:05:55.093Z",
+      "updatedAt": "2025-11-09T00:22:15.774Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fbecae675ff1fc757f726",
+      "nombre": "ejemplo4-gen11",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "690fbec3e675ff1fc757f722"
+      ],
+      "hijos": [
+        "690fbe9ce675ff1fc757f70a"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T22:06:02.370Z",
+      "updatedAt": "2025-11-09T00:22:15.774Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fd589e675ff1fc75826ee",
+      "nombre": "ejemplo5-gen7",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [
+        "690fd58fe675ff1fc75826f2"
+      ],
+      "hijos": [
+        "690fbde5e675ff1fc757f6b4"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T23:43:06.000Z",
+      "updatedAt": "2025-11-08T23:47:40.929Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fd58fe675ff1fc75826f2",
+      "nombre": "ejemplo6-gen7",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "690fd589e675ff1fc75826ee"
+      ],
+      "hijos": [
+        "690fbde5e675ff1fc757f6b4"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T23:43:11.063Z",
+      "updatedAt": "2025-11-08T23:47:40.929Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fd594e675ff1fc75826f6",
+      "nombre": "ejemplo7-gen7",
+      "sexo": "M",
+      "padres": [
+        "690fbe47e675ff1fc757f6e2",
+        "690fbe63e675ff1fc757f6e6"
+      ],
+      "conyuges": [
+        "690fd59be675ff1fc75826fa"
+      ],
+      "hijos": [
+        "690fbe20e675ff1fc757f6ce"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T23:43:16.497Z",
+      "updatedAt": "2025-11-08T23:58:57.196Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fd59be675ff1fc75826fa",
+      "nombre": "ejemplo8-gen7",
+      "sexo": "F",
+      "padres": [
+        "690fbe69e675ff1fc757f6ea",
+        "690fbe6fe675ff1fc757f6ee"
+      ],
+      "conyuges": [
+        "690fd594e675ff1fc75826f6"
+      ],
+      "hijos": [
+        "690fbe20e675ff1fc757f6ce"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-08T23:43:23.360Z",
+      "updatedAt": "2025-11-09T00:07:28.848Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fdb90e675ff1fc7585dba",
+      "nombre": "ejemplo5-gen9",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [
+        "690fdb96e675ff1fc7585dbe"
+      ],
+      "hijos": [
+        "690fbe69e675ff1fc757f6ea"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-09T00:08:48.130Z",
+      "updatedAt": "2025-11-09T00:13:11.309Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fdb96e675ff1fc7585dbe",
+      "nombre": "ejemplo6-gen9",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "690fdb90e675ff1fc7585dba"
+      ],
+      "hijos": [
+        "690fbe69e675ff1fc757f6ea"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-09T00:08:54.905Z",
+      "updatedAt": "2025-11-09T00:13:11.309Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fdb9ce675ff1fc7585dc2",
+      "nombre": "ejemplo7-gen9",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [
+        "690fdba1e675ff1fc7585dc6"
+      ],
+      "hijos": [
+        "690fbe6fe675ff1fc757f6ee"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-09T00:09:00.303Z",
+      "updatedAt": "2025-11-09T00:13:57.547Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fdba1e675ff1fc7585dc6",
+      "nombre": "ejemplo8-gen9",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "690fdb9ce675ff1fc7585dc2"
+      ],
+      "hijos": [
+        "690fbe6fe675ff1fc757f6ee"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-09T00:09:05.549Z",
+      "updatedAt": "2025-11-09T00:13:57.547Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fdd8ee675ff1fc75881e5",
+      "nombre": "ejemplo5-gen11",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [
+        "690fdd94e675ff1fc75881e9"
+      ],
+      "hijos": [
+        "690fbea4e675ff1fc757f70e"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-09T00:17:18.805Z",
+      "updatedAt": "2025-11-09T00:24:11.923Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fdd94e675ff1fc75881e9",
+      "nombre": "ejemplo6-gen11",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "690fdd8ee675ff1fc75881e5"
+      ],
+      "hijos": [
+        "690fbea4e675ff1fc757f70e"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-09T00:17:24.098Z",
+      "updatedAt": "2025-11-09T00:24:11.923Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fddafe675ff1fc75881ff",
+      "nombre": "ejemplo7-gen11",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [
+        "690fddb3e675ff1fc7588203"
+      ],
+      "hijos": [
+        "690fbeb0e675ff1fc757f716"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-09T00:17:51.094Z",
+      "updatedAt": "2025-11-09T00:24:40.168Z",
+      "__v": 0
+    },
+    {
+      "_id": "690fddb3e675ff1fc7588203",
+      "nombre": "ejemplo8-gen11",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "690fddafe675ff1fc75881ff"
+      ],
+      "hijos": [
+        "690fbeb0e675ff1fc757f716"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-09T00:17:55.825Z",
+      "updatedAt": "2025-11-09T00:24:40.168Z",
+      "__v": 0
+    },
+    {
+      "_id": "69112b800924e9a7b60082cf",
+      "nombre": "ejemplo gen 6",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [
+        "69112b8b0924e9a7b60082d3"
+      ],
+      "hijos": [
+        "68fd3388986ef0aa5542a3fe"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-10T00:02:08.955Z",
+      "updatedAt": "2025-11-10T00:04:09.310Z",
+      "__v": 0,
+      "causaFallecimiento": "",
+      "fallecimiento": null,
+      "lugarFallecimiento": "",
+      "lugarNacimiento": "",
+      "nacimiento": null
+    },
+    {
+      "_id": "69112b8b0924e9a7b60082d3",
+      "nombre": "ejemplo gen 6",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "69112b800924e9a7b60082cf"
+      ],
+      "hijos": [
+        "68fd3388986ef0aa5542a3fe"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-10T00:02:19.449Z",
+      "updatedAt": "2025-11-10T00:04:09.310Z",
+      "__v": 0
+    },
+    {
+      "_id": "69112ba40924e9a7b60082e1",
+      "nombre": "pedro porro",
+      "sexo": "M",
+      "padres": [
+        "69112f8a0924e9a7b6008f63",
+        "69112f940924e9a7b6008f67"
+      ],
+      "conyuges": [
+        "69112bac0924e9a7b60082e5"
+      ],
+      "hijos": [
+        "68fd3388986ef0aa5542a3fc"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-10T00:02:44.219Z",
+      "updatedAt": "2025-11-10T00:20:09.306Z",
+      "__v": 0
+    },
+    {
+      "_id": "69112bac0924e9a7b60082e5",
+      "nombre": "maria porro",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "69112ba40924e9a7b60082e1"
+      ],
+      "hijos": [
+        "68fd3388986ef0aa5542a3fc"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-10T00:02:52.062Z",
+      "updatedAt": "2025-11-10T00:04:29.934Z",
+      "__v": 0
+    },
+    {
+      "_id": "69112f8a0924e9a7b6008f63",
+      "nombre": "Ejemplo prueba",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [
+        "69112f940924e9a7b6008f67"
+      ],
+      "hijos": [
+        "69112ba40924e9a7b60082e1"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-10T00:19:22.438Z",
+      "updatedAt": "2025-11-10T00:20:53.162Z",
+      "__v": 0
+    },
+    {
+      "_id": "69112f940924e9a7b6008f67",
+      "nombre": "ejemplo prueba 2",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "69112f8a0924e9a7b6008f63",
+        "69002d4455c127badcad5a55",
+        "68fd3388986ef0aa5542a426"
+      ],
+      "hijos": [
+        "69112ba40924e9a7b60082e1"
+      ],
+      "medios": [],
+      "createdAt": "2025-11-10T00:19:32.646Z",
+      "updatedAt": "2025-11-12T17:25:38.170Z",
+      "__v": 0,
+      "otrosConyuges": [
+        "68fd3387986ef0aa5542a39c"
+      ]
+    },
+    {
+      "_id": "69162a22b9718f89ffdbda31",
+      "nombre": "Ejemplo Padre",
+      "sexo": "M",
+      "nacimiento": "1900-02-09T04:16:48.000Z",
+      "fallecimiento": "1950-02-09T03:00:00.000Z",
+      "padres": [],
+      "conyuges": [
+        "69251824acdfef6c1086ebec"
+      ],
+      "hijos": [
+        "68fd3388986ef0aa5542a426"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-13T18:57:38.540Z",
+      "updatedAt": "2025-11-25T02:44:52.464Z",
+      "__v": 0
+    },
+    {
+      "_id": "69162fbeb9718f89ffdbfbab",
+      "nombre": "La tetu",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "68fd3387986ef0aa5542a376"
+      ],
+      "hijos": [
+        "68fe975c6b7169cb1be48830"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-13T19:21:34.563Z",
+      "updatedAt": "2025-11-13T19:21:34.599Z",
+      "__v": 0
+    },
+    {
+      "_id": "69162fd0b9718f89ffdc01c3",
+      "nombre": "La sofi",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "68fe975c6b7169cb1be48830"
+      ],
+      "hijos": [],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-13T19:21:52.403Z",
+      "updatedAt": "2025-11-13T19:21:52.441Z",
+      "__v": 0
+    },
+    {
+      "_id": "6916303db9718f89ffdc15a7",
+      "nombre": "ejemplo 4",
+      "sexo": "M",
+      "padres": [
+        "692b69989ea43ec9a823129c"
+      ],
+      "conyuges": [
+        "6916443eb9718f89ffdc9b2f"
+      ],
+      "hijos": [
+        "68fd3388986ef0aa5542a424"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-13T19:23:41.977Z",
+      "updatedAt": "2025-11-29T21:46:00.463Z",
+      "__v": 0
+    },
+    {
+      "_id": "691641e5b9718f89ffdc71fc",
+      "nombre": "Ejemplo",
+      "sexo": "M",
+      "padres": [
+        "68fd3387986ef0aa5542a352",
+        "68fd3387986ef0aa5542a35c"
+      ],
+      "conyuges": [
+        "69164e01b9718f89ffdcf5b9"
+      ],
+      "hijos": [
+        "69164dd3b9718f89ffdcdd6c"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-13T20:39:01.731Z",
+      "updatedAt": "2025-11-13T21:30:41.292Z",
+      "__v": 0
+    },
+    {
+      "_id": "6916443eb9718f89ffdc9b2f",
+      "nombre": "conyuge 4",
+      "sexo": "F",
+      "padres": [
+        "692b69a29ea43ec9a8231607",
+        "692b69ae9ea43ec9a8231973"
+      ],
+      "conyuges": [
+        "6916303db9718f89ffdc15a7"
+      ],
+      "hijos": [
+        "68fd3388986ef0aa5542a424"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-13T20:49:02.061Z",
+      "updatedAt": "2025-11-29T21:46:22.970Z",
+      "__v": 0
+    },
+    {
+      "_id": "691649e6b9718f89ffdcaae7",
+      "nombre": "ejemplo",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [
+        "69002d6d55c127badcad5a5d"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-13T21:13:10.943Z",
+      "updatedAt": "2025-11-13T21:13:10.951Z",
+      "__v": 0
+    },
+    {
+      "_id": "69164c75b9718f89ffdcbd91",
+      "nombre": "ejemplo nuevo",
+      "sexo": "M",
+      "padres": [
+        "6928b1bcd00039cbba09d99b"
+      ],
+      "conyuges": [
+        "6928b1b5d00039cbba09d724"
+      ],
+      "hijos": [
+        "690fbe38e675ff1fc757f6da"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-13T21:24:05.326Z",
+      "updatedAt": "2025-11-27T20:17:00.431Z",
+      "__v": 0
+    },
+    {
+      "_id": "69164c96b9718f89ffdcc404",
+      "nombre": "ejemplificacion",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [
+        "69002ff055c127badcad6f5e"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-13T21:24:38.250Z",
+      "updatedAt": "2025-11-13T21:24:38.256Z",
+      "__v": 0
+    },
+    {
+      "_id": "69164da7b9718f89ffdcd0d6",
+      "nombre": "aaaa",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [
+        "68fd3388986ef0aa5542a400"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-13T21:29:11.503Z",
+      "updatedAt": "2025-11-13T21:29:11.515Z",
+      "__v": 0
+    },
+    {
+      "_id": "69164dd3b9718f89ffdcdd6c",
+      "nombre": "aaaaa",
+      "sexo": "M",
+      "padres": [
+        "691641e5b9718f89ffdc71fc",
+        "69164e01b9718f89ffdcf5b9"
+      ],
+      "conyuges": [
+        "69164dddb9718f89ffdce367"
+      ],
+      "hijos": [],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-13T21:29:55.842Z",
+      "updatedAt": "2025-11-13T21:30:41.301Z",
+      "__v": 0
+    },
+    {
+      "_id": "69164dddb9718f89ffdce367",
+      "nombre": "bbbbb",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "69164dd3b9718f89ffdcdd6c"
+      ],
+      "hijos": [],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-13T21:30:05.961Z",
+      "updatedAt": "2025-11-13T21:30:05.990Z",
+      "__v": 0
+    },
+    {
+      "_id": "69164e01b9718f89ffdcf5b9",
+      "nombre": "b bbb",
+      "sexo": "F",
+      "padres": [
+        "69164e0eb9718f89ffdcfbcc",
+        "69164e17b9718f89ffdd01e4"
+      ],
+      "conyuges": [
+        "691641e5b9718f89ffdc71fc"
+      ],
+      "hijos": [
+        "69164dd3b9718f89ffdcdd6c"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-13T21:30:41.277Z",
+      "updatedAt": "2025-11-13T21:31:03.365Z",
+      "__v": 0
+    },
+    {
+      "_id": "69164e0eb9718f89ffdcfbcc",
+      "nombre": "aaa",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "69164e17b9718f89ffdd01e4"
+      ],
+      "hijos": [
+        "69164e01b9718f89ffdcf5b9"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-13T21:30:54.316Z",
+      "updatedAt": "2025-11-13T21:31:03.355Z",
+      "__v": 0
+    },
+    {
+      "_id": "69164e17b9718f89ffdd01e4",
+      "nombre": "dddd",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [
+        "69164e0eb9718f89ffdcfbcc"
+      ],
+      "hijos": [
+        "69164e01b9718f89ffdcf5b9"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-13T21:31:03.328Z",
+      "updatedAt": "2025-11-13T21:31:03.365Z",
+      "__v": 0
+    },
+    {
+      "_id": "691e82d71d53330c93dbdd31",
+      "nombre": "Benjamin",
+      "sexo": "M",
+      "padres": [
+        "68fd3387986ef0aa5542a352"
+      ],
+      "conyuges": [
+        "692a701a734ced5e44429aa9"
+      ],
+      "hijos": [],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-20T02:54:15.675Z",
+      "updatedAt": "2025-11-29T04:01:30.286Z",
+      "__v": 0
+    },
+    {
+      "_id": "691f5a439a40faf4eef450a2",
+      "nombre": "Ejemplo",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [],
+      "otrosConyuges": [],
+      "matrimonio": {
+        "fecha": "2025-11-28T03:00:00.000Z",
+        "lugar": "asdasda"
+      },
+      "medios": [],
+      "createdAt": "2025-11-20T18:13:23.659Z",
+      "updatedAt": "2025-11-20T18:18:52.344Z",
+      "__v": 0,
+      "causaFallecimiento": "",
+      "fallecimiento": null,
+      "lugarFallecimiento": "",
+      "lugarNacimiento": "",
+      "nacimiento": "2025-11-14T03:00:00.000Z"
+    },
+    {
+      "_id": "691f66769a40faf4eef45e2d",
+      "nombre": "Ejemplito",
+      "sexo": "M",
+      "nacimiento": "2025-11-22T03:00:00.000Z",
+      "padres": [
+        "68fd3387986ef0aa5542a352",
+        "68fd3387986ef0aa5542a35c"
+      ],
+      "conyuges": [
+        "692a74ee734ced5e4442cff5"
+      ],
+      "hijos": [],
+      "otrosConyuges": [],
+      "matrimonio": {
+        "fecha": "2025-11-29T03:00:00.000Z",
+        "lugar": "Neuquen"
+      },
+      "medios": [],
+      "createdAt": "2025-11-20T19:05:26.594Z",
+      "updatedAt": "2025-11-29T04:22:06.248Z",
+      "__v": 0
+    },
+    {
+      "_id": "691f8fc49a40faf4eef48fc1",
+      "nombre": "Ejempliyo",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a45a"
+      ],
+      "hijos": [],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-20T22:01:40.511Z",
+      "updatedAt": "2025-11-20T22:01:40.535Z",
+      "__v": 0
+    },
+    {
+      "_id": "69251824acdfef6c1086ebec",
+      "nombre": "La sofi",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "69162a22b9718f89ffdbda31"
+      ],
+      "hijos": [
+        "68fd3388986ef0aa5542a426"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-25T02:44:52.384Z",
+      "updatedAt": "2025-11-25T02:44:52.474Z",
+      "__v": 0
+    },
+    {
+      "_id": "6927c72f2b8d9b2e215d2080",
+      "nombre": "Benjamin Cesar Soto",
+      "sexo": "M",
+      "nacimiento": "2001-02-09T03:00:00.000Z",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-27T03:36:15.303Z",
+      "updatedAt": "2025-11-27T03:36:15.303Z",
+      "__v": 0
+    },
+    {
+      "_id": "69287b48d00039cbba0963c6",
+      "nombre": "eeeeeee",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [
+        "692886dbd00039cbba099b09"
+      ],
+      "hijos": [
+        "68fd3388986ef0aa5542a410"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-27T16:24:40.459Z",
+      "updatedAt": "2025-11-27T17:14:03.922Z",
+      "__v": 0
+    },
+    {
+      "_id": "692886dbd00039cbba099b09",
+      "nombre": "bbbbbb",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "69287b48d00039cbba0963c6"
+      ],
+      "hijos": [
+        "68fd3388986ef0aa5542a410"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-27T17:14:03.910Z",
+      "updatedAt": "2025-11-27T17:14:03.933Z",
+      "__v": 0
+    },
+    {
+      "_id": "69288701d00039cbba09a197",
+      "nombre": "cccc",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [
+        "69288708d00039cbba09a4df"
+      ],
+      "hijos": [
+        "68fd3388986ef0aa5542a420"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-27T17:14:41.454Z",
+      "updatedAt": "2025-11-27T17:14:48.612Z",
+      "__v": 0
+    },
+    {
+      "_id": "69288708d00039cbba09a4df",
+      "nombre": "vvvvv",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "69288701d00039cbba09a197"
+      ],
+      "hijos": [
+        "68fd3388986ef0aa5542a420"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-27T17:14:48.599Z",
+      "updatedAt": "2025-11-27T17:14:48.620Z",
+      "__v": 0
+    },
+    {
+      "_id": "69288770d00039cbba09b235",
+      "nombre": "kkkkkkkkk",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "68fd3388986ef0aa5542a408"
+      ],
+      "hijos": [],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-27T17:16:32.200Z",
+      "updatedAt": "2025-11-27T17:16:32.211Z",
+      "__v": 0
+    },
+    {
+      "_id": "6928b1b5d00039cbba09d724",
+      "nombre": "hhhhhhh",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "69164c75b9718f89ffdcbd91"
+      ],
+      "hijos": [
+        "690fbe38e675ff1fc757f6da"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-27T20:16:53.489Z",
+      "updatedAt": "2025-11-27T20:16:53.509Z",
+      "__v": 0
+    },
+    {
+      "_id": "6928b1bcd00039cbba09d99b",
+      "nombre": "sdadasda",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [
+        "69164c75b9718f89ffdcbd91"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-27T20:17:00.423Z",
+      "updatedAt": "2025-11-27T20:17:00.431Z",
+      "__v": 0
+    },
+    {
+      "_id": "692a701a734ced5e44429aa9",
+      "nombre": "aa",
+      "sexo": "M",
+      "nacimiento": "2025-11-12T03:00:00.000Z",
+      "padres": [],
+      "conyuges": [
+        "691e82d71d53330c93dbdd31"
+      ],
+      "hijos": [],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-29T04:01:30.220Z",
+      "updatedAt": "2025-11-29T04:01:30.287Z",
+      "__v": 0
+    },
+    {
+      "_id": "692a74ee734ced5e4442cff5",
+      "nombre": "aadasd",
+      "sexo": "X",
+      "nacimiento": "2000-12-14T03:00:00.000Z",
+      "padres": [],
+      "conyuges": [
+        "691f66769a40faf4eef45e2d"
+      ],
+      "hijos": [],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-29T04:22:06.235Z",
+      "updatedAt": "2025-11-29T04:22:06.249Z",
+      "__v": 0
+    },
+    {
+      "_id": "692b2d0b9ea43ec9a8226dbc",
+      "nombre": "asdasdsa",
+      "sexo": "M",
+      "nacimiento": "2025-11-29T03:00:00.000Z",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [
+        "69002d5855c127badcad5a59"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-29T17:27:39.852Z",
+      "updatedAt": "2025-11-29T17:27:39.939Z",
+      "__v": 0
+    },
+    {
+      "_id": "692b67319ea43ec9a822e881",
+      "nombre": "asdsadadsada",
+      "sexo": "M",
+      "padres": [
+        "692b68759ea43ec9a8230580"
+      ],
+      "conyuges": [
+        "692b686c9ea43ec9a8230293"
+      ],
+      "hijos": [
+        "690fbeb4e675ff1fc757f71a"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-29T21:35:45.188Z",
+      "updatedAt": "2025-11-29T21:41:09.050Z",
+      "__v": 0
+    },
+    {
+      "_id": "692b686c9ea43ec9a8230293",
+      "nombre": "vcvvbvcbvc",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "692b67319ea43ec9a822e881"
+      ],
+      "hijos": [
+        "690fbeb4e675ff1fc757f71a"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-29T21:41:00.529Z",
+      "updatedAt": "2025-11-29T21:41:00.553Z",
+      "__v": 0
+    },
+    {
+      "_id": "692b68759ea43ec9a8230580",
+      "nombre": "fdsfsdfdsfsdf",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [
+        "692b67319ea43ec9a822e881"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-29T21:41:09.042Z",
+      "updatedAt": "2025-11-29T21:41:09.050Z",
+      "__v": 0
+    },
+    {
+      "_id": "692b69989ea43ec9a823129c",
+      "nombre": "ejemplo 1",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [],
+      "hijos": [
+        "6916303db9718f89ffdc15a7"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-29T21:46:00.457Z",
+      "updatedAt": "2025-11-29T21:46:00.463Z",
+      "__v": 0
+    },
+    {
+      "_id": "692b69a29ea43ec9a8231607",
+      "nombre": "ejemplo 2",
+      "sexo": "M",
+      "padres": [],
+      "conyuges": [
+        "692b69ae9ea43ec9a8231973"
+      ],
+      "hijos": [
+        "6916443eb9718f89ffdc9b2f"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-29T21:46:10.939Z",
+      "updatedAt": "2025-11-29T21:46:22.963Z",
+      "__v": 0
+    },
+    {
+      "_id": "692b69ae9ea43ec9a8231973",
+      "nombre": "ejemplo 3",
+      "sexo": "F",
+      "padres": [],
+      "conyuges": [
+        "692b69a29ea43ec9a8231607"
+      ],
+      "hijos": [
+        "6916443eb9718f89ffdc9b2f"
+      ],
+      "otrosConyuges": [],
+      "medios": [],
+      "createdAt": "2025-11-29T21:46:22.947Z",
+      "updatedAt": "2025-11-29T21:46:22.970Z",
+      "__v": 0
+    }
+  ]
+}

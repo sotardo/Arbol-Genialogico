@@ -1,0 +1,128 @@
+{
+  "title": "Árbol Genealógico",
+  "controls": {
+    "zoomIn": "Acercar",
+    "zoomOut": "Alejar",
+    "centerRoot": "Centrar raíz",
+    "zoomTip": "Alt + Scroll para hacer zoom"
+  },
+  "card": {
+    "children": "Hijos",
+    "child_one": "{{count}} hijo",
+    "child_other": "{{count}} hijos",
+    "noChildren": "Sin hijos",
+    "addFather": "Agregar Padre",
+    "addMother": "Agregar Madre",
+    "addSpouse": "Agregar Cónyuge",
+    "addChild": "Agregar Hijo",
+    "selectSpouse": "Seleccionar Cónyuge",
+    "withSpouse": "con {{name}}",
+    "expand": "Expandir",
+    "collapse": "Colapsar"
+  },
+  "panel": {
+    "profile": "Perfil",
+    "tree": "Árbol",
+    "sources": "Fuentes",
+    "gallery": "Galería",
+    "qualityScore": "Puntuación de calidad",
+    "birth": "Nacimiento",
+    "death": "Defunción",
+    "baptism": "Bautizo",
+    "marriage": "Matrimonio",
+    "burial": "Entierro",
+    "lifeStory": "Historia de vida",
+    "essentialInfo": "Información esencial",
+    "closePanel": "Cerrar panel"
+  },
+  "empty": {
+    "noPerson": "No se encontró la persona",
+    "selectPerson": "Selecciona una persona",
+    "calculating": "Calculando layout..."
+  },
+  "loading": {
+    "tree": "Cargando árbol...",
+    "rootPerson": "Cargando persona raíz...",
+    "searching": "Buscando la primera persona disponible."
+  },
+  "error": {
+    "noData": "Sin datos",
+    "noPersons": "No hay personas en la base de datos.",
+    "createFirst": "Crea una persona para iniciar el árbol.",
+    "goToPersons": "Ir a Personas"
+  },
+  "addParent": {
+    "title": "Agregar Padre/Madre",
+    "selectExisting": "Seleccionar existente",
+    "createNew": "Crear nuevo",
+    "searchPlaceholder": "Buscar persona...",
+    "father": "Padre",
+    "mother": "Madre"
+  },
+  "addPanel": {
+    "titles": {
+      "father": "Agregar Padre",
+      "mother": "Agregar Madre",
+      "child": "Agregar Hijo",
+      "spouse": "Agregar Cónyuge"
+    },
+    "for": "Para",
+    "sections": {
+      "basicInfo": "Información básica",
+      "birth": "Nacimiento",
+      "baptism": "Bautismo",
+      "marriage": "Matrimonio",
+      "death": "Defunción"
+    },
+    "fields": {
+      "fullName": "Nombre completo",
+      "sex": "Sexo",
+      "birthDate": "Fecha de nacimiento",
+      "birthPlace": "Lugar de nacimiento",
+      "baptismDate": "Fecha de bautismo",
+      "baptismPlace": "Lugar de bautismo",
+      "parish": "Parroquia",
+      "notes": "Notas",
+      "marriageDate": "Fecha de matrimonio",
+      "marriagePlace": "Lugar de matrimonio",
+      "deathDate": "Fecha de defunción",
+      "deathPlace": "Lugar de defunción",
+      "deathCause": "Causa de defunción"
+    },
+    "sex": {
+      "male": "Masculino",
+      "female": "Femenino",
+      "other": "Otro / No especifica"
+    },
+    "placeholders": {
+      "fullName": "Nombre completo",
+      "select": "Seleccionar...",
+      "ddmmyyyy": "DD/MM/AAAA",
+      "cityProvinceCountry": "Ciudad, Provincia, País",
+      "parishName": "Nombre de la parroquia",
+      "additionalInfo": "Información adicional",
+      "parishCityCountry": "Parroquia / ciudad / país",
+      "optional": "Opcional"
+    },
+    "actions": {
+      "closePanel": "Cerrar panel",
+      "cancel": "Cancelar",
+      "saving": "Guardando...",
+      "saveAndLink": "Guardar y vincular"
+    },
+    "errors": {
+      "nameRequired": "El nombre es obligatorio",
+      "sexRequired": "El sexo es obligatorio"
+    },
+    "toasts": {
+      "childAdded": "Hijo/a agregado/a exitosamente",
+      "spouseAdded": "Cónyuge agregado/a exitosamente",
+      "fatherExistsTitle": "Ya existe un padre",
+      "fatherExistsDesc": "Esta persona ya tiene un padre asignado",
+      "motherExistsTitle": "Ya existe una madre",
+      "motherExistsDesc": "Esta persona ya tiene una madre asignada",
+      "parentAdded": "{{parent}} agregado/a exitosamente",
+      "saveErrorTitle": "Error al guardar"
+    }
+  }
+}

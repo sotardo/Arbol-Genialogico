@@ -1,0 +1,52 @@
+{
+  "tabs": {
+    "info": "Informazioni",
+    "details": "Dettagli",
+    "relations": "Relazioni",
+    "timeline": "Cronologia"
+  },
+  "fields": {
+    "name": "Nome completo",
+    "sex": "Sesso",
+    "male": "Maschio",
+    "female": "Femmina",
+    "unknown": "Altro / Non specificato",
+    "birth": "Nascita",
+    "birthPlace": "Luogo di nascita",
+    "death": "Morte",
+    "deathPlace": "Luogo di morte",
+    "occupation": "Occupazione",
+    "notes": "Note"
+  },
+  "relations": {
+    "parents": "Genitori",
+    "father": "Padre",
+    "mother": "Madre",
+    "children": "Figli",
+    "siblings": "Fratelli",
+    "spouse": "Coniuge",
+    "spouses": "Altri coniugi"
+  },
+  "sources": {
+    "title": "Fonti",
+    "add": "Aggiungi fonte",
+    "noSources": "Nessuna fonte",
+    "openInTab": "Apri in nuova scheda"
+  },
+  "gallery": {
+    "title": "Galleria",
+    "add": "Aggiungi foto",
+    "noPhotos": "Nessuna foto"
+  },
+  "actions": {
+    "viewTree": "Visualizza albero",
+    "editRelations": "Modifica relazioni"
+  },
+  "quality": {
+    "title": "Punteggio qualità",
+    "excellent": "Eccellente",
+    "good": "Buono",
+    "fair": "Discreto",
+    "poor": "Scarso"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "appName": "משפחת פהלר",
+  "nav": {
+    "home": "בית",
+    "tree": "עץ",
+    "persons": "אנשים"
+  },
+  "buttons": {
+    "save": "שמור",
+    "cancel": "בטל",
+    "delete": "מחק",
+    "edit": "ערוך",
+    "add": "הוסף",
+    "search": "חפש",
+    "close": "סגור",
+    "confirm": "אשר",
+    "back": "חזור",
+    "view": "צפה",
+    "loading": "טוען..."
+  },
+  "messages": {
+    "confirmDelete": "האם אתה בטוח שברצונך למחוק?",
+    "saved": "נשמר בהצלחה",
+    "error": "אירעה שגיאה",
+    "noResults": "לא נמצאו תוצאות"
+  },
+  "dates": {
+    "birthAbbr": "נ.",
+    "deathAbbr": "פ.",
+    "birth": "לידה",
+    "death": "פטירה"
+  }
+}

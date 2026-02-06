@@ -1,0 +1,54 @@
+{
+  "controls": {
+    "zoomIn": "Powiększ",
+    "zoomOut": "Pomniejsz",
+    "centerRoot": "Wyśrodkuj korzeń",
+    "zoomTip": "Użyj kółka myszy, aby powiększyć"
+  },
+  "card": {
+    "children": "Dzieci",
+    "child_one": "1 dziecko",
+    "child_other": "{{count}} dzieci",
+    "addFather": "Dodaj ojca",
+    "addMother": "Dodaj matkę",
+    "addSpouse": "Dodaj małżonka",
+    "addChild": "Dodaj dziecko",
+    "selectSpouse": "Wybierz małżonka",
+    "withSpouse": "z {{name}}",
+    "expand": "Rozwiń",
+    "collapse": "Zwiń"
+  },
+  "panel": {
+    "profile": "Profil",
+    "tree": "Drzewo",
+    "sources": "Źródła",
+    "gallery": "Galeria",
+    "qualityScore": "Ocena jakości",
+    "birth": "Urodzenie",
+    "death": "Śmierć",
+    "baptism": "Chrzest",
+    "marriage": "Małżeństwo",
+    "burial": "Pogrzeb",
+    "lifeStory": "Historia życia",
+    "essentialInfo": "Podstawowe informacje",
+    "closePanel": "Zamknij panel"
+  },
+  "empty": {
+    "title": "Brak drzewa genealogicznego",
+    "subtitle": "Wybierz osobę, aby rozpocząć"
+  },
+  "loading": {
+    "title": "Ładowanie drzewa genealogicznego...",
+    "subtitle": "Proszę czekać"
+  },
+  "error": {
+    "title": "Błąd",
+    "subtitle": "Nie można załadować drzewa"
+  },
+  "addParent": {
+    "title": "Dodaj rodzica",
+    "searchPlaceholder": "Szukaj osoby...",
+    "createNew": "Utwórz nowy",
+    "noResults": "Brak wyników"
+  }
+}

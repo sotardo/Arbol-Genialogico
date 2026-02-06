@@ -1,0 +1,118 @@
+{
+  "title": "Base de datos",
+  "subtitle": "{{count}} persona registrada",
+  "subtitle_other": "{{count}} personas registradas",
+
+  "actions": {
+    "addPerson": "Agregar persona",
+    "newPerson": "Nueva persona",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "saveChanges": "Guardar cambios",
+    "createPerson": "Crear persona",
+    "saveAndLink": "Guardar y vincular",
+    "cancel": "Cancelar"
+  },
+
+  "search": {
+    "placeholder": "Buscar por nombre...",
+    "emptyTitleNoResults": "No se encontraron resultados",
+    "emptyTitleNoPeople": "No hay personas registradas",
+    "emptyHintNoResults": "Intenta con otro término de búsqueda",
+    "emptyHintNoPeople": "Crea tu primera persona para comenzar"
+  },
+
+  "table": {
+    "name": "Nombre",
+    "birth": "Nacimiento",
+    "death": "Fallecimiento",
+    "actions": "Acciones"
+  },
+
+  "loading": {
+    "people": "Cargando personas..."
+  },
+
+  "pagination": {
+    "showing": "Mostrando {{from}} - {{to}} de {{total}}"
+  },
+
+  "sex": {
+    "select": "Seleccionar...",
+    "male": "Masculino",
+    "female": "Femenino",
+    "other": "Otro / No especifica",
+    "dash": "—"
+  },
+
+  "modal": {
+    "editTitle": "Editar persona",
+    "createTitle": "Nueva persona",
+    "editSubtitle": "Actualiza la información",
+    "createSubtitle": "Completa los datos básicos",
+    "srClose": "Cerrar panel"
+  },
+
+  "sections": {
+    "basicInfo": "Información básica",
+    "birth": "Nacimiento",
+    "baptism": "Bautismo",
+    "marriage": "Matrimonio",
+    "death": "Defunción"
+  },
+
+  "fields": {
+    "fullName": "Nombre completo",
+    "fullNameRequired": "Nombre completo *",
+    "sex": "Sexo",
+    "birthDate": "Fecha de nacimiento",
+    "birthPlace": "Lugar de nacimiento",
+    "baptismDate": "Fecha de bautismo",
+    "baptismPlace": "Lugar de bautismo",
+    "parish": "Parroquia",
+    "notes": "Notas",
+    "marriageDate": "Fecha de matrimonio",
+    "marriagePlace": "Lugar de matrimonio",
+    "deathDate": "Fecha de defunción",
+    "deathPlace": "Lugar de defunción",
+    "deathCause": "Causa de defunción"
+  },
+
+  "placeholders": {
+    "fullName": "Nombre completo",
+    "place": "Ciudad, Provincia, País",
+    "parishName": "Nombre de la parroquia",
+    "additionalInfo": "Información adicional",
+    "marriagePlace": "Parroquia / ciudad / país",
+    "optional": "Opcional"
+  },
+
+  "tips": {
+    "edit": "Los cambios se guardarán inmediatamente",
+    "create": "Podrás agregar más información después"
+  },
+
+  "confirm": {
+    "titleDefault": "Confirmar",
+    "messageDefault": "¿Desea continuar?",
+    "deleteTitle": "Eliminar persona",
+    "deleteMessage": "¿Eliminar a \"{{name}}\"? Esta acción no se puede deshacer.",
+    "confirmDelete": "Sí, eliminar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar"
+  },
+
+  "validation": {
+    "nameRequired": "El nombre es obligatorio"
+  },
+
+  "toast": {
+    "savedChanges": "Cambios guardados",
+    "createdPerson": "Persona creada",
+    "deletedPerson": "Persona eliminada",
+    "errorLoadingPeople": "No se pudieron cargar las personas",
+    "errorLoadingPersonDetail": "No se pudo cargar el detalle de la persona",
+    "errorSavingPerson": "Error al guardar la persona",
+    "errorDeletingPerson": "Error al eliminar la persona"
+  }
+}

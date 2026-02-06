@@ -1,0 +1,128 @@
+{
+  "title": "Family Tree",
+  "controls": {
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "centerRoot": "Center root",
+    "zoomTip": "Alt + Scroll to zoom"
+  },
+  "card": {
+    "children": "Children",
+    "child_one": "{{count}} child",
+    "child_other": "{{count}} children",
+    "noChildren": "No children",
+    "addFather": "Add Father",
+    "addMother": "Add Mother",
+    "addSpouse": "Add Spouse",
+    "addChild": "Add Child",
+    "selectSpouse": "Select Spouse",
+    "withSpouse": "with {{name}}",
+    "expand": "Expand",
+    "collapse": "Collapse"
+  },
+  "panel": {
+    "profile": "Profile",
+    "tree": "Tree",
+    "sources": "Sources",
+    "gallery": "Gallery",
+    "qualityScore": "Quality score",
+    "birth": "Birth",
+    "death": "Death",
+    "baptism": "Baptism",
+    "marriage": "Marriage",
+    "burial": "Burial",
+    "lifeStory": "Life story",
+    "essentialInfo": "Essential information",
+    "closePanel": "Close panel"
+  },
+  "empty": {
+    "noPerson": "Person not found",
+    "selectPerson": "Select a person",
+    "calculating": "Calculating layout..."
+  },
+  "loading": {
+    "tree": "Loading tree...",
+    "rootPerson": "Loading root person...",
+    "searching": "Searching for the first available person."
+  },
+  "error": {
+    "noData": "No data",
+    "noPersons": "No persons in database.",
+    "createFirst": "Create a person to start the tree.",
+    "goToPersons": "Go to Persons"
+  },
+  "addParent": {
+    "title": "Add Parent",
+    "selectExisting": "Select existing",
+    "createNew": "Create new",
+    "searchPlaceholder": "Search person...",
+    "father": "Father",
+    "mother": "Mother"
+  },
+  "addPanel": {
+    "titles": {
+      "father": "Add Father",
+      "mother": "Add Mother",
+      "child": "Add Child",
+      "spouse": "Add Spouse"
+    },
+    "for": "For",
+    "sections": {
+      "basicInfo": "Basic information",
+      "birth": "Birth",
+      "baptism": "Baptism",
+      "marriage": "Marriage",
+      "death": "Death"
+    },
+    "fields": {
+      "fullName": "Full name",
+      "sex": "Sex",
+      "birthDate": "Birth date",
+      "birthPlace": "Place of birth",
+      "baptismDate": "Baptism date",
+      "baptismPlace": "Place of baptism",
+      "parish": "Parish",
+      "notes": "Notes",
+      "marriageDate": "Marriage date",
+      "marriagePlace": "Marriage place",
+      "deathDate": "Date of death",
+      "deathPlace": "Place of death",
+      "deathCause": "Cause of death"
+    },
+    "sex": {
+      "male": "Male",
+      "female": "Female",
+      "other": "Other / Prefer not to say"
+    },
+    "placeholders": {
+      "fullName": "Full name",
+      "select": "Select...",
+      "ddmmyyyy": "DD/MM/YYYY",
+      "cityProvinceCountry": "City, State/Province, Country",
+      "parishName": "Parish name",
+      "additionalInfo": "Additional information",
+      "parishCityCountry": "Parish / city / country",
+      "optional": "Optional"
+    },
+    "actions": {
+      "closePanel": "Close panel",
+      "cancel": "Cancel",
+      "saving": "Saving...",
+      "saveAndLink": "Save and link"
+    },
+    "errors": {
+      "nameRequired": "Name is required",
+      "sexRequired": "Sex is required"
+    },
+    "toasts": {
+      "childAdded": "Child added successfully",
+      "spouseAdded": "Spouse added successfully",
+      "fatherExistsTitle": "Father already exists",
+      "fatherExistsDesc": "This person already has a father assigned",
+      "motherExistsTitle": "Mother already exists",
+      "motherExistsDesc": "This person already has a mother assigned",
+      "parentAdded": "{{parent}} added successfully",
+      "saveErrorTitle": "Error saving"
+    }
+  }
+}
